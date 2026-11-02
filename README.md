@@ -18,7 +18,10 @@ source-trace/          the skill itself (this folder is what gets installed)
 ├── scripts/           helper scripts
 └── evals/             test cases
 tests/fixtures/        test data: source images, knowledge trees, answer keys
-tools/                 development helpers (e.g. make_sample_slides.py)
+  ml-basics/           4 English slides, obvious errors
+  model-eval/          8 Chinese slides, subtle errors
+tests/baseline/        results of plain Claude without the skill, for comparison
+tools/                 development helpers (e.g. make_fixture_slides.py)
 ```
 
 ## Validate inputs

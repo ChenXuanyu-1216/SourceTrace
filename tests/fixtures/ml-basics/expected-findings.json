@@ -43,6 +43,7 @@
     {
       "target": "N006",
       "category": "overgeneralization",
+      "also_accept": ["conceptual-error"],
       "page": 3,
       "source_snippet": "Two typical tasks: Clustering ... Dimensionality reduction",
       "reason": "The first half of the definition is supported, but the slide names clustering as one of two tasks, not the only one."
@@ -62,5 +63,27 @@
       "reason": "A main task from the source is missing from the tree. Found by the source-to-tree direction of the audit."
     }
   ],
+  "acceptable_extra_findings": [
+    {
+      "target": "E009",
+      "category": "ambiguous",
+      "page": 4,
+      "source_snippet": "Feedback: Correct answers / None / Rewards",
+      "reason": "Linking Feedback only to Reinforcement Learning hides that every paradigm has feedback. The edge is true but incomplete; flagging it alongside N009 is reasonable."
+    },
+    {
+      "category": "omission",
+      "page": 3,
+      "source_snippet": "(e.g. k-means) ... (e.g. PCA)",
+      "reason": "The example methods are minor details. Reporting them at low risk is fine."
+    },
+    {
+      "category": "omission",
+      "page": 4,
+      "source_snippet": "Paradigm | Training data | Feedback",
+      "reason": "The comparison table's attributes are only partly in the tree. Reasonable to report."
+    }
+  ],
+  "should_not_report": [],
   "correct_items": ["N001", "N003", "N004", "N005", "N007", "E001", "E002", "E003", "E005", "E006", "E009"]
 }

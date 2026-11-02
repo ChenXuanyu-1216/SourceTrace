@@ -1,5 +1,5 @@
 # Needed by the skill's scripts (source-trace/scripts/)
 jsonschema>=4.18
 
-# Development only: regenerating test slides (tools/make_sample_slides.py)
+# Development only: regenerating test slides (tools/make_fixture_slides.py)
 pillow>=10.0
