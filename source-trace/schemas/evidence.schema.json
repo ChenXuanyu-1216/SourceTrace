@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/ChenXuanyu-1216/SourceTrace/schemas/evidence.schema.json",
   "title": "SourceTrace evidence item",
-  "description": "One piece of content extracted from the original slides. Findings cite evidence by evidence_id.",
+  "description": "One piece of content extracted from a source image (PNG/JPG). Findings cite evidence by evidence_id.",
   "type": "object",
   "required": ["evidence_id", "source_id", "page", "type", "content", "location", "certainty"],
   "additionalProperties": false,
@@ -15,12 +15,12 @@
     "source_id": {
       "type": "string",
       "minLength": 1,
-      "description": "Identifier for the original source, e.g. \"slide-01\"."
+      "description": "Identifier for the source image, e.g. \"slide-01\" for slide-01.png."
     },
     "page": {
       "type": "integer",
       "minimum": 1,
-      "description": "Page (slide) number, starting at 1."
+      "description": "Position of the source image in the input set, starting at 1 (one image is one page)."
     },
     "type": {
       "enum": ["text", "table", "graphic"],

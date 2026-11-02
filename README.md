@@ -1,6 +1,11 @@
 # SourceTrace
 
-An Agent Skill for multi-modal knowledge tracing and verification: it breaks content into claims, traces each one back to its source (text, PDF, web, image, audio, video), and reports whether the source supports it.
+An Agent Skill that audits an AI-generated knowledge tree against its source material. Give it the source images (PNG/JPG, e.g. exported slides) and the knowledge tree (JSON); it extracts evidence, maps every node and edge to that evidence, audits in both directions, and writes:
+
+- `report.md`: a human-readable audit report
+- `audit.json`: a machine-readable audit result
+
+It works with any tool that supports Agent Skills, such as Claude Code or Codex.
 
 ## Layout
 
