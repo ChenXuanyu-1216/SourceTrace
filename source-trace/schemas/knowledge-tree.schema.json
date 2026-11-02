@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ChenXuanyu-1216/SourceTrace/schemas/knowledge-tree.schema.json",
+  "title": "SourceTrace knowledge tree",
+  "description": "An AI-generated knowledge tree to be reviewed. Uniqueness of IDs and edge references are checked by validate_input.py, not by this schema.",
+  "type": "object",
+  "required": ["schema_version", "title", "nodes", "edges"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "title": { "type": "string", "minLength": 1 },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "edges": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/edge" }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": ["id", "label", "definition", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^N[0-9]{3,}$" },
+        "label": { "type": "string", "minLength": 1 },
+        "definition": { "type": "string", "minLength": 1 },
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "description": "For example \"concept\". Allowed values are still open."
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": ["id", "source", "target", "relation"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^E[0-9]{3,}$" },
+        "source": { "type": "string", "pattern": "^N[0-9]{3,}$" },
+        "target": { "type": "string", "pattern": "^N[0-9]{3,}$" },
+        "relation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "For example \"includes\". Allowed values are still open."
+        }
+      }
+    }
+  }
+}

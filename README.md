@@ -5,8 +5,10 @@ An Agent Skill for multi-modal knowledge tracing and verification: it breaks con
 ## Layout
 
 ```
+docs/requirements.md   scope, pipeline and open questions
 source-trace/          the skill itself (this folder is what gets installed)
 ├── SKILL.md           instructions and trigger description
+├── schemas/           JSON Schemas for the knowledge tree and evidence items
 ├── references/        detail loaded only when needed
 ├── scripts/           helper scripts
 └── evals/             test cases

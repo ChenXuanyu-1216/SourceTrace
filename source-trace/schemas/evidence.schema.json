@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ChenXuanyu-1216/SourceTrace/schemas/evidence.schema.json",
+  "title": "SourceTrace evidence item",
+  "description": "One piece of content extracted from the original slides. Findings cite evidence by evidence_id.",
+  "type": "object",
+  "required": ["evidence_id", "source_id", "page", "type", "content", "location", "certainty"],
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^EV-[0-9]{3,}$",
+      "description": "Unique identifier for this piece of evidence."
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier for the original source, e.g. \"slide-01\"."
+    },
+    "page": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Page (slide) number, starting at 1."
+    },
+    "type": {
+      "enum": ["text", "table", "graphic"],
+      "description": "Kind of content the evidence was taken from."
+    },
+    "content": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The original content, quoted as extracted."
+    },
+    "location": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Where on the page to find it, in words a person can act on. Precise coordinates are not required in v0.1."
+    },
+    "certainty": {
+      "enum": ["high", "medium", "low"],
+      "description": "Confidence that the content was extracted correctly."
+    }
+  }
+}
