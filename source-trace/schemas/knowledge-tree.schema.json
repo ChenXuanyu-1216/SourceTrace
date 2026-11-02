@@ -29,9 +29,7 @@
         "label": { "type": "string", "minLength": 1 },
         "definition": { "type": "string", "minLength": 1 },
         "kind": {
-          "type": "string",
-          "minLength": 1,
-          "description": "For example \"concept\". Allowed values are still open."
+          "enum": ["concept", "method", "task", "example", "fact"]
         }
       }
     },
@@ -44,9 +42,8 @@
         "source": { "type": "string", "pattern": "^N[0-9]{3,}$" },
         "target": { "type": "string", "pattern": "^N[0-9]{3,}$" },
         "relation": {
-          "type": "string",
-          "minLength": 1,
-          "description": "For example \"includes\". Allowed values are still open."
+          "enum": ["includes", "is-a", "part-of", "example-of", "causes", "depends-on", "uses", "contrasts-with", "related-to"],
+          "description": "Read as: source <relation> target, e.g. N001 includes N002."
         }
       }
     }

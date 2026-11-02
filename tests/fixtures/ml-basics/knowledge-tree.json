@@ -21,6 +21,6 @@
     { "id": "E006", "source": "N001", "target": "N007", "relation": "includes" },
     { "id": "E007", "source": "N002", "target": "N003", "relation": "includes" },
     { "id": "E008", "source": "N001", "target": "N008", "relation": "includes" },
-    { "id": "E009", "source": "N007", "target": "N009", "relation": "learns from" }
+    { "id": "E009", "source": "N007", "target": "N009", "relation": "uses" }
   ]
 }
