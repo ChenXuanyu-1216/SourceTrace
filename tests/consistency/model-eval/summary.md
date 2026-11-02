@@ -75,3 +75,26 @@ Day 6 settled both disagreements: the qualifier test makes N017 `overgeneralizat
 | False positives, should-not-report hits | none | none | none |
 
 A new set of runs under the final rules is needed to confirm that they close these gaps.
+
+## Rerun under the final v0.1 rules (commit `1ec0ced`)
+
+Three fresh runs, same setup as above. Outputs are in [day6/](day6/).
+
+```bash
+python -I tools/compare_runs.py . model-eval tests/consistency/model-eval/day6/run-1 tests/consistency/model-eval/day6/run-2 tests/consistency/model-eval/day6/run-3
+```
+
+| | Before Day 6 | After Day 6 |
+|---|---|---|
+| Verdict agreement | 37 / 37 | 37 / 37 |
+| Category agreement | 36 / 37 | **37 / 37** |
+| Risk agreement | 36 / 37 | **37 / 37** |
+| Planted tree items (per run) | 10, 11, 11 of 11 | **11, 11, 11** of 11 |
+| Expected omissions (per run) | 3, 3, 4 of 4 | **4, 4, 4** of 4 |
+| Omission risks as expected | 1 of 3 runs | **3 of 3 runs** (medium, medium, low, low) |
+| False positives, should-not-report hits | none | none |
+| `summary` identical across runs | no | **yes** (26 supported, 11 findings, 4 omissions; 7 high, 6 medium, 2 low) |
+
+All three runs produce the same audit: every verdict, category, risk and omission matches, and no run needed to change a default risk.
+
+**Caveat:** the answer key was updated by the same developer who wrote the rules, so "matches the key" partly means "follows the rules as their author reads them". Agreement *between* the three runs does not depend on the key and is the stronger result.

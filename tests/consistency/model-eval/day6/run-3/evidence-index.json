@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "sources": [
+    { "source_id": "slide-01", "page": 1, "path": "..\\input\\images\\slide-01.png" },
+    { "source_id": "slide-02", "page": 2, "path": "..\\input\\images\\slide-02.png" },
+    { "source_id": "slide-03", "page": 3, "path": "..\\input\\images\\slide-03.png" },
+    { "source_id": "slide-04", "page": 4, "path": "..\\input\\images\\slide-04.png" },
+    { "source_id": "slide-05", "page": 5, "path": "..\\input\\images\\slide-05.png" },
+    { "source_id": "slide-06", "page": 6, "path": "..\\input\\images\\slide-06.png" },
+    { "source_id": "slide-07", "page": 7, "path": "..\\input\\images\\slide-07.png" },
+    { "source_id": "slide-08", "page": 8, "path": "..\\input\\images\\slide-08.png" }
+  ],
+  "evidence": [
+    { "evidence_id": "EV-001", "source_id": "slide-01", "page": 1, "type": "text", "content": "模型评估与泛化：课程概览", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-002", "source_id": "slide-01", "page": 1, "type": "text", "content": "模型评估的目标：衡量模型在未见过的数据上的表现（泛化能力）。", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-003", "source_id": "slide-01", "page": 1, "type": "text", "content": "本讲内容：", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-004", "source_id": "slide-01", "page": 1, "type": "text", "content": "数据集划分", "location": "Bullet 2, sub-bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-005", "source_id": "slide-01", "page": 1, "type": "text", "content": "过拟合与欠拟合、偏差-方差权衡", "location": "Bullet 2, sub-bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-006", "source_id": "slide-01", "page": 1, "type": "text", "content": "正则化", "location": "Bullet 2, sub-bullet 3", "certainty": "high" },
+    { "evidence_id": "EV-007", "source_id": "slide-01", "page": 1, "type": "text", "content": "交叉验证", "location": "Bullet 2, sub-bullet 4", "certainty": "high" },
+    { "evidence_id": "EV-008", "source_id": "slide-01", "page": 1, "type": "text", "content": "分类评价指标", "location": "Bullet 2, sub-bullet 5", "certainty": "high" },
+
+    { "evidence_id": "EV-009", "source_id": "slide-02", "page": 2, "type": "text", "content": "数据集划分", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-010", "source_id": "slide-02", "page": 2, "type": "text", "content": "训练集（Training set）：用于拟合模型参数。", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-011", "source_id": "slide-02", "page": 2, "type": "text", "content": "验证集（Validation set）：用于选择超参数和模型。", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-012", "source_id": "slide-02", "page": 2, "type": "text", "content": "测试集（Test set）：仅在最后用于评估泛化性能，不可用于调参。", "location": "Bullet 3", "certainty": "high" },
+    { "evidence_id": "EV-013", "source_id": "slide-02", "page": 2, "type": "text", "content": "本课程推荐的划分比例：训练集 : 验证集 : 测试集 = 7 : 2 : 1。", "location": "Bullet 4", "certainty": "high" },
+
+    { "evidence_id": "EV-014", "source_id": "slide-03", "page": 3, "type": "text", "content": "过拟合与欠拟合", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-015", "source_id": "slide-03", "page": 3, "type": "text", "content": "过拟合（Overfitting）：训练误差低，但测试误差高。", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-016", "source_id": "slide-03", "page": 3, "type": "text", "content": "欠拟合（Underfitting）：训练误差和测试误差都较高。", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-017", "source_id": "slide-03", "page": 3, "type": "text", "content": "过拟合通常由模型过于复杂或训练数据过少导致。", "location": "Bullet 3", "certainty": "high" },
+
+    { "evidence_id": "EV-018", "source_id": "slide-04", "page": 4, "type": "text", "content": "偏差-方差权衡", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-019", "source_id": "slide-04", "page": 4, "type": "graphic", "content": "Diagram: 欠拟合 → 高偏差（模型过于简单）", "location": "Diagram, top row (arrow from left box to right box)", "certainty": "high" },
+    { "evidence_id": "EV-020", "source_id": "slide-04", "page": 4, "type": "graphic", "content": "Diagram: 过拟合 → 高方差（对训练数据过于敏感）", "location": "Diagram, bottom row (arrow from left box to right box)", "certainty": "high" },
+    { "evidence_id": "EV-021", "source_id": "slide-04", "page": 4, "type": "text", "content": "模型复杂度增加时，偏差降低、方差升高；需要在两者之间取得平衡。", "location": "Bullet 1 (below diagram)", "certainty": "high" },
+
+    { "evidence_id": "EV-022", "source_id": "slide-05", "page": 5, "type": "text", "content": "正则化（Regularization）", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-023", "source_id": "slide-05", "page": 5, "type": "text", "content": "在损失函数中加入惩罚项，用于降低过拟合。", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-024", "source_id": "slide-05", "page": 5, "type": "text", "content": "L1 正则化：惩罚权重绝对值之和，倾向于产生稀疏解（部分权重为 0）。", "location": "Bullet 1, sub-bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-025", "source_id": "slide-05", "page": 5, "type": "text", "content": "L2 正则化：惩罚权重平方和，使权重整体变小，但一般不产生稀疏解。", "location": "Bullet 1, sub-bullet 2", "certainty": "high" },
+
+    { "evidence_id": "EV-026", "source_id": "slide-06", "page": 6, "type": "text", "content": "交叉验证（Cross-validation）", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-027", "source_id": "slide-06", "page": 6, "type": "text", "content": "k 折交叉验证：将训练数据分成 k 份，轮流用其中 1 份做验证、其余 k−1 份做训练，最后取 k 次结果的平均。", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-028", "source_id": "slide-06", "page": 6, "type": "text", "content": "常用 k = 5 或 10。", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-029", "source_id": "slide-06", "page": 6, "type": "text", "content": "适用于数据量较少、单独划分验证集代价较高的情况。", "location": "Bullet 3", "certainty": "high" },
+
+    { "evidence_id": "EV-030", "source_id": "slide-07", "page": 7, "type": "text", "content": "分类评价指标", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-031", "source_id": "slide-07", "page": 7, "type": "text", "content": "TP：真正例　FP：假正例　FN：假反例　TN：真反例", "location": "Legend line above the table", "certainty": "high" },
+    { "evidence_id": "EV-032", "source_id": "slide-07", "page": 7, "type": "table", "content": "指标: 准确率 (Accuracy) | 公式: (TP+TN) / 全部样本 | 含义: 预测正确的比例", "location": "Table row 1 (准确率)", "certainty": "high" },
+    { "evidence_id": "EV-033", "source_id": "slide-07", "page": 7, "type": "table", "content": "指标: 精确率 (Precision) | 公式: TP / (TP+FP) | 含义: 预测为正的样本中，真正为正的比例", "location": "Table row 2 (精确率)", "certainty": "high" },
+    { "evidence_id": "EV-034", "source_id": "slide-07", "page": 7, "type": "table", "content": "指标: 召回率 (Recall) | 公式: TP / (TP+FN) | 含义: 真正为正的样本中，被预测为正的比例", "location": "Table row 3 (召回率)", "certainty": "high" },
+    { "evidence_id": "EV-035", "source_id": "slide-07", "page": 7, "type": "table", "content": "指标: F1 分数 | 公式: 2PR / (P+R) | 含义: 精确率与召回率的调和平均", "location": "Table row 4 (F1 分数)", "certainty": "high" },
+
+    { "evidence_id": "EV-036", "source_id": "slide-08", "page": 8, "type": "text", "content": "小结与注意事项", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-037", "source_id": "slide-08", "page": 8, "type": "text", "content": "在类别不平衡的数据上，准确率可能具有误导性，应结合精确率和召回率一起判断。", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-038", "source_id": "slide-08", "page": 8, "type": "text", "content": "测试集只能在最终评估时使用一次。", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-039", "source_id": "slide-08", "page": 8, "type": "text", "content": "课后作业：在 Iris 数据集上比较 L1 与 L2 正则化的效果。", "location": "Bullet 3", "certainty": "high" }
+  ]
+}
