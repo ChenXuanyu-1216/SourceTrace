@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "title": "Machine Learning",
+  "nodes": [
+    { "id": "N001", "label": "Machine Learning", "definition": "Computers learning patterns from data rather than following explicit rules", "kind": "concept" },
+    { "id": "N002", "label": "Supervised Learning", "definition": "Training using data that does not require labels", "kind": "concept" },
+    { "id": "N003", "label": "Unsupervised Learning", "definition": "Discovering patterns from unlabeled data", "kind": "concept" },
+    { "id": "N004", "label": "Classification", "definition": "Predicting a discrete category, such as spam or not spam", "kind": "concept" },
+    { "id": "N005", "label": "Regression", "definition": "Predicting a continuous value, such as a house price", "kind": "concept" },
+    { "id": "N006", "label": "Clustering", "definition": "Grouping similar data points; every unsupervised learning task is a clustering task", "kind": "concept" },
+    { "id": "N007", "label": "Reinforcement Learning", "definition": "An agent learns by interacting with an environment and receiving rewards", "kind": "concept" },
+    { "id": "N008", "label": "Deep Learning", "definition": "Machine learning with neural networks that have many layers", "kind": "concept" },
+    { "id": "N009", "label": "Feedback", "definition": "The signal a model learns from", "kind": "concept" }
+  ],
+  "edges": [
+    { "id": "E001", "source": "N001", "target": "N002", "relation": "includes" },
+    { "id": "E002", "source": "N001", "target": "N003", "relation": "includes" },
+    { "id": "E003", "source": "N002", "target": "N004", "relation": "includes" },
+    { "id": "E004", "source": "N003", "target": "N005", "relation": "includes" },
+    { "id": "E005", "source": "N003", "target": "N006", "relation": "includes" },
+    { "id": "E006", "source": "N001", "target": "N007", "relation": "includes" },
+    { "id": "E007", "source": "N002", "target": "N003", "relation": "includes" },
+    { "id": "E008", "source": "N001", "target": "N008", "relation": "includes" },
+    { "id": "E009", "source": "N007", "target": "N009", "relation": "learns from" }
+  ]
+}

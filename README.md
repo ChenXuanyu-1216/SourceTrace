@@ -17,6 +17,8 @@ source-trace/          the skill itself (this folder is what gets installed)
 ├── references/        detail loaded only when needed
 ├── scripts/           helper scripts
 └── evals/             test cases
+tests/fixtures/        test data: source images, knowledge trees, answer keys
+tools/                 development helpers (e.g. make_sample_slides.py)
 ```
 
 ## Install
