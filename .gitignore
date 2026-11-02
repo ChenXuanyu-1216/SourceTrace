@@ -1,0 +1,14 @@
+# Eval run outputs
+*-workspace/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Packaged skills
+*.skill
+
+# OS
+.DS_Store
+Thumbs.db
