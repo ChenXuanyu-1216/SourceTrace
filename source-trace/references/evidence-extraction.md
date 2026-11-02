@@ -4,7 +4,7 @@ Stage 2 turns the source images into `evidence-index.json` (schema: `schemas/evi
 
 ## Start from the validator
 
-Run `scripts/validate_input.py --json` first and copy its `summary.images` list into `sources`. It fixes each image's `source_id` and `page`, so pages are numbered the same way every time.
+Run `scripts/validate_input.py --json` first and copy its `summary.images` list into `sources` unchanged, including each `path` exactly as reported (relative to where the script ran, with the platform's separators). It fixes each image's `source_id` and `page`, so pages are numbered the same way every time.
 
 ## One item per checkable statement
 
@@ -41,7 +41,7 @@ Number items `EV-001`, `EV-002`, … across the whole deck: by page, then top to
 
 ## Example
 
-From `tests/fixtures/ml-basics` (slide 1 has a title, two bullets and a diagram; slide 4 has a table):
+From a 4-slide machine-learning deck (slide 1 has a title, two bullets and a diagram; slide 4 has a table):
 
 ```json
 { "evidence_id": "EV-002", "source_id": "slide-01", "page": 1, "type": "text",
@@ -54,5 +54,3 @@ From `tests/fixtures/ml-basics` (slide 1 has a title, two bullets and a diagram;
   "content": "Paradigm: Supervised | Training data: Labeled | Feedback: Correct answers",
   "location": "Table row 1 (Supervised)", "certainty": "high" }
 ```
-
-The full example is `tests/fixtures/ml-basics/evidence-index.example.json`.
