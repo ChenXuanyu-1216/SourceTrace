@@ -1,7 +1,12 @@
 {
-  "description": "Answer key for the ml-basics fixture. Lists the problems deliberately planted in knowledge-tree.json, for checking SourceTrace's output (Day 8 tests, Day 9 comparison). Never give this file to the skill under test.",
+  "description": "Answer key for the ml-basics fixture. Lists the problems deliberately planted in knowledge-tree.json, for checking SourceTrace's output (Day 8 tests, Day 9 comparison). Never give this file to the skill under test. Omissions are graded by `match`: a substring of the cited evidence or the reason. Under the v0.1 audit rules E009 (true but incomplete edge) must be supported.",
   "inputs": {
-    "images": ["images/slide-01.png", "images/slide-02.png", "images/slide-03.png", "images/slide-04.png"],
+    "images": [
+      "images/slide-01.png",
+      "images/slide-02.png",
+      "images/slide-03.png",
+      "images/slide-04.png"
+    ],
     "knowledge_tree": "knowledge-tree.json"
   },
   "expected_findings": [
@@ -10,80 +15,94 @@
       "category": "conceptual-error",
       "page": 2,
       "source_snippet": "Supervised learning uses labeled data for training",
-      "reason": "The definition says no labels are needed; the slide says labeled data is required."
+      "reason": "The definition says no labels are needed; the slide says labeled data is required.",
+      "risk": "high"
     },
     {
       "target": "E004",
       "category": "incorrect-relationship",
       "page": 2,
       "source_snippet": "Regression: predict a continuous value",
-      "reason": "Regression is listed under Supervised Learning, not Unsupervised Learning. Both nodes are correct on their own."
+      "reason": "Regression is listed under Supervised Learning, not Unsupervised Learning. Both nodes are correct on their own.",
+      "risk": "high"
     },
     {
       "target": "E007",
       "category": "incorrect-relationship",
       "page": 1,
       "source_snippet": "There are three main learning paradigms",
-      "reason": "Supervised and Unsupervised Learning are sibling paradigms under Machine Learning; neither includes the other."
+      "reason": "Supervised and Unsupervised Learning are sibling paradigms under Machine Learning; neither includes the other.",
+      "risk": "high"
     },
     {
       "target": "N008",
       "category": "unsupported-expansion",
       "page": null,
       "source_snippet": null,
-      "reason": "Deep Learning does not appear anywhere in the slides. The definition is true in general but has no source evidence."
+      "reason": "Deep Learning does not appear anywhere in the slides. The definition is true in general but has no source evidence.",
+      "risk": "medium"
     },
     {
       "target": "E008",
       "category": "unsupported-expansion",
       "page": 1,
       "source_snippet": "There are three main learning paradigms",
-      "reason": "The slides name exactly three paradigms under Machine Learning; Deep Learning is not one of them."
+      "reason": "The slides name exactly three paradigms under Machine Learning; Deep Learning is not one of them.",
+      "risk": "medium"
     },
     {
       "target": "N006",
       "category": "overgeneralization",
-      "also_accept": ["conceptual-error"],
       "page": 3,
       "source_snippet": "Two typical tasks: Clustering ... Dimensionality reduction",
-      "reason": "The first half of the definition is supported, but the slide names clustering as one of two tasks, not the only one."
+      "reason": "The first half of the definition is supported, but the slide names clustering as one of two tasks, not the only one.",
+      "risk": "medium"
     },
     {
       "target": "N009",
       "category": "ambiguous",
       "page": 4,
       "source_snippet": "Feedback: Correct answers / None / Rewards",
-      "reason": "The slide's Feedback column differs by paradigm (and is \"None\" for unsupervised learning), so a single generic definition is unclear."
+      "reason": "The slide's Feedback column differs by paradigm (and is \"None\" for unsupervised learning), so a single generic definition is unclear.",
+      "risk": "low"
     },
     {
       "target": null,
       "category": "omission",
       "page": 3,
       "source_snippet": "Dimensionality reduction: compress features while keeping the structure of the data (e.g. PCA)",
-      "reason": "A main task from the source is missing from the tree. Found by the source-to-tree direction of the audit."
+      "reason": "A main task from the source is missing from the tree. Found by the source-to-tree direction of the audit.",
+      "tier": "core",
+      "risk": "medium",
+      "match": "Dimensionality reduction"
     }
   ],
-  "acceptable_extra_findings": [
+  "acceptable_extra_findings": [],
+  "should_not_report": [
     {
-      "target": "E009",
-      "category": "ambiguous",
-      "page": 4,
-      "source_snippet": "Feedback: Correct answers / None / Rewards",
-      "reason": "Linking Feedback only to Reinforcement Learning hides that every paradigm has feedback. The edge is true but incomplete; flagging it alongside N009 is reasonable."
-    },
-    {
-      "category": "omission",
       "page": 3,
-      "source_snippet": "(e.g. k-means) ... (e.g. PCA)",
-      "reason": "The example methods are minor details. Reporting them at low risk is fine."
+      "match": "k-means",
+      "source_snippet": "(e.g. k-means)",
+      "reason": "Example in parentheses for a concept that is in the tree."
     },
     {
-      "category": "omission",
       "page": 4,
+      "match": "Training data:",
       "source_snippet": "Paradigm | Training data | Feedback",
-      "reason": "The comparison table's attributes are only partly in the tree. Reasonable to report."
+      "reason": "The comparison table is covered by the N009 finding; must not be reported again as an omission."
     }
   ],
-  "should_not_report": [],
-  "correct_items": ["N001", "N003", "N004", "N005", "N007", "E001", "E002", "E003", "E005", "E006", "E009"]
+  "correct_items": [
+    "N001",
+    "N003",
+    "N004",
+    "N005",
+    "N007",
+    "E001",
+    "E002",
+    "E003",
+    "E005",
+    "E006",
+    "E009"
+  ]
 }

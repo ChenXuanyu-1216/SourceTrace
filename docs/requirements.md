@@ -119,13 +119,19 @@ Each problem is classified into one category:
 | `ambiguous` | Content too vague or uncertain to confirm or reject. | "Feedback: the signal a model learns from" |
 | `omission` | Significant source content missing from the tree (from the source → tree direction). | Dimensionality reduction left out |
 
-Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must say why (e.g. an omission of the course's central concept is raised to high).
+The category is chosen with a fixed decision order (`source-trace/references/audit-rules.md`), so that two runs reach the same answer. The main boundary rule is the **qualifier test**: if deleting the absolute or widening part of a claim (总是, 最…, only, every …) leaves a supported claim, it is `overgeneralization`, even when another page contradicts the absolute version. A term the source mentions but never defines is `ambiguous`; a term the source does not mention is `unsupported-expansion`. Node `kind` is not audited in v0.1.
+
+Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 
 | Default risk | Categories |
 |--------------|------------|
 | `high` | `conceptual-error`, `incorrect-relationship` |
-| `medium` | `unsupported-expansion`, `overgeneralization`, `omission` |
-| `low` | `ambiguous` |
+| `medium` | `unsupported-expansion`, `overgeneralization`, core omissions |
+| `low` | `ambiguous`, supporting-detail omissions |
+
+Omissions come in two tiers, both always reported: **core** (topics in titles or the agenda, defined terms, stated rules, table rows, diagram relationships) and **supporting details** (when to use a method, notation legends, properties of a concept already in the tree). Examples in parentheses and administrative text such as homework are never reported.
+
+These rules were set after a consistency check (3 runs on model-eval, `tests/consistency/model-eval/summary.md`) showed the only disagreements were at exactly these two boundaries.
 
 ### 6. Audit report
 

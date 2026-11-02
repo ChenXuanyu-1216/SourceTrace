@@ -61,4 +61,4 @@ Add `--json` for machine-readable output. Exit code 0 means valid, 1 invalid, 2 
 
 ## Status
 
-v0.1 in development. Audit rules (`references/audit-rules.md`) are interim until Day 6; the report format is formalized on Day 7.
+v0.1 in development. Audit rules are final for v0.1 (`source-trace/references/audit-rules.md`); the report format is formalized on Day 7.

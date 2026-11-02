@@ -80,7 +80,7 @@ Follow `references/audit-rules.md` for verdicts, what counts as significant, and
 
 ### 5. Conflict detection
 
-Classify every problem into exactly one category and give it a risk level. Default risks and the boundaries between categories are in `references/audit-rules.md`.
+Classify every problem into exactly one category and give it a risk level. Use the decision order in `references/audit-rules.md`: go through its questions in order and stop at the first "yes". Do not pick a category by how a finding feels; the order is what keeps two runs consistent.
 
 | Category | Meaning |
 |----------|---------|
@@ -96,7 +96,7 @@ Classify every problem into exactly one category and give it a risk level. Defau
 Write `audit.json` and `report.md`. Every finding must include:
 
 - the target (node or edge ID, or `null` for an omission),
-- category and risk level (and the reason, if the risk differs from the default),
+- category and risk level, plus `risk_reason` whenever the risk differs from the default,
 - **why** it is a problem, in one or two sentences,
 - the evidence IDs it rests on, with page numbers and short quotes,
 - a recommended revision that stays within the tree schema (allowed `kind` and `relation` values only).
@@ -115,7 +115,9 @@ Write `audit.json` and `report.md`. Every finding must include:
       "reason": "...", "recommendation": "..." }
   ],
   "omissions": [
-    { "category": "omission", "risk": "medium", "evidence": ["EV-016"], "reason": "...", "recommendation": "..." }
+    { "category": "omission", "risk": "medium", "evidence": ["EV-016"], "reason": "...", "recommendation": "..." },
+    { "category": "omission", "risk": "high", "risk_reason": "central concept of the lecture",
+      "evidence": ["EV-003"], "reason": "...", "recommendation": "..." }
   ]
 }
 ```

@@ -2,13 +2,15 @@
 
 Usage: python -I tools/compare_runs.py <repo> <fixture> <run-dir> [<run-dir> ...]
 Each run-dir holds audit.json and evidence-index.json, directly or in input/sourcetrace-output/.
-Set PYTHONIOENCODING=utf-8 on Windows consoles to print Chinese correctly.
+Output is UTF-8; on Windows, redirect it to a file if the console shows garbled Chinese.
 """
 import json
 import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8")
 
 repo, fixture, run_dirs = Path(sys.argv[1]), sys.argv[2], [Path(p) for p in sys.argv[3:]]
 fx = repo / "tests" / "fixtures" / fixture
@@ -66,12 +68,30 @@ for name, run in runs.items():
         found.append(ok)
         if not ok:
             print(f"  {name} MISS {f['target']}: expected {f['category']}, got {got.get('verdict')}/{got.get('category')}")
+        elif got.get("risk") != f.get("risk", got.get("risk")) and not got.get("risk_reason"):
+            print(f"  {name} RISK {f['target']}: expected {f['risk']}, got {got.get('risk')} without risk_reason")
     fp = [c for c in key["correct_items"] if items.get(c, {}).get("verdict") != "supported"]
+
+    # Omissions are matched by a substring of the cited evidence or the reason.
     oms = run["audit"].get("omissions", [])
     om_text = [" ".join(run["content"].get(e, "") for e in o.get("evidence", [])) + " " + o.get("reason", "") for o in oms]
-    f1 = any("F1" in t for t in om_text)
-    homework = any("课后作业" in t or "Iris" in t for t in om_text)
-    print(f"  {name}: planted items {sum(found)}/{len(found)} | F1 omission {f1} | false positives {fp} "
-          f"| homework reported {homework} | omissions {len(oms)}")
-    for o, t in zip(oms, om_text):
-        print(f"      omission [{o.get('risk')}] {t[:90]}")
+    used = set()
+    om_found = []
+    for f in key["expected_findings"]:
+        if f["target"] is not None:
+            continue
+        hits = [i for i, text in enumerate(om_text) if f["match"] in text]
+        used.update(hits)
+        risks = {oms[i].get("risk") for i in hits}
+        ok = bool(hits)
+        om_found.append(ok)
+        if not ok:
+            print(f"  {name} MISS omission '{f['match']}' ({f['risk']})")
+        elif f["risk"] not in risks and not any(oms[i].get("risk_reason") for i in hits):
+            print(f"  {name} RISK omission '{f['match']}': expected {f['risk']}, got {sorted(risks)} without risk_reason")
+    noise = [s["match"] for s in key.get("should_not_report", []) if any(s["match"] in text for text in om_text)]
+    extra = [i for i in range(len(oms)) if i not in used]
+    print(f"  {name}: planted items {sum(found)}/{len(found)} | omissions {sum(om_found)}/{len(om_found)} "
+          f"| false positives {fp} | should-not-report hit {noise} | unmatched omissions {len(extra)}")
+    for i in extra:
+        print(f"      unmatched [{oms[i].get('risk')}] {om_text[i][:90]}")

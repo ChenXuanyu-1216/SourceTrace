@@ -62,3 +62,16 @@ Every run found all 11 planted tree problems with an accepted category, plus the
    - whether a minor detail (when to use a method, symbol definitions) is a significant omission, and at what risk.
 3. **For Day 7:** add a `risk_reason` field so that changes to the default risk can be checked.
 4. **Limits:** 3 runs, one model (Claude), one 8-slide fixture written by the developer. This says nothing yet about larger decks, real scans, or Codex.
+
+## Re-graded against the final v0.1 rules (Day 6)
+
+Day 6 settled both disagreements: the qualifier test makes N017 `overgeneralization`, and omissions now have two fixed tiers (core = medium, supporting detail = low, both always reported). The answer key was updated to match. These three runs were made under the old rules, so they now show exactly the gaps the new rules close:
+
+| | Run 1 | Run 2 | Run 3 |
+|---|---|---|---|
+| Planted tree items | 10/11 (N017 conceptual-error) | 11/11 | 11/11 |
+| Expected omissions | 3/4 (no TP/FP legend) | 3/4 (no TP/FP legend) | 4/4 |
+| Supporting-detail risk | "when to use CV" medium, expected low | ✓ | "when to use CV" medium, expected low |
+| False positives, should-not-report hits | none | none | none |
+
+A new set of runs under the final rules is needed to confirm that they close these gaps.
