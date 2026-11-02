@@ -52,12 +52,20 @@ The tree is first checked for structural problems, then split into two kinds of 
 
 These are separate because a node can be correct while its relationship to another node is wrong. For example, "Supervised Learning" and "Unsupervised Learning" can both be well defined while `Supervised Learning —includes→ Unsupervised Learning` is false.
 
-Structural checks that JSON Schema alone cannot express (done in `validate_input.py`, Day 3):
+`source-trace/scripts/validate_input.py` runs the schema and the checks JSON Schema alone cannot express. Errors stop the audit; warnings are reported but do not.
 
-- Node and edge IDs are unique.
-- Every edge's `source` and `target` refer to an existing node.
-- No edge points from a node to itself.
-- `schema_version` is supported.
+| Check | Level |
+|-------|-------|
+| Tree matches the schema, including a supported `schema_version` | error |
+| Node and edge IDs are unique | error |
+| Every edge's `source` and `target` refer to an existing node | error |
+| No edge points from a node to itself | error |
+| Each image exists, is PNG/JPG, and its content really is that format | error |
+| Image file names are unique (the name becomes `source_id`) | error |
+| The same source, relation and target appear in only one edge | warning |
+| Every node has at least one edge (when there is more than one node) | warning |
+
+Images are numbered as pages in natural file-name order, so `slide-2.png` comes before `slide-10.png`.
 
 ### 4. Bidirectional audit
 

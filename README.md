@@ -21,6 +21,15 @@ tests/fixtures/        test data: source images, knowledge trees, answer keys
 tools/                 development helpers (e.g. make_sample_slides.py)
 ```
 
+## Validate inputs
+
+```bash
+pip install -r requirements.txt
+python source-trace/scripts/validate_input.py --tree tests/fixtures/ml-basics/knowledge-tree.json --images tests/fixtures/ml-basics/images
+```
+
+Add `--json` for machine-readable output. Exit code 0 means valid, 1 invalid, 2 a usage error.
+
 ## Install
 
 Copy `source-trace/` into your skills folder, for example `~/.claude/skills/source-trace/`.
