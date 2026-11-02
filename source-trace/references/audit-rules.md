@@ -60,4 +60,4 @@ One omission per missing concept. Group its details into that one entry, and cit
 - **Content needing two pages:** combine them. Cite both evidence IDs.
 - **Evidence only in a diagram or table:** equally valid as text. Cite the `graphic` or `table` item.
 - **Findings that hinge on an exact word or number** (通常 vs 总是, 7:2:1 vs 8:1:1, 不产生 vs 产生): look at the image again before reporting, and quote the exact text in `reason`.
-- **Structure warnings** from `validate_input.py` (disconnected parts, isolated nodes, duplicate edges) go in the report's Structure section, not in the findings list. When the source shows how disconnected parts belong together (e.g. an agenda slide), say so with its evidence ID.
+- **Structure warnings** from `validate_input.py` (disconnected parts, isolated nodes, duplicate edges) are not findings. `build_report.py` adds them to the report's Structure section; do not repeat them in `items` or `omissions`.

@@ -137,8 +137,18 @@ These rules were set after a consistency check (3 runs on model-eval, `tests/con
 
 | File | Audience | Content |
 |------|----------|---------|
-| `report.md` | People | Summary and findings, each with its category, risk level, reason, evidence references and a recommended revision. |
-| `audit.json` | Tools and tests | The same findings in machine-readable form. |
+| `report.md` | People | Summary, findings and omissions (each with ID, category, risk, reason, evidence with page and quote, and a recommended revision), structure warnings, and the confirmed items. |
+| `audit.json` | Tools and tests | A verdict for every node and edge, the omissions, the summary and structure warnings (`source-trace/schemas/audit.schema.json`). |
+
+The agent writes only its judgments (`items` and `omissions`). `source-trace/scripts/build_report.py` does everything that can be computed:
+
+| Step | Detail |
+|------|--------|
+| Check the audit | Schema; exactly one verdict per node and edge; every evidence ID exists in the index; a supported item has no finding fields; `risk_reason` whenever a risk differs from the default (errors). A rejection that rests only on `low`-certainty evidence (warning). |
+| Complete `audit.json` | Adds `summary`, `structure_warnings` (from the tree) and `finding_id`s F-001, F-002, … in report order. |
+| Generate `report.md` | Sorted by risk, then lowest cited page, then tree order. Quotes come from the evidence index. Chinese or English, detected from the slides or set with `--lang`. |
+
+On any error nothing is written, and the agent fixes `audit.json` and reruns. Running it again on a finished audit gives the same files.
 
 ## Out of scope for v0.1
 
