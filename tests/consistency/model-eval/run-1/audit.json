@@ -1,0 +1,128 @@
+{
+  "schema_version": "0.1",
+  "summary": {
+    "nodes": 19,
+    "edges": 18,
+    "supported": 26,
+    "item_findings": 11,
+    "omissions": 3,
+    "by_risk": { "high": 8, "medium": 6, "low": 0 }
+  },
+  "structure_warnings": [
+    {
+      "code": "DISCONNECTED_TREE",
+      "message": "知识树分成 3 个互不相连的部分：{N001, N002, N003, N004, N005, N014, N015, N016, N017, N018, N019}、{N006, N008, N010, N011, N012, N013}、{N007, N009}。课件第 1 页的“本讲内容”（EV-003, EV-005, EV-006）表明“过拟合与欠拟合、偏差-方差权衡”和“正则化”都属于“模型评估与泛化”这一讲，应通过“模型评估”(N001) 连接起来。"
+    }
+  ],
+  "items": [
+    { "target": "N001", "target_type": "node", "verdict": "supported", "evidence": ["EV-002"] },
+    { "target": "N002", "target_type": "node", "verdict": "supported", "evidence": ["EV-010"] },
+    { "target": "N003", "target_type": "node", "verdict": "supported", "evidence": ["EV-011"] },
+    {
+      "target": "N004", "target_type": "node", "verdict": "finding", "evidence": ["EV-012", "EV-038"],
+      "category": "conceptual-error", "risk": "high",
+      "reason": "“用于评估模型的泛化性能”正确，但“也可用于调整超参数”与课件相反：第 2 页写明测试集“仅在最后用于评估泛化性能，不可用于调参”，第 8 页写明“测试集只能在最终评估时使用一次”。",
+      "recommendation": "将 N004 的 definition 改为“仅在最后用于评估泛化性能，不可用于调参；只能在最终评估时使用一次”。"
+    },
+    {
+      "target": "N005", "target_type": "node", "verdict": "finding", "evidence": ["EV-013"],
+      "category": "conceptual-error", "risk": "high",
+      "reason": "比例数字错误：课件第 2 页推荐的划分比例是“训练集 : 验证集 : 测试集 = 7 : 2 : 1”，知识树写成 8 : 1 : 1。",
+      "recommendation": "将 N005 的 definition 改为“本课程推荐训练集 : 验证集 : 测试集 = 7 : 2 : 1”。"
+    },
+    {
+      "target": "N006", "target_type": "node", "verdict": "finding", "evidence": ["EV-015", "EV-017"],
+      "category": "overgeneralization", "risk": "medium",
+      "reason": "“训练误差低、测试误差高”正确（第 3 页），但课件说过拟合“通常由模型过于复杂或训练数据过少导致”，知识树把“通常”改成“总是”，并漏掉了“模型过于复杂”这一原因。",
+      "recommendation": "将 N006 的 definition 改为“训练误差低，但测试误差高的现象；通常由模型过于复杂或训练数据过少导致”。"
+    },
+    { "target": "N007", "target_type": "node", "verdict": "supported", "evidence": ["EV-016"] },
+    { "target": "N008", "target_type": "node", "verdict": "supported", "evidence": ["EV-019"] },
+    { "target": "N009", "target_type": "node", "verdict": "supported", "evidence": ["EV-020"] },
+    { "target": "N010", "target_type": "node", "verdict": "supported", "evidence": ["EV-023"] },
+    { "target": "N011", "target_type": "node", "verdict": "supported", "evidence": ["EV-024"] },
+    {
+      "target": "N012", "target_type": "node", "verdict": "finding", "evidence": ["EV-025", "EV-024"],
+      "category": "conceptual-error", "risk": "high",
+      "reason": "“惩罚权重平方和”正确，但“同样倾向于产生稀疏解”与课件相反：第 5 页写明 L2 正则化“使权重整体变小，但一般不产生稀疏解”，产生稀疏解的是 L1。",
+      "recommendation": "将 N012 的 definition 改为“惩罚权重平方和，使权重整体变小，但一般不产生稀疏解”；可另加边 N011 contrasts-with N012。"
+    },
+    {
+      "target": "N013", "target_type": "node", "verdict": "finding", "evidence": ["EV-023", "EV-024", "EV-025"],
+      "category": "unsupported-expansion", "risk": "medium",
+      "reason": "课件中没有出现 Dropout。第 5 页“正则化”只介绍了 L1 正则化和 L2 正则化两种方法。",
+      "recommendation": "删除 N013（及边 E015）；如需保留，请注明其来源不是本课件。"
+    },
+    { "target": "N014", "target_type": "node", "verdict": "supported", "evidence": ["EV-027", "EV-028"] },
+    {
+      "target": "N015", "target_type": "node", "verdict": "finding", "evidence": ["EV-033", "EV-034"],
+      "category": "conceptual-error", "risk": "high",
+      "reason": "精确率的含义被写成了召回率的含义：课件第 7 页中精确率是“预测为正的样本中，真正为正的比例”（TP / (TP+FP)），而“真正为正的样本中，被预测为正的比例”是召回率。",
+      "recommendation": "将 N015 的 definition 改为“TP / (TP+FP)，预测为正的样本中真正为正的比例”。"
+    },
+    { "target": "N016", "target_type": "node", "verdict": "supported", "evidence": ["EV-034"] },
+    {
+      "target": "N017", "target_type": "node", "verdict": "finding", "evidence": ["EV-032", "EV-037"],
+      "category": "conceptual-error", "risk": "high",
+      "reason": "“预测正确的样本占全部样本的比例”正确（第 7 页），但添加的“是评价分类模型最可靠的指标”与课件相反：第 8 页写明“在类别不平衡的数据上，准确率可能具有误导性，应结合精确率和召回率一起判断”。课件中没有一个较弱的说法可供“加强”，因此按错误的附加子句归为概念错误。",
+      "recommendation": "将 N017 的 definition 改为“(TP+TN) / 全部样本，预测正确的比例；在类别不平衡的数据上可能具有误导性，应结合精确率和召回率一起判断”。"
+    },
+    { "target": "N018", "target_type": "node", "verdict": "supported", "evidence": ["EV-008", "EV-030"] },
+    { "target": "N019", "target_type": "node", "verdict": "supported", "evidence": ["EV-009", "EV-010", "EV-011", "EV-012"] },
+    { "target": "E001", "target_type": "edge", "verdict": "supported", "evidence": ["EV-003", "EV-004"] },
+    { "target": "E002", "target_type": "edge", "verdict": "supported", "evidence": ["EV-009", "EV-010"] },
+    { "target": "E003", "target_type": "edge", "verdict": "supported", "evidence": ["EV-009", "EV-011"] },
+    { "target": "E004", "target_type": "edge", "verdict": "supported", "evidence": ["EV-009", "EV-012"] },
+    { "target": "E005", "target_type": "edge", "verdict": "supported", "evidence": ["EV-009", "EV-013"] },
+    { "target": "E006", "target_type": "edge", "verdict": "supported", "evidence": ["EV-003", "EV-008"] },
+    { "target": "E007", "target_type": "edge", "verdict": "supported", "evidence": ["EV-030", "EV-033"] },
+    { "target": "E008", "target_type": "edge", "verdict": "supported", "evidence": ["EV-030", "EV-034"] },
+    { "target": "E009", "target_type": "edge", "verdict": "supported", "evidence": ["EV-030", "EV-032"] },
+    {
+      "target": "E010", "target_type": "edge", "verdict": "finding", "evidence": ["EV-019", "EV-020"],
+      "category": "incorrect-relationship", "risk": "high",
+      "reason": "“过拟合 related-to 高偏差”与课件第 4 页的图相反：图中是“过拟合 → 高方差”，“欠拟合 → 高偏差”。此边与 E011 把两组对应关系互换了。",
+      "recommendation": "将 E010 的 target 改为 N009，即 N006 related-to N009（过拟合—高方差）。"
+    },
+    {
+      "target": "E011", "target_type": "edge", "verdict": "finding", "evidence": ["EV-019", "EV-020"],
+      "category": "incorrect-relationship", "risk": "high",
+      "reason": "“欠拟合 related-to 高方差”与课件第 4 页的图相反：图中是“欠拟合 → 高偏差（模型过于简单）”，高方差对应的是过拟合。",
+      "recommendation": "将 E011 的 target 改为 N008，即 N007 related-to N008（欠拟合—高偏差）。"
+    },
+    { "target": "E012", "target_type": "edge", "verdict": "supported", "evidence": ["EV-023"] },
+    { "target": "E013", "target_type": "edge", "verdict": "supported", "evidence": ["EV-022", "EV-024"] },
+    { "target": "E014", "target_type": "edge", "verdict": "supported", "evidence": ["EV-022", "EV-025"] },
+    {
+      "target": "E015", "target_type": "edge", "verdict": "finding", "evidence": ["EV-022", "EV-024", "EV-025"],
+      "category": "unsupported-expansion", "risk": "medium",
+      "reason": "课件没有提到 Dropout，也没有说正则化包含 Dropout；第 5 页“正则化”下只列出 L1 和 L2 正则化。",
+      "recommendation": "删除 E015（与 N013 一并删除）。"
+    },
+    {
+      "target": "E016", "target_type": "edge", "verdict": "finding", "evidence": ["EV-027", "EV-012", "EV-038"],
+      "category": "incorrect-relationship", "risk": "high",
+      "reason": "课件第 6 页说 k 折交叉验证是“将训练数据分成 k 份”，轮流做验证和训练，不使用测试集；而测试集“不可用于调参”“只能在最终评估时使用一次”（第 2、8 页）。“k 折交叉验证 uses 测试集”与此矛盾。",
+      "recommendation": "删除 E016；k 折交叉验证对训练数据的使用已由 E017（N014 uses N002）表示。"
+    },
+    { "target": "E017", "target_type": "edge", "verdict": "supported", "evidence": ["EV-027"] },
+    { "target": "E018", "target_type": "edge", "verdict": "supported", "evidence": ["EV-003", "EV-007", "EV-027"] }
+  ],
+  "omissions": [
+    {
+      "category": "omission", "risk": "medium", "evidence": ["EV-005", "EV-018", "EV-021"],
+      "reason": "“偏差-方差权衡”是第 4 页标题和第 1 页本讲内容之一，知识树只有“高偏差”“高方差”两个端点，没有权衡本身：模型复杂度增加时偏差降低、方差升高，需要在两者之间取得平衡。",
+      "recommendation": "新增节点 N020“偏差-方差权衡”（kind: concept，definition: “模型复杂度增加时，偏差降低、方差升高；需要在两者之间取得平衡”），并加边 N001 includes N020、N020 includes N008、N020 includes N009。"
+    },
+    {
+      "category": "omission", "risk": "medium", "evidence": ["EV-035"],
+      "reason": "第 7 页表格中的“F1 分数”（2PR / (P+R)，精确率与召回率的调和平均）在知识树中没有对应节点。",
+      "recommendation": "新增节点 N021“F1 分数”（kind: concept，definition: “2PR / (P+R)，精确率与召回率的调和平均”），并加边 N018 includes N021。"
+    },
+    {
+      "category": "omission", "risk": "medium", "evidence": ["EV-029"],
+      "reason": "第 6 页说明了交叉验证的适用情况：“适用于数据量较少、单独划分验证集代价较高的情况”，知识树的 N014 没有包含这一点。",
+      "recommendation": "在 N014 的 definition 末尾补充“；适用于数据量较少、单独划分验证集代价较高的情况”。"
+    }
+  ]
+}
