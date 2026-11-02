@@ -106,7 +106,38 @@ def check_structure(tree, report):
             if node.get("id") not in linked:
                 report.warning("ISOLATED_NODE", f"Node {node.get('id')} has no edges.", f"$.nodes[{i}]")
 
+    # Isolated nodes are reported above, so only linked nodes count here.
+    parts = connected_parts(edges, node_ids)
+    if len(parts) > 1:
+        listed = "; ".join(", ".join(p) for p in parts)
+        report.warning("DISCONNECTED_TREE",
+                       f"The tree falls apart into {len(parts)} parts that are not linked to each other: {listed}.")
+
     return len(nodes), len(edges)
+
+
+def connected_parts(edges, node_ids):
+    """Group the nodes that appear in valid edges into connected parts, largest first."""
+    neighbors = {}
+    for edge in edges:
+        src, dst = edge.get("source"), edge.get("target")
+        if src in node_ids and dst in node_ids:
+            neighbors.setdefault(src, set()).add(dst)
+            neighbors.setdefault(dst, set()).add(src)
+
+    parts, seen = [], set()
+    for start in neighbors:
+        if start in seen:
+            continue
+        part, stack = set(), [start]
+        while stack:
+            node = stack.pop()
+            if node not in part:
+                part.add(node)
+                stack.extend(neighbors[node] - part)
+        seen |= part
+        parts.append(sorted(part))
+    return sorted(parts, key=lambda p: (-len(p), p))
 
 
 def natural_key(path):

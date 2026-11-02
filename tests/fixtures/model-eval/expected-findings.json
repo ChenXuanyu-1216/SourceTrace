@@ -97,6 +97,12 @@
   ],
   "acceptable_extra_findings": [
     {
+      "category": "structure",
+      "page": 1,
+      "source_snippet": "本讲内容：数据集划分 / 过拟合与欠拟合、偏差-方差权衡 / 正则化 / 交叉验证 / 分类评价指标",
+      "reason": "Not planted on purpose, found by both baseline runs: the tree has 3 connected components. Overfitting, underfitting, bias/variance and regularization never link to the root 模型评估, although slide 1 lists them as topics of the lecture."
+    },
+    {
       "category": "omission",
       "page": 4,
       "source_snippet": "模型复杂度增加时，偏差降低、方差升高；需要在两者之间取得平衡。",

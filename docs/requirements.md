@@ -79,6 +79,7 @@ These are separate because a node can be correct while its relationship to anoth
 | Image file names are unique (the name becomes `source_id`) | error |
 | The same source, relation and target appear in only one edge | warning |
 | Every node has at least one edge (when there is more than one node) | warning |
+| All linked nodes form one connected tree, not several separate parts | warning |
 
 Images are numbered as pages in natural file-name order, so `slide-2.png` comes before `slide-10.png`.
 
