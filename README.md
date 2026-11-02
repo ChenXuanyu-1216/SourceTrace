@@ -13,7 +13,7 @@ It works with any tool that supports Agent Skills, such as Claude Code or Codex.
 docs/requirements.md   scope, pipeline and open questions
 source-trace/          the skill itself (this folder is what gets installed)
 ├── SKILL.md           instructions and trigger description
-├── schemas/           JSON Schemas for the knowledge tree and evidence items
+├── schemas/           JSON Schemas: knowledge tree, evidence item, evidence index
 ├── references/        detail loaded only when needed
 ├── scripts/           helper scripts
 └── evals/             test cases

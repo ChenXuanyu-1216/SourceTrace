@@ -58,6 +58,24 @@ The agent reads the images with its own vision; there is no OCR step. This needs
 
 Each piece of content in a source image becomes one evidence item (`source-trace/schemas/evidence.schema.json`) with a unique `evidence_id`, page number, original text and location, so every finding can cite it. Locations only need to be practical for v0.1: page (image) number plus a text snippet. Precise image coordinates are out of scope.
 
+All items are collected in `evidence-index.json` (`source-trace/schemas/evidence-index.schema.json`), together with the list of sources from `validate_input.py`. The extraction rules are in `source-trace/references/evidence-extraction.md`:
+
+- One item per slide title, bullet, table row and diagram relationship, so that each node and edge can be matched to specific items.
+- Text is quoted verbatim in its original language; tables and diagrams use fixed transcription formats.
+- Everything is extracted, including non-knowledge text such as homework. Deciding what is significant is the audit's job.
+- `low` certainty evidence cannot reject a tree item on its own.
+
+`source-trace/scripts/validate_evidence.py` checks the index:
+
+| Check | Level |
+|-------|-------|
+| Index matches the schema | error |
+| Evidence IDs are unique | error |
+| Source IDs and pages are unique, and pages run 1 to n | error |
+| Every item cites a listed source, with that source's page | error |
+| Every source has at least one evidence item | warning |
+| Items with `low` certainty are listed | warning |
+
 ### 3. Knowledge mapping
 
 The tree is first checked for structural problems, then split into two kinds of reviewable objects, audited separately:

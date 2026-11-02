@@ -12,7 +12,7 @@ SourceTrace turns a piece of content into a set of checkable claims, follows eac
 ## Workflow
 
 1. **Extract claims.** Break the input into atomic, checkable claims (one fact per claim). Keep the exact wording and where it appeared, because paraphrasing at this stage hides drift later.
-2. **Identify modality.** Note what each claim refers to: text, a table or figure in a PDF, an image, an audio or video segment, or a web page. See `references/modalities.md` for how to handle each.
+2. **Identify modality.** Note what each claim refers to: text, a table or a diagram. See `references/evidence-extraction.md` for how to record each.
 3. **Trace.** Find the earliest or most authoritative source for each claim. Prefer primary sources over coverage of them, and record the precise location (page, timestamp, URL, figure number).
 4. **Verify.** Compare the claim with the source and assign a verdict:
    - `supported`: the source says this.

@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "sources": [
+    { "source_id": "slide-01", "page": 1, "path": "images/slide-01.png" },
+    { "source_id": "slide-02", "page": 2, "path": "images/slide-02.png" },
+    { "source_id": "slide-03", "page": 3, "path": "images/slide-03.png" },
+    { "source_id": "slide-04", "page": 4, "path": "images/slide-04.png" }
+  ],
+  "evidence": [
+    { "evidence_id": "EV-001", "source_id": "slide-01", "page": 1, "type": "text", "content": "Machine Learning: Overview", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-002", "source_id": "slide-01", "page": 1, "type": "text", "content": "Machine learning lets computers learn patterns from data instead of following hand-written rules.", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-003", "source_id": "slide-01", "page": 1, "type": "text", "content": "There are three main learning paradigms:", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-004", "source_id": "slide-01", "page": 1, "type": "graphic", "content": "Diagram: Machine Learning → Supervised", "location": "Diagram, line from top box to left box", "certainty": "high" },
+    { "evidence_id": "EV-005", "source_id": "slide-01", "page": 1, "type": "graphic", "content": "Diagram: Machine Learning → Unsupervised", "location": "Diagram, line from top box to middle box", "certainty": "high" },
+    { "evidence_id": "EV-006", "source_id": "slide-01", "page": 1, "type": "graphic", "content": "Diagram: Machine Learning → Reinforcement", "location": "Diagram, line from top box to right box", "certainty": "high" },
+
+    { "evidence_id": "EV-007", "source_id": "slide-02", "page": 2, "type": "text", "content": "Supervised Learning", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-008", "source_id": "slide-02", "page": 2, "type": "text", "content": "Supervised learning uses labeled data for training: each input comes with the correct output.", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-009", "source_id": "slide-02", "page": 2, "type": "text", "content": "Two typical tasks:", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-010", "source_id": "slide-02", "page": 2, "type": "text", "content": "Classification: predict a discrete category (e.g. spam / not spam).", "location": "Bullet 2, sub-bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-011", "source_id": "slide-02", "page": 2, "type": "text", "content": "Regression: predict a continuous value (e.g. house price).", "location": "Bullet 2, sub-bullet 2", "certainty": "high" },
+
+    { "evidence_id": "EV-012", "source_id": "slide-03", "page": 3, "type": "text", "content": "Unsupervised Learning", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-013", "source_id": "slide-03", "page": 3, "type": "text", "content": "Unsupervised learning discovers patterns in unlabeled data.", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-014", "source_id": "slide-03", "page": 3, "type": "text", "content": "Two typical tasks:", "location": "Bullet 2", "certainty": "high" },
+    { "evidence_id": "EV-015", "source_id": "slide-03", "page": 3, "type": "text", "content": "Clustering: group similar data points (e.g. k-means).", "location": "Bullet 2, sub-bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-016", "source_id": "slide-03", "page": 3, "type": "text", "content": "Dimensionality reduction: compress features while keeping the structure of the data (e.g. PCA).", "location": "Bullet 2, sub-bullet 2", "certainty": "high" },
+
+    { "evidence_id": "EV-017", "source_id": "slide-04", "page": 4, "type": "text", "content": "Reinforcement Learning & Comparison", "location": "Title", "certainty": "high" },
+    { "evidence_id": "EV-018", "source_id": "slide-04", "page": 4, "type": "text", "content": "In reinforcement learning, an agent learns by interacting with an environment and receiving rewards.", "location": "Bullet 1", "certainty": "high" },
+    { "evidence_id": "EV-019", "source_id": "slide-04", "page": 4, "type": "table", "content": "Paradigm: Supervised | Training data: Labeled | Feedback: Correct answers", "location": "Table row 1 (Supervised)", "certainty": "high" },
+    { "evidence_id": "EV-020", "source_id": "slide-04", "page": 4, "type": "table", "content": "Paradigm: Unsupervised | Training data: Unlabeled | Feedback: None", "location": "Table row 2 (Unsupervised)", "certainty": "high" },
+    { "evidence_id": "EV-021", "source_id": "slide-04", "page": 4, "type": "table", "content": "Paradigm: Reinforcement | Training data: Interaction | Feedback: Rewards", "location": "Table row 3 (Reinforcement)", "certainty": "high" }
+  ]
+}
