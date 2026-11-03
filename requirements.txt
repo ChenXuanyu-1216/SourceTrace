@@ -3,3 +3,7 @@ jsonschema>=4.18
 
 # Development only: regenerating test slides (tools/make_fixture_slides.py)
 pillow>=10.0
+
+# Development only: test suite (python -m pytest).
+# pytest 9.2.0 crashes at startup on Python 3.10.0 (AttributeError on NodeId._str_cache), so stay on 8.x for now.
+pytest>=8.3,<9
