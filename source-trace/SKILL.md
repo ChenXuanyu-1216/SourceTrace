@@ -117,7 +117,7 @@ Write your judgments to `audit.json`, then let the script check them and produce
 
 - **`items`:** exactly one entry per node and edge of the tree.
 - **`reason`:** why it is a problem, in one or two sentences, quoting the exact words that differ.
-- **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only).
+- **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only). For a wrong edge: if the source shows the correct relationship, recommend replacing it and give the new `source`, `relation` and `target`; if not, or if another edge already says it, recommend deleting it. Do not invent a replacement the source does not state.
 - **`tier`** (omissions only): `core` or `supporting`, as defined in `references/audit-rules.md`.
 - **`risk_reason`:** only when the risk differs from the default.
 - Leave out `summary`, `structure_warnings` and `finding_id`; the script computes them.
@@ -136,5 +136,5 @@ Finish by telling the user where the report is, the counts from the summary, and
 ## When the input is unusual
 
 - **Unreadable image:** extract what you can with `low` certainty, mention the page in the affected findings' `reason`, and tell the user; do not invent content.
-- **The tree covers material not in the images** (e.g. only some slides were provided): report those items as `unsupported-expansion`, and tell the user that missing pages may be the cause.
+- **The tree covers material not in the images:** report those items as `unsupported-expansion`. Tell the user that missing pages may be the cause only if there is a sign of it: gaps in the slide numbers, an agenda topic with no slide of its own, or a whole topic in the tree that the deck never touches. Otherwise do not suggest it.
 - **Very large decks or trees:** work page by page in stage 2 and node by node in stage 4, writing results to the files as you go rather than holding everything in mind.

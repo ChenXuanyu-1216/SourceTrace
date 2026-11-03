@@ -13,6 +13,8 @@ Every node and every edge gets exactly one verdict:
 
 A `supported` verdict also cites its evidence IDs. "Looks fine" without evidence is not a verdict.
 
+A definition that only restates or spells out its own label adds no claim to check (e.g. 分类评价指标: "用于评价分类模型性能的指标"). If the label's term is in the source, the node is `supported`; cite where the term appears. Use question 6 below only when the definition says something more than the label.
+
 Only the label, the definition and the relationship are audited. Node `kind` is a label from the tool that generated the tree, not a knowledge claim: do not report a `kind` that differs from what the slides call the concept.
 
 ## Categories: decision order
@@ -58,6 +60,7 @@ One omission per missing concept. Group its details into that one entry, and cit
 
 - **True but incomplete edge:** an edge whose relationship holds but tells only part of the story (e.g. linking a concept to one paradigm when the source applies it to all three) is `supported`. Mention the incompleteness in the related node's finding, if there is one; otherwise it is an omission under the tiers above.
 - **Content needing two pages:** combine them. Cite both evidence IDs.
+- **Agenda or overview slides:** a lecture title followed by a list of topics supports `includes` from the lecture's subject to each listed topic, and to a node that is that topic's main concept (e.g. 交叉验证 on the agenda supports 模型评估 includes k 折交叉验证). It says nothing about how the listed topics relate to each other.
 - **Evidence only in a diagram or table:** equally valid as text. Cite the `graphic` or `table` item.
 - **Findings that hinge on an exact word or number** (通常 vs 总是, 7:2:1 vs 8:1:1, 不产生 vs 产生): look at the image again before reporting, and quote the exact text in `reason`.
 - **Structure warnings** from `validate_input.py` (disconnected parts, isolated nodes, duplicate edges) are not findings. `build_report.py` adds them to the report's Structure section; do not repeat them in `items` or `omissions`.
