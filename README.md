@@ -1,63 +1,80 @@
 # SourceTrace
 
-An Agent Skill that audits an AI-generated knowledge tree against its source material. Give it the source images (PNG/JPG, e.g. exported slides) and the knowledge tree (JSON); it extracts evidence, maps every node and edge to that evidence, audits in both directions, and writes:
+An Agent Skill that audits an AI-generated knowledge tree against the slides it was built from.
 
-- `report.md`: a human-readable audit report
-- `audit.json`: a machine-readable audit result
+AI tools can turn lecture slides into a knowledge tree in seconds, but a definition may be wrong, a relationship may be invented, and important material may be missing. SourceTrace checks every node and edge against the source images and backs each verdict with evidence: **why** it is a problem, **where** it is in the slides (page and quote), and **what** it rests on (evidence IDs).
 
-It works with any tool that supports Agent Skills, such as Claude Code or Codex.
+It works with tools that support Agent Skills, such as Claude Code or Codex, and handles slides in Chinese or English.
 
-## Layout
+## What you get
 
-```
-docs/requirements.md   scope, workflow and design decisions
-docs/evaluation.md     comparison with a plain AI assistant, and the limits of v0.1
-source-trace/          the skill itself (this folder is what gets installed)
-├── SKILL.md           instructions and trigger description
-├── schemas/           JSON Schemas: knowledge tree, evidence item, evidence index, audit
-├── references/        detail loaded only when needed
-├── scripts/           helper scripts
-└── evals/             test cases
-tests/fixtures/        test data: source images, knowledge trees, answer keys
-  ml-basics/           4 English slides, obvious errors
-  model-eval/          8 Chinese slides, subtle errors
-tests/baseline/        results of plain Claude without the skill, for comparison
-tests/smoke/           first end-to-end run of the skill
-tests/consistency/     repeated runs of the skill, compared with tools/compare_runs.py
-tools/                 development helpers (make_fixture_slides.py, compare_runs.py)
-```
+Give it the slide images (PNG/JPG) and the knowledge tree (JSON). It writes three files to `sourcetrace-output/` next to the tree:
+
+| File | Content |
+|------|---------|
+| `report.md` | The audit report: summary, findings, omissions, structure problems, confirmed items |
+| `audit.json` | The same result in machine-readable form: a verdict for every node and edge |
+| `evidence-index.json` | Everything extracted from the slides, each item with an ID, page and verbatim quote |
+
+Two findings from a run on 8 Chinese slides, with the text shortened and the recommendation column left out ([full report](tests/smoke/model-eval-e2e/report.md)):
+
+| 编号 | 对象 | 类别 | 风险 | 问题 | 证据 |
+|---|---|---|---|---|---|
+| F-002 | N005 数据集划分比例 | 概念错误 | 高 | 比例数字错误：树中写"8 : 1 : 1"，课件写"7 : 2 : 1"。 | EV-013 第 2 页 "本课程推荐的划分比例：训练集 : 验证集 : 测试集 = 7 : 2 : 1。" |
+| F-004 | E010 过拟合 —related-to→ 高偏差 | 关系错误 | 高 | 关系对调：第 4 页图示为"过拟合 → 高方差"，树中却把过拟合连到高偏差。 | EV-020 第 4 页 "Diagram: 过拟合 → 高方差（对训练数据过于敏感）" |
+
+Each problem gets one of six categories (conceptual error, incorrect relationship, unsupported expansion, overgeneralization, ambiguous, omission) and a risk level, and every finding includes a recommended fix.
+
+## Quick start
+
+1. Install the one dependency:
+
+   ```bash
+   pip install jsonschema
+   ```
+
+2. Copy the `source-trace/` folder into your tool's skills folder:
+
+   | Tool | Skills folder |
+   |------|---------------|
+   | Claude Code (personal) | `~/.claude/skills/source-trace/` |
+   | Claude Code (one project) | `<project>/.claude/skills/source-trace/` |
+   | Codex | `~/.codex/skills/source-trace/` (check your Codex version's documentation) |
+
+3. Ask in your own words, giving the slide images and the tree:
+
+   > 这是我的课件截图（slides/ 文件夹）和 AI 生成的知识树 tree.json，帮我对照课件检查一下。
+
+   > Check knowledge-tree.json against my lecture slides in images/.
+
+The tree must follow [`knowledge-tree.schema.json`](source-trace/schemas/knowledge-tree.schema.json) (nodes with `id`, `label`, `definition`, `kind`; edges with `id`, `source`, `target`, `relation`). If yours uses another format, the skill converts it first and tells you what it mapped. PPT or PDF slides need to be exported to images.
 
 ## How well it works
 
-On two test sets (4 English slides, 8 Chinese slides), a plain AI assistant and SourceTrace both found every planted error. SourceTrace adds what the plain model lacks: evidence IDs, pages and quotes behind every verdict, a verdict for every node and edge, fixed categories and risk levels, a machine-readable `audit.json`, no off-target "missing" items, and the same result in all four runs on the Chinese set. It costs about 30% more tokens and 3× the time. Both test sets are synthetic; testing on real course slides is the next step. Details: [docs/evaluation.md](docs/evaluation.md).
+On two test sets (4 English slides, 8 Chinese slides), a plain AI assistant and SourceTrace both found every planted error. SourceTrace adds what the plain model lacks:
 
-## Install
+- evidence IDs, pages and quotes behind every verdict,
+- a verdict for every node and edge,
+- fixed categories and risk levels,
+- a machine-readable `audit.json`,
+- no off-target "missing" items,
+- the same result in all four runs on the Chinese set.
 
-```bash
-pip install jsonschema
-```
+It costs about 30% more tokens and 3× the time. Both test sets are synthetic, so testing on real course slides is the next step. Details: [docs/evaluation.md](docs/evaluation.md).
 
-Then copy the `source-trace/` folder into your tool's skills folder:
+## How it works
 
-| Tool | Skills folder |
-|------|---------------|
-| Claude Code (personal) | `~/.claude/skills/source-trace/` |
-| Claude Code (one project) | `<project>/.claude/skills/source-trace/` |
-| Codex | `~/.codex/skills/source-trace/` |
+SourceTrace runs six stages: source ingestion → evidence extraction → knowledge mapping → bidirectional audit → conflict detection → audit report. The agent does the parts that need judgment: reading the slides, matching claims to evidence, and choosing verdicts. Three scripts do everything that can be checked or computed:
 
-## Use
+| Script | Stage | Does |
+|--------|-------|------|
+| `validate_input.py` | 1 | Checks the tree and the images; numbers the pages; warns about structure problems such as a disconnected tree |
+| `validate_evidence.py` | 2 | Checks the evidence index: unique IDs, matching pages and sources |
+| `build_report.py` | 6 | Checks the agent's `audit.json` against the tree and the evidence, adds the summary and finding IDs, and generates `report.md` |
 
-Ask in your own words, giving the slide images and the tree, for example:
+The rules for verdicts, categories, risk and omissions are in [`references/audit-rules.md`](source-trace/references/audit-rules.md). The design decisions behind them are in [docs/requirements.md](docs/requirements.md).
 
-> 这是我的课件截图（slides/ 文件夹）和 AI 生成的知识树 tree.json，帮我对照课件检查一下。
-
-> Check knowledge-tree.json against my lecture slides in images/.
-
-The skill writes `evidence-index.json`, `audit.json` and `report.md` to `sourcetrace-output/` next to the tree.
-
-## Scripts
-
-The skill runs these itself; you can also run them directly.
+You can also run the scripts yourself:
 
 ```bash
 python source-trace/scripts/validate_input.py --tree tests/fixtures/ml-basics/knowledge-tree.json --images tests/fixtures/ml-basics/images
@@ -65,17 +82,41 @@ python source-trace/scripts/validate_evidence.py --index tests/fixtures/ml-basic
 python source-trace/scripts/build_report.py --tree <tree.json> --index <output>/evidence-index.json --audit <output>/audit.json
 ```
 
-The two validators accept `--json` for machine-readable output. All three scripts exit with 0 on success, 1 on invalid input, 2 on a usage error.
+The two validators accept `--json` for machine-readable output. All three scripts exit with 0 on success, 1 on invalid input, and 2 on a usage error.
 
-## Tests
+## Development
 
 ```bash
 pip install -r requirements.txt
 python -m pytest
 ```
 
-77 tests, about 2 seconds. They cover the three scripts (valid input, every error and warning code, repeatable output, Chinese and English reports) and check that the saved skill runs in `tests/smoke/` and `tests/consistency/model-eval/day6/` still meet the answer keys. They do not run the skill itself, which needs an agent; see `tools/compare_runs.py` for grading new runs.
+77 tests, about 2 seconds. They cover the three scripts (valid input, every error and warning code, repeatable output, Chinese and English reports). They also check that the saved skill runs still meet the answer keys. They do not run the skill itself, which needs an agent; use `tools/compare_runs.py` to grade new runs.
 
-## Status
+```
+source-trace/          the skill (this folder is what gets installed)
+├── SKILL.md           instructions and trigger description
+├── schemas/           JSON Schemas: knowledge tree, evidence item, evidence index, audit
+├── references/        extraction and audit rules, loaded when needed
+└── scripts/           the three scripts above
+docs/                  requirements and evaluation
+tests/fixtures/        test sets: slide images, knowledge trees, answer keys
+tests/baseline/        plain-AI runs, for comparison
+tests/smoke/           end-to-end runs of the skill
+tests/consistency/     repeated runs of the skill
+tests/test_*.py        the pytest suite
+tools/                 make_fixture_slides.py, compare_runs.py
+```
 
-v0.1 in development. Audit rules are final for v0.1 (`source-trace/references/audit-rules.md`), and `report.md` is generated by `build_report.py` from `audit.json`.
+## Status and next steps
+
+v0.1.0. See [CHANGELOG.md](CHANGELOG.md). Next:
+
+1. Test on real course slides, ideally with an independently written answer key.
+2. Larger decks (30+ slides) and trees (100+ nodes).
+3. Scanned or photographed slides.
+4. Codex and other Agent Skills tools.
+
+## License
+
+[MIT](LICENSE)

@@ -1,0 +1,44 @@
+# Changelog
+
+## v0.1.0 (2026-11-03)
+
+First release. SourceTrace audits an AI-generated knowledge tree against the slide images it was built from, and backs every verdict with evidence.
+
+### Features
+
+- **Six-stage workflow** for Agent Skills tools (Claude Code, Codex): source ingestion, evidence extraction, knowledge mapping, bidirectional audit, conflict detection, audit report.
+- **Input:** slide images (PNG/JPG) and a knowledge tree in JSON, in Chinese or English.
+- **Evidence index:** every slide title, bullet, table row and diagram relationship becomes an evidence item with an ID, page and verbatim quote.
+- **A verdict for every node and edge**, each citing evidence. Nodes and edges are audited separately.
+- **Six categories** chosen with a fixed decision order: conceptual error, incorrect relationship, unsupported expansion, overgeneralization, ambiguous, omission.
+- **Risk levels** with defaults per category. Any change from the default needs a stated reason.
+- **Omissions in two tiers:** core content at medium risk, supporting details at low risk. Examples, homework and content already covered by another finding are never reported.
+- **Three scripts** for everything that can be checked or computed: `validate_input.py`, `validate_evidence.py` and `build_report.py`. The last one generates `report.md` from `audit.json` in Chinese or English.
+- **Outputs:** `report.md`, `audit.json` and `evidence-index.json`, each with a JSON Schema.
+
+### Evaluation
+
+Two synthetic test sets: 4 English slides, and 8 Chinese slides with subtle errors. The full comparison is in [docs/evaluation.md](docs/evaluation.md).
+
+- **Detection:** a plain AI assistant and SourceTrace both found every planted problem.
+- **Precision:** SourceTrace flagged no correct items and reported nothing the rules exclude. The plain assistant did both in every run.
+- **Traceability and structure:** SourceTrace gave a verdict for all 37 items in every run, each with evidence IDs, fixed categories, risk levels and `audit.json`.
+- **Consistency:** four independent runs on the Chinese set agreed on the verdict, category and risk of all 37 items.
+- **Cost:** about 30% more tokens and 3× the time of a plain request.
+- **Tests:** a 77-test pytest suite covers the scripts and locks in the saved runs.
+
+### Known limitations
+
+- Tested only on two synthetic test sets written by the developer, with Claude.
+- Only small decks (4 and 8 slides) and clean images.
+- Only PNG/JPG input; PPT and PDF must be exported to images first.
+- Node `kind` is not audited.
+- `evidence-index.json` stores image paths as reported by the validator, which are relative and not portable between machines.
+- Tested with pytest 8.x: pytest 9.2.0 crashes at startup on Python 3.10.0.
+
+### Next steps
+
+1. Real course slides, ideally with an independently written answer key.
+2. Larger decks (30+ slides) and trees (100+ nodes).
+3. Scanned or photographed slides.
+4. Codex and other Agent Skills tools.
