@@ -11,6 +11,7 @@ It works with any tool that supports Agent Skills, such as Claude Code or Codex.
 
 ```
 docs/requirements.md   scope, workflow and design decisions
+docs/evaluation.md     comparison with a plain AI assistant, and the limits of v0.1
 source-trace/          the skill itself (this folder is what gets installed)
 ├── SKILL.md           instructions and trigger description
 ├── schemas/           JSON Schemas: knowledge tree, evidence item, evidence index, audit
@@ -25,6 +26,10 @@ tests/smoke/           first end-to-end run of the skill
 tests/consistency/     repeated runs of the skill, compared with tools/compare_runs.py
 tools/                 development helpers (make_fixture_slides.py, compare_runs.py)
 ```
+
+## How well it works
+
+On two test sets (4 English slides, 8 Chinese slides), a plain AI assistant and SourceTrace both found every planted error. SourceTrace adds what the plain model lacks: evidence IDs, pages and quotes behind every verdict, a verdict for every node and edge, fixed categories and risk levels, a machine-readable `audit.json`, no off-target "missing" items, and the same result in all four runs on the Chinese set. It costs about 30% more tokens and 3× the time. Both test sets are synthetic; testing on real course slides is the next step. Details: [docs/evaluation.md](docs/evaluation.md).
 
 ## Install
 
