@@ -188,3 +188,46 @@ def test_rejection_on_low_certainty_evidence_only_is_a_warning(run, tmp_path):
     code, errors, warnings = run(E2E, "model-eval", change_audit=as_draft, change_index=low)()
     assert code == 0 and errors == []
     assert warnings == ["LOW_CERTAINTY_REJECTION"]
+
+
+# --- scope: an unsupported-expansion of one detail ----------------------------
+
+def test_detail_scope_defaults_to_low_and_is_labelled(run, tmp_path):
+    def change(audit):
+        as_draft(audit)
+        item(audit, "N013").update(scope="detail", risk="low")
+    code, errors, _ = run(E2E, "model-eval", change_audit=change)()
+    assert code == 0 and errors == []
+    assert item(read_json(tmp_path / "audit.json"), "N013")["scope"] == "detail"
+    assert "无依据扩展 · 细节 | 低" in text(tmp_path / "report.md")
+
+
+def test_detail_scope_at_medium_needs_a_reason(run):
+    def change(audit):
+        as_draft(audit)
+        item(audit, "N013").update(scope="detail")
+    code, errors, _ = run(E2E, "model-eval", change_audit=change)()
+    assert code == 1 and errors == ["RISK_WITHOUT_REASON"]
+
+
+@pytest.mark.parametrize("target, expected", [
+    ("N004", "SCOPE_NOT_ALLOWED"),              # a conceptual-error finding
+    ("N016", "SUPPORTED_WITH_FINDING_FIELDS"),  # a supported item
+])
+def test_scope_only_on_unsupported_expansion_findings(target, expected, run):
+    def change(audit):
+        as_draft(audit)
+        item(audit, target)["scope"] = "detail"
+    code, errors, _ = run(E2E, "model-eval", change_audit=change)()
+    assert code == 1 and expected in errors
+
+
+def test_ambiguous_is_shown_as_cannot_verify(run, tmp_path):
+    def change(audit):
+        as_draft(audit)
+        item(audit, "N013").update(category="ambiguous", risk="low")
+    build = run(E2E, "model-eval", change_audit=change)
+    build()
+    assert "资料未定义 / 无法核验 | 低" in text(tmp_path / "report.md")
+    build("--lang", "en")
+    assert "cannot verify | low" in text(tmp_path / "report.md")

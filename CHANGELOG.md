@@ -5,6 +5,13 @@
 - **Privacy section in the README:** the agent sends slide images and the tree to its AI provider; only audit slides you may share, and treat the outputs like the slides.
 - **Test data policy:** tests use only openly licensed, owner-written or synthetic material, never third-party course slides. The source's terms must also allow use with AI tools: OpenStax was ruled out for that reason. The next steps below were revised to match.
 - **New test set `tests/fixtures/wiki-ml-zh`:** 12 screenshots of the Chinese Wikipedia article 机器学习 (revision 94516905), under CC BY-SA 4.0 in its own folder, with attribution and a prompt for generating the knowledge tree with another AI tool.
+- **Codex-generated knowledge tree and first real-content audit** for `wiki-ml-zh` (`audit-run-1`), with the project owner's review of 13 findings: 6 correct, 4 partly correct, 3 wrong.
+- **Audit rules revised after that review:**
+  - **Gather all evidence first:** text, tables and figures on every page, combined across pages.
+  - **Contradiction test:** a conceptual error must contradict the source in meaning, not just use opposite-looking words. This fixes the false high-risk Bayesian-network finding.
+  - **New `scope: detail`** for an `unsupported-expansion` limited to one added detail of an otherwise supported definition, with low risk by default. `build_report.py` and the audit schema check it.
+  - **`ambiguous` narrowed** to "never defined or unreadable", and shown as "资料未定义 / 无法核验" / "cannot verify".
+  - **Recommendations keep the definition's learning value:** mark the unverified part instead of shrinking the definition.
 
 ## v0.1.0 (2026-11-03)
 

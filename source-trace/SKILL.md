@@ -80,15 +80,15 @@ Follow `references/audit-rules.md` for verdicts, what counts as significant, and
 
 ### 5. Conflict detection
 
-Classify every problem into exactly one category and give it a risk level. Use the decision order in `references/audit-rules.md`: go through its questions in order and stop at the first "yes". Do not pick a category by how a finding feels; the order is what keeps two runs consistent.
+Classify every problem into exactly one category and give it a risk level. Use the decision order in `references/audit-rules.md`: first gather all the item's evidence (text, tables and figures on every page), then go through its questions in order and stop at the first "yes". Do not pick a category by how a finding feels; the order is what keeps two runs consistent.
 
 | Category | Meaning |
 |----------|---------|
-| `conceptual-error` | A node's definition contradicts the source. |
+| `conceptual-error` | A node's definition contradicts the source in meaning: both cannot be true at once. Opposite-looking words alone are not enough. |
 | `incorrect-relationship` | An edge contradicts the source, even if both nodes are correct. |
-| `unsupported-expansion` | Content not found in the source, even if true in general. |
+| `unsupported-expansion` | Content not found in the source, even if true in general. Scope `whole` (medium) when the term or relationship is absent; scope `detail` (low) when only one added detail of an otherwise supported definition is. |
 | `overgeneralization` | Supported content stretched beyond what the source says. |
-| `ambiguous` | Too vague or uncertain to confirm or reject. |
+| `ambiguous` | Cannot verify: the source only names the term and never explains it, or the evidence is unreadable (`low` certainty). |
 | `omission` | Significant source content missing from the tree. |
 
 ### 6. Audit report
@@ -104,6 +104,9 @@ Write your judgments to `audit.json`, then let the script check them and produce
     { "target": "N001", "verdict": "supported", "evidence": ["EV-002"] },
     { "target": "N002", "verdict": "finding", "evidence": ["EV-008"],
       "category": "conceptual-error", "risk": "high",
+      "reason": "...", "recommendation": "..." },
+    { "target": "N028", "verdict": "finding", "evidence": ["EV-167"],
+      "category": "unsupported-expansion", "scope": "detail", "risk": "low",
       "reason": "...", "recommendation": "..." }
   ],
   "omissions": [
@@ -118,6 +121,8 @@ Write your judgments to `audit.json`, then let the script check them and produce
 - **`items`:** exactly one entry per node and edge of the tree.
 - **`reason`:** why it is a problem, in one or two sentences, quoting the exact words that differ.
 - **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only). For a wrong edge: if the source shows the correct relationship, recommend replacing it and give the new `source`, `relation` and `target`; if not, or if another edge already says it, recommend deleting it. Do not invent a replacement the source does not state.
+  - **Keep the definition useful for learning.** For an `ambiguous` or a `detail` finding, do not shrink the definition to something like "资料列出的一种方法" just because that is easier to trace. Recommend keeping it, and marking the unverified part as an explanation from outside the source (资料外释义), or rewording only the detail.
+- **`scope`** (`unsupported-expansion` only): `detail` when one added detail is unsupported; leave it out otherwise.
 - **`tier`** (omissions only): `core` or `supporting`, as defined in `references/audit-rules.md`.
 - **`risk_reason`:** only when the risk differs from the default.
 - Leave out `summary`, `structure_warnings` and `finding_id`; the script computes them.

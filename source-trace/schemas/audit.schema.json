@@ -41,6 +41,10 @@
         "category": {
           "enum": ["conceptual-error", "incorrect-relationship", "unsupported-expansion", "overgeneralization", "ambiguous"]
         },
+        "scope": {
+          "enum": ["whole", "detail"],
+          "description": "unsupported-expansion only: whole (default, medium) when the content is absent from the source, detail (low) when only one added detail of an otherwise supported definition is."
+        },
         "risk": { "$ref": "#/$defs/risk" },
         "risk_reason": { "$ref": "#/$defs/text" },
         "reason": { "$ref": "#/$defs/text" },

@@ -114,20 +114,25 @@ Each problem is classified into one category:
 |----------|---------|---------|
 | `conceptual-error` | A node's definition contradicts the source. | "Supervised learning does not require labels." |
 | `incorrect-relationship` | An edge contradicts the source, even if both nodes are correct. | Unsupervised Learning —includes→ Regression |
-| `unsupported-expansion` | Content not found in the source, even if true in general. | A "Deep Learning" node from slides that never mention it |
+| `unsupported-expansion` | Content not found in the source, even if true in general. Scope `whole` for an absent term or relationship; scope `detail` for one added detail of an otherwise supported definition. | A "Deep Learning" node from slides that never mention it (whole); "有放回" in a bootstrap definition the source does not state (detail) |
 | `overgeneralization` | Supported content stretched beyond what the source says. | "Every unsupervised task is clustering." |
-| `ambiguous` | Content too vague or uncertain to confirm or reject. | "Feedback: the signal a model learns from" |
+| `ambiguous` | Cannot verify: the source only names the term and never explains it, or the evidence is unreadable. Shown as "资料未定义 / 无法核验". | "Feedback: the signal a model learns from" when Feedback is only a table header |
 | `omission` | Significant source content missing from the tree (from the source → tree direction). | Dimensionality reduction left out |
 
 The category is chosen with a fixed decision order (`source-trace/references/audit-rules.md`), so that two runs reach the same answer. The main boundary rule is the **qualifier test**: if deleting the absolute or widening part of a claim (总是, 最…, only, every …) leaves a supported claim, it is `overgeneralization`, even when another page contradicts the absolute version. A term the source mentions but never defines is `ambiguous`; a term the source does not mention is `unsupported-expansion`. Node `kind` is not audited in v0.1.
+
+Two more rules came from the first review on real content (`tests/fixtures/wiki-ml-zh/audit-run-1/REVIEW.md`):
+
+- **Gather all evidence before deciding:** text, tables and figures on every page, combined across pages. A finding of "cannot be checked" is only valid after that.
+- **Contradiction test:** a conceptual error needs a contradiction in meaning. If the tree's statement and the source's can both be true at once, it is not one, however opposite the wording looks (e.g. a Bayesian network represents both dependencies and conditional independencies).
 
 Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 
 | Default risk | Categories |
 |--------------|------------|
 | `high` | `conceptual-error`, `incorrect-relationship` |
-| `medium` | `unsupported-expansion`, `overgeneralization`, core omissions |
-| `low` | `ambiguous`, supporting-detail omissions |
+| `medium` | `unsupported-expansion` (whole), `overgeneralization`, core omissions |
+| `low` | `unsupported-expansion` (detail), `ambiguous`, supporting-detail omissions |
 
 Omissions come in two tiers, both always reported: **core** (topics in titles or the agenda, defined terms, stated rules, table rows, diagram relationships) and **supporting details** (when to use a method, notation legends, properties of a concept already in the tree). Examples in parentheses and administrative text such as homework are never reported.
 

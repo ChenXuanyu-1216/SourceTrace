@@ -34,6 +34,8 @@ DEFAULT_RISK = {
     "ambiguous": "low",
 }
 DEFAULT_OMISSION_RISK = {"core": "medium", "supporting": "low"}
+# An unsupported-expansion limited to one added detail of an otherwise supported definition.
+DETAIL_RISK = "low"
 QUOTE_CHARS = 60
 
 LABELS = {
@@ -46,8 +48,9 @@ LABELS = {
                   "Findings on tree items: {findings}. Omissions: {omissions}. "
                   "By risk: {high} high, {medium} medium, {low} low.",
         "risk": {"high": "high", "medium": "medium", "low": "low"},
-        "category": {c: c for c in list(DEFAULT_RISK) + ["omission"]},
+        "category": {c: c for c in list(DEFAULT_RISK) + ["omission"]} | {"ambiguous": "cannot verify"},
         "tier": {"core": "core", "supporting": "supporting detail"},
+        "scope": {"detail": "detail"},
         "page": "p.",
         "sep": ": ",
         "parts": "The tree falls apart into {n} parts that are not linked to each other:",
@@ -64,9 +67,10 @@ LABELS = {
         "category": {
             "conceptual-error": "概念错误", "incorrect-relationship": "关系错误",
             "unsupported-expansion": "无依据扩展", "overgeneralization": "过度概括",
-            "ambiguous": "含糊不清", "omission": "遗漏",
+            "ambiguous": "资料未定义 / 无法核验", "omission": "遗漏",
         },
         "tier": {"core": "核心内容", "supporting": "补充细节"},
+        "scope": {"detail": "细节"},
         "page": "第 {} 页",
         "sep": "：",
         "parts": "知识树分成 {n} 个互不相连的部分：",
@@ -118,13 +122,19 @@ def check_audit(audit, tree, evidence, report):
             report.error("TARGET_TYPE_MISMATCH",
                          f"{item['target']} is a {expected}, but target_type says {item['target_type']}.", path)
         if item["verdict"] == "supported":
-            extra = [k for k in ("category", "risk", "risk_reason", "recommendation") if k in item]
+            extra = [k for k in ("category", "scope", "risk", "risk_reason", "recommendation") if k in item]
             if extra:
                 report.error("SUPPORTED_WITH_FINDING_FIELDS",
                              f"{item['target']} is supported but has {', '.join(extra)}. Remove them, "
                              "or make the verdict a finding.", path)
         else:
-            check_risk(item, DEFAULT_RISK[item["category"]], item["category"], path, report)
+            if "scope" in item and item["category"] != "unsupported-expansion":
+                report.error("SCOPE_NOT_ALLOWED",
+                             f"{item['target']} has scope, which only applies to unsupported-expansion.", path)
+            if item.get("scope") == "detail":
+                check_risk(item, DETAIL_RISK, "an unsupported-expansion of one detail", path, report)
+            else:
+                check_risk(item, DEFAULT_RISK[item["category"]], item["category"], path, report)
             low = [e for e in item["evidence"] if evidence.get(e, {}).get("certainty") == "low"]
             if item["category"] != "ambiguous" and low and len(low) == len(item["evidence"]):
                 report.warning("LOW_CERTAINTY_REJECTION",
@@ -187,7 +197,7 @@ def finalize(audit, tree, evidence, structure):
 
 
 def reorder(entry):
-    keys = ["finding_id", "target", "target_type", "verdict", "category", "tier", "risk", "risk_reason",
+    keys = ["finding_id", "target", "target_type", "verdict", "category", "scope", "tier", "risk", "risk_reason",
             "evidence", "reason", "recommendation"]
     return {k: entry[k] for k in keys if k in entry}
 
@@ -237,6 +247,8 @@ def render(audit, findings, omissions, tree, evidence, lang):
         c = L["category"][entry["category"]]
         if "tier" in entry:
             c += f" · {L['tier'][entry['tier']]}"
+        if entry.get("scope") == "detail":
+            c += f" · {L['scope']['detail']}"
         return c
 
     def table(entries):
