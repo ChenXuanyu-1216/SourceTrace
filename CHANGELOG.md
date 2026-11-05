@@ -1,38 +1,66 @@
 # Changelog
 
-## Unreleased
+## v0.2.0 (2026-11-05)
 
-- **Privacy section in the README:** the agent sends slide images and the tree to its AI provider; only audit slides you may share, and treat the outputs like the slides.
-- **Test data policy:** tests use only openly licensed, owner-written or synthetic material, never third-party course slides. The source's terms must also allow use with AI tools: OpenStax was ruled out for that reason. The next steps below were revised to match.
-- **New test set `tests/fixtures/wiki-ml-zh`:** 12 screenshots of the Chinese Wikipedia article 机器学习 (revision 94516905), under CC BY-SA 4.0 in its own folder, with attribution and a prompt for generating the knowledge tree with another AI tool.
-- **Codex-generated knowledge tree and first real-content audit** for `wiki-ml-zh` (`audit-run-1`), with the project owner's review of 13 findings: 6 correct, 4 partly correct, 3 wrong.
-- **Audit rules revised after that review:**
-  - **Gather all evidence first:** text, tables and figures on every page, combined across pages.
-  - **Contradiction test:** a conceptual error must contradict the source in meaning, not just use opposite-looking words. This fixes the false high-risk Bayesian-network finding.
-  - **New `scope: detail`** for an `unsupported-expansion` limited to one added detail of an otherwise supported definition, with low risk by default. `build_report.py` and the audit schema check it.
-  - **`ambiguous` narrowed** to "never defined or unreadable", and shown as "资料未定义 / 无法核验" / "cannot verify".
-  - **Recommendations keep the definition's learning value:** mark the unverified part instead of shrinking the definition.
-- **Second audit on `wiki-ml-zh` (`audit-run-2`)** with the revised rules: 10 of the 13 reviewed findings now match the owner's review, including all 3 false positives (no high-risk finding remains). Of the 3 mismatches, one (集成学习, now supported) is a case the rules don't cover. The other two change category but keep the same low risk. Four items that run 1 supported are now low-risk `detail` findings and are waiting for review.
-- **Owner's review of the 8 items that changed in run 2:** 4 correct, 1 partly correct, 3 wrong. Across the 18 run-2 items judged so far: 14 correct, 1 partly correct, 3 wrong.
-- **Rules revised after that review:**
-  - **An explanation of the term is not a detail:** a part of a definition is a separate claim only if it could be false while the rest is true (过拟合 "过度适应训练数据" is supported).
-  - **A class defined from a single instance** is a `detail` finding (集成学习 from random forest).
-  - **Only the unsupported fragment is the finding;** a non-contradicting word difference becomes optional wording in the recommendation.
-  - **A method introduced in a paragraph about a field supports `uses`,** only under three stated conditions.
-  - **Recommendations add no claims of their own.**
-- **Second real-content test set `tests/fixtures/wiki-dt-zh`:** 6 screenshots of the Chinese Wikipedia article 决策树学习 (revision 93550494), under CC BY-SA 4.0 in its own folder, to check that the revised rules were not tuned to one article. It adds formulas and a worked calculation with exact numbers. The article titled 决策树 was not used, because it carries a suspected copy-paste template. The knowledge tree comes from OpenAI Codex, saved unedited. The first audit (`audit-run-1`) supports 77 of 81 items, gives 4 low-risk source notes and 7 omissions.
-- **Owner's review of that audit:** of 11 findings, 8 correct, 1 partly correct and 2 wrong; 2 low-risk omissions missed; all 77 supported items upheld.
-- **Rules revised after that review:**
-  - **A narrower or more cautious claim that the source implies is supported,** the mirror image of the qualifier test (装袋法 "在分类时", "某些决策树方法", 通常, 缓解).
-  - **A different word for a different property is a detail** (多路划分 vs 多层分裂); a different word for the same thing is not.
-  - **A node with a compatible definition covers the source's definition;** only missing parts such as a symbol legend are omissions.
-  - **Limitations sections are read sentence by sentence,** with a 缺点 example in the supporting-detail tier.
-- **Report fixes:**
-  - Evidence quotes are shown in full; a 60-character cut had hidden the key word of a finding.
-  - The summary counts problems, source notes and omissions (core and supporting) separately.
-  - The top-three list names omissions ("遗漏（核心内容）") instead of showing "—", and leaves out low-risk items.
-- **Portable image paths:** `validate_input.py` writes each image path relative to the output folder, with forward slashes (new `--out` option for a non-default folder). A saved run next to its `images/` folder now resolves. This removes a known limitation of v0.1.0.
-- **Source notes in the report:** `detail` findings are now listed in a folded "来源提示" / "Source notes" section after the other findings, numbered after them, and left out of the top three. `audit.json` and its summary are unchanged.
+Tested on real content for the first time, and revised three times based on the project owner's reviews. Two openly licensed Wikipedia articles were added as test sets. The knowledge trees were generated by OpenAI Codex, so their mistakes are real, not planted.
+
+### Results on real content
+
+| Run | Rules | Items judged by the owner | Correct | Partly correct | Wrong |
+|-----|-------|---------------------------|---------|----------------|-------|
+| wiki-ml-zh, run 1 | v0.1.0 | 13 findings | 6 | 4 | 3 (one high-risk) |
+| wiki-ml-zh, run 2 | first revision | 18 items (findings and changed verdicts) | 14 | 1 | 3 |
+| wiki-dt-zh, run 1 | second revision | 11 findings, 77 supported items | 8 findings, 77 supported items | 1 | 2 |
+
+After the first revision, no run produced a high-risk false finding. On wiki-dt-zh the audit also missed 2 low-risk omissions. Details: [docs/evaluation.md](docs/evaluation.md#real-content-v02).
+
+### Audit rules
+
+- **Gather all evidence first:** text, tables and figures on every page, combined across pages, before deciding anything.
+- **Contradiction test:** a conceptual error must contradict the source in meaning. Opposite-looking words are not enough (a Bayesian network represents both dependencies and conditional independencies).
+- **New `scope: detail`** for an `unsupported-expansion` limited to one added detail of an otherwise supported definition, low risk by default. Its boundaries:
+  - **An explanation of the term is not a detail:** a part of a definition is a separate claim only if it could be false while the rest is true.
+  - **A class defined from a single instance is a detail** (集成学习 from random forest).
+  - **A different word for a different property is a detail** (多路划分 vs the source's 多层分裂); a different word for the same thing is not (预测误差 vs 泛化误差), and only the unsupported fragment is the finding.
+  - **A narrower or more cautious claim that the source implies is supported,** the mirror image of the qualifier test ("在分类时", "某些", 通常, 缓解).
+- **`ambiguous` narrowed** to "never defined or unreadable", and shown as "资料未定义 / 无法核验" / "cannot verify".
+- **Edges:** a paragraph about a field that introduces a method for the field's purpose supports `uses`, under three stated conditions.
+- **Omissions:** a node with a compatible definition covers the source's definition; only missing parts such as a symbol legend count. Limitations sections are read sentence by sentence.
+- **Recommendations** keep the definition's learning value (mark the unverified part as 资料外释义 instead of shrinking the definition) and add no claims of their own.
+
+### Report and scripts
+
+- **Source notes:** `detail` findings are listed in a folded "来源提示" / "Source notes" section after the other findings, because they mark a gap in the source, not an error.
+- **Summary:** counts problems, source notes and omissions (core and supporting) separately. The top-three list leaves out source notes and low-risk items, and names omissions as "遗漏（核心内容）".
+- **Evidence quotes are shown in full;** a 60-character cut had hidden the key word of a finding.
+- **Portable image paths:** `validate_input.py` writes each image path relative to the output folder, with forward slashes (new `--out` option). A saved run next to its `images/` folder now resolves.
+- **Checks:** `build_report.py` rejects `scope` on categories other than `unsupported-expansion`, and applies the low default risk to `detail` findings.
+
+### Test data and privacy
+
+- **Privacy section in the README:** the agent sends slide images and the tree to its AI provider. Only audit slides you may share, and treat the outputs like the slides.
+- **Test data policy:** tests use only openly licensed, owner-written or synthetic material, never third-party course slides. The source's terms must also allow use with AI tools; OpenStax was ruled out for that reason.
+- **`tests/fixtures/wiki-ml-zh`:** 12 screenshots of the Chinese Wikipedia article 机器学习 (revision 94516905).
+- **`tests/fixtures/wiki-dt-zh`:** 6 screenshots of 决策树学习 (revision 93550494), with formulas and a worked calculation with exact numbers. The article titled 决策树 was not used because it carries a suspected copy-paste template.
+- Both are under CC BY-SA 4.0 in their own folders, with attribution, the prompt used for the tree, the unedited Codex tree, every audit run, the agent's skill feedback and the owner's reviews.
+- 91 tests, up from 77.
+
+### Known limitations
+
+- **The third rule revision has not been run yet.** It was made after the wiki-dt-zh review, and no fresh audit has used it.
+- **The rules were tuned on the articles they were reviewed on.** wiki-dt-zh checked the first two revisions on a new article; the next new test set will check the third.
+- **Partial reviews:** the owner has not judged the omissions of the wiki-ml-zh runs (25 per run).
+- **One tree generator and one reviewer:** all real-content trees come from OpenAI Codex (model version not recorded), and all reviews are by the project owner.
+- Only Claude has run the skill. Codex and other Agent Skills tools are untested.
+- Small inputs: at most 12 pages and 98 tree items, all clean screenshots.
+- Only PNG/JPG input; node `kind` is not audited; pytest 9.2.0 crashes on Python 3.10.0, so tests pin pytest 8.x.
+
+### Next steps
+
+1. **Codex:** run SourceTrace in Codex on the `wiki-ml-zh` inputs.
+2. **Scale:** a synthetic deck of 30+ slides and a tree with 100+ nodes.
+3. **Image quality:** scan- and photo-like versions of the test slides, generated by a script.
+4. **Task modes:** a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
 
 ## v0.1.0 (2026-11-03)
 
