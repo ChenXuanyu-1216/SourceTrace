@@ -1,0 +1,264 @@
+{
+  "schema_version": "0.1",
+  "title": "决策树学习",
+  "nodes": [
+    {
+      "id": "N001",
+      "label": "决策树学习",
+      "definition": "通过学习树状预测模型，根据样本属性推断其目标值的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N002",
+      "label": "分类树",
+      "definition": "预测离散类别标签的决策树。",
+      "kind": "concept"
+    },
+    {
+      "id": "N003",
+      "label": "回归树",
+      "definition": "预测连续数值的决策树。",
+      "kind": "concept"
+    },
+    {
+      "id": "N004",
+      "label": "决策树结构",
+      "definition": "内部节点表示属性测试，分支表示测试结果，叶节点表示预测输出。",
+      "kind": "concept"
+    },
+    {
+      "id": "N005",
+      "label": "训练样本与目标值",
+      "definition": "训练数据由属性向量 x 和待预测的目标值 Y 组成。",
+      "kind": "concept"
+    },
+    {
+      "id": "N006",
+      "label": "自顶向下递归归纳",
+      "definition": "从根节点开始按指标反复划分训练集，直到满足停止条件。",
+      "kind": "method"
+    },
+    {
+      "id": "N007",
+      "label": "贪心属性选择",
+      "definition": "在每一步选择当前评价指标最优的划分属性。",
+      "kind": "method"
+    },
+    {
+      "id": "N008",
+      "label": "节点纯度",
+      "definition": "节点内样本类别的一致程度，类别越集中则纯度越高。",
+      "kind": "concept"
+    },
+    {
+      "id": "N009",
+      "label": "基尼不纯度",
+      "definition": "用 1−Σpᵢ² 衡量类别混杂程度，节点内样本同类时取零。",
+      "kind": "concept"
+    },
+    {
+      "id": "N010",
+      "label": "信息熵",
+      "definition": "用 H(T)=−Σpᵢlog₂pᵢ 衡量节点类别分布的不确定性。",
+      "kind": "concept"
+    },
+    {
+      "id": "N011",
+      "label": "信息增益",
+      "definition": "父节点信息熵减去划分后子节点加权信息熵所得的减少量。",
+      "kind": "concept"
+    },
+    {
+      "id": "N012",
+      "label": "子节点加权信息熵",
+      "definition": "按各子节点样本数占父节点样本数的比例，对子节点信息熵加权求和。",
+      "kind": "concept"
+    },
+    {
+      "id": "N013",
+      "label": "CART",
+      "definition": "涵盖分类树和回归树、在分类时可使用基尼不纯度的决策树方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N014",
+      "label": "ID3",
+      "definition": "使用信息增益选择划分属性的决策树学习算法。",
+      "kind": "method"
+    },
+    {
+      "id": "N015",
+      "label": "C4.5 与 C5.0",
+      "definition": "资料在基于信息论的决策树生成方法中提及的两种算法。",
+      "kind": "method"
+    },
+    {
+      "id": "N016",
+      "label": "CHAID",
+      "definition": "基于卡方自动交互检测、可在生成树时进行多路划分的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N017",
+      "label": "MARS",
+      "definition": "资料列举的一种适合处理数值型数据的建模方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N018",
+      "label": "多树集成",
+      "definition": "组合多棵决策树的预测结果以改善模型表现的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N019",
+      "label": "装袋法",
+      "definition": "通过有放回抽样训练多棵树，并在分类时以投票汇总预测的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N020",
+      "label": "随机森林",
+      "definition": "利用多棵决策树组成集成模型以改善分类表现的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N021",
+      "label": "提升树",
+      "definition": "采用提升方法组合决策树、用于分类或回归的集成方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N022",
+      "label": "旋转森林",
+      "definition": "在训练各棵树之前使用主元分析变换特征的集成方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N023",
+      "label": "主元分析",
+      "definition": "旋转森林在训练单棵树前用于变换输入特征的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N024",
+      "label": "天气与打球示例",
+      "definition": "以天气等四个属性预测是否打球，按 windy 划分的信息增益约为 0.0481。",
+      "kind": "example"
+    },
+    {
+      "id": "N025",
+      "label": "泰坦尼克号生存预测",
+      "definition": "根据性别、年龄及同行兄弟姐妹和配偶数量预测乘客是否生存的分类树示例。",
+      "kind": "example"
+    },
+    {
+      "id": "N026",
+      "label": "白箱与可解释性",
+      "definition": "决策树可通过树结构及从根到叶的判断路径解释预测结果。",
+      "kind": "fact"
+    },
+    {
+      "id": "N027",
+      "label": "数据准备与类型适应",
+      "definition": "资料指出决策树通常只需较少数据准备，并能处理数值型和类别型数据。",
+      "kind": "fact"
+    },
+    {
+      "id": "N028",
+      "label": "鲁棒性与规模处理",
+      "definition": "资料将对噪声的鲁棒性和处理大规模数据的能力列为决策树的优点。",
+      "kind": "fact"
+    },
+    {
+      "id": "N029",
+      "label": "最优树搜索困难",
+      "definition": "资料将训练最优决策树描述为 NP 完全问题，实际算法通常依赖启发式搜索。",
+      "kind": "fact"
+    },
+    {
+      "id": "N030",
+      "label": "过拟合",
+      "definition": "树过于复杂而贴合训练数据细节，导致对训练集之外的数据预测不佳。",
+      "kind": "concept"
+    },
+    {
+      "id": "N031",
+      "label": "剪枝",
+      "definition": "通过删减树的部分结构来控制复杂度、缓解过拟合的方法。",
+      "kind": "method"
+    },
+    {
+      "id": "N032",
+      "label": "异或问题",
+      "definition": "资料列举的一类难以被某些决策树方法简洁表达、可能使树过大的问题。",
+      "kind": "example"
+    },
+    {
+      "id": "N033",
+      "label": "信息增益偏置",
+      "definition": "信息增益对某些类别型属性可能存在选择偏向。",
+      "kind": "fact"
+    },
+    {
+      "id": "N034",
+      "label": "决策图与路径合并",
+      "definition": "允许合并不同决策路径的扩展结构，可采用最小描述长度准则指导合并。",
+      "kind": "concept"
+    },
+    {
+      "id": "N035",
+      "label": "演化算法搜索",
+      "definition": "通过演化算法搜索决策树，以缓解局部最优问题的方法。",
+      "kind": "method"
+    }
+  ],
+  "edges": [
+    { "id": "E001", "source": "N001", "target": "N002", "relation": "includes" },
+    { "id": "E002", "source": "N001", "target": "N003", "relation": "includes" },
+    { "id": "E003", "source": "N002", "target": "N003", "relation": "contrasts-with" },
+    { "id": "E004", "source": "N001", "target": "N004", "relation": "uses" },
+    { "id": "E005", "source": "N001", "target": "N005", "relation": "depends-on" },
+    { "id": "E006", "source": "N001", "target": "N006", "relation": "uses" },
+    { "id": "E007", "source": "N006", "target": "N007", "relation": "uses" },
+    { "id": "E008", "source": "N007", "target": "N008", "relation": "related-to" },
+    { "id": "E009", "source": "N008", "target": "N009", "relation": "related-to" },
+    { "id": "E010", "source": "N008", "target": "N010", "relation": "related-to" },
+    { "id": "E011", "source": "N007", "target": "N011", "relation": "uses" },
+    { "id": "E012", "source": "N011", "target": "N010", "relation": "depends-on" },
+    { "id": "E013", "source": "N011", "target": "N012", "relation": "depends-on" },
+    { "id": "E014", "source": "N012", "target": "N010", "relation": "uses" },
+    { "id": "E015", "source": "N013", "target": "N001", "relation": "is-a" },
+    { "id": "E016", "source": "N013", "target": "N002", "relation": "includes" },
+    { "id": "E017", "source": "N013", "target": "N003", "relation": "includes" },
+    { "id": "E018", "source": "N013", "target": "N009", "relation": "uses" },
+    { "id": "E019", "source": "N014", "target": "N001", "relation": "is-a" },
+    { "id": "E020", "source": "N014", "target": "N011", "relation": "uses" },
+    { "id": "E021", "source": "N015", "target": "N001", "relation": "is-a" },
+    { "id": "E022", "source": "N015", "target": "N010", "relation": "related-to" },
+    { "id": "E023", "source": "N016", "target": "N001", "relation": "is-a" },
+    { "id": "E024", "source": "N017", "target": "N001", "relation": "related-to" },
+    { "id": "E025", "source": "N001", "target": "N018", "relation": "related-to" },
+    { "id": "E026", "source": "N019", "target": "N018", "relation": "is-a" },
+    { "id": "E027", "source": "N020", "target": "N018", "relation": "is-a" },
+    { "id": "E028", "source": "N021", "target": "N018", "relation": "is-a" },
+    { "id": "E029", "source": "N022", "target": "N018", "relation": "is-a" },
+    { "id": "E030", "source": "N022", "target": "N023", "relation": "uses" },
+    { "id": "E031", "source": "N024", "target": "N011", "relation": "example-of" },
+    { "id": "E032", "source": "N025", "target": "N002", "relation": "example-of" },
+    { "id": "E033", "source": "N001", "target": "N026", "relation": "related-to" },
+    { "id": "E034", "source": "N026", "target": "N004", "relation": "depends-on" },
+    { "id": "E035", "source": "N001", "target": "N027", "relation": "related-to" },
+    { "id": "E036", "source": "N001", "target": "N028", "relation": "related-to" },
+    { "id": "E037", "source": "N001", "target": "N029", "relation": "related-to" },
+    { "id": "E038", "source": "N029", "target": "N007", "relation": "related-to" },
+    { "id": "E039", "source": "N001", "target": "N030", "relation": "related-to" },
+    { "id": "E040", "source": "N031", "target": "N030", "relation": "related-to" },
+    { "id": "E041", "source": "N001", "target": "N031", "relation": "uses" },
+    { "id": "E042", "source": "N032", "target": "N001", "relation": "related-to" },
+    { "id": "E043", "source": "N011", "target": "N033", "relation": "related-to" },
+    { "id": "E044", "source": "N034", "target": "N004", "relation": "contrasts-with" },
+    { "id": "E045", "source": "N035", "target": "N001", "relation": "related-to" },
+    { "id": "E046", "source": "N035", "target": "N007", "relation": "contrasts-with" }
+  ]
+}

@@ -20,6 +20,7 @@
   - **Only the unsupported fragment is the finding;** a non-contradicting word difference becomes optional wording in the recommendation.
   - **A method introduced in a paragraph about a field supports `uses`,** only under three stated conditions.
   - **Recommendations add no claims of their own.**
+- **Second real-content test set `tests/fixtures/wiki-dt-zh`:** 6 screenshots of the Chinese Wikipedia article 决策树学习 (revision 93550494), under CC BY-SA 4.0 in its own folder, to check that the revised rules were not tuned to one article. It adds formulas and a worked calculation with exact numbers. The article titled 决策树 was not used, because it carries a suspected copy-paste template. The knowledge tree comes from OpenAI Codex, saved unedited. The first audit (`audit-run-1`) supports 77 of 81 items, gives 4 low-risk source notes and 7 omissions, and is waiting for the owner's review.
 - **Source notes in the report:** `detail` findings are now listed in a folded "来源提示" / "Source notes" section after the other findings, numbered after them, and left out of the top three. `audit.json` and its summary are unchanged.
 
 ## v0.1.0 (2026-11-03)
