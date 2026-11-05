@@ -1,0 +1,1657 @@
+{
+  "schema_version": "0.1",
+  "summary": {
+    "nodes": 40,
+    "edges": 58,
+    "supported": 85,
+    "item_findings": 13,
+    "omissions": 44,
+    "by_risk": {
+      "high": 0,
+      "medium": 31,
+      "low": 26
+    },
+    "by_category": {
+      "unsupported-expansion": 11,
+      "ambiguous": 2,
+      "omission": 44
+    }
+  },
+  "structure_warnings": [],
+  "items": [
+    {
+      "target": "N001",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-007",
+        "EV-008",
+        "EV-009",
+        "EV-018",
+        "EV-019",
+        "EV-020",
+        "EV-023"
+      ]
+    },
+    {
+      "finding_id": "F-003",
+      "target": "N002",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "ambiguous",
+      "risk": "low",
+      "evidence": [
+        "EV-007",
+        "EV-018",
+        "EV-028",
+        "EV-029",
+        "EV-030",
+        "EV-032",
+        "EV-033",
+        "EV-043"
+      ],
+      "reason": "资料说明机器学习是人工智能的分支，并介绍相关历史和研究方法，但没有定义人工智能为实现“学习、推理和决策等智能能力”的领域；这条一般定义无法仅由截图完整核验。",
+      "recommendation": "保留定义供复习，将其中一般性的人工智能释义标为资料外释义；保留资料明确支持的 N001 part-of N002，不以分支关系替代术语定义。"
+    },
+    {
+      "target": "N003",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-051",
+        "EV-052",
+        "EV-057",
+        "EV-058",
+        "EV-060",
+        "EV-061"
+      ]
+    },
+    {
+      "target": "N004",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-047",
+        "EV-048",
+        "EV-049"
+      ]
+    },
+    {
+      "target": "N005",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-048",
+        "EV-049",
+        "EV-065",
+        "EV-079",
+        "EV-080"
+      ]
+    },
+    {
+      "target": "N006",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-053"
+      ]
+    },
+    {
+      "target": "N007",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "N008",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-056",
+        "EV-179"
+      ]
+    },
+    {
+      "target": "N009",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-057",
+        "EV-058",
+        "EV-060",
+        "EV-061"
+      ]
+    },
+    {
+      "target": "N010",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-065",
+        "EV-066",
+        "EV-076"
+      ]
+    },
+    {
+      "target": "N011",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-068",
+        "EV-070",
+        "EV-075",
+        "EV-076"
+      ]
+    },
+    {
+      "finding_id": "F-007",
+      "target": "N012",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-065",
+        "EV-066",
+        "EV-068",
+        "EV-070",
+        "EV-072"
+      ],
+      "reason": "资料只说半监督学习“介于监督学习与无监督学习之间”，并解释两端是否有人工标签；这没有明确说明半监督学习采用“结合有标签数据与无标签数据”的训练机制。",
+      "recommendation": "保留有学习价值的定义，将“结合有标签数据与无标签数据”标为资料外释义；可附资料原有的“介于监督学习与无监督学习之间”，不将该释义判为概念错误。"
+    },
+    {
+      "target": "N013",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-073"
+      ]
+    },
+    {
+      "target": "N014",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-074",
+        "EV-146",
+        "EV-147",
+        "EV-171",
+        "EV-182"
+      ]
+    },
+    {
+      "target": "N015",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-148",
+        "EV-178",
+        "EV-185",
+        "EV-186"
+      ]
+    },
+    {
+      "target": "N016",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-071",
+        "EV-075",
+        "EV-092"
+      ]
+    },
+    {
+      "finding_id": "F-005",
+      "target": "N017",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-022",
+        "EV-091"
+      ],
+      "reason": "资料列出“降维”和“降维与度量学习”；“转换到更低维空间”可作为降维一词的简短释义，但“尽量保留重要信息”是截图未说明的目标性质。",
+      "recommendation": "保留定义，将“尽量保留重要信息”标为资料外释义；不要因术语只被列举而删除其可理解的降维解释。"
+    },
+    {
+      "target": "N018",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-079",
+        "EV-080",
+        "EV-081",
+        "EV-144",
+        "EV-150"
+      ]
+    },
+    {
+      "target": "N019",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-082",
+        "EV-083"
+      ]
+    },
+    {
+      "target": "N020",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-112",
+        "EV-113",
+        "EV-114",
+        "EV-115",
+        "EV-116",
+        "EV-120",
+        "EV-141"
+      ]
+    },
+    {
+      "target": "N021",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-115",
+        "EV-117",
+        "EV-118",
+        "EV-141"
+      ]
+    },
+    {
+      "target": "N022",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-119",
+        "EV-120",
+        "EV-121"
+      ]
+    },
+    {
+      "target": "N023",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-123",
+        "EV-124",
+        "EV-125",
+        "EV-139",
+        "EV-140"
+      ]
+    },
+    {
+      "target": "N024",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-136",
+        "EV-137",
+        "EV-138"
+      ]
+    },
+    {
+      "target": "N025",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-144",
+        "EV-146",
+        "EV-147",
+        "EV-148",
+        "EV-151",
+        "EV-159",
+        "EV-160",
+        "EV-161",
+        "EV-162"
+      ]
+    },
+    {
+      "target": "N026",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-153",
+        "EV-154",
+        "EV-155",
+        "EV-156",
+        "EV-157"
+      ]
+    },
+    {
+      "finding_id": "F-009",
+      "target": "N027",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-090",
+        "EV-154"
+      ],
+      "reason": "资料只列出集成学习 AdaBoost，并具体解释随机森林回归会平均多树预测、提高准确性；没有给整个集成学习类别下“组合多个模型的预测以改善整体表现”的一般定义。将随机森林这一实例推广为类别定义，是现行规则 Q6 所指的细节扩展。",
+      "recommendation": "保留定义，将类别的一般性组合解释标为资料外释义；注明资料直接支持的例子是 N026 随机森林回归，不将所有集成方法都改写成随机森林的平均机制。"
+    },
+    {
+      "finding_id": "F-010",
+      "target": "N028",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-155"
+      ],
+      "reason": "资料支持“自助采样法”及每棵树从训练集中随机抽取部分数据；没有说明抽样是“有放回”的，这个独立性质无法从截图核验。",
+      "recommendation": "保留定义，仅将“有放回”标为资料外释义；其余随机抽样及构造树训练数据的部分保留。"
+    },
+    {
+      "finding_id": "F-011",
+      "target": "N029",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-170",
+        "EV-171",
+        "EV-172",
+        "EV-173",
+        "EV-174"
+      ],
+      "reason": "资料支持 SVM 是用于分类和回归的监督学习方法，也描述线性分类器及核技巧；但未提及“具有较大间隔”的优化性质。",
+      "recommendation": "保留分类、回归及监督学习定义，将“具有较大间隔”标为资料外释义；不要把整个 SVM 方法家族收窄为资料举例中的单一二分类模型。"
+    },
+    {
+      "finding_id": "F-012",
+      "target": "N030",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-173",
+        "EV-174",
+        "EV-183",
+        "EV-210"
+      ],
+      "reason": "资料支持用核技巧隐式映射到高维空间以处理非线性，也将协方差函数称为核函数；但没有说明“隐式计算特征空间中的相似性”这一具体计算机制。",
+      "recommendation": "保留原定义，将“通过核函数隐式计算特征空间中的相似性”标为资料外释义；资料内可改为“通过隐式地将输入映射到高维特征空间来处理非线性的方法”。"
+    },
+    {
+      "target": "N031",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-065",
+        "EV-067",
+        "EV-148",
+        "EV-177",
+        "EV-178",
+        "EV-185",
+        "EV-186"
+      ]
+    },
+    {
+      "target": "N032",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-178",
+        "EV-185",
+        "EV-186"
+      ]
+    },
+    {
+      "finding_id": "F-006",
+      "target": "N033",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-054",
+        "EV-056",
+        "EV-179"
+      ],
+      "reason": "资料支持正则化用于扩展线性回归，以减轻过拟合和偏差；但没有说明“约束模型参数或增加惩罚项”的具体手段。",
+      "recommendation": "保留定义，将约束参数或惩罚项的机制标为资料外释义；可补充截图直接给出的减轻过拟合和偏差的用途，不把原定义本身说成文字含糊。"
+    },
+    {
+      "finding_id": "F-008",
+      "target": "N034",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-067",
+        "EV-180",
+        "EV-182"
+      ],
+      "reason": "资料明确逻辑回归用于统计分类任务，但未解释“将输入的线性组合映射为类别概率”的机制。",
+      "recommendation": "保留用于分类的已支持部分，将线性组合到类别概率的映射标为资料外释义，不因截图未展开机制而把整个定义判为错误。"
+    },
+    {
+      "target": "N035",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-185",
+        "EV-186",
+        "EV-188",
+        "EV-189"
+      ]
+    },
+    {
+      "target": "N036",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-101",
+        "EV-196",
+        "EV-197",
+        "EV-199",
+        "EV-200",
+        "EV-201",
+        "EV-202"
+      ]
+    },
+    {
+      "target": "N037",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-209"
+      ]
+    },
+    {
+      "target": "N038",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-210",
+        "EV-211"
+      ]
+    },
+    {
+      "finding_id": "F-013",
+      "target": "N039",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-209",
+        "EV-211",
+        "EV-212"
+      ],
+      "reason": "资料支持在贝叶斯优化中用高斯过程作替代模型，结合高斯过程输出概率分布的描述可支持概率模型的关联；但没有说明“利用……不确定性来选择评估点”的优化机制。",
+      "recommendation": "保留定义，将利用不确定性选择评估点的机制标为资料外释义；可补充资料明确给出的高斯过程替代模型及超参数优化用途。"
+    },
+    {
+      "finding_id": "F-004",
+      "target": "N040",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "ambiguous",
+      "risk": "low",
+      "evidence": [
+        "EV-013",
+        "EV-129",
+        "EV-138"
+      ],
+      "reason": "资料将计算机视觉列为机器学习、神经网络和深度学习的应用领域，但没有解释“从图像或视频中提取信息并理解视觉内容”的领域定义。",
+      "recommendation": "保留可复习的领域定义，并标为资料外释义；保留截图已支持的 E057、E058 应用关系，不以“应用领域之一”取代其定义。"
+    },
+    {
+      "target": "E001",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-007",
+        "EV-018"
+      ]
+    },
+    {
+      "target": "E002",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-045",
+        "EV-046",
+        "EV-050"
+      ]
+    },
+    {
+      "target": "E003",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-047",
+        "EV-048",
+        "EV-049",
+        "EV-050",
+        "EV-052"
+      ]
+    },
+    {
+      "target": "E004",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-053"
+      ]
+    },
+    {
+      "target": "E005",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-057",
+        "EV-058",
+        "EV-060",
+        "EV-061"
+      ]
+    },
+    {
+      "target": "E006",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E007",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-056"
+      ]
+    },
+    {
+      "target": "E008",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-055",
+        "EV-056"
+      ]
+    },
+    {
+      "target": "E009",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-048",
+        "EV-049",
+        "EV-065",
+        "EV-079",
+        "EV-080"
+      ]
+    },
+    {
+      "target": "E010",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-063",
+        "EV-064"
+      ]
+    },
+    {
+      "target": "E011",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-063",
+        "EV-070",
+        "EV-076"
+      ]
+    },
+    {
+      "target": "E012",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-063",
+        "EV-072"
+      ]
+    },
+    {
+      "target": "E013",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-063",
+        "EV-073"
+      ]
+    },
+    {
+      "target": "E014",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-065",
+        "EV-066",
+        "EV-068",
+        "EV-070",
+        "EV-076"
+      ]
+    },
+    {
+      "target": "E015",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-072"
+      ]
+    },
+    {
+      "target": "E016",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-072"
+      ]
+    },
+    {
+      "target": "E017",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-146",
+        "EV-147"
+      ]
+    },
+    {
+      "target": "E018",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-148"
+      ]
+    },
+    {
+      "target": "E019",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-071",
+        "EV-075"
+      ]
+    },
+    {
+      "finding_id": "F-001",
+      "target": "E020",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-022",
+        "EV-070",
+        "EV-071",
+        "EV-091"
+      ],
+      "reason": "资料将聚类和生成对抗网络列为无监督学习算法；降维只在侧栏及一般模型列表出现，未说明 N011 无监督学习 includes N017 降维。不同列表中的名称不能直接组成包含关系。",
+      "recommendation": "删除 E020；保留降维节点及其来源提示。不要根据同页出现或侧栏并列位置强行新增与无监督学习的包含关系。"
+    },
+    {
+      "target": "E021",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-146",
+        "EV-148"
+      ]
+    },
+    {
+      "target": "E022",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-079",
+        "EV-080",
+        "EV-081",
+        "EV-084"
+      ]
+    },
+    {
+      "target": "E023",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-082",
+        "EV-083"
+      ]
+    },
+    {
+      "target": "E024",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-083"
+      ]
+    },
+    {
+      "target": "E025",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-084",
+        "EV-086",
+        "EV-112",
+        "EV-115"
+      ]
+    },
+    {
+      "target": "E026",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-115",
+        "EV-117",
+        "EV-141"
+      ]
+    },
+    {
+      "target": "E027",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-119",
+        "EV-120",
+        "EV-121"
+      ]
+    },
+    {
+      "target": "E028",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-123",
+        "EV-124",
+        "EV-125",
+        "EV-139",
+        "EV-140"
+      ]
+    },
+    {
+      "target": "E029",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-136"
+      ]
+    },
+    {
+      "target": "E030",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-125",
+        "EV-136"
+      ]
+    },
+    {
+      "target": "E031",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-084",
+        "EV-087",
+        "EV-144",
+        "EV-145"
+      ]
+    },
+    {
+      "target": "E032",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-146",
+        "EV-147",
+        "EV-151"
+      ]
+    },
+    {
+      "target": "E033",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-148",
+        "EV-151"
+      ]
+    },
+    {
+      "target": "E034",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-084",
+        "EV-090",
+        "EV-154"
+      ]
+    },
+    {
+      "target": "E035",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-154"
+      ]
+    },
+    {
+      "target": "E036",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-153",
+        "EV-154",
+        "EV-155"
+      ]
+    },
+    {
+      "target": "E037",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-155"
+      ]
+    },
+    {
+      "target": "E038",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-152",
+        "EV-157"
+      ]
+    },
+    {
+      "target": "E039",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-170"
+      ]
+    },
+    {
+      "target": "E040",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-173",
+        "EV-174"
+      ]
+    },
+    {
+      "target": "E041",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-170",
+        "EV-171",
+        "EV-172"
+      ]
+    },
+    {
+      "target": "E042",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-170"
+      ]
+    },
+    {
+      "target": "E043",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-084",
+        "EV-094",
+        "EV-177"
+      ]
+    },
+    {
+      "target": "E044",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-177",
+        "EV-178"
+      ]
+    },
+    {
+      "target": "E045",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-148",
+        "EV-178",
+        "EV-186"
+      ]
+    },
+    {
+      "target": "E046",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-179"
+      ]
+    },
+    {
+      "target": "E047",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-179"
+      ]
+    },
+    {
+      "target": "E048",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-182"
+      ]
+    },
+    {
+      "target": "E049",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-182"
+      ]
+    },
+    {
+      "target": "E050",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-177",
+        "EV-185",
+        "EV-186"
+      ]
+    },
+    {
+      "target": "E051",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-178",
+        "EV-185",
+        "EV-186"
+      ]
+    },
+    {
+      "target": "E052",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-084",
+        "EV-099",
+        "EV-101",
+        "EV-196"
+      ]
+    },
+    {
+      "target": "E053",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-084",
+        "EV-095",
+        "EV-207",
+        "EV-209",
+        "EV-211"
+      ]
+    },
+    {
+      "target": "E054",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-210",
+        "EV-211"
+      ]
+    },
+    {
+      "target": "E055",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-212"
+      ]
+    },
+    {
+      "finding_id": "F-002",
+      "target": "E056",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-083",
+        "EV-212"
+      ],
+      "reason": "资料分别定义模型选择，并说贝叶斯优化使用高斯过程、适合超参数优化；没有将贝叶斯优化与模型选择相连。不能未经资料说明就把“超参数优化”换成“模型选择”。",
+      "recommendation": "删除 E056。保留已支持的 E055（N039 uses N037）；若补充超参数优化这一用途，应单独使用资料中的术语，不把它替换成 N019 模型选择。"
+    },
+    {
+      "target": "E057",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E058",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-138"
+      ]
+    }
+  ],
+  "omissions": [
+    {
+      "finding_id": "F-014",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-010",
+        "EV-046"
+      ],
+      "reason": "资料将机器学习与推断统计学、统计学习理论相联系；树中只有计算学习理论，未表达“统计学习理论”及这条统计学联系。",
+      "recommendation": "补充统计学习理论这一资料主题及机器学习与推断统计学的联系；不要把 N003 计算学习理论直接改名为统计学习理论。"
+    },
+    {
+      "finding_id": "F-015",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-027",
+        "EV-028",
+        "EV-029",
+        "EV-030",
+        "EV-031",
+        "EV-032",
+        "EV-033",
+        "EV-034",
+        "EV-035",
+        "EV-036",
+        "EV-037",
+        "EV-038",
+        "EV-040",
+        "EV-041",
+        "EV-042",
+        "EV-043",
+        "EV-044"
+      ],
+      "reason": "资料用了“与其他领域的关系”章节说明研究路线的分化与重建，包括专家系统兴起、联结主义发展、反向传播的突破及1990年代成为独立领域；现有树只保留了机器学习属于人工智能的静态关系。",
+      "recommendation": "增加“历史与研究路线”补充主题，按资料整理早期路线、分化、联结主义突破和1990年代重建；可使用 related-to 连接机器学习，不将历史分歧改写成现今不属于人工智能。"
+    },
+    {
+      "finding_id": "F-016",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-031",
+        "EV-088"
+      ],
+      "reason": "资料在历史叙述及模型列表中提到“感知机／感知器”，树中没有该方法。",
+      "recommendation": "补充感知器这一模型，与机器学习模型建立 includes 关系；其与早期神经网络的历史联系可在历史说明中交代。"
+    },
+    {
+      "finding_id": "F-017",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-051"
+      ],
+      "reason": "资料明确提到“概率近似正确学习模型（PAC learning）”，树中没有该理论主题。",
+      "recommendation": "补充 PAC 学习与计算学习理论的联系；定义或备注保留资料的概率近似正确学习模型名称，不添加截图未给出的形式化保证。"
+    },
+    {
+      "finding_id": "F-018",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-070",
+        "EV-071"
+      ],
+      "reason": "资料将“生成对抗网络（GAN）”列为常见无监督学习算法，树中没有 GAN 或相应关系。",
+      "recommendation": "补充 GAN 这一方法，并按截图用 N011 includes GAN 节点表示其所列类别；不要另加截图未介绍的内部机制。"
+    },
+    {
+      "finding_id": "F-019",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-084",
+        "EV-085",
+        "EV-094",
+        "EV-099",
+        "EV-103"
+      ],
+      "reason": "资料按“构造间隔理论分布”“构造条件概率”“通过再生模型构造概率密度函数”和“近似推断技术”组织模型方法；树中未表达这些分组及组内关系。",
+      "recommendation": "补充模型列表的分组结构，并保持截图中的组名；不要仅凭常识把不同列表里的模型重新归组。"
+    },
+    {
+      "finding_id": "F-020",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-090"
+      ],
+      "reason": "资料模型列表明确列出“集成学习AdaBoost”，现有集成学习节点没有收录 AdaBoost 这个具体方法。",
+      "recommendation": "在集成学习的补充方法中加入 AdaBoost，可用 N027 includes 新方法节点表示；不复制随机森林的平均机制作为其定义。"
+    },
+    {
+      "finding_id": "F-021",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-091"
+      ],
+      "reason": "资料列出“降维与度量学习”，树中只有降维，没有度量学习。",
+      "recommendation": "在模型与方法的补充列表中加入度量学习；截图未定义其机制，不应为其编造资料内定义。"
+    },
+    {
+      "finding_id": "F-022",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-093"
+      ],
+      "reason": "资料的具体模型列表包括“贝叶斯分类器”，树中未收录；贝叶斯网络不是该列表名称的替代。",
+      "recommendation": "补充贝叶斯分类器方法及其与机器学习模型的 includes 关系，不与 N036 贝叶斯网络合并。"
+    },
+    {
+      "finding_id": "F-023",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-094",
+        "EV-095"
+      ],
+      "reason": "资料在构造条件概率的组内列出“高斯过程回归”，树中只有一般的高斯过程及其贝叶斯优化关联，未体现该回归方法。",
+      "recommendation": "补充高斯过程回归的方法条目或明确其回归用途；不要把一般随机过程的定义改写为只用于回归。"
+    },
+    {
+      "finding_id": "F-024",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-094",
+        "EV-096"
+      ],
+      "reason": "资料在模型列表中列出“线性判别分析”，树中未收录。",
+      "recommendation": "将线性判别分析加入资料所列的模型方法，保留其所在组别，不添加截图外的算法机制。"
+    },
+    {
+      "finding_id": "F-025",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-094",
+        "EV-097"
+      ],
+      "reason": "资料在模型列表中列出“最近邻居法”，树中未收录。",
+      "recommendation": "补充最近邻居法及其模型方法关系，不自行增加邻居数量、距离指标或投票规则。"
+    },
+    {
+      "finding_id": "F-026",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-094",
+        "EV-098"
+      ],
+      "reason": "资料在模型列表中列出“径向基函数核”，树中的一般核技巧节点未体现这个具体条目。",
+      "recommendation": "在核相关方法的补充说明中加入径向基函数核，并保留截图的列表归属，不加入截图未说明的公式。"
+    },
+    {
+      "finding_id": "F-027",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-099",
+        "EV-100"
+      ],
+      "reason": "资料在构造概率密度函数的方法中列出“最大期望算法”，树中未收录。",
+      "recommendation": "补充最大期望算法条目及资料中的组别；不自行填写截图未介绍的迭代步骤。"
+    },
+    {
+      "finding_id": "F-028",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-099",
+        "EV-101"
+      ],
+      "reason": "资料列出的概率图模型包括贝叶斯网络和“Markov随机场”，树只覆盖前者。",
+      "recommendation": "补充 Markov 随机场及与概率图模型的 includes 关系，不将其直接作为贝叶斯网络的子类。"
+    },
+    {
+      "finding_id": "F-029",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-099",
+        "EV-102"
+      ],
+      "reason": "资料在构造概率密度函数的方法组中列出“Generative Topographic Mapping”，树中没有这个方法。",
+      "recommendation": "在该组的补充方法列表中保留 Generative Topographic Mapping 的原名，不增加截图未给出的解释机制。"
+    },
+    {
+      "finding_id": "F-030",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-103",
+        "EV-104"
+      ],
+      "reason": "资料在“近似推断技术”中列出“马尔可夫链”，树中未收录。",
+      "recommendation": "补充马尔可夫链及其与近似推断技术的列表关系，不与 Markov 随机场混为一项。"
+    },
+    {
+      "finding_id": "F-031",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-103",
+        "EV-105"
+      ],
+      "reason": "资料在“近似推断技术”中列出“蒙特卡罗方法”，树中未收录。",
+      "recommendation": "将蒙特卡罗方法加入近似推断技术的补充列表，不凭截图外知识添加具体采样步骤。"
+    },
+    {
+      "finding_id": "F-032",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-103",
+        "EV-106"
+      ],
+      "reason": "资料在“近似推断技术”中列出“变分法”，树中未收录。",
+      "recommendation": "将变分法加入近似推断技术的补充列表，不加入资料未说明的目标函数。"
+    },
+    {
+      "finding_id": "F-033",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-107"
+      ],
+      "reason": "资料指出“大多数以上方法，直接或者间接使用最优化算法”，树中未体现最优化方法及这条联系。",
+      "recommendation": "补充最优化算法与资料所列学习方法的 uses 联系，保留“大多数”“直接或者间接”的范围，不泛化为所有算法都使用同一优化方法。"
+    },
+    {
+      "finding_id": "F-034",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-108"
+      ],
+      "reason": "资料模型方法列表列出“量子机器学习”，树中未收录。",
+      "recommendation": "在补充方法列表中加入量子机器学习，保留截图只列名称的支持范围。"
+    },
+    {
+      "finding_id": "F-035",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-159",
+        "EV-160",
+        "EV-161",
+        "EV-162"
+      ],
+      "reason": "资料以图和图注给出泰坦尼克号乘客生存的决策树示例，展示性别、年龄、同行家庭成员特征及 died／survived 叶节点；树中未收录该示例。",
+      "recommendation": "补充乘客生存预测 example 节点，以 example-of 连接 N025；示例说明保留图中分裂特征和类别输出，不自行添加图外特征。"
+    },
+    {
+      "finding_id": "F-036",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-180",
+        "EV-181"
+      ],
+      "reason": "资料列出面对非线性问题时的“多项式回归”，树中只有线性回归和逻辑回归等方法，未覆盖这一替代模型。",
+      "recommendation": "将多项式回归补入回归相关方法；Excel 趋势线工具只是资料所举的应用例子，不必单列节点。"
+    },
+    {
+      "finding_id": "F-037",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-180",
+        "EV-183"
+      ],
+      "reason": "资料明确列出“核回归”，并解释用核技巧隐式映射到更高维空间以引入非线性；现有一般核技巧节点并未表达这条具体回归方法及其 uses 关系。",
+      "recommendation": "补充核回归方法及其 uses N030 的关系，按资料解释其非线性用途。"
+    },
+    {
+      "finding_id": "F-038",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-199",
+        "EV-200",
+        "EV-201",
+        "EV-202"
+      ],
+      "reason": "资料的贝叶斯网络图展示 Rain→Sprinkler、Rain→Grass wet、Sprinkler→Grass wet 三条关系；树中没有该示例及关系组合。",
+      "recommendation": "补充一个“下雨、洒水器与草地湿” example 节点，以 example-of 连接 N036，并在定义或备注中保留三条影响关系。"
+    },
+    {
+      "finding_id": "F-039",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-203",
+        "EV-204"
+      ],
+      "reason": "资料定义了表示变量序列的“动态贝叶斯网络”，树中没有这一扩展模型。",
+      "recommendation": "补充动态贝叶斯网络，定义使用资料的变量序列表述，并以 related-to 连接 N036；语音信号、蛋白质序列可保留为例子。"
+    },
+    {
+      "finding_id": "F-040",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-203",
+        "EV-205"
+      ],
+      "reason": "资料定义了在不确定性下表示并解决决策问题的“影响图”，树中没有这一扩展模型。",
+      "recommendation": "补充影响图，采用截图给出的不确定性决策定义，并以 related-to 连接 N036。"
+    },
+    {
+      "finding_id": "F-041",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-210",
+        "EV-211"
+      ],
+      "reason": "N037、N038 说明高斯过程分布性质和协方差函数，但没有覆盖从已知点间及已知点与新点间的协方差，计算新点输出概率分布这一核心预测能力。",
+      "recommendation": "补充高斯过程的预测方法说明，并与 N037、N038 建立 uses 或 depends-on 关系；输出须表述为概率分布，不改成只预测一个确定数值。"
+    },
+    {
+      "finding_id": "F-042",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-213",
+        "EV-214",
+        "EV-215"
+      ],
+      "reason": "最后一页出现“软件”“自由开源软件”主题，并说明是包含机器学习算法的软件套装；树中完全未涉及软件主题，截图内尚未展示具体软件清单。",
+      "recommendation": "在补充主题中记录机器学习软件套装和自由开源软件；仅保留截图可见的主题，不杜撰被截断后的软件名称。"
+    },
+    {
+      "finding_id": "F-043",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-014"
+      ],
+      "reason": "资料说明机器学习涉及“概率论、统计学、逼近论、凸分析、计算复杂性理论、信息论”等学科，树中未表达这一跨学科背景。",
+      "recommendation": "在机器学习的补充说明中列出资料所述的相关学科，可用 related-to 表达联系。"
+    },
+    {
+      "finding_id": "F-044",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-011",
+        "EV-012"
+      ],
+      "reason": "资料指出学习算法要行之有效并防止错误累积，部分研究为非程序化推论问题开发容易处理的近似算法；树中没有这部分算法设计动机。",
+      "recommendation": "补充学习算法的可实现性、有效性及近似算法的用途，不把“部分研究”扩写成所有机器学习都只能采用近似算法。"
+    },
+    {
+      "finding_id": "F-045",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-021",
+        "EV-023"
+      ],
+      "reason": "树中有经验学习和任务表现，但未保留 Mitchell 定义中的“experience E”“tasks T”“performance measure P”及按 P 衡量任务表现随 E 改进的明确对应。",
+      "recommendation": "为 N001 补充 E、T、P 的符号说明及按指标衡量表现改进的条件，不必重复新增机器学习定义节点。"
+    },
+    {
+      "finding_id": "F-046",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-013",
+        "EV-128",
+        "EV-129",
+        "EV-130",
+        "EV-131",
+        "EV-132",
+        "EV-133",
+        "EV-134",
+        "EV-135",
+        "EV-138",
+        "EV-206"
+      ],
+      "reason": "树只保留计算机视觉的应用关系，未覆盖资料列出的其他应用及其方法关联，如自然语言处理、语音识别、机器翻译、社交网络内容过滤、医学诊断、机器人决策等。",
+      "recommendation": "以应用补充主题整理截图列举的领域，并分别连接资料明确提及的机器学习、神经网络、深度学习或图模型；不要把每个应用都无差别连到所有方法。"
+    },
+    {
+      "finding_id": "F-047",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-049",
+        "EV-052"
+      ],
+      "reason": "N003 提到泛化误差界，但没有表达训练样本有限、未来不确定，因此通常只能给出“概率性界限”而不能绝对保证算法表现的限制。",
+      "recommendation": "在计算学习理论的说明中补充有限训练集与概率性性能界限的限制，保留“通常”的限定。"
+    },
+    {
+      "finding_id": "F-048",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-054",
+        "EV-055",
+        "EV-056"
+      ],
+      "reason": "树中有欠拟合、过拟合及二者对照，但未明确表达模型复杂度应与真实函数复杂度“相匹配”，以及欠拟合时适当增加复杂度可以降低训练误差。",
+      "recommendation": "补充复杂度匹配原则及欠拟合时的调整方向；不要把降低训练误差等同于必然提高泛化表现。"
+    },
+    {
+      "finding_id": "F-049",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-059",
+        "EV-060",
+        "EV-061"
+      ],
+      "reason": "N009 覆盖多项式时间可行性，但没有区分“正面结果”可学习某类函数与“负面结果”某些函数类别不能在多项式时间内学习。",
+      "recommendation": "在计算可行性的说明中补充正面和负面两类结果，不将其扩大为所有函数统一可学习或不可学习。"
+    },
+    {
+      "finding_id": "F-050",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-079",
+        "EV-080"
+      ],
+      "reason": "N018 说明通过训练调整内部参数，但未明确资料的训练目标“尽可能减少预测误差”和迭代调整过程。",
+      "recommendation": "在机器学习模型的定义或训练说明中补充通过迭代调整参数来减少预测误差。"
+    },
+    {
+      "finding_id": "F-051",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-081"
+      ],
+      "reason": "资料区分“模型”既可指模型类别及对应算法，也可指参数已调整完毕的具体模型；树中没有这一术语的层级差别。",
+      "recommendation": "为 N018 增加模型类别与训练完成的具体模型两种用法的说明。"
+    },
+    {
+      "finding_id": "F-052",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-112",
+        "EV-113",
+        "EV-114",
+        "EV-126",
+        "EV-127",
+        "EV-137"
+      ],
+      "reason": "N020、N024 没有体现神经网络受生物神经网络启发、从样例而非任务预设规则学习，以及研究目标逐渐从模拟人脑转向高效完成任务的背景。",
+      "recommendation": "在神经网络的补充说明中整理生物启发、样例学习和目标演变；保留“通常不依赖预设规则”的限定，不写成与生物脑结构完全相同。"
+    },
+    {
+      "finding_id": "F-053",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-118",
+        "EV-122"
+      ],
+      "reason": "N021 只说加权组合与变换，未保留资料的实数信号、非线性变换，以及“有些”神经元具有输出阈值的具体性质。",
+      "recommendation": "补充常见实现中实数信号和非线性变换的说明；阈值必须标为某些神经元的性质，不能作为所有神经元的必要条件。"
+    },
+    {
+      "finding_id": "F-054",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-149",
+        "EV-150",
+        "EV-151"
+      ],
+      "reason": "N025 覆盖预测机制和分类／回归任务，但未说明决策树“结构清晰、解释性强”，以及可展示决策过程、描述数据和支持后续决策的用途。",
+      "recommendation": "为决策树补充可解释性及资料中的用途，可用 related-to 连接相应说明，不把它们说成决策树独有的性质。"
+    },
+    {
+      "finding_id": "F-055",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-154",
+        "EV-155",
+        "EV-156",
+        "EV-157",
+        "EV-158"
+      ],
+      "reason": "N026 体现多树与预测平均，但没有资料中避免过拟合、随机训练减少偏差、树相互独立，以及支持单输出与多回归任务的描述。",
+      "recommendation": "为随机森林回归补充资料所列的预测效果、训练性质和输出任务范围，明确这是资料的说法；不要增加截图没有给出的随机特征选择等机制。"
+    },
+    {
+      "finding_id": "F-056",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-187",
+        "EV-188",
+        "EV-189",
+        "EV-190",
+        "EV-191",
+        "EV-192",
+        "EV-193"
+      ],
+      "reason": "N035 定义多个输出的线性关系，但未说明适用条件是输出相互依赖或共享潜在模式，也未收录多个经济指标预测、图像重建等例子。",
+      "recommendation": "在多元线性回归的应用说明中补充输出依赖或共享结构这两个场景，并可保留资料中的例子，不把相关输出说成任意多输出问题都必须具备的条件。"
+    },
+    {
+      "finding_id": "F-057",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-197",
+        "EV-198"
+      ],
+      "reason": "贝叶斯网络节点描述图结构，但没有保留资料所述从给定症状计算疾病概率的推断用途及其推理、学习算法。",
+      "recommendation": "补充贝叶斯网络的概率推断用途，可使用资料中的症状与疾病例子；不要增加截图未说明的推理算法细节。"
+    }
+  ]
+}

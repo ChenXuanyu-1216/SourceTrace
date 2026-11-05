@@ -22,6 +22,11 @@ How this test set is meant to be used:
   - 10 of the 13 reviewed findings now match the owner's review. Comparison and the owner's review of the 8 changed items (4 correct, 1 partly correct, 3 wrong): [audit-run-2/COMPARISON.md](audit-run-2/COMPARISON.md). This led to the second rule revision.
   - The saved `report.md` is as the skill produced it at `89d1e55`. Later versions of `build_report.py` render the same `audit.json` with the `detail` findings in a separate source-notes section and different finding IDs, so the IDs in the review refer to this saved report.
 
+- **[codex-run-1/](codex-run-1/)** (2026-11-05): skill v0.2.0 (`8c88b42`), run by OpenAI Codex in a clean folder outside the repository.
+  - Result: 215 evidence items, 85 supported, 13 findings, 44 omissions.
+  - All three scripts passed with no fixes; Codex read the images with its own image tool.
+  - 15 of the 18 items the owner has judged match, the same score as Claude run 2 but on different items. Codex reports many more omissions, mostly one per named model in the article's model list. Details: [codex-run-1/COMPARISON.md](codex-run-1/COMPARISON.md).
+
 ## What this set adds
 
 Compared with the synthetic test sets, this one adds:
