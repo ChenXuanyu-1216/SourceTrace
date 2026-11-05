@@ -51,6 +51,11 @@ LABELS = {
         "category": {c: c for c in list(DEFAULT_RISK) + ["omission"]} | {"ambiguous": "cannot verify"},
         "tier": {"core": "core", "supporting": "supporting detail"},
         "scope": {"detail": "detail"},
+        "notes": "Source notes",
+        "notes_intro": "Definitions the source supports except for one added detail. They mark a gap in the source, "
+                       "not an error: keep the definition and mark the detail as coming from outside the source.",
+        "notes_toggle": "{n} source notes (click to expand)",
+        "notes_count": " {n} of the findings are low-risk source notes.",
         "page": "p.",
         "sep": ": ",
         "parts": "The tree falls apart into {n} parts that are not linked to each other:",
@@ -71,6 +76,11 @@ LABELS = {
         },
         "tier": {"core": "核心内容", "supporting": "补充细节"},
         "scope": {"detail": "细节"},
+        "notes": "来源提示",
+        "notes_intro": "这些定义基本有资料支持，只有一个细节在资料中找不到。它们指出的是资料缺口，不是知识错误："
+                       "保留定义，把该细节标为资料外释义即可。",
+        "notes_toggle": "{n} 条来源提示（点击展开）",
+        "notes_count": "其中 {n} 个问题是低风险的来源提示。",
         "page": "第 {} 页",
         "sep": "：",
         "parts": "知识树分成 {n} 个互不相连的部分：",
@@ -159,8 +169,13 @@ def check_risk(entry, default, what, path, report):
                      "Add risk_reason, or use the default.", path)
 
 
+def is_note(entry):
+    """A detail finding: shown as a source note, apart from the other findings."""
+    return entry.get("scope") == "detail"
+
+
 def finalize(audit, tree, evidence, structure):
-    """Add the computed fields. Returns the findings in report order."""
+    """Add the computed fields. Returns (findings, notes, omissions), each in report order."""
     order = {t: i for i, t in enumerate([n["id"] for n in tree["nodes"]] + [e["id"] for e in tree["edges"]])}
 
     def sort_key(entry):
@@ -169,31 +184,34 @@ def finalize(audit, tree, evidence, structure):
 
     items = sorted(audit["items"], key=lambda i: order[i["target"]])
     findings = sorted((i for i in items if i["verdict"] == "finding"), key=sort_key)
+    notes = [f for f in findings if is_note(f)]
+    findings = [f for f in findings if not is_note(f)]
     omissions = sorted(audit["omissions"], key=sort_key)
-    for n, entry in enumerate(findings + omissions, start=1):
+    for n, entry in enumerate(findings + notes + omissions, start=1):
         entry["finding_id"] = f"F-{n:03d}"
     types = {n["id"]: "node" for n in tree["nodes"]}
     for item in items:
         item["target_type"] = types.get(item["target"], "edge")
 
-    risk_counts = Counter(e["risk"] for e in findings + omissions)
+    every = findings + notes + omissions
+    risk_counts = Counter(e["risk"] for e in every)
     audit.clear()
     audit.update({
         "schema_version": "0.1",
         "summary": {
             "nodes": len(tree["nodes"]),
             "edges": len(tree["edges"]),
-            "supported": len(items) - len(findings),
-            "item_findings": len(findings),
+            "supported": len(items) - len(findings) - len(notes),
+            "item_findings": len(findings) + len(notes),
             "omissions": len(omissions),
             "by_risk": {r: risk_counts.get(r, 0) for r in RISKS},
-            "by_category": dict(Counter(e["category"] for e in findings + omissions)),
+            "by_category": dict(Counter(e["category"] for e in every)),
         },
         "structure_warnings": [{"code": w["code"], "message": w["message"]} for w in structure],
         "items": [reorder(i) for i in items],
         "omissions": [reorder(o) for o in omissions],
     })
-    return findings, omissions
+    return findings, notes, omissions
 
 
 def reorder(entry):
@@ -213,7 +231,7 @@ def cell(text):
     return str(text).replace("|", "\\|").replace("\r", " ").replace("\n", " ")
 
 
-def render(audit, findings, omissions, tree, evidence, lang):
+def render(audit, findings, notes, omissions, tree, evidence, lang):
     L = LABELS[lang]
     labels = {n["id"]: n["label"] for n in tree["nodes"]}
     edges = {e["id"]: e for e in tree["edges"]}
@@ -263,12 +281,20 @@ def render(audit, findings, omissions, tree, evidence, lang):
     s = audit["summary"]
     lines = [f"# {L['title']}{L['sep']}{tree['title']}", "", f"## {L['summary']}", "",
              L["counts"].format(total=s["nodes"] + s["edges"], findings=s["item_findings"], **s, **s["by_risk"])]
+    if notes:
+        lines[-1] += L["notes_count"].format(n=len(notes))
+    # Source notes are not errors, so they never make the top three.
     top = (findings + omissions)[:3]
     if top:
         lines += ["", L["top"], ""]
         lines += [f"{n}. {e['finding_id']} {target(e)}{L['sep']}{e['reason']}" for n, e in enumerate(top, start=1)]
 
     lines += ["", f"## {L['findings']}", ""] + table(findings)
+    if notes:
+        # <details> folds the table on GitHub and most Markdown viewers; the blank lines are required.
+        lines += ["", f"## {L['notes']}", "", L["notes_intro"], "", "<details>",
+                  f"<summary>{L['notes_toggle'].format(n=len(notes))}</summary>", ""]
+        lines += table(notes) + ["", "</details>"]
     lines += ["", f"## {L['omissions']}", ""] + table(omissions)
     lines += ["", f"## {L['structure']}", ""]
     for w in audit["structure_warnings"]:
@@ -318,13 +344,13 @@ def main(argv=None):
 
     structure = Report()
     check_structure(tree, structure)
-    findings, omissions = finalize(audit, tree, evidence, structure.warnings)
+    findings, notes, omissions = finalize(audit, tree, evidence, structure.warnings)
     lang = detect_language(evidence) if args.lang == "auto" else args.lang
 
     audit_path = Path(args.audit)
     audit_path.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     report_path = audit_path.with_name("report.md")
-    report_path.write_text(render(audit, findings, omissions, tree, evidence, lang), encoding="utf-8")
+    report_path.write_text(render(audit, findings, notes, omissions, tree, evidence, lang), encoding="utf-8")
     s = audit["summary"]
     print(f"WRITTEN: {audit_path} and {report_path} ({lang}). Supported: {s['supported']}, "
           f"findings: {s['item_findings']}, omissions: {s['omissions']}.")

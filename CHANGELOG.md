@@ -13,6 +13,14 @@
   - **`ambiguous` narrowed** to "never defined or unreadable", and shown as "资料未定义 / 无法核验" / "cannot verify".
   - **Recommendations keep the definition's learning value:** mark the unverified part instead of shrinking the definition.
 - **Second audit on `wiki-ml-zh` (`audit-run-2`)** with the revised rules: 10 of the 13 reviewed findings now match the owner's review, including all 3 false positives (no high-risk finding remains). Of the 3 mismatches, one (集成学习, now supported) is a case the rules don't cover. The other two change category but keep the same low risk. Four items that run 1 supported are now low-risk `detail` findings and are waiting for review.
+- **Owner's review of the 8 items that changed in run 2:** 4 correct, 1 partly correct, 3 wrong. Across the 18 run-2 items judged so far: 14 correct, 1 partly correct, 3 wrong.
+- **Rules revised after that review:**
+  - **An explanation of the term is not a detail:** a part of a definition is a separate claim only if it could be false while the rest is true (过拟合 "过度适应训练数据" is supported).
+  - **A class defined from a single instance** is a `detail` finding (集成学习 from random forest).
+  - **Only the unsupported fragment is the finding;** a non-contradicting word difference becomes optional wording in the recommendation.
+  - **A method introduced in a paragraph about a field supports `uses`,** only under three stated conditions.
+  - **Recommendations add no claims of their own.**
+- **Source notes in the report:** `detail` findings are now listed in a folded "来源提示" / "Source notes" section after the other findings, numbered after them, and left out of the top three. `audit.json` and its summary are unchanged.
 
 ## v0.1.0 (2026-11-03)
 

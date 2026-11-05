@@ -19,7 +19,8 @@ How this test set is meant to be used:
   - Result: 231 evidence items, 82 supported, 16 findings, 25 omissions.
   - All three scripts passed on the first try.
   - Cost: about 159k tokens and 11 minutes.
-  - 10 of the 13 reviewed findings now match the owner's review. Comparison and a short review sheet for the 8 changed items: [audit-run-2/COMPARISON.md](audit-run-2/COMPARISON.md).
+  - 10 of the 13 reviewed findings now match the owner's review. Comparison and the owner's review of the 8 changed items (4 correct, 1 partly correct, 3 wrong): [audit-run-2/COMPARISON.md](audit-run-2/COMPARISON.md). This led to the second rule revision.
+  - The saved `report.md` is as the skill produced it at `89d1e55`. Later versions of `build_report.py` render the same `audit.json` with the `detail` findings in a separate source-notes section and different finding IDs, so the IDs in the review refer to this saved report.
 
 ## What this set adds
 

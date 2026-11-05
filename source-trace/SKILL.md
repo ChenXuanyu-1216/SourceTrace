@@ -122,6 +122,7 @@ Write your judgments to `audit.json`, then let the script check them and produce
 - **`reason`:** why it is a problem, in one or two sentences, quoting the exact words that differ.
 - **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only). For a wrong edge: if the source shows the correct relationship, recommend replacing it and give the new `source`, `relation` and `target`; if not, or if another edge already says it, recommend deleting it. Do not invent a replacement the source does not state.
   - **Keep the definition useful for learning.** For an `ambiguous` or a `detail` finding, do not shrink the definition to something like "资料列出的一种方法" just because that is easier to trace. Recommend keeping it, and marking the unverified part as an explanation from outside the source (资料外释义), or rewording only the detail.
+  - **Add no claims of your own.** A suggested wording may use the tree's words and the source's words, nothing else. For example, do not turn "区分 A 与 B 来分析" into "把误差分为 A、B 两部分", which says the split is complete.
 - **`scope`** (`unsupported-expansion` only): `detail` when one added detail is unsupported; leave it out otherwise.
 - **`tier`** (omissions only): `core` or `supporting`, as defined in `references/audit-rules.md`.
 - **`risk_reason`:** only when the risk differs from the default.
@@ -134,7 +135,7 @@ python scripts/build_report.py --tree <knowledge-tree.json> --index <output>/evi
 ```
 
 - **Errors:** nothing is written. Fix `audit.json` and run again until it succeeds. Do not work around the checks.
-- **Success:** the script rewrites `audit.json` with `summary`, `structure_warnings` and `finding_id`s (F-001, F-002, … in report order), and writes `report.md` next to it. The report language follows the slides; pass `--lang zh` or `--lang en` if the user asks for another.
+- **Success:** the script rewrites `audit.json` with `summary`, `structure_warnings` and `finding_id`s (F-001, F-002, … in report order), and writes `report.md` next to it. Findings with scope `detail` are listed in a folded "来源提示" / "Source notes" section after the other findings, because they mark a source gap, not an error. The report language follows the slides; pass `--lang zh` or `--lang en` if the user asks for another.
 
 Finish by telling the user where the report is, the counts from the summary, and the top problems in a few lines. Do not paste the whole report.
 

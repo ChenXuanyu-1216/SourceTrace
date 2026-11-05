@@ -126,6 +126,14 @@ Two more rules came from the first review on real content (`tests/fixtures/wiki-
 - **Gather all evidence before deciding:** text, tables and figures on every page, combined across pages. A finding of "cannot be checked" is only valid after that.
 - **Contradiction test:** a conceptual error needs a contradiction in meaning. If the tree's statement and the source's can both be true at once, it is not one, however opposite the wording looks (e.g. a Bayesian network represents both dependencies and conditional independencies).
 
+The owner's review of the second run (`tests/fixtures/wiki-ml-zh/audit-run-2/COMPARISON.md`) set the boundaries of the `detail` scope:
+
+- **An explanation of the term is not a detail:** a part of a definition is a separate claim only if it could be false while the rest is true. "过度适应训练数据" for 过拟合 explains the term itself and is supported.
+- **A class defined from one instance is a detail:** a general definition of 集成学习, when the source only explains random forest, is `detail` / low.
+- **Only the unsupported fragment is the finding:** a non-contradicting difference in wording (预测误差 vs 泛化误差) goes into the recommendation as optional wording.
+- **A method introduced in a paragraph about a field supports `uses`:** but only when it is the same paragraph, the field is its subject, and the method's stated purpose is part of what the field does.
+- **Recommendations add no claims** that neither the tree nor the source makes.
+
 Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 
 | Default risk | Categories |
@@ -142,7 +150,7 @@ These rules were set after a consistency check (3 runs on model-eval, `tests/con
 
 | File | Audience | Content |
 |------|----------|---------|
-| `report.md` | People | Summary, findings and omissions (each with ID, category, risk, reason, evidence with page and quote, and a recommended revision), structure warnings, and the confirmed items. |
+| `report.md` | People | Summary, findings, source notes and omissions (each with ID, category, risk, reason, evidence with page and quote, and a recommended revision), structure warnings, and the confirmed items. Source notes are the `detail` findings, in a folded section after the other findings, because they mark a gap in the source rather than an error. |
 | `audit.json` | Tools and tests | A verdict for every node and edge, the omissions, the summary and structure warnings (`source-trace/schemas/audit.schema.json`). |
 
 The agent writes only its judgments (`items` and `omissions`). `source-trace/scripts/build_report.py` does everything that can be computed:
@@ -151,7 +159,7 @@ The agent writes only its judgments (`items` and `omissions`). `source-trace/scr
 |------|--------|
 | Check the audit | Schema; exactly one verdict per node and edge; every evidence ID exists in the index; a supported item has no finding fields; `risk_reason` whenever a risk differs from the default (errors). A rejection that rests only on `low`-certainty evidence (warning). |
 | Complete `audit.json` | Adds `summary`, `structure_warnings` (from the tree) and `finding_id`s F-001, F-002, … in report order. |
-| Generate `report.md` | Sorted by risk, then lowest cited page, then tree order. Quotes come from the evidence index. Chinese or English, detected from the slides or set with `--lang`. |
+| Generate `report.md` | Findings, then source notes, then omissions; each sorted by risk, then lowest cited page, then tree order. Quotes come from the evidence index. Chinese or English, detected from the slides or set with `--lang`. |
 
 On any error nothing is written, and the agent fixes `audit.json` and reruns. Running it again on a finished audit gives the same files.
 

@@ -202,6 +202,36 @@ def test_detail_scope_defaults_to_low_and_is_labelled(run, tmp_path):
     assert "无依据扩展 · 细节 | 低" in text(tmp_path / "report.md")
 
 
+def test_detail_findings_are_folded_into_source_notes(run, tmp_path):
+    def change(audit):
+        as_draft(audit)
+        item(audit, "N013").update(scope="detail", risk="low")
+    build = run(E2E, "model-eval", change_audit=change)
+    build()
+    audit = read_json(tmp_path / "audit.json")
+    report = text(tmp_path / "report.md")
+    findings_part, rest = report.split("## 来源提示", 1)
+    notes_part = rest.split("## 遗漏内容", 1)[0]
+    note_id = item(audit, "N013")["finding_id"]
+    # Listed once, in the folded notes section, not with the other findings or in the top three.
+    assert note_id not in findings_part and f"| {note_id} | N013" in notes_part
+    assert "<details>" in notes_part and "1 条来源提示（点击展开）" in notes_part
+    assert "其中 1 个问题是低风险的来源提示。" in report
+    # Numbered after every other finding and before the omissions.
+    others = [e["finding_id"] for e in audit["items"] if e["verdict"] == "finding" and e["target"] != "N013"]
+    assert all(o < note_id for o in others)
+    assert all(o["finding_id"] > note_id for o in audit["omissions"])
+    # Still counted as a finding.
+    assert audit["summary"]["item_findings"] == read_json(E2E / "audit.json")["summary"]["item_findings"]
+    build("--lang", "en")
+    assert "## Source notes" in text(tmp_path / "report.md")
+
+
+def test_no_source_notes_section_without_detail_findings(run, tmp_path):
+    run(E2E, "model-eval")()
+    assert "来源提示" not in text(tmp_path / "report.md")
+
+
 def test_detail_scope_at_medium_needs_a_reason(run):
     def change(audit):
         as_draft(audit)
