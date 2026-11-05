@@ -14,7 +14,12 @@ How this test set is meant to be used:
   - Result: 221 evidence items, 83 supported, 15 findings, 25 omissions.
   - All three scripts passed on the first try.
   - Cost: about 203k tokens and 14 minutes.
-  - Review by the project owner: [audit-run-1/REVIEW.md](audit-run-1/REVIEW.md) (pending).
+  - Review by the project owner: [audit-run-1/REVIEW.md](audit-run-1/REVIEW.md). Of 13 findings judged, 6 were correct, 4 partly correct and 3 wrong. This led to the rule changes in commit `89d1e55`.
+- **[audit-run-2/](audit-run-2/)** (2026-11-04): skill at commit `89d1e55`, same setup as run 1.
+  - Result: 231 evidence items, 82 supported, 16 findings, 25 omissions.
+  - All three scripts passed on the first try.
+  - Cost: about 159k tokens and 11 minutes.
+  - 10 of the 13 reviewed findings now match the owner's review. Comparison and a short review sheet for the 8 changed items: [audit-run-2/COMPARISON.md](audit-run-2/COMPARISON.md).
 
 ## What this set adds
 

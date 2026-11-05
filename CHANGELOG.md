@@ -12,6 +12,7 @@
   - **New `scope: detail`** for an `unsupported-expansion` limited to one added detail of an otherwise supported definition, with low risk by default. `build_report.py` and the audit schema check it.
   - **`ambiguous` narrowed** to "never defined or unreadable", and shown as "资料未定义 / 无法核验" / "cannot verify".
   - **Recommendations keep the definition's learning value:** mark the unverified part instead of shrinking the definition.
+- **Second audit on `wiki-ml-zh` (`audit-run-2`)** with the revised rules: 10 of the 13 reviewed findings now match the owner's review, including all 3 false positives (no high-risk finding remains). Of the 3 mismatches, one (集成学习, now supported) is a case the rules don't cover. The other two change category but keep the same low risk. Four items that run 1 supported are now low-risk `detail` findings and are waiting for review.
 
 ## v0.1.0 (2026-11-03)
 
