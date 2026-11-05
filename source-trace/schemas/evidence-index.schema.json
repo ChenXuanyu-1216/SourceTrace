@@ -27,7 +27,7 @@
       "properties": {
         "source_id": { "type": "string", "minLength": 1, "description": "The image file name without extension, as assigned by validate_input.py." },
         "page": { "type": "integer", "minimum": 1 },
-        "path": { "type": "string", "minLength": 1, "description": "Path of the image, as given to validate_input.py." }
+        "path": { "type": "string", "minLength": 1, "description": "Path of the image as reported by validate_input.py: relative to the output folder, with forward slashes." }
       }
     }
   }

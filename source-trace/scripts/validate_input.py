@@ -8,6 +8,11 @@ assigns each image its page number.
 Usage:
     python validate_input.py --tree knowledge-tree.json --images images/
     python validate_input.py --tree knowledge-tree.json --images a.png b.jpg --json
+    python validate_input.py ... --out results/   (output folder, if not the default)
+
+Each image's `path` is written relative to the output folder, with forward
+slashes, so evidence-index.json can be moved together with its images. The
+default output folder is `sourcetrace-output/` next to the knowledge tree.
 
 Exit codes: 0 valid (warnings allowed), 1 invalid input, 2 usage error.
 Requires: jsonschema (pip install jsonschema).
@@ -15,6 +20,7 @@ Requires: jsonschema (pip install jsonschema).
 
 import argparse
 import json
+import os
 import re
 import sys
 from collections import Counter
@@ -144,8 +150,19 @@ def natural_key(path):
     return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", path.name)]
 
 
-def collect_images(paths, report):
-    """Expand directories, check every image, and number them as pages in order."""
+def portable_path(f, out):
+    """f relative to the output folder `out`, with forward slashes; absolute if on another drive."""
+    try:
+        return Path(os.path.relpath(f.resolve(), Path(out).resolve())).as_posix()
+    except ValueError:
+        return f.resolve().as_posix()
+
+
+def collect_images(paths, report, out=None):
+    """Expand directories, check every image, and number them as pages in order.
+
+    With `out`, each path is written relative to that output folder (see portable_path).
+    """
     files = []
     for raw in paths:
         p = Path(raw)
@@ -172,7 +189,8 @@ def collect_images(paths, report):
         if not head.startswith(expected):
             report.error("NOT_AN_IMAGE", f"File content is not a real {suffix[1:].upper()} image: {f}")
             continue
-        images.append({"page": len(images) + 1, "source_id": f.stem, "path": str(f)})
+        path = portable_path(f, out) if out is not None else f.as_posix()
+        images.append({"page": len(images) + 1, "source_id": f.stem, "path": path})
 
     for source_id, count in Counter(i["source_id"] for i in images).items():
         if count > 1:
@@ -186,7 +204,10 @@ def main(argv=None):
     parser.add_argument("--tree", required=True, help="AI-generated knowledge tree (JSON)")
     parser.add_argument("--images", required=True, nargs="+", help="source images (PNG/JPG) or directories of them")
     parser.add_argument("--json", action="store_true", help="print the result as JSON")
+    parser.add_argument("--out", help="output folder that image paths are relative to "
+                                      "(default: sourcetrace-output/ next to the tree)")
     args = parser.parse_args(argv)
+    out = Path(args.out) if args.out else Path(args.tree).parent / "sourcetrace-output"
 
     report = Report()
     node_count = edge_count = 0
@@ -195,7 +216,7 @@ def main(argv=None):
         check_schema(tree, report)
         if isinstance(tree, dict):
             node_count, edge_count = check_structure(tree, report)
-    images = collect_images(args.images, report)
+    images = collect_images(args.images, report, out)
 
     result = {
         "valid": not report.errors,

@@ -4,7 +4,7 @@ Stage 2 turns the source images into `evidence-index.json` (schema: `schemas/evi
 
 ## Start from the validator
 
-Run `scripts/validate_input.py --json` first and copy its `summary.images` list into `sources` unchanged, including each `path` exactly as reported (relative to where the script ran, with the platform's separators). It fixes each image's `source_id` and `page`, so pages are numbered the same way every time.
+Run `scripts/validate_input.py --json` first and copy its `summary.images` list into `sources` unchanged, including each `path` exactly as reported (relative to the output folder, with forward slashes, so the index can be moved together with its images). It fixes each image's `source_id` and `page`, so pages are numbered the same way every time.
 
 ## One item per checkable statement
 

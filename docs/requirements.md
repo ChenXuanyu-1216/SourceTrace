@@ -134,6 +134,13 @@ The owner's review of the second run (`tests/fixtures/wiki-ml-zh/audit-run-2/COM
 - **A method introduced in a paragraph about a field supports `uses`:** but only when it is the same paragraph, the field is its subject, and the method's stated purpose is part of what the field does.
 - **Recommendations add no claims** that neither the tree nor the source makes.
 
+The owner's review of the first run on a second article (`tests/fixtures/wiki-dt-zh/audit-run-1/REVIEW.md`) added:
+
+- **A narrower or more cautious claim that the source implies is supported:** this mirrors the qualifier test. Widening a claim is a finding; narrowing it ("在分类时", "某些", "通常") is not.
+- **A different word for a different property is a detail** (多路划分 vs the source's 多层分裂), while a different word for the same thing is not (预测误差 vs 泛化误差).
+- **A node with a compatible definition covers the source's definition:** only the parts the tree lacks, such as a symbol legend, are omissions.
+- **Limitations sections are read sentence by sentence,** because their statements are easy to miss as omissions.
+
 Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 
 | Default risk | Categories |
@@ -159,7 +166,7 @@ The agent writes only its judgments (`items` and `omissions`). `source-trace/scr
 |------|--------|
 | Check the audit | Schema; exactly one verdict per node and edge; every evidence ID exists in the index; a supported item has no finding fields; `risk_reason` whenever a risk differs from the default (errors). A rejection that rests only on `low`-certainty evidence (warning). |
 | Complete `audit.json` | Adds `summary`, `structure_warnings` (from the tree) and `finding_id`s F-001, F-002, … in report order. |
-| Generate `report.md` | Findings, then source notes, then omissions; each sorted by risk, then lowest cited page, then tree order. Quotes come from the evidence index. Chinese or English, detected from the slides or set with `--lang`. |
+| Generate `report.md` | Findings, then source notes, then omissions; each sorted by risk, then lowest cited page, then tree order. The summary counts problems, source notes and omissions (core and supporting) separately, and its top-three list leaves out source notes and low-risk items. Evidence quotes are shown in full. Quotes come from the evidence index. Chinese or English, detected from the slides or set with `--lang`. |
 
 On any error nothing is written, and the agent fixes `audit.json` and reruns. Running it again on a finished audit gives the same files.
 

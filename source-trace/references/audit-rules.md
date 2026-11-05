@@ -8,7 +8,7 @@ Every node and every edge gets exactly one verdict:
 
 | Verdict | When |
 |---------|------|
-| `supported` | The evidence says the same thing. Paraphrase is fine if the meaning, numbers and qualifiers are unchanged. |
+| `supported` | The evidence says the same thing. Paraphrase is fine if the meaning and numbers are unchanged and the qualifiers are unchanged or narrower (see below). |
 | `finding` | Anything else. The finding gets one category from the decision order below. |
 
 A `supported` verdict also cites its evidence IDs. "Looks fine" without evidence is not a verdict.
@@ -16,6 +16,13 @@ A `supported` verdict also cites its evidence IDs. "Looks fine" without evidence
 A definition that only restates or spells out its own label adds no claim to check (e.g. 分类评价指标: "用于评价分类模型性能的指标"). If the label's term is in the source, the node is `supported`; cite where the term appears. Use questions 6 and 7 below only when the definition says something more than the label.
 
 The same holds for a plain-words explanation of what the term itself means, once the source supports the term and its main point. Example: 过拟合 "模型过度适应训练数据的细节而使未见数据上的表现下降" when the source says overfitting lowers generalization. "过度适应训练数据" is what the word overfitting means, not an added mechanism, so the node is `supported`. To tell the two apart, ask: **could this part be false while the rest of the definition is true?** If not, it is an explanation of the term. If it could, it is a separate claim, and question 6 applies (e.g. "有放回" could be false of a sampling method that is otherwise as described).
+
+**A narrower or more cautious claim that the source implies is `supported`.** This is the mirror image of the qualifier test in question 4: widening a claim is a finding, but narrowing it is not, as long as the source's statement already implies the tree's. Examples:
+- a narrower case: 装袋法 "在分类时以投票汇总" when the source says the result is produced by voting;
+- fewer members: "难以被某些决策树方法简洁表达" when the source says decision trees cannot solve the problem well;
+- weaker certainty: 通常, 可能, 缓解 where the source says 避免.
+
+Do not recommend restoring the source's broader wording. Only a *new* condition, mechanism or property that the source does not imply goes to question 6.
 
 Only the label, the definition and the relationship are audited. Node `kind` is a label from the tool that generated the tree, not a knowledge claim: do not report a `kind` that differs from what the slides call the concept.
 
@@ -36,6 +43,7 @@ Then go through these questions in order and stop at the first "yes". Questions 
    - Contradictions in numbers (7:2:1 vs 8:1:1), in negation of the same property (产生 vs 一般不产生 稀疏解), or in which concept a definition belongs to (precision given recall's definition) pass the test and are conceptual errors.
 6. **Is the definition supported except for one specific added detail** (a mechanism, property or condition that could be checked on its own) that no evidence states and nothing contradicts? → **`unsupported-expansion`** with scope **`detail`**. In `reason`, quote the exact added detail and say which part of the definition is supported. Examples: "有放回" in a bootstrap-sampling definition when the source only says "随机抽取的一部分数据"; "较大间隔" for SVM when the source only says it is a supervised method for classification and regression.
    - **Only the unsupported fragment is the finding.** A word that differs from the source's but does not contradict it (预测误差 where the source says 泛化误差) is not part of the finding. If the source's word is more precise, suggest it in `recommendation` as optional wording.
+   - **A different word for a different property is a detail.** Ask whether the two words name the same thing. 预测误差 and 泛化误差 both name the model's error, so the difference is wording. 多路划分 (how many branches one split has) and the source's 多层分裂 (how many levels of splits) name different properties, so the tree's word is an unsupported detail. Contradiction is not needed: if the two cannot both be true, question 5 applies instead.
    - **A class defined from a single instance:** when the source never defines a general class and only explains one member of it, a general definition of the class is a `detail` finding. The generalization from that member is the added detail. Example: 集成学习 "组合多个模型的预测以改善整体表现的方法" when the source only says that random forest, one ensemble method, averages the predictions of many trees. In `reason`, name the instance that supports the core idea.
 7. **Is the term in the source, but nothing in its definition can be checked** after gathering all evidence, because the source only names the term (e.g. in a list, a sidebar or a table header) and never explains it, or because the only relevant evidence has `low` certainty? → **`ambiguous`** (shown in reports as 资料未定义 / 无法核验, "cannot verify").
 
@@ -58,12 +66,16 @@ Go through the evidence index and sort each piece of uncovered content into one 
 | Tier | What | Report? | Risk |
 |------|------|---------|------|
 | **Core** | A topic in a slide title or an agenda/overview slide; a defined term; a stated rule ("X is …", "X should …"); a table row; a relationship shown in a diagram; a slide's main point that the tree only partly covers (e.g. both ends of a trade-off but not the trade-off itself) | always | `medium` |
-| **Supporting detail** | When or why to use a method; a notation or symbol legend (e.g. "TP：真正例 …"); a property or caveat of a concept that is in the tree | always | `low` |
+| **Supporting detail** | When or why to use a method; a notation or symbol legend (e.g. "TP：真正例 …"); a property or caveat of a concept that is in the tree, including a limitation and its remedies from a 缺点 / limitations section (e.g. "贪心算法…只能达到局部最优", or what to do about the 异或 problem) | always | `low` |
 | **Not knowledge** | Examples in parentheses when the concept they illustrate is in the tree; homework, reading lists, course logistics | never | — |
 
 Before reporting, check that the content is not already covered by a finding on an existing node or edge. For example, do not report "test set may only be used once" when the test-set node already has a finding that cites it, or "Supervised includes Regression" when the wrong edge for Regression already has a finding that recommends it.
 
 One omission per missing concept. Group its details into that one entry, and cite every evidence item it rests on.
+
+**A node with a compatible definition already covers the source's definition.** When the tree defines a concept in its own words and the definition is supported, the source's differently worded definition of it is not an omission. Report only the parts the tree really lacks, such as a symbol legend (what pᵢ stands for) or a "not to be confused with" note. Do not recommend adding a source explanation that the source itself leaves incomplete.
+
+Read limitations sections (缺点, limitations, caveats) sentence by sentence. Their statements are easy to read as already covered by a node that names the problem, when the node leaves out the limitation itself.
 
 ## Edge cases
 

@@ -110,3 +110,21 @@ def test_missing_argument_is_a_usage_error():
     with pytest.raises(SystemExit) as exc:
         validate_input.main(["--tree", "x.json"])
     assert exc.value.code == 2
+
+
+# --- image paths: relative to the output folder, so a saved run stays portable ---
+
+def test_image_paths_resolve_from_the_default_output_folder(capsys):
+    _, result = check(ML / "knowledge-tree.json", [ML / "images"], capsys)
+    out = ML / "sourcetrace-output"
+    for img in result["summary"]["images"]:
+        assert "\\" not in img["path"] and not img["path"].startswith("/")
+        assert (out / img["path"]).resolve() == (ML / "images" / f"{img['source_id']}.png").resolve()
+
+
+def test_out_option_sets_the_folder_paths_are_relative_to(tmp_path, capsys):
+    out = tmp_path / "results"
+    _, result = run_json(validate_input.main, ["--tree", str(ML / "knowledge-tree.json"),
+                                               "--images", str(ML / "images"), "--out", str(out)], capsys)
+    first = result["summary"]["images"][0]
+    assert (out / first["path"]).resolve() == (ML / "images" / f"{first['source_id']}.png").resolve()

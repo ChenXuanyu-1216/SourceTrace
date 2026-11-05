@@ -36,7 +36,6 @@ DEFAULT_RISK = {
 DEFAULT_OMISSION_RISK = {"core": "medium", "supporting": "low"}
 # An unsupported-expansion limited to one added detail of an otherwise supported definition.
 DETAIL_RISK = "low"
-QUOTE_CHARS = 60
 
 LABELS = {
     "en": {
@@ -45,7 +44,8 @@ LABELS = {
         "none": "None.", "top": "Most important problems:",
         "cols": ["ID", "Target", "Category", "Risk", "Problem", "Evidence", "Recommendation"],
         "counts": "{supported} of {total} tree items ({nodes} nodes, {edges} edges) are supported. "
-                  "Findings on tree items: {findings}. Omissions: {omissions}. "
+                  "Problems: {findings}. Source notes: {notes}. "
+                  "Omissions: {omissions} ({core} core, {supporting} supporting detail). "
                   "By risk: {high} high, {medium} medium, {low} low.",
         "risk": {"high": "high", "medium": "medium", "low": "low"},
         "category": {c: c for c in list(DEFAULT_RISK) + ["omission"]} | {"ambiguous": "cannot verify"},
@@ -55,7 +55,7 @@ LABELS = {
         "notes_intro": "Definitions the source supports except for one added detail. They mark a gap in the source, "
                        "not an error: keep the definition and mark the detail as coming from outside the source.",
         "notes_toggle": "{n} source notes (click to expand)",
-        "notes_count": " {n} of the findings are low-risk source notes.",
+        "top_omission": "omission ({tier})",
         "page": "p.",
         "sep": ": ",
         "parts": "The tree falls apart into {n} parts that are not linked to each other:",
@@ -66,8 +66,9 @@ LABELS = {
         "structure": "结构问题", "confirmed": "已确认内容", "no_structure": "未发现结构问题。",
         "none": "无。", "top": "最重要的问题：",
         "cols": ["编号", "对象", "类别", "风险", "问题", "证据", "修改建议"],
-        "counts": "知识树共 {total} 项（{nodes} 个节点、{edges} 条边），其中 {supported} 项有证据支持；"
-                  "发现 {findings} 个问题，另有 {omissions} 处遗漏。按风险：高 {high}，中 {medium}，低 {low}。",
+        "counts": "知识树共 {total} 项（{nodes} 个节点、{edges} 条边），其中 {supported} 项有证据支持。"
+                  "问题 {findings} 个，来源提示 {notes} 条，遗漏 {omissions} 处（核心 {core}、补充 {supporting}）。"
+                  "按风险：高 {high}，中 {medium}，低 {low}。",
         "risk": {"high": "高", "medium": "中", "low": "低"},
         "category": {
             "conceptual-error": "概念错误", "incorrect-relationship": "关系错误",
@@ -80,7 +81,7 @@ LABELS = {
         "notes_intro": "这些定义基本有资料支持，只有一个细节在资料中找不到。它们指出的是资料缺口，不是知识错误："
                        "保留定义，把该细节标为资料外释义即可。",
         "notes_toggle": "{n} 条来源提示（点击展开）",
-        "notes_count": "其中 {n} 个问题是低风险的来源提示。",
+        "top_omission": "遗漏（{tier}）",
         "page": "第 {} 页",
         "sep": "：",
         "parts": "知识树分成 {n} 个互不相连的部分：",
@@ -252,8 +253,7 @@ def render(audit, findings, notes, omissions, tree, evidence, lang):
         parts = []
         for e in ids:
             content = evidence[e]["content"]
-            short = content if len(content) <= QUOTE_CHARS else content[:QUOTE_CHARS] + "…"
-            parts.append(f"{e} {page(evidence[e]['page'])} “{short}”")
+            parts.append(f"{e} {page(evidence[e]['page'])} “{content}”")
         return "<br>".join(cell(p) for p in parts)
 
     def risk(entry):
@@ -279,15 +279,17 @@ def render(audit, findings, notes, omissions, tree, evidence, lang):
         return rows
 
     s = audit["summary"]
+    tiers = Counter(o["tier"] for o in omissions)
     lines = [f"# {L['title']}{L['sep']}{tree['title']}", "", f"## {L['summary']}", "",
-             L["counts"].format(total=s["nodes"] + s["edges"], findings=s["item_findings"], **s, **s["by_risk"])]
-    if notes:
-        lines[-1] += L["notes_count"].format(n=len(notes))
-    # Source notes are not errors, so they never make the top three.
-    top = (findings + omissions)[:3]
+             L["counts"].format(total=s["nodes"] + s["edges"], findings=len(findings), notes=len(notes),
+                                core=tiers["core"], supporting=tiers["supporting"], **s, **s["by_risk"])]
+    # The headline is for problems worth acting on first: never source notes or low-risk items.
+    top = [e for e in findings + omissions if e["risk"] != "low"][:3]
     if top:
+        def name(e):
+            return target(e) if e.get("target") else L["top_omission"].format(tier=L["tier"][e["tier"]])
         lines += ["", L["top"], ""]
-        lines += [f"{n}. {e['finding_id']} {target(e)}{L['sep']}{e['reason']}" for n, e in enumerate(top, start=1)]
+        lines += [f"{n}. {e['finding_id']} {name(e)}{L['sep']}{e['reason']}" for n, e in enumerate(top, start=1)]
 
     lines += ["", f"## {L['findings']}", ""] + table(findings)
     if notes:

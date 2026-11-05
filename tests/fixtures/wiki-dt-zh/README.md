@@ -14,7 +14,8 @@ It checks whether the rules revised on [wiki-ml-zh](../wiki-ml-zh/) were tuned o
   - Result: 98 evidence items, 77 supported, 4 findings (all low-risk source notes), 7 omissions.
   - All three scripts passed on the first try.
   - Cost: about 139k tokens and 9 minutes.
-  - Review by the project owner: [audit-run-1/REVIEW.md](audit-run-1/REVIEW.md) (pending).
+  - Review by the project owner: [audit-run-1/REVIEW.md](audit-run-1/REVIEW.md). Of 11 findings, 8 were correct, 1 partly correct and 2 wrong. 2 low-risk omissions were missed, and all 77 supported items were upheld. This led to the third rule revision.
+  - The saved files are as the skill produced them at `1956d56`. The image paths in its `evidence-index.json` are relative to the agent's working folder, and later versions of `build_report.py` render the summary differently.
 
 ## What this set adds
 

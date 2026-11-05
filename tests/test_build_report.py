@@ -216,7 +216,7 @@ def test_detail_findings_are_folded_into_source_notes(run, tmp_path):
     # Listed once, in the folded notes section, not with the other findings or in the top three.
     assert note_id not in findings_part and f"| {note_id} | N013" in notes_part
     assert "<details>" in notes_part and "1 条来源提示（点击展开）" in notes_part
-    assert "其中 1 个问题是低风险的来源提示。" in report
+    assert "问题 10 个，来源提示 1 条，遗漏 4 处（核心 2、补充 2）" in report
     # Numbered after every other finding and before the omissions.
     others = [e["finding_id"] for e in audit["items"] if e["verdict"] == "finding" and e["target"] != "N013"]
     assert all(o < note_id for o in others)
@@ -229,7 +229,36 @@ def test_detail_findings_are_folded_into_source_notes(run, tmp_path):
 
 def test_no_source_notes_section_without_detail_findings(run, tmp_path):
     run(E2E, "model-eval")()
-    assert "来源提示" not in text(tmp_path / "report.md")
+    report = text(tmp_path / "report.md")
+    assert "## 来源提示" not in report and "来源提示 0 条" in report
+
+
+def test_quotes_are_never_cut(run, tmp_path):
+    run(E2E, "model-eval")()
+    report = text(tmp_path / "report.md")
+    index = read_json(E2E / "evidence-index.json")["evidence"]
+    longest = max(index, key=lambda e: len(e["content"]))
+    assert len(longest["content"]) > 60 and build_report.cell(longest["content"]) in report
+
+
+def test_top_list_names_omissions_and_skips_low_risk(run, tmp_path):
+    def only_omissions(audit):
+        as_draft(audit)
+        for entry in audit["items"]:
+            if entry["verdict"] == "finding":
+                for k in ("category", "scope", "risk", "risk_reason", "reason", "recommendation"):
+                    entry.pop(k, None)
+                entry["verdict"] = "supported"
+    run(E2E, "model-eval", change_audit=only_omissions)()
+    audit = read_json(tmp_path / "audit.json")
+    report = text(tmp_path / "report.md")
+    top = report.split("最重要的问题：", 1)[1].split("## ", 1)[0]
+    core = [o["finding_id"] for o in audit["omissions"] if o["tier"] == "core"]
+    supporting = [o["finding_id"] for o in audit["omissions"] if o["tier"] == "supporting"]
+    assert core and supporting
+    assert all(f"{f} 遗漏（核心内容）：" in top for f in core)
+    assert not any(f in top for f in supporting)
+    assert " —：" not in report
 
 
 def test_detail_scope_at_medium_needs_a_reason(run):

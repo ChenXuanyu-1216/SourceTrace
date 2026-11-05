@@ -41,7 +41,7 @@ python scripts/validate_input.py --tree <knowledge-tree.json> --images <image fo
 
 - **Errors** (`"valid": false`): stop, show the user the errors in plain words, and ask them to fix the input. Do not audit an invalid tree.
 - **Warnings** (e.g. `DISCONNECTED_TREE`, `ISOLATED_NODE`, `DUPLICATE_EDGE`): continue. `build_report.py` puts them in the report's Structure section.
-- `summary.images` gives each image its `source_id` and `page`. Use exactly these in stage 2.
+- `summary.images` gives each image its `source_id`, `page` and `path`. Use exactly these in stage 2. The paths are relative to the default output folder; if you write the outputs somewhere else, pass that folder with `--out`.
 
 Then look at every image and note its title, text, tables and diagrams.
 

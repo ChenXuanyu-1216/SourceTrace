@@ -20,7 +20,18 @@
   - **Only the unsupported fragment is the finding;** a non-contradicting word difference becomes optional wording in the recommendation.
   - **A method introduced in a paragraph about a field supports `uses`,** only under three stated conditions.
   - **Recommendations add no claims of their own.**
-- **Second real-content test set `tests/fixtures/wiki-dt-zh`:** 6 screenshots of the Chinese Wikipedia article 决策树学习 (revision 93550494), under CC BY-SA 4.0 in its own folder, to check that the revised rules were not tuned to one article. It adds formulas and a worked calculation with exact numbers. The article titled 决策树 was not used, because it carries a suspected copy-paste template. The knowledge tree comes from OpenAI Codex, saved unedited. The first audit (`audit-run-1`) supports 77 of 81 items, gives 4 low-risk source notes and 7 omissions, and is waiting for the owner's review.
+- **Second real-content test set `tests/fixtures/wiki-dt-zh`:** 6 screenshots of the Chinese Wikipedia article 决策树学习 (revision 93550494), under CC BY-SA 4.0 in its own folder, to check that the revised rules were not tuned to one article. It adds formulas and a worked calculation with exact numbers. The article titled 决策树 was not used, because it carries a suspected copy-paste template. The knowledge tree comes from OpenAI Codex, saved unedited. The first audit (`audit-run-1`) supports 77 of 81 items, gives 4 low-risk source notes and 7 omissions.
+- **Owner's review of that audit:** of 11 findings, 8 correct, 1 partly correct and 2 wrong; 2 low-risk omissions missed; all 77 supported items upheld.
+- **Rules revised after that review:**
+  - **A narrower or more cautious claim that the source implies is supported,** the mirror image of the qualifier test (装袋法 "在分类时", "某些决策树方法", 通常, 缓解).
+  - **A different word for a different property is a detail** (多路划分 vs 多层分裂); a different word for the same thing is not.
+  - **A node with a compatible definition covers the source's definition;** only missing parts such as a symbol legend are omissions.
+  - **Limitations sections are read sentence by sentence,** with a 缺点 example in the supporting-detail tier.
+- **Report fixes:**
+  - Evidence quotes are shown in full; a 60-character cut had hidden the key word of a finding.
+  - The summary counts problems, source notes and omissions (core and supporting) separately.
+  - The top-three list names omissions ("遗漏（核心内容）") instead of showing "—", and leaves out low-risk items.
+- **Portable image paths:** `validate_input.py` writes each image path relative to the output folder, with forward slashes (new `--out` option for a non-default folder). A saved run next to its `images/` folder now resolves. This removes a known limitation of v0.1.0.
 - **Source notes in the report:** `detail` findings are now listed in a folded "来源提示" / "Source notes" section after the other findings, numbered after them, and left out of the top three. `audit.json` and its summary are unchanged.
 
 ## v0.1.0 (2026-11-03)
