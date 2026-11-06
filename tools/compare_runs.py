@@ -68,6 +68,8 @@ for name, run in runs.items():
         found.append(ok)
         if not ok:
             print(f"  {name} MISS {f['target']}: expected {f['category']}, got {got.get('verdict')}/{got.get('category')}")
+        elif f.get("scope") and got.get("scope", "whole") != f["scope"]:
+            print(f"  {name} SCOPE {f['target']}: expected {f['scope']}, got {got.get('scope', 'whole')}")
         elif got.get("risk") != f.get("risk", got.get("risk")) and not got.get("risk_reason"):
             print(f"  {name} RISK {f['target']}: expected {f['risk']}, got {got.get('risk')} without risk_reason")
     fp = [c for c in key["correct_items"] if items.get(c, {}).get("verdict") != "supported"]

@@ -21,7 +21,7 @@ import build_report  # noqa: E402
 import validate_evidence  # noqa: E402
 import validate_input  # noqa: E402
 
-FIXTURE_NAMES = ["ml-basics", "model-eval"]
+FIXTURE_NAMES = ["ml-basics", "model-eval", "sl-algos-zh"]
 
 
 def read_json(path):

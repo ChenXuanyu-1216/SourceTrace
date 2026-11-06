@@ -1,0 +1,1625 @@
+{
+  "schema_version": "0.1",
+  "sources": [
+    {
+      "source_id": "slide-01",
+      "page": 1,
+      "path": "../images/slide-01.png"
+    },
+    {
+      "source_id": "slide-02",
+      "page": 2,
+      "path": "../images/slide-02.png"
+    },
+    {
+      "source_id": "slide-03",
+      "page": 3,
+      "path": "../images/slide-03.png"
+    },
+    {
+      "source_id": "slide-04",
+      "page": 4,
+      "path": "../images/slide-04.png"
+    },
+    {
+      "source_id": "slide-05",
+      "page": 5,
+      "path": "../images/slide-05.png"
+    },
+    {
+      "source_id": "slide-06",
+      "page": 6,
+      "path": "../images/slide-06.png"
+    },
+    {
+      "source_id": "slide-07",
+      "page": 7,
+      "path": "../images/slide-07.png"
+    },
+    {
+      "source_id": "slide-08",
+      "page": 8,
+      "path": "../images/slide-08.png"
+    },
+    {
+      "source_id": "slide-09",
+      "page": 9,
+      "path": "../images/slide-09.png"
+    },
+    {
+      "source_id": "slide-10",
+      "page": 10,
+      "path": "../images/slide-10.png"
+    },
+    {
+      "source_id": "slide-11",
+      "page": 11,
+      "path": "../images/slide-11.png"
+    },
+    {
+      "source_id": "slide-12",
+      "page": 12,
+      "path": "../images/slide-12.png"
+    },
+    {
+      "source_id": "slide-13",
+      "page": 13,
+      "path": "../images/slide-13.png"
+    },
+    {
+      "source_id": "slide-14",
+      "page": 14,
+      "path": "../images/slide-14.png"
+    },
+    {
+      "source_id": "slide-15",
+      "page": 15,
+      "path": "../images/slide-15.png"
+    },
+    {
+      "source_id": "slide-16",
+      "page": 16,
+      "path": "../images/slide-16.png"
+    },
+    {
+      "source_id": "slide-17",
+      "page": 17,
+      "path": "../images/slide-17.png"
+    },
+    {
+      "source_id": "slide-18",
+      "page": 18,
+      "path": "../images/slide-18.png"
+    },
+    {
+      "source_id": "slide-19",
+      "page": 19,
+      "path": "../images/slide-19.png"
+    },
+    {
+      "source_id": "slide-20",
+      "page": 20,
+      "path": "../images/slide-20.png"
+    },
+    {
+      "source_id": "slide-21",
+      "page": 21,
+      "path": "../images/slide-21.png"
+    },
+    {
+      "source_id": "slide-22",
+      "page": 22,
+      "path": "../images/slide-22.png"
+    },
+    {
+      "source_id": "slide-23",
+      "page": 23,
+      "path": "../images/slide-23.png"
+    },
+    {
+      "source_id": "slide-24",
+      "page": 24,
+      "path": "../images/slide-24.png"
+    },
+    {
+      "source_id": "slide-25",
+      "page": 25,
+      "path": "../images/slide-25.png"
+    },
+    {
+      "source_id": "slide-26",
+      "page": 26,
+      "path": "../images/slide-26.png"
+    },
+    {
+      "source_id": "slide-27",
+      "page": 27,
+      "path": "../images/slide-27.png"
+    },
+    {
+      "source_id": "slide-28",
+      "page": 28,
+      "path": "../images/slide-28.png"
+    },
+    {
+      "source_id": "slide-29",
+      "page": 29,
+      "path": "../images/slide-29.png"
+    },
+    {
+      "source_id": "slide-30",
+      "page": 30,
+      "path": "../images/slide-30.png"
+    },
+    {
+      "source_id": "slide-31",
+      "page": 31,
+      "path": "../images/slide-31.png"
+    },
+    {
+      "source_id": "slide-32",
+      "page": 32,
+      "path": "../images/slide-32.png"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "source_id": "slide-01",
+      "page": 1,
+      "type": "text",
+      "content": "监督学习常用算法：课程概览",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-002",
+      "source_id": "slide-01",
+      "page": 1,
+      "type": "text",
+      "content": "本讲介绍监督学习中最常用的几类算法。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-003",
+      "source_id": "slide-01",
+      "page": 1,
+      "type": "text",
+      "content": "算法：线性回归、逻辑回归、k 近邻、朴素贝叶斯、决策树、支持向量机、集成学习、神经网络。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-004",
+      "source_id": "slide-01",
+      "page": 1,
+      "type": "text",
+      "content": "其他内容：正则化、特征预处理、评估指标、模型选择。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-005",
+      "source_id": "slide-01",
+      "page": 1,
+      "type": "text",
+      "content": "主讲：示例教师 课程：机器学习导论（第 6 讲）",
+      "location": "Footer line",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-006",
+      "source_id": "slide-02",
+      "page": 2,
+      "type": "text",
+      "content": "监督学习的基本概念",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-007",
+      "source_id": "slide-02",
+      "page": 2,
+      "type": "text",
+      "content": "监督学习：从带标签的训练数据中学习从输入到输出的映射。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-008",
+      "source_id": "slide-02",
+      "page": 2,
+      "type": "text",
+      "content": "每个训练样本由特征（输入）和标签（输出）组成。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-009",
+      "source_id": "slide-02",
+      "page": 2,
+      "type": "text",
+      "content": "分类（Classification）：输出为离散的类别，例如判断邮件是否为垃圾邮件。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-010",
+      "source_id": "slide-02",
+      "page": 2,
+      "type": "text",
+      "content": "回归（Regression）：输出为连续的数值，例如预测房价。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-011",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "text",
+      "content": "本讲算法一览",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-012",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "graphic",
+      "content": "Diagram: 监督学习算法 → 回归",
+      "location": "Diagram, top box to left box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-013",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "graphic",
+      "content": "Diagram: 监督学习算法 → 分类",
+      "location": "Diagram, top box to middle box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-014",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "graphic",
+      "content": "Diagram: 监督学习算法 → 分类与回归均可",
+      "location": "Diagram, top box to right box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-015",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "graphic",
+      "content": "Diagram: 回归 → 线性回归",
+      "location": "Diagram, list under left box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-016",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "graphic",
+      "content": "Diagram: 分类 → 逻辑回归、朴素贝叶斯、支持向量机",
+      "location": "Diagram, list under middle box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-017",
+      "source_id": "slide-03",
+      "page": 3,
+      "type": "graphic",
+      "content": "Diagram: 分类与回归均可 → k 近邻、决策树、集成学习、神经网络",
+      "location": "Diagram, list under right box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-018",
+      "source_id": "slide-04",
+      "page": 4,
+      "type": "text",
+      "content": "线性回归",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-019",
+      "source_id": "slide-04",
+      "page": 4,
+      "type": "text",
+      "content": "线性回归假设输出与特征之间呈线性关系：ŷ = w·x + b。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-020",
+      "source_id": "slide-04",
+      "page": 4,
+      "type": "text",
+      "content": "它是最基本的回归方法。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-021",
+      "source_id": "slide-04",
+      "page": 4,
+      "type": "text",
+      "content": "最小二乘法：通过最小化预测值与真实值之差的平方和来求解参数 w 和 b。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-022",
+      "source_id": "slide-05",
+      "page": 5,
+      "type": "text",
+      "content": "线性回归的求解",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-023",
+      "source_id": "slide-05",
+      "page": 5,
+      "type": "text",
+      "content": "正规方程：直接求出参数的闭式解，要求 X^T·X 可逆。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-024",
+      "source_id": "slide-05",
+      "page": 5,
+      "type": "text",
+      "content": "梯度下降：沿损失函数的负梯度方向迭代更新参数。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-025",
+      "source_id": "slide-05",
+      "page": 5,
+      "type": "text",
+      "content": "学习率决定每次更新的步长。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-026",
+      "source_id": "slide-06",
+      "page": 6,
+      "type": "text",
+      "content": "梯度下降的三种形式",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-027",
+      "source_id": "slide-06",
+      "page": 6,
+      "type": "table",
+      "content": "形式: 批量梯度下降 | 每次更新使用的样本: 全部训练样本 | 特点: 稳定，但每次计算量大",
+      "location": "Table row 1 (批量梯度下降)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-028",
+      "source_id": "slide-06",
+      "page": 6,
+      "type": "table",
+      "content": "形式: 随机梯度下降 | 每次更新使用的样本: 1 个样本 | 特点: 速度快，但波动大",
+      "location": "Table row 2 (随机梯度下降)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-029",
+      "source_id": "slide-06",
+      "page": 6,
+      "type": "table",
+      "content": "形式: 小批量梯度下降 | 每次更新使用的样本: 一小批样本（如 32 个） | 特点: 两者的折中，最常用",
+      "location": "Table row 3 (小批量梯度下降)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-030",
+      "source_id": "slide-07",
+      "page": 7,
+      "type": "text",
+      "content": "逻辑回归",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-031",
+      "source_id": "slide-07",
+      "page": 7,
+      "type": "text",
+      "content": "尽管名字中有“回归”，逻辑回归是一种用于二分类的方法。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-032",
+      "source_id": "slide-07",
+      "page": 7,
+      "type": "text",
+      "content": "Sigmoid 函数 σ(z) = 1 / (1 + e^(−z)) 将任意实数映射到 (0, 1) 区间，输出可解释为样本属于正类的概率。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-033",
+      "source_id": "slide-07",
+      "page": 7,
+      "type": "text",
+      "content": "逻辑回归的决策边界是线性的。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-034",
+      "source_id": "slide-07",
+      "page": 7,
+      "type": "text",
+      "content": "训练时使用交叉熵损失函数。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-035",
+      "source_id": "slide-08",
+      "page": 8,
+      "type": "text",
+      "content": "多分类问题",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-036",
+      "source_id": "slide-08",
+      "page": 8,
+      "type": "text",
+      "content": "逻辑回归本身只能处理二分类，可以通过两种方式扩展到多分类：",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-037",
+      "source_id": "slide-08",
+      "page": 8,
+      "type": "text",
+      "content": "一对其余（One-vs-Rest）：为每个类别训练一个二分类器，将该类与其余类别区分。",
+      "location": "Bullet 1, sub-bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-038",
+      "source_id": "slide-08",
+      "page": 8,
+      "type": "text",
+      "content": "Softmax 回归：逻辑回归在多分类问题上的直接推广，输出每个类别的概率。",
+      "location": "Bullet 1, sub-bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-039",
+      "source_id": "slide-09",
+      "page": 9,
+      "type": "text",
+      "content": "k 近邻（kNN）",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-040",
+      "source_id": "slide-09",
+      "page": 9,
+      "type": "text",
+      "content": "预测时，找出与新样本距离最近的 k 个训练样本：",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-041",
+      "source_id": "slide-09",
+      "page": 9,
+      "type": "text",
+      "content": "分类：k 个邻居多数投票",
+      "location": "Bullet 1, sub-bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-042",
+      "source_id": "slide-09",
+      "page": 9,
+      "type": "text",
+      "content": "回归：取 k 个邻居标签的平均值",
+      "location": "Bullet 1, sub-bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-043",
+      "source_id": "slide-09",
+      "page": 9,
+      "type": "text",
+      "content": "kNN 是一种惰性学习方法：训练阶段仅存储训练样本，不构建显式模型，计算主要发生在预测阶段。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-044",
+      "source_id": "slide-10",
+      "page": 10,
+      "type": "text",
+      "content": "kNN 的关键问题",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-045",
+      "source_id": "slide-10",
+      "page": 10,
+      "type": "text",
+      "content": "k 值较小：模型对噪声敏感，容易过拟合；k 值较大：决策边界过于平滑，容易欠拟合。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-046",
+      "source_id": "slide-10",
+      "page": 10,
+      "type": "text",
+      "content": "常用的距离度量：欧氏距离、曼哈顿距离。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-047",
+      "source_id": "slide-10",
+      "page": 10,
+      "type": "text",
+      "content": "特征的尺度会影响距离计算，使用 kNN 前通常需要对特征进行缩放。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-048",
+      "source_id": "slide-11",
+      "page": 11,
+      "type": "text",
+      "content": "朴素贝叶斯",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-049",
+      "source_id": "slide-11",
+      "page": 11,
+      "type": "text",
+      "content": "基于贝叶斯定理：P(y | x) = P(x | y) · P(y) / P(x)，由先验概率和似然计算后验概率。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-050",
+      "source_id": "slide-11",
+      "page": 11,
+      "type": "text",
+      "content": "“朴素”指的是条件独立假设：给定类别时，各特征之间相互独立。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-051",
+      "source_id": "slide-11",
+      "page": 11,
+      "type": "text",
+      "content": "实际数据中这一假设往往不成立，但朴素贝叶斯在文本分类等任务中通常仍能取得不错的效果。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-052",
+      "source_id": "slide-11",
+      "page": 11,
+      "type": "text",
+      "content": "例：根据邮件中出现的词语判断是否为垃圾邮件。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-053",
+      "source_id": "slide-12",
+      "page": 12,
+      "type": "text",
+      "content": "朴素贝叶斯的三种变体",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-054",
+      "source_id": "slide-12",
+      "page": 12,
+      "type": "table",
+      "content": "变体: 高斯朴素贝叶斯 | 适用的特征: 连续特征（假设服从正态分布） | 典型场景: 数值型数据",
+      "location": "Table row 1 (高斯朴素贝叶斯)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-055",
+      "source_id": "slide-12",
+      "page": 12,
+      "type": "table",
+      "content": "变体: 多项式朴素贝叶斯 | 适用的特征: 计数特征（如词频） | 典型场景: 文本分类",
+      "location": "Table row 2 (多项式朴素贝叶斯)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-056",
+      "source_id": "slide-12",
+      "page": 12,
+      "type": "table",
+      "content": "变体: 伯努利朴素贝叶斯 | 适用的特征: 二值特征（出现 / 未出现） | 典型场景: 短文本分类",
+      "location": "Table row 3 (伯努利朴素贝叶斯)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-057",
+      "source_id": "slide-12",
+      "page": 12,
+      "type": "text",
+      "content": "拉普拉斯平滑：在计数上加 1，避免训练中未出现的特征使整个概率为 0。",
+      "location": "Note below table",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-058",
+      "source_id": "slide-13",
+      "page": 13,
+      "type": "text",
+      "content": "决策树",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-059",
+      "source_id": "slide-13",
+      "page": 13,
+      "type": "text",
+      "content": "以树形结构进行决策：内部节点对某个特征进行测试，分支对应测试结果，叶节点给出预测结果。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-060",
+      "source_id": "slide-13",
+      "page": 13,
+      "type": "text",
+      "content": "既可用于分类，也可用于回归。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-061",
+      "source_id": "slide-13",
+      "page": 13,
+      "type": "table",
+      "content": "算法: ID3 | 划分准则: 信息增益 | 说明: 只能处理离散特征",
+      "location": "Table row 1 (ID3)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-062",
+      "source_id": "slide-13",
+      "page": 13,
+      "type": "table",
+      "content": "算法: C4.5 | 划分准则: 信息增益率 | 说明: ID3 的改进，可处理连续特征",
+      "location": "Table row 2 (C4.5)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-063",
+      "source_id": "slide-13",
+      "page": 13,
+      "type": "table",
+      "content": "算法: CART | 划分准则: 基尼指数 | 说明: 生成二叉树，可用于分类和回归",
+      "location": "Table row 3 (CART)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-064",
+      "source_id": "slide-14",
+      "page": 14,
+      "type": "text",
+      "content": "决策树的剪枝",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-065",
+      "source_id": "slide-14",
+      "page": 14,
+      "type": "text",
+      "content": "决策树容易过拟合。剪枝通过减小树的规模来降低过拟合。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-066",
+      "source_id": "slide-14",
+      "page": 14,
+      "type": "table",
+      "content": "方法: 预剪枝 | 做法: 在树的生长过程中提前停止划分 | 特点: 训练开销小，但可能欠拟合",
+      "location": "Table row 1 (预剪枝)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-067",
+      "source_id": "slide-14",
+      "page": 14,
+      "type": "table",
+      "content": "方法: 后剪枝 | 做法: 先生成完整的树，再自底向上剪去分支 | 特点: 泛化性能通常更好，但训练开销大",
+      "location": "Table row 2 (后剪枝)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-068",
+      "source_id": "slide-15",
+      "page": 15,
+      "type": "text",
+      "content": "支持向量机（SVM）",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-069",
+      "source_id": "slide-15",
+      "page": 15,
+      "type": "text",
+      "content": "寻找能将两类样本分开、且间隔最大的超平面。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-070",
+      "source_id": "slide-15",
+      "page": 15,
+      "type": "text",
+      "content": "支持向量：距离超平面最近的样本点；超平面的位置仅由支持向量决定。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-071",
+      "source_id": "slide-15",
+      "page": 15,
+      "type": "text",
+      "content": "软间隔：允许部分样本违反间隔约束，以处理含噪声或线性不可分的数据。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-072",
+      "source_id": "slide-15",
+      "page": 15,
+      "type": "text",
+      "content": "惩罚参数 C：C 越大，对误分类的惩罚越大，间隔越窄；C 越小，间隔越宽，允许更多误分类。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-073",
+      "source_id": "slide-16",
+      "page": 16,
+      "type": "text",
+      "content": "核方法",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-074",
+      "source_id": "slide-16",
+      "page": 16,
+      "type": "text",
+      "content": "核函数隐式地将样本映射到高维空间，使原本线性不可分的数据在高维空间中线性可分，而无需显式计算映射。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-075",
+      "source_id": "slide-16",
+      "page": 16,
+      "type": "table",
+      "content": "核函数: 线性核 | 表达式: K(x, z) = x·z | 适用情况: 数据近似线性可分",
+      "location": "Table row 1 (线性核)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-076",
+      "source_id": "slide-16",
+      "page": 16,
+      "type": "table",
+      "content": "核函数: 多项式核 | 表达式: K(x, z) = (x·z + c)^d | 适用情况: 特征间存在多项式关系",
+      "location": "Table row 2 (多项式核)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-077",
+      "source_id": "slide-16",
+      "page": 16,
+      "type": "table",
+      "content": "核函数: RBF（高斯）核 | 表达式: K(x, z) = exp(−γ||x − z||²) | 适用情况: 最常用，适用于大多数非线性问题",
+      "location": "Table row 3 (RBF（高斯）核)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-078",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "text",
+      "content": "集成学习",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-079",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "text",
+      "content": "集成学习组合多个基学习器，以获得比单个学习器更好的泛化性能。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-080",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "graphic",
+      "content": "Diagram: 集成学习 → Bagging",
+      "location": "Diagram, top box to left box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-081",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "graphic",
+      "content": "Diagram: 集成学习 → Boosting",
+      "location": "Diagram, top box to middle box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-082",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "graphic",
+      "content": "Diagram: 集成学习 → Stacking",
+      "location": "Diagram, top box to right box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-083",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "graphic",
+      "content": "Diagram: Bagging — 并行训练",
+      "location": "Diagram, caption under left box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-084",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "graphic",
+      "content": "Diagram: Boosting — 串行训练",
+      "location": "Diagram, caption under middle box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-085",
+      "source_id": "slide-17",
+      "page": 17,
+      "type": "graphic",
+      "content": "Diagram: Stacking — 用元学习器组合多个不同基学习器的预测结果",
+      "location": "Diagram, caption under right box",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-086",
+      "source_id": "slide-18",
+      "page": 18,
+      "type": "text",
+      "content": "Bagging 与随机森林",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-087",
+      "source_id": "slide-18",
+      "page": 18,
+      "type": "text",
+      "content": "Bagging：通过自助采样（有放回地随机抽样）得到多个训练集，并行训练多个基学习器，分类时投票、回归时取平均。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-088",
+      "source_id": "slide-18",
+      "page": 18,
+      "type": "text",
+      "content": "Bagging 主要降低模型的方差。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-089",
+      "source_id": "slide-18",
+      "page": 18,
+      "type": "text",
+      "content": "随机森林：以决策树为基学习器的 Bagging 扩展，在每次划分节点时随机选择一部分特征作为候选。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-090",
+      "source_id": "slide-19",
+      "page": 19,
+      "type": "text",
+      "content": "Boosting",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-091",
+      "source_id": "slide-19",
+      "page": 19,
+      "type": "text",
+      "content": "Boosting：串行训练基学习器，每个新的学习器重点关注前面学习器预测错误的样本。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-092",
+      "source_id": "slide-19",
+      "page": 19,
+      "type": "text",
+      "content": "Boosting 主要降低模型的偏差。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-093",
+      "source_id": "slide-19",
+      "page": 19,
+      "type": "text",
+      "content": "AdaBoost：每一轮提高被错误分类样本的权重，最终按各学习器的准确程度加权组合。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-094",
+      "source_id": "slide-20",
+      "page": 20,
+      "type": "text",
+      "content": "梯度提升树（GBDT）",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-095",
+      "source_id": "slide-20",
+      "page": 20,
+      "type": "text",
+      "content": "GBDT 是一种以决策树为基学习器的 Boosting 方法。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-096",
+      "source_id": "slide-20",
+      "page": 20,
+      "type": "text",
+      "content": "每棵新树拟合当前模型损失函数的负梯度；使用平方损失时，负梯度就是残差。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-097",
+      "source_id": "slide-20",
+      "page": 20,
+      "type": "text",
+      "content": "XGBoost 是 GBDT 的高效实现，在目标函数中加入了正则项，并利用二阶导数信息。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-098",
+      "source_id": "slide-21",
+      "page": 21,
+      "type": "text",
+      "content": "Bagging 与 Boosting 对比",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-099",
+      "source_id": "slide-21",
+      "page": 21,
+      "type": "table",
+      "content": "对比项: 训练方式 | Bagging: 并行 | Boosting: 串行",
+      "location": "Table row 1 (训练方式)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-100",
+      "source_id": "slide-21",
+      "page": 21,
+      "type": "table",
+      "content": "对比项: 样本权重 | Bagging: 相同 | Boosting: 根据上一轮结果调整",
+      "location": "Table row 2 (样本权重)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-101",
+      "source_id": "slide-21",
+      "page": 21,
+      "type": "table",
+      "content": "对比项: 主要降低 | Bagging: 方差 | Boosting: 偏差",
+      "location": "Table row 3 (主要降低)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-102",
+      "source_id": "slide-21",
+      "page": 21,
+      "type": "table",
+      "content": "对比项: 代表算法 | Bagging: 随机森林 | Boosting: AdaBoost、GBDT",
+      "location": "Table row 4 (代表算法)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-103",
+      "source_id": "slide-22",
+      "page": 22,
+      "type": "text",
+      "content": "神经网络",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-104",
+      "source_id": "slide-22",
+      "page": 22,
+      "type": "graphic",
+      "content": "Diagram: 输入层 → 隐藏层",
+      "location": "Diagram, top row, left arrow",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-105",
+      "source_id": "slide-22",
+      "page": 22,
+      "type": "graphic",
+      "content": "Diagram: 隐藏层 → 输出层",
+      "location": "Diagram, top row, right arrow",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-106",
+      "source_id": "slide-22",
+      "page": 22,
+      "type": "text",
+      "content": "多层感知机由输入层、一个或多个隐藏层和输出层组成，层与层之间全连接。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-107",
+      "source_id": "slide-22",
+      "page": 22,
+      "type": "text",
+      "content": "激活函数为网络引入非线性；没有激活函数时，多层网络等价于一个线性模型。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-108",
+      "source_id": "slide-22",
+      "page": 22,
+      "type": "text",
+      "content": "反向传播：利用链式法则，从输出层向输入层逐层计算损失对各参数的梯度，再用梯度下降更新参数。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-109",
+      "source_id": "slide-23",
+      "page": 23,
+      "type": "text",
+      "content": "常用激活函数",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-110",
+      "source_id": "slide-23",
+      "page": 23,
+      "type": "table",
+      "content": "函数: Sigmoid | 表达式: 1 / (1 + e^(−x)) | 输出范围: (0, 1) | 特点: 两端饱和，容易导致梯度消失",
+      "location": "Table row 1 (Sigmoid)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-111",
+      "source_id": "slide-23",
+      "page": 23,
+      "type": "table",
+      "content": "函数: Tanh | 表达式: (e^x − e^(−x)) / (e^x + e^(−x)) | 输出范围: (−1, 1) | 特点: 以 0 为中心，仍有梯度消失问题",
+      "location": "Table row 2 (Tanh)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-112",
+      "source_id": "slide-23",
+      "page": 23,
+      "type": "table",
+      "content": "函数: ReLU | 表达式: max(0, x) | 输出范围: [0, +∞) | 特点: 计算简单，可缓解梯度消失",
+      "location": "Table row 3 (ReLU)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-113",
+      "source_id": "slide-23",
+      "page": 23,
+      "type": "text",
+      "content": "梯度消失：反向传播时梯度逐层变小，使靠近输入的层难以训练。",
+      "location": "Note below table, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-114",
+      "source_id": "slide-23",
+      "page": 23,
+      "type": "text",
+      "content": "此外还有 GELU 等变体。",
+      "location": "Note below table, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-115",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "过拟合、偏差与方差",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-116",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "过拟合：模型在训练数据上表现很好，但在新数据上表现较差。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-117",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "欠拟合：模型在训练数据和新数据上的表现都较差。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-118",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "偏差：模型预测的期望与真实值之间的差距，反映模型的拟合能力。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-119",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "方差：训练集变化时，模型预测的波动程度。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-120",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "高偏差通常对应欠拟合，",
+      "location": "Bullet 5, first clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-121",
+      "source_id": "slide-24",
+      "page": 24,
+      "type": "text",
+      "content": "高方差通常对应过拟合。",
+      "location": "Bullet 5, second clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-122",
+      "source_id": "slide-25",
+      "page": 25,
+      "type": "text",
+      "content": "正则化",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-123",
+      "source_id": "slide-25",
+      "page": 25,
+      "type": "text",
+      "content": "正则化在损失函数中加入惩罚项，以降低过拟合：",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-124",
+      "source_id": "slide-25",
+      "page": 25,
+      "type": "text",
+      "content": "L1 正则化：惩罚权重绝对值之和，倾向于产生稀疏解。",
+      "location": "Bullet 1, sub-bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-125",
+      "source_id": "slide-25",
+      "page": 25,
+      "type": "text",
+      "content": "L2 正则化：惩罚权重平方和，使权重整体变小。",
+      "location": "Bullet 1, sub-bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-126",
+      "source_id": "slide-25",
+      "page": 25,
+      "type": "text",
+      "content": "Dropout：神经网络训练时随机丢弃一部分神经元，也是一种常用的正则化方法。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-127",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "特征预处理",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-128",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "特征缩放：使不同特征处于相近的数值范围。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-129",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "标准化：将特征变换为均值 0、标准差 1。",
+      "location": "Bullet 1, sub-bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-130",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "归一化：将特征缩放到 [0, 1] 区间。",
+      "location": "Bullet 1, sub-bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-131",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "特征缩放对 kNN、SVM 等基于距离的算法尤其重要；",
+      "location": "Bullet 2, first clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-132",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "决策树按特征阈值划分，不需要特征缩放。",
+      "location": "Bullet 2, second clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-133",
+      "source_id": "slide-26",
+      "page": 26,
+      "type": "text",
+      "content": "独热编码：将类别特征转换为 0/1 向量，每个类别对应一维。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-134",
+      "source_id": "slide-27",
+      "page": 27,
+      "type": "text",
+      "content": "回归任务的评估指标",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-135",
+      "source_id": "slide-27",
+      "page": 27,
+      "type": "table",
+      "content": "指标: 均方误差（MSE） | 公式: (1/n) Σ (y_i − ŷ_i)² | 说明: 对较大误差的惩罚更重",
+      "location": "Table row 1 (均方误差（MSE）)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-136",
+      "source_id": "slide-27",
+      "page": 27,
+      "type": "table",
+      "content": "指标: 平均绝对误差（MAE） | 公式: (1/n) Σ |y_i − ŷ_i| | 说明: 对异常值更稳健",
+      "location": "Table row 2 (平均绝对误差（MAE）)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-137",
+      "source_id": "slide-27",
+      "page": 27,
+      "type": "table",
+      "content": "指标: 决定系数（R²） | 公式: 1 − SS_res / SS_tot | 说明: 越接近 1，拟合越好",
+      "location": "Table row 3 (决定系数（R²）)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-138",
+      "source_id": "slide-28",
+      "page": 28,
+      "type": "text",
+      "content": "分类任务的评估指标",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-139",
+      "source_id": "slide-28",
+      "page": 28,
+      "type": "text",
+      "content": "混淆矩阵：按真实类别和预测类别统计样本数量，得到 TP、FP、FN、TN。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-140",
+      "source_id": "slide-28",
+      "page": 28,
+      "type": "text",
+      "content": "精确率 = TP / (TP + FP)：预测为正的样本中真正为正的比例。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-141",
+      "source_id": "slide-28",
+      "page": 28,
+      "type": "text",
+      "content": "召回率 = TP / (TP + FN)：真正为正的样本中被预测为正的比例。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-142",
+      "source_id": "slide-28",
+      "page": 28,
+      "type": "text",
+      "content": "ROC 曲线以假正例率为横轴、真正例率为纵轴；曲线下面积 AUC 越大，模型越好。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-143",
+      "source_id": "slide-29",
+      "page": 29,
+      "type": "text",
+      "content": "模型选择",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-144",
+      "source_id": "slide-29",
+      "page": 29,
+      "type": "text",
+      "content": "在监督学习中，常用交叉验证评估模型的泛化性能：将数据分成 k 份，轮流用 1 份验证、其余 k − 1 份训练，取平均结果。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-145",
+      "source_id": "slide-29",
+      "page": 29,
+      "type": "text",
+      "content": "网格搜索：穷举给定的超参数组合，用交叉验证评估每一组，选出表现最好的组合。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-146",
+      "source_id": "slide-29",
+      "page": 29,
+      "type": "text",
+      "content": "超参数较多时，也可以使用随机搜索代替网格搜索。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-147",
+      "source_id": "slide-30",
+      "page": 30,
+      "type": "text",
+      "content": "常见误区",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-148",
+      "source_id": "slide-30",
+      "page": 30,
+      "type": "text",
+      "content": "数据泄漏：在划分训练集和测试集之前，用全部数据计算标准化的均值和标准差，会让测试集的信息泄漏到训练过程中。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-149",
+      "source_id": "slide-30",
+      "page": 30,
+      "type": "text",
+      "content": "kNN 在预测阶段计算量大，不适合对预测速度要求高的场景。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-150",
+      "source_id": "slide-30",
+      "page": 30,
+      "type": "text",
+      "content": "决策树不需要特征缩放：对特征做标准化不会改变决策树的划分结果。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-151",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "本讲小结",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-152",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "线性模型：线性回归用于回归，逻辑回归用于分类。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-153",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "kNN 不构建显式模型；",
+      "location": "Bullet 2, first clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-154",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "朴素贝叶斯依赖条件独立假设。",
+      "location": "Bullet 2, second clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-155",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "随机森林通过随机选择特征来降低树之间的相关性；",
+      "location": "Bullet 3, first clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-156",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "GBDT 逐步拟合残差。",
+      "location": "Bullet 3, second clause",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-157",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "支持向量机在高维、小样本的数据上通常表现良好。",
+      "location": "Bullet 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-158",
+      "source_id": "slide-31",
+      "page": 31,
+      "type": "text",
+      "content": "没有一种算法在所有问题上都是最优的，需要根据数据和任务选择。",
+      "location": "Bullet 5",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-159",
+      "source_id": "slide-32",
+      "page": 32,
+      "type": "text",
+      "content": "补充说明与课后作业",
+      "location": "Title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-160",
+      "source_id": "slide-32",
+      "page": 32,
+      "type": "text",
+      "content": "补充：kNN 用于二分类时，k 通常取奇数，以避免投票时出现平票。",
+      "location": "Bullet 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-161",
+      "source_id": "slide-32",
+      "page": 32,
+      "type": "text",
+      "content": "课后作业：在同一数据集上比较随机森林与 GBDT 的效果，并记录训练时间。",
+      "location": "Bullet 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-162",
+      "source_id": "slide-32",
+      "page": 32,
+      "type": "text",
+      "content": "参考资料：李航《统计学习方法》；周志华《机器学习》。",
+      "location": "Bullet 3",
+      "certainty": "high"
+    }
+  ]
+}

@@ -1,0 +1,1773 @@
+{
+  "schema_version": "0.1",
+  "summary": {
+    "nodes": 78,
+    "edges": 91,
+    "supported": 141,
+    "item_findings": 28,
+    "omissions": 11,
+    "by_risk": {
+      "high": 12,
+      "medium": 19,
+      "low": 8
+    },
+    "by_category": {
+      "conceptual-error": 9,
+      "incorrect-relationship": 3,
+      "unsupported-expansion": 11,
+      "overgeneralization": 4,
+      "ambiguous": 1,
+      "omission": 11
+    }
+  },
+  "structure_warnings": [],
+  "items": [
+    {
+      "target": "N001",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-007",
+        "EV-008"
+      ]
+    },
+    {
+      "target": "N002",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-009"
+      ]
+    },
+    {
+      "target": "N003",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-010"
+      ]
+    },
+    {
+      "target": "N004",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-024",
+        "EV-025"
+      ]
+    },
+    {
+      "target": "N005",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-026"
+      ]
+    },
+    {
+      "target": "N006",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-027",
+        "EV-028"
+      ]
+    },
+    {
+      "target": "N007",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-029",
+        "EV-030"
+      ]
+    },
+    {
+      "target": "N008",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-032"
+      ]
+    },
+    {
+      "target": "N009",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-033"
+      ]
+    },
+    {
+      "target": "N010",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-034"
+      ]
+    },
+    {
+      "target": "N011",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-036",
+        "EV-038",
+        "EV-039"
+      ]
+    },
+    {
+      "finding_id": "F-001",
+      "target": "N012",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-037",
+        "EV-117"
+      ],
+      "reason": "定义说 Sigmoid 将任意实数映射到“(−1, 1) 区间”，而资料两处都写的是“(0, 1)”（第 7 页“将任意实数映射到 (0, 1) 区间”，第 23 页输出范围“(0, 1)”）；(−1, 1) 是资料中 Tanh 的输出范围。公式 σ(z) = 1 / (1 + e^(−z)) 正确。",
+      "recommendation": "把“(−1, 1) 区间”改为“(0, 1) 区间”，其余保持不变：“σ(z) = 1 / (1 + e^(−z))，将任意实数映射到 (0, 1) 区间”。"
+    },
+    {
+      "target": "N013",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-040"
+      ]
+    },
+    {
+      "target": "N014",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-044"
+      ]
+    },
+    {
+      "target": "N015",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-046",
+        "EV-047",
+        "EV-048"
+      ]
+    },
+    {
+      "finding_id": "F-002",
+      "target": "N016",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-049",
+        "EV-156"
+      ],
+      "reason": "定义说惰性学习“训练阶段需要大量计算来构建显式模型，因此预测阶段速度很快”，与资料正好相反：第 9 页写“训练阶段仅存储训练样本，不构建显式模型，计算主要发生在预测阶段”，第 30 页写“kNN 在预测阶段计算量大，不适合对预测速度要求高的场景”。",
+      "recommendation": "改为资料的说法：“训练阶段仅存储训练样本，不构建显式模型，计算主要发生在预测阶段”。"
+    },
+    {
+      "finding_id": "F-003",
+      "target": "N017",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-051",
+        "EV-168"
+      ],
+      "reason": "“用于二分类时 k 通常取偶数”与资料相反：第 32 页写“kNN 用于二分类时，k 通常取奇数，以避免投票时出现平票”。前半句“k 过小时对噪声敏感、容易过拟合，k 过大时容易欠拟合”与第 10 页一致。",
+      "recommendation": "把“k 通常取偶数”改为“k 通常取奇数（以避免投票时出现平票）”，前半句保持不变。"
+    },
+    {
+      "target": "N018",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052"
+      ]
+    },
+    {
+      "finding_id": "F-015",
+      "target": "N019",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "overgeneralization",
+      "risk": "medium",
+      "evidence": [
+        "EV-055",
+        "EV-056",
+        "EV-057"
+      ],
+      "reason": "“即使独立性假设不成立，也总能取得很好的效果”把资料的说法绝对化了：第 11 页写的是“实际数据中这一假设往往不成立，但朴素贝叶斯在文本分类等任务中通常仍能取得不错的效果”。去掉“总能”并恢复“在文本分类等任务中”这一限定后即与资料一致。前半句“基于贝叶斯定理和条件独立假设的分类方法”有依据。",
+      "recommendation": "改为：“基于贝叶斯定理和条件独立假设的分类方法；即使独立性假设往往不成立，在文本分类等任务中通常仍能取得不错的效果”。"
+    },
+    {
+      "target": "N020",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-055"
+      ]
+    },
+    {
+      "target": "N021",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-056"
+      ]
+    },
+    {
+      "target": "N022",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-060"
+      ]
+    },
+    {
+      "target": "N023",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-061"
+      ]
+    },
+    {
+      "target": "N024",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-062"
+      ]
+    },
+    {
+      "target": "N025",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-065",
+        "EV-066"
+      ]
+    },
+    {
+      "target": "N026",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067"
+      ]
+    },
+    {
+      "finding_id": "F-004",
+      "target": "N027",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-068",
+        "EV-069"
+      ],
+      "reason": "定义说 C4.5“以基尼指数作为划分准则”，但第 13 页表格中 C4.5 的划分准则是“信息增益率”，“基尼指数”是 CART 的划分准则。后半句“是 ID3 的改进，可处理连续特征”与资料一致。",
+      "recommendation": "把“以基尼指数作为划分准则”改为“以信息增益率作为划分准则”，其余保持不变。"
+    },
+    {
+      "target": "N028",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-069"
+      ]
+    },
+    {
+      "target": "N029",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-072"
+      ]
+    },
+    {
+      "target": "N030",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-073"
+      ]
+    },
+    {
+      "target": "N031",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-073",
+        "EV-074"
+      ]
+    },
+    {
+      "finding_id": "F-016",
+      "target": "N032",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "overgeneralization",
+      "risk": "medium",
+      "evidence": [
+        "EV-076",
+        "EV-165"
+      ],
+      "reason": "“在高维、小样本数据上总是表现最好”把资料的说法绝对化了：第 31 页写的是“支持向量机在高维、小样本的数据上通常表现良好”。去掉“总是……最好”后即与资料一致。前半句“寻找能将两类样本分开且间隔最大的超平面”与第 15 页一致。",
+      "recommendation": "把后半句改为资料的说法：“在高维、小样本的数据上通常表现良好”。"
+    },
+    {
+      "target": "N033",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-077"
+      ]
+    },
+    {
+      "target": "N034",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-078"
+      ]
+    },
+    {
+      "finding_id": "F-005",
+      "target": "N035",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-079"
+      ],
+      "reason": "定义说“C 越大，对误分类的惩罚越小，间隔越宽”，方向与资料完全相反：第 15 页写“C 越大，对误分类的惩罚越大，间隔越窄；C 越小，间隔越宽，允许更多误分类”。",
+      "recommendation": "改为资料的说法：“C 越大，对误分类的惩罚越大，间隔越窄；C 越小，间隔越宽，允许更多误分类”。"
+    },
+    {
+      "target": "N036",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-081"
+      ]
+    },
+    {
+      "target": "N037",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-082"
+      ]
+    },
+    {
+      "target": "N038",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-083"
+      ]
+    },
+    {
+      "finding_id": "F-018",
+      "target": "N039",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "overgeneralization",
+      "risk": "medium",
+      "evidence": [
+        "EV-084"
+      ],
+      "reason": "“适用于任何非线性问题”把资料的说法扩大了：第 16 页表格写的是“最常用，适用于大多数非线性问题”。去掉“任何”这一扩大后即与资料一致；别名“高斯核”、公式和“最常用”均有依据。",
+      "recommendation": "把“适用于任何非线性问题”改为“适用于大多数非线性问题”，其余保持不变。"
+    },
+    {
+      "target": "N040",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-086"
+      ]
+    },
+    {
+      "target": "N041",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-094",
+        "EV-095"
+      ]
+    },
+    {
+      "finding_id": "F-006",
+      "target": "N042",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-094"
+      ],
+      "reason": "定义说自助采样是“无放回地随机抽取样本”，而第 18 页写的是“自助采样（有放回地随机抽样）”，二者相反。",
+      "recommendation": "把“无放回地”改为“有放回地”：“从训练集中有放回地随机抽取样本，构成新的训练集”。"
+    },
+    {
+      "target": "N043",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-096",
+        "EV-163"
+      ]
+    },
+    {
+      "finding_id": "F-008",
+      "target": "N044",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-098",
+        "EV-099",
+        "EV-108"
+      ],
+      "reason": "定义说 Boosting“主要降低方差”，而资料写的是“Boosting 主要降低模型的偏差”（第 19 页），第 21 页对比表也写 Boosting 主要降低“偏差”、Bagging 主要降低“方差”。前半句“串行训练基学习器，每个新学习器重点关注前面学习器预测错误的样本”与第 19 页一致。",
+      "recommendation": "把“主要降低方差”改为“主要降低偏差”，其余保持不变。"
+    },
+    {
+      "finding_id": "F-025",
+      "target": "N045",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-100"
+      ],
+      "reason": "“由 Freund 和 Schapire 于 1995 年提出”在资料中找不到。“每一轮提高被错误分类样本的权重，最终按各学习器的准确程度加权组合”与第 19 页一致。",
+      "recommendation": "保留定义的主体；把“由 Freund 和 Schapire 于 1995 年提出”标注为资料外补充，或删去这一句。"
+    },
+    {
+      "target": "N046",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-102",
+        "EV-103"
+      ]
+    },
+    {
+      "finding_id": "F-026",
+      "target": "N047",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-104"
+      ],
+      "reason": "“还支持 GPU 加速训练”在资料中找不到。“GBDT 的高效实现，在目标函数中加入正则项并利用二阶导数信息”与第 20 页一致。",
+      "recommendation": "保留定义的主体；把“还支持 GPU 加速训练”标注为资料外补充，或删去这一句。"
+    },
+    {
+      "finding_id": "F-027",
+      "target": "N048",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-110",
+        "EV-111",
+        "EV-112",
+        "EV-113"
+      ],
+      "reason": "资料没有给出神经网络的一般定义，第 22 页（标题“神经网络”）只说明了“多层感知机由输入层、一个或多个隐藏层和输出层组成，层与层之间全连接”。定义把多层感知机的结构（尤其是“层与层之间全连接”）推广为所有神经网络的结构，这一推广没有依据；层的组成本身有依据。",
+      "recommendation": "保留定义，但注明这是资料中多层感知机的结构，例如把定义写成“（资料以多层感知机为例）由输入层、一个或多个隐藏层和输出层组成，层与层之间全连接”。"
+    },
+    {
+      "target": "N049",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-115"
+      ]
+    },
+    {
+      "target": "N050",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-114"
+      ]
+    },
+    {
+      "target": "N051",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-118"
+      ]
+    },
+    {
+      "target": "N052",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-119"
+      ]
+    },
+    {
+      "target": "N053",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-120"
+      ]
+    },
+    {
+      "finding_id": "F-024",
+      "target": "N054",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "ambiguous",
+      "risk": "low",
+      "evidence": [
+        "EV-116",
+        "EV-121"
+      ],
+      "reason": "资料只在第 23 页提到“此外还有 GELU 等变体”，即 GELU 是一种激活函数，但没有解释它；“基于高斯分布累积分布函数的平滑激活函数”无法根据资料核验。",
+      "recommendation": "保留定义，并把“基于高斯分布累积分布函数的平滑”标注为资料外释义。"
+    },
+    {
+      "finding_id": "F-020",
+      "target": "N055",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-110",
+        "EV-113"
+      ],
+      "reason": "资料中没有出现“Transformer”或“自注意力”。资料讲神经网络时只介绍了多层感知机（第 22 页）。",
+      "recommendation": "删除该节点，或保留并标注为资料外补充。"
+    },
+    {
+      "target": "N056",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-123"
+      ]
+    },
+    {
+      "target": "N057",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-124"
+      ]
+    },
+    {
+      "target": "N058",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-125"
+      ]
+    },
+    {
+      "target": "N059",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-126"
+      ]
+    },
+    {
+      "target": "N060",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-130"
+      ]
+    },
+    {
+      "target": "N061",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-131"
+      ]
+    },
+    {
+      "target": "N062",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-132"
+      ]
+    },
+    {
+      "finding_id": "F-022",
+      "target": "N063",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-130",
+        "EV-131"
+      ],
+      "reason": "资料中没有出现“LASSO 回归”。资料只在第 25 页介绍了 L1 正则化本身（“惩罚权重绝对值之和，倾向于产生稀疏解”），没有把它和某种回归方法联系起来。",
+      "recommendation": "删除该节点，或保留并标注为资料外补充。"
+    },
+    {
+      "target": "N064",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-133"
+      ]
+    },
+    {
+      "finding_id": "F-014",
+      "target": "N065",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "overgeneralization",
+      "risk": "medium",
+      "evidence": [
+        "EV-135",
+        "EV-053",
+        "EV-138",
+        "EV-139",
+        "EV-157"
+      ],
+      "reason": "“所有机器学习算法在训练前都必须进行特征缩放”把资料的说法绝对化了，且与资料直接矛盾：第 26 页写“特征缩放对 kNN、SVM 等基于距离的算法尤其重要；决策树按特征阈值划分，不需要特征缩放”，第 30 页“常见误区”也写“决策树不需要特征缩放”。去掉“所有……都必须”后，“（kNN 等算法）训练前需要进行特征缩放”有依据（第 10 页）。前半句“使不同特征处于相近的数值范围”与第 26 页一致。",
+      "recommendation": "把后半句改为资料的说法：“对 kNN、SVM 等基于距离的算法尤其重要；决策树按特征阈值划分，不需要特征缩放”。"
+    },
+    {
+      "finding_id": "F-010",
+      "target": "N066",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-136",
+        "EV-137"
+      ],
+      "reason": "定义把标准化写成“将特征缩放到 [0, 1] 区间”，这是资料中归一化的定义；第 26 页写的是“标准化：将特征变换为均值 0、标准差 1”。标准化与归一化的定义被对调了。",
+      "recommendation": "改为：“将特征变换为均值 0、标准差 1”（与 N067 对调）。"
+    },
+    {
+      "finding_id": "F-011",
+      "target": "N067",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-136",
+        "EV-137"
+      ],
+      "reason": "定义把归一化写成“将特征变换为均值 0、标准差 1”，这是资料中标准化的定义；第 26 页写的是“归一化：将特征缩放到 [0, 1] 区间”。标准化与归一化的定义被对调了。",
+      "recommendation": "改为：“将特征缩放到 [0, 1] 区间”（与 N066 对调）。"
+    },
+    {
+      "target": "N068",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-140"
+      ]
+    },
+    {
+      "target": "N069",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-134",
+        "EV-135",
+        "EV-140"
+      ]
+    },
+    {
+      "target": "N070",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-142"
+      ]
+    },
+    {
+      "target": "N071",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-143"
+      ]
+    },
+    {
+      "target": "N072",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-144"
+      ]
+    },
+    {
+      "target": "N073",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-146"
+      ]
+    },
+    {
+      "target": "N074",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-147"
+      ]
+    },
+    {
+      "target": "N075",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-148"
+      ]
+    },
+    {
+      "target": "N076",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-151"
+      ]
+    },
+    {
+      "finding_id": "F-028",
+      "target": "N077",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-152",
+        "EV-153"
+      ],
+      "reason": "“计算量随超参数个数呈指数增长”在资料中找不到；资料只在第 29 页说“超参数较多时，也可以使用随机搜索代替网格搜索”，没有说明计算量如何增长。“穷举给定的超参数组合，用交叉验证评估每一组并选出最好的组合”与第 29 页一致。",
+      "recommendation": "保留定义的主体；把“计算量随超参数个数呈指数增长”标注为资料外补充，或改用资料的说法“超参数较多时，也可以使用随机搜索代替网格搜索”。"
+    },
+    {
+      "target": "N078",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-152",
+        "EV-153"
+      ]
+    },
+    {
+      "target": "E001",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-006",
+        "EV-009",
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E002",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-006",
+        "EV-010",
+        "EV-012"
+      ]
+    },
+    {
+      "target": "E003",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-015"
+      ]
+    },
+    {
+      "target": "E004",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-016"
+      ]
+    },
+    {
+      "target": "E005",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-019"
+      ]
+    },
+    {
+      "target": "E006",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-017"
+      ]
+    },
+    {
+      "target": "E007",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-020"
+      ]
+    },
+    {
+      "target": "E008",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-018"
+      ]
+    },
+    {
+      "target": "E009",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-021"
+      ]
+    },
+    {
+      "target": "E010",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-003",
+        "EV-022"
+      ]
+    },
+    {
+      "target": "E011",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-015",
+        "EV-025",
+        "EV-159"
+      ]
+    },
+    {
+      "target": "E012",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-016",
+        "EV-036",
+        "EV-160"
+      ]
+    },
+    {
+      "target": "E013",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-023",
+        "EV-026"
+      ]
+    },
+    {
+      "target": "E014",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-027",
+        "EV-028"
+      ]
+    },
+    {
+      "target": "E015",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-027",
+        "EV-029"
+      ]
+    },
+    {
+      "target": "E016",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-032"
+      ]
+    },
+    {
+      "target": "E017",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-033"
+      ]
+    },
+    {
+      "target": "E018",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-034"
+      ]
+    },
+    {
+      "target": "E019",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-035",
+        "EV-037",
+        "EV-038"
+      ]
+    },
+    {
+      "target": "E020",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-040"
+      ]
+    },
+    {
+      "target": "E021",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-044"
+      ]
+    },
+    {
+      "target": "E022",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-049"
+      ]
+    },
+    {
+      "target": "E023",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-051"
+      ]
+    },
+    {
+      "target": "E024",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052"
+      ]
+    },
+    {
+      "finding_id": "F-013",
+      "target": "E025",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-046",
+        "EV-052",
+        "EV-081"
+      ],
+      "reason": "资料中没有任何地方说 k 近邻使用核函数：kNN 部分（第 9–10 页）讲的是按距离找最近的 k 个样本和“常用的距离度量：欧氏距离、曼哈顿距离”，核函数只出现在第 16 页“核方法”中，且与 kNN 无关。",
+      "recommendation": "删除这条边。"
+    },
+    {
+      "target": "E026",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-053",
+        "EV-138"
+      ]
+    },
+    {
+      "target": "E027",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E028",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-056",
+        "EV-162"
+      ]
+    },
+    {
+      "target": "E029",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-059",
+        "EV-060"
+      ]
+    },
+    {
+      "target": "E030",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-059",
+        "EV-061"
+      ]
+    },
+    {
+      "target": "E031",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-059",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "E032",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-067"
+      ]
+    },
+    {
+      "target": "E033",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-068"
+      ]
+    },
+    {
+      "target": "E034",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-069"
+      ]
+    },
+    {
+      "target": "E035",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-070",
+        "EV-072"
+      ]
+    },
+    {
+      "target": "E036",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-070",
+        "EV-073"
+      ]
+    },
+    {
+      "target": "E037",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-070",
+        "EV-074"
+      ]
+    },
+    {
+      "target": "E038",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-073",
+        "EV-074"
+      ]
+    },
+    {
+      "target": "E039",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-072"
+      ]
+    },
+    {
+      "finding_id": "F-012",
+      "target": "E040",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "incorrect-relationship",
+      "risk": "high",
+      "evidence": [
+        "EV-139",
+        "EV-157"
+      ],
+      "reason": "“决策树 depends-on 特征缩放”与资料相反：第 26 页写“决策树按特征阈值划分，不需要特征缩放”，第 30 页“常见误区”再次强调“决策树不需要特征缩放：对特征做标准化不会改变决策树的划分结果”。",
+      "recommendation": "删除这条边。"
+    },
+    {
+      "target": "E041",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-077"
+      ]
+    },
+    {
+      "target": "E042",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-075",
+        "EV-078"
+      ]
+    },
+    {
+      "target": "E043",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-078",
+        "EV-079"
+      ]
+    },
+    {
+      "finding_id": "F-017",
+      "target": "E044",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-075",
+        "EV-081"
+      ],
+      "reason": "资料没有写明支持向量机使用核函数：第 16 页“核方法”紧接在第 15 页 SVM 之后，但通篇只说“核函数隐式地将样本映射到高维空间……”，没有提到 SVM；第 15 页也没有提到核函数。两页相邻不足以支持这条关系。",
+      "recommendation": "删除这条边，或保留并标注为资料外补充。"
+    },
+    {
+      "target": "E045",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080",
+        "EV-082"
+      ]
+    },
+    {
+      "target": "E046",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080",
+        "EV-083"
+      ]
+    },
+    {
+      "target": "E047",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080",
+        "EV-084"
+      ]
+    },
+    {
+      "target": "E048",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-086",
+        "EV-087"
+      ]
+    },
+    {
+      "target": "E049",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-086",
+        "EV-088"
+      ]
+    },
+    {
+      "target": "E050",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-094"
+      ]
+    },
+    {
+      "finding_id": "F-007",
+      "target": "E051",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "incorrect-relationship",
+      "risk": "high",
+      "evidence": [
+        "EV-096",
+        "EV-109"
+      ],
+      "reason": "“随机森林 is-a Boosting”与资料相反：第 18 页写随机森林是“以决策树为基学习器的 Bagging 扩展”，第 21 页对比表中 Bagging 的代表算法是“随机森林”，Boosting 的代表算法是“AdaBoost、GBDT”。",
+      "recommendation": "把这条边替换为：source N043（随机森林），relation is-a，target N041（Bagging）。"
+    },
+    {
+      "target": "E052",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-096"
+      ]
+    },
+    {
+      "target": "E053",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-100",
+        "EV-109"
+      ]
+    },
+    {
+      "target": "E054",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-102",
+        "EV-109"
+      ]
+    },
+    {
+      "target": "E055",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-102"
+      ]
+    },
+    {
+      "target": "E056",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-104"
+      ]
+    },
+    {
+      "target": "E057",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-105",
+        "EV-106",
+        "EV-107",
+        "EV-108"
+      ]
+    },
+    {
+      "target": "E058",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-095",
+        "EV-108"
+      ]
+    },
+    {
+      "target": "E059",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-099",
+        "EV-108"
+      ]
+    },
+    {
+      "target": "E060",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-110",
+        "EV-115"
+      ]
+    },
+    {
+      "target": "E061",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-114"
+      ]
+    },
+    {
+      "target": "E062",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-115"
+      ]
+    },
+    {
+      "target": "E063",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-116",
+        "EV-117"
+      ]
+    },
+    {
+      "target": "E064",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-116",
+        "EV-118"
+      ]
+    },
+    {
+      "target": "E065",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-116",
+        "EV-119"
+      ]
+    },
+    {
+      "target": "E066",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-116",
+        "EV-121"
+      ]
+    },
+    {
+      "target": "E067",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-117"
+      ]
+    },
+    {
+      "finding_id": "F-009",
+      "target": "E068",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "incorrect-relationship",
+      "risk": "high",
+      "evidence": [
+        "EV-119"
+      ],
+      "reason": "“ReLU causes 梯度消失”与资料相反：第 23 页表格写 ReLU 的特点是“计算简单，可缓解梯度消失”；导致梯度消失的是 Sigmoid（“两端饱和，容易导致梯度消失”）。",
+      "recommendation": "删除这条边（关系类型中没有“缓解”；N052 的定义已写明“可缓解梯度消失”）。"
+    },
+    {
+      "finding_id": "F-021",
+      "target": "E069",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-110",
+        "EV-113"
+      ],
+      "reason": "终点节点“Transformer”在资料中不存在；资料讲神经网络时只介绍了多层感知机（第 22 页）。",
+      "recommendation": "随 N055 一并删除这条边，或保留并标注为资料外补充。"
+    },
+    {
+      "target": "E070",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-128"
+      ]
+    },
+    {
+      "target": "E071",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-127"
+      ]
+    },
+    {
+      "target": "E072",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-130"
+      ]
+    },
+    {
+      "target": "E073",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-130",
+        "EV-131"
+      ]
+    },
+    {
+      "target": "E074",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-130",
+        "EV-132"
+      ]
+    },
+    {
+      "target": "E075",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-133"
+      ]
+    },
+    {
+      "target": "E076",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-133"
+      ]
+    },
+    {
+      "finding_id": "F-019",
+      "target": "E077",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-133",
+        "EV-086"
+      ],
+      "reason": "资料没有把 Dropout 和集成学习联系起来：第 25 页只说 Dropout“也是一种常用的正则化方法”，第 17–21 页的集成学习部分也没有提到 Dropout。",
+      "recommendation": "删除这条边。"
+    },
+    {
+      "finding_id": "F-023",
+      "target": "E078",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-131"
+      ],
+      "reason": "起点节点“LASSO 回归”在资料中不存在；资料只介绍了 L1 正则化本身（第 25 页）。",
+      "recommendation": "随 N063 一并删除这条边，或保留并标注为资料外补充。"
+    },
+    {
+      "target": "E079",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-134",
+        "EV-135"
+      ]
+    },
+    {
+      "target": "E080",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-134",
+        "EV-140"
+      ]
+    },
+    {
+      "target": "E081",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-135",
+        "EV-136"
+      ]
+    },
+    {
+      "target": "E082",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-135",
+        "EV-137"
+      ]
+    },
+    {
+      "target": "E083",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-141",
+        "EV-142"
+      ]
+    },
+    {
+      "target": "E084",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-141",
+        "EV-143"
+      ]
+    },
+    {
+      "target": "E085",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-141",
+        "EV-144"
+      ]
+    },
+    {
+      "target": "E086",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-145",
+        "EV-146"
+      ]
+    },
+    {
+      "target": "E087",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-146",
+        "EV-147"
+      ]
+    },
+    {
+      "target": "E088",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-146",
+        "EV-148"
+      ]
+    },
+    {
+      "target": "E089",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-151"
+      ]
+    },
+    {
+      "target": "E090",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-152"
+      ]
+    },
+    {
+      "target": "E091",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-153"
+      ]
+    }
+  ],
+  "omissions": [
+    {
+      "finding_id": "F-029",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-014",
+        "EV-019",
+        "EV-020",
+        "EV-021",
+        "EV-022"
+      ],
+      "reason": "第 3 页“本讲算法一览”把算法按任务分为“回归”“分类”“分类与回归均可”三组。树里只有线性回归 is-a 回归、逻辑回归 is-a 分类两条边，没有表示“分类与回归均可”这一组；集成学习和神经网络可同时用于分类与回归，在树中任何地方都没有体现。",
+      "recommendation": "在集成学习（N040）和神经网络（N048）的定义中补充“可用于分类和回归”，或补充边：N040 related-to N002、N040 related-to N003、N048 related-to N002、N048 related-to N003。"
+    },
+    {
+      "finding_id": "F-030",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-042",
+        "EV-043"
+      ],
+      "reason": "第 8 页“多分类问题”说明逻辑回归“本身只能处理二分类，可以通过两种方式扩展到多分类”，其中“一对其余（One-vs-Rest）：为每个类别训练一个二分类器，将该类与其余类别区分”在树中缺失；树里只有另一种方式 Softmax 回归。",
+      "recommendation": "新增节点“一对其余（One-vs-Rest）”（kind: method），定义：“为每个类别训练一个二分类器，将该类与其余类别区分”，并补充边：该节点 related-to N011（逻辑回归）。"
+    },
+    {
+      "finding_id": "F-031",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-063"
+      ],
+      "reason": "第 12 页定义了“拉普拉斯平滑：在计数上加 1，避免训练中未出现的特征使整个概率为 0”，树中没有这个概念。",
+      "recommendation": "新增节点“拉普拉斯平滑”（kind: method），定义用资料原文，并补充边：N019（朴素贝叶斯）uses 该节点。"
+    },
+    {
+      "finding_id": "F-032",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-087",
+        "EV-089",
+        "EV-092"
+      ],
+      "reason": "第 17 页的集成学习结构图有三个分支：Bagging、Boosting 和 Stacking（“用元学习器组合多个不同基学习器的预测结果”）。树中只有前两个，缺少 Stacking。",
+      "recommendation": "新增节点“Stacking”（kind: method），定义：“用元学习器组合多个不同基学习器的预测结果”，并补充边：N040（集成学习）includes 该节点。"
+    },
+    {
+      "finding_id": "F-033",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-107"
+      ],
+      "reason": "第 21 页对比表的“样本权重”一行：Bagging 为“相同”，Boosting 为“根据上一轮结果调整”。树中 Bagging（N041）没有写样本权重相同，这一对比没有完整体现。",
+      "recommendation": "在 Bagging（N041）的定义中补充“各样本权重相同”；Boosting 一侧已由 N044、N045 的定义覆盖。"
+    },
+    {
+      "finding_id": "F-034",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-149"
+      ],
+      "reason": "第 28 页定义了“ROC 曲线以假正例率为横轴、真正例率为纵轴；曲线下面积 AUC 越大，模型越好”，树中没有 ROC 曲线和 AUC。",
+      "recommendation": "新增节点“ROC 曲线与 AUC”（kind: concept），定义用资料原文，并补充边：N002（分类）uses 该节点。"
+    },
+    {
+      "finding_id": "F-035",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-155"
+      ],
+      "reason": "第 30 页“常见误区”定义了数据泄漏：“在划分训练集和测试集之前，用全部数据计算标准化的均值和标准差，会让测试集的信息泄漏到训练过程中”，树中没有这个概念。",
+      "recommendation": "新增节点“数据泄漏”（kind: concept），定义用资料原文，并补充边：该节点 related-to N066（标准化）。"
+    },
+    {
+      "finding_id": "F-036",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-166"
+      ],
+      "reason": "第 31 页“本讲小结”的结论“没有一种算法在所有问题上都是最优的，需要根据数据和任务选择”在树中缺失。",
+      "recommendation": "新增节点（kind: fact），内容用资料原文“没有一种算法在所有问题上都是最优的，需要根据数据和任务选择”。"
+    },
+    {
+      "finding_id": "F-037",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-028"
+      ],
+      "reason": "第 5 页写正规方程“要求 X^T·X 可逆”，N006 的定义没有这个前提条件。",
+      "recommendation": "在 N006 的定义后补充“要求 X^T·X 可逆”。"
+    },
+    {
+      "finding_id": "F-038",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-052"
+      ],
+      "reason": "第 10 页写“常用的距离度量：欧氏距离、曼哈顿距离”，树中只有欧氏距离，缺少曼哈顿距离。",
+      "recommendation": "新增节点“曼哈顿距离”（kind: concept），定义：“k 近邻常用的距离度量之一”，并补充边：N015（k 近邻）uses 该节点。"
+    },
+    {
+      "finding_id": "F-039",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-071"
+      ],
+      "reason": "第 14 页写“决策树容易过拟合”，这是引入剪枝的原因；树中只有剪枝 related-to 过拟合，没有写决策树本身容易过拟合。",
+      "recommendation": "在决策树（N025）的定义中补充“容易过拟合”，或补充边：N025 related-to N056（过拟合）。"
+    }
+  ]
+}

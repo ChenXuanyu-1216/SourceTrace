@@ -1,10 +1,11 @@
 """Render the test-fixture slides as PNG images.
 
-Usage: python tools/make_fixture_slides.py [ml-basics | model-eval | all]
+Usage: python tools/make_fixture_slides.py [ml-basics | model-eval | <deck in tools/decks/> | all]
 Requires Pillow (pip install pillow) and the Windows fonts Arial and Microsoft YaHei.
 Writes to tests/fixtures/<deck>/images/.
 """
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -249,6 +250,105 @@ def me_08():
     return img
 
 
+# --- data-driven decks (tools/decks/<deck>.json) ---------------------------
+#
+# A deck file is {"fonts": "cjk" | "latin", "slides": [{"title": ..., "blocks": [...]}]}.
+# Blocks are stacked from the top of the slide. Types:
+#   {"type": "bullets", "items": [...], "size": 28}   "- " starts a sub-bullet
+#   {"type": "table", "rows": [[...]], "widths": [fractions], "size": 22}   first row is the header
+#   {"type": "flow", "steps": [...]}                  boxes joined by arrows, left to right
+#   {"type": "tree", "root": ..., "children": [{"label": ..., "lines": [...]}]}
+#   {"type": "note", "text": ..., "size": 22}         smaller grey text
+
+DECK_DIR = Path(__file__).resolve().parent / "decks"
+TOP, BOTTOM, GAP = 150, H - 60, 26
+CONTENT_W = W - 2 * MARGIN
+
+
+def note_block(d, b, top):
+    size = b.get("size", 22)
+    y = top
+    for line in wrap(d, b["text"], font(size), CONTENT_W):
+        d.text((MARGIN, y), line, font=font(size), fill=MUTED)
+        y += size + 10
+    return y
+
+
+def table_block(d, b, top):
+    size = b.get("size", 22)
+    xs = [MARGIN]
+    for f in b["widths"]:
+        xs.append(xs[-1] + f * CONTENT_W)
+    y = top
+    for r, row in enumerate(b["rows"]):
+        fnt = font(size, bold=r == 0)
+        cells = [wrap(d, cell, fnt, xs[c + 1] - xs[c] - 30) for c, cell in enumerate(row)]
+        row_h = max(len(lines) for lines in cells) * (size + 10) + 24
+        fill = ACCENT if r == 0 else (LIGHT if r % 2 else BG)
+        d.rectangle([xs[0], y, xs[-1], y + row_h], fill=fill, outline="#9db5cc")
+        for c, lines in enumerate(cells):
+            for k, line in enumerate(lines):
+                d.text((xs[c] + 15, y + 12 + k * (size + 10)), line, font=fnt,
+                       fill="white" if r == 0 else TEXT)
+        y += row_h
+    return y
+
+
+def flow_block(d, b, top):
+    steps, gap = b["steps"], 60
+    w = (CONTENT_W - gap * (len(steps) - 1)) / len(steps)
+    for i, label in enumerate(steps):
+        x0 = MARGIN + i * (w + gap)
+        box(d, (x0, top, x0 + w, top + 90), label, size=24)
+        if i:
+            arrow(d, (x0 - gap + 6, top + 45), (x0 - 4, top + 45))
+    return top + 90
+
+
+def tree_block(d, b, top):
+    children = b["children"]
+    box(d, (W / 2 - 170, top, W / 2 + 170, top + 70), b["root"], size=26)
+    w = (CONTENT_W - 40 * (len(children) - 1)) / len(children)
+    bottom = top + 230
+    for i, child in enumerate(children):
+        x0 = MARGIN + i * (w + 40)
+        d.line([(W / 2, top + 70), (x0 + w / 2, top + 150)], fill=ACCENT, width=3)
+        box(d, (x0, top + 150, x0 + w, top + 220), child["label"], fill=LIGHT, size=24)
+        y = top + 235
+        for line in child.get("lines", []):
+            for part in wrap(d, line, font(22), w - 10):
+                d.text((x0 + w / 2, y), part, font=font(22), fill=TEXT, anchor="mt")
+                y += 32
+        bottom = max(bottom, y)
+    return bottom
+
+
+def bullets_block(d, b, top):
+    return bullets(d, b["items"], top, size=b.get("size", 28)) - 14
+
+
+BLOCKS = {"bullets": bullets_block, "table": table_block, "flow": flow_block,
+          "tree": tree_block, "note": note_block}
+
+
+def data_slide(spec, number):
+    img, d = new_slide(spec["title"], number)
+    if d.textlength(spec["title"], font=font(48, bold=True)) > CONTENT_W:
+        raise ValueError(f"slide {number}: title too wide")
+    y = TOP
+    for b in spec["blocks"]:
+        y = BLOCKS[b["type"]](d, b, y) + GAP
+    if y - GAP > BOTTOM:
+        raise ValueError(f"slide {number}: content ends at y={y - GAP}, below {BOTTOM}")
+    return img
+
+
+def data_deck(name):
+    spec = json.loads((DECK_DIR / f"{name}.json").read_text(encoding="utf-8"))
+    slides = [lambda s=s, n=n: data_slide(s, n) for n, s in enumerate(spec["slides"], start=1)]
+    return (CJK_FONTS if spec["fonts"] == "cjk" else LATIN_FONTS), slides
+
+
 DECKS = {
     "ml-basics": (LATIN_FONTS, [ml_01, ml_02, ml_03, ml_04]),
     "model-eval": (CJK_FONTS, [me_01, me_02, me_03, me_04, me_05, me_06, me_07, me_08]),
@@ -257,9 +357,10 @@ DECKS = {
 
 def main(argv):
     global fonts
-    names = list(DECKS) if not argv or argv[0] == "all" else argv
+    data_names = sorted(p.stem for p in DECK_DIR.glob("*.json"))
+    names = list(DECKS) + data_names if not argv or argv[0] == "all" else argv
     for name in names:
-        fonts, slides = DECKS[name]
+        fonts, slides = DECKS[name] if name in DECKS else data_deck(name)
         out_dir = FIXTURES / name / "images"
         out_dir.mkdir(parents=True, exist_ok=True)
         for n, make in enumerate(slides, start=1):
