@@ -148,7 +148,12 @@ The scale test (`tests/fixtures/sl-algos-zh/RESULTS.md`) added rules from the ow
 - **Slide order supports no relationship:** a 核方法 slide after the SVM slide, which never names SVM, does not support 支持向量机 uses 核函数. Only the agenda rule lets structure state a relationship.
 - **A finding covers only the content it is about,** so whether an omission is reported no longer depends on which evidence a finding cites. A topic whose members are all in the tree is not an omission.
 - **Bullets are split when their parts can be cited separately,** for different concepts or different tree items, instead of "only if unrelated".
-- **No matching relation:** when the correct relationship has no relation value (e.g. "mitigates"), recommend deleting the edge and stating it in a definition, not `related-to`. `is-a` from a method to a task reads as "is a method for".
+- **No matching relation:** when the correct relationship has no relation value (e.g. "mitigates"), recommend deleting the edge and stating it in a definition, not `related-to`. When the relation is right and only an end node is wrong, keep the relation and correct the node. `is-a` from a method to a task reads as "is a method for".
+
+The image-quality test (`tests/fixtures/model-eval-occluded/RESULTS.md`) added:
+
+- **Partly unreadable evidence** is split into a readable item and a `low` item with the placeholder ［无法辨认］. Hidden text is never filled in from the agent's own knowledge.
+- **Working files** (drafts, helper scripts, enlarged crops) go in a `work/` folder inside the output folder.
 
 Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 

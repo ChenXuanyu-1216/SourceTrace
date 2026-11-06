@@ -18,6 +18,10 @@
   - **Evidence:** a bullet is split when its parts can be cited separately.
   - **Recommendations:** when no relation value fits (e.g. "mitigates"), delete the edge and state the relationship in a definition. `is-a` from a method to a task reads as "is a method for".
   - **SKILL.md** notes `PYTHONIOENCODING=utf-8` for the agent's own Python commands on Windows.
+- **Rule fixes from the image-quality runs:**
+  - "Do not fall back on `related-to`" applies only when no relation value fits; when only an end node is wrong, keep the relation and correct the node.
+  - Partly unreadable evidence is split into a readable item and a `low` item with the placeholder ［无法辨认］, and hidden text is never filled in.
+  - Working files go in a `work/` folder inside the output folder.
 - **Image-quality test:** `tools/degrade_images.py` makes seeded scan, photo and occluded versions of a test set's slides (`tests/fixtures/model-eval-scan`, `-photo`, `-occluded`). Two fresh Claude runs on each, the first runs with the fourth rule revision:
   - Scan and photo versions changed nothing: all findings and omissions found, all evidence read with high certainty, and full agreement.
   - On the occluded version, both runs marked hidden evidence `low`, did not guess the hidden ratio (N005 "cannot verify"), and did not fill in the hidden definition. They kept N015 as a conceptual error from the readable recall row; the owner accepted that as well as "cannot verify" ([RESULTS.md](tests/fixtures/model-eval-occluded/RESULTS.md)).

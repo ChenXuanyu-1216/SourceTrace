@@ -41,6 +41,8 @@ Number items `EV-001`, `EV-002`, … across the whole deck: by page, then top to
 | `medium` | Part of the text is hard to read, or the diagram could be read more than one way. Say which reading you chose in `location`. |
 | `low` | You had to guess. The audit must not reject a tree item on `low` evidence alone. |
 
+**Partly unreadable items** (glare, a fold, a cut-off edge): enlarge the area first. If part of a bullet or table row is still unreadable, split it into a readable item and an unreadable one. The readable item keeps its own certainty. The unreadable item gets `low`, with ［无法辨认］ in `content` in place of the hidden text, and `location` says what hides it. Example: "本课程推荐的划分比例：训练集 : 验证集 : 测试集 =" (`high`), then "［无法辨认］" (`low`, "Bullet 4, part 2: the ratio after = is covered by glare"). For a table row, keep the readable cells and put ［无法辨认］ in the hidden ones; the row's certainty is `low` if a hidden cell is the one a claim depends on. Never fill in hidden text from your own knowledge, even when you are sure what it says.
+
 ## Example
 
 From a 4-slide machine-learning deck (slide 1 has a title, two bullets and a diagram; slide 4 has a table):

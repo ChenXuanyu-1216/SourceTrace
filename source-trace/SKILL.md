@@ -29,6 +29,8 @@ Write all files to one output folder, by default `sourcetrace-output/` next to t
 
 Never modify the user's knowledge tree. SourceTrace reports and recommends; the user decides.
 
+Put your own working files (drafts, helper scripts, enlarged crops of an image) in a `work/` folder inside the output folder, never next to the user's files or anywhere else. They are not part of the result. Mention the folder in your final message, so the user can delete it.
+
 ## Workflow
 
 Run the six stages in order. Do not skip ahead to judging the tree before the evidence index exists: auditing against an index, instead of against your impression of the slides, is what makes the findings traceable.
@@ -122,7 +124,7 @@ Write your judgments to `audit.json`, then let the script check them and produce
 
 - **`items`:** exactly one entry per node and edge of the tree.
 - **`reason`:** why it is a problem, in one or two sentences, quoting the exact words that differ.
-- **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only). For a wrong edge: if the source shows the correct relationship, recommend replacing it and give the new `source`, `relation` and `target`; if not, or if another edge already says it, recommend deleting it. Do not invent a replacement the source does not state. If no allowed relation expresses the correct relationship (e.g. "ReLU 可缓解梯度消失": there is no "mitigates"), recommend deleting the edge and stating the relationship in a node's definition. Do not fall back on `related-to`, which loses the direction.
+- **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only). For a wrong edge: if the source shows the correct relationship, recommend replacing it and give the new `source`, `relation` and `target`; if not, or if another edge already says it, recommend deleting it. Do not invent a replacement the source does not state. If no allowed relation expresses the correct relationship (e.g. "ReLU 可缓解梯度消失": there is no "mitigates"), recommend deleting the edge and stating the relationship in a node's definition. Do not fall back on `related-to`, which loses the direction. This applies only when no relation value fits: when the edge's relation is right and only its `source` or `target` is wrong, keep the relation and correct the node (e.g. 过拟合 related-to 高偏差 → 过拟合 related-to 高方差).
   - **Keep the definition useful for learning.** For an `ambiguous` or a `detail` finding, do not shrink the definition to something like "资料列出的一种方法" just because that is easier to trace. Recommend keeping it, and marking the unverified part as an explanation from outside the source (资料外释义), or rewording only the detail.
   - **Add no claims of your own.** A suggested wording may use the tree's words and the source's words, nothing else. For example, do not turn "区分 A 与 B 来分析" into "把误差分为 A、B 两部分", which says the split is complete.
 - **`scope`** (`unsupported-expansion` only): `detail` when one added detail is unsupported; leave it out otherwise.
