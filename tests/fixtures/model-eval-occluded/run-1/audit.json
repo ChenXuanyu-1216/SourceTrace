@@ -1,0 +1,479 @@
+{
+  "schema_version": "0.1",
+  "summary": {
+    "nodes": 19,
+    "edges": 18,
+    "supported": 26,
+    "item_findings": 11,
+    "omissions": 5,
+    "by_risk": {
+      "high": 6,
+      "medium": 6,
+      "low": 4
+    },
+    "by_category": {
+      "conceptual-error": 3,
+      "incorrect-relationship": 3,
+      "overgeneralization": 2,
+      "unsupported-expansion": 2,
+      "ambiguous": 1,
+      "omission": 5
+    }
+  },
+  "structure_warnings": [
+    {
+      "code": "DISCONNECTED_TREE",
+      "message": "The tree falls apart into 3 parts that are not linked to each other: N001, N002, N003, N004, N005, N014, N015, N016, N017, N018, N019; N006, N008, N010, N011, N012, N013; N007, N009."
+    }
+  ],
+  "items": [
+    {
+      "target": "N001",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-002"
+      ]
+    },
+    {
+      "target": "N002",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-010"
+      ]
+    },
+    {
+      "target": "N003",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-011"
+      ]
+    },
+    {
+      "finding_id": "F-001",
+      "target": "N004",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-012",
+        "EV-040"
+      ],
+      "reason": "\"用于评估模型的泛化性能\"有依据，但\"也可用于调整超参数\"与第 2 页\"仅在最后用于评估泛化性能，不可用于调参\"直接相反；第 8 页也强调\"测试集只能在最终评估时使用一次\"。",
+      "recommendation": "把定义改为\"仅在最后用于评估模型的泛化性能，不可用于调参；只能在最终评估时使用一次\"。"
+    },
+    {
+      "finding_id": "F-011",
+      "target": "N005",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "ambiguous",
+      "risk": "low",
+      "evidence": [
+        "EV-013",
+        "EV-014"
+      ],
+      "reason": "第 2 页确有\"本课程推荐的划分比例：训练集 : 验证集 : 测试集 =\"，但等号后的比例数值被白色色块遮挡，无法辨认，因此树中的\"8 : 1 : 1\"既无法确认也无法否定。",
+      "recommendation": "保留该节点，但请对照未遮挡的原始幻灯片第 2 页核对\"8 : 1 : 1\"这一数值；核对前可在定义后注明\"比例数值待核对\"。"
+    },
+    {
+      "finding_id": "F-007",
+      "target": "N006",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "overgeneralization",
+      "risk": "medium",
+      "evidence": [
+        "EV-016",
+        "EV-018"
+      ],
+      "reason": "\"训练误差低、测试误差高的现象\"有依据；但\"总是由训练数据过少导致\"把资料的\"通常由模型过于复杂或训练数据过少导致\"绝对化了：\"通常\"变成\"总是\"，并丢掉了\"模型过于复杂\"这一原因。",
+      "recommendation": "改为\"训练误差低、测试误差高的现象，通常由模型过于复杂或训练数据过少导致\"。"
+    },
+    {
+      "target": "N007",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-017"
+      ]
+    },
+    {
+      "target": "N008",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-020"
+      ]
+    },
+    {
+      "target": "N009",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-021"
+      ]
+    },
+    {
+      "target": "N010",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-024"
+      ]
+    },
+    {
+      "target": "N011",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-025"
+      ]
+    },
+    {
+      "finding_id": "F-005",
+      "target": "N012",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-026",
+        "EV-027"
+      ],
+      "reason": "\"惩罚权重平方和\"正确，但\"同样倾向于产生稀疏解\"与第 5 页\"但一般不产生稀疏解\"相反。",
+      "recommendation": "把\"同样倾向于产生稀疏解\"改为\"一般不产生稀疏解\"，即\"惩罚权重平方和，一般不产生稀疏解\"。"
+    },
+    {
+      "finding_id": "F-008",
+      "target": "N013",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-023",
+        "EV-024",
+        "EV-025",
+        "EV-026"
+      ],
+      "reason": "资料中没有出现 Dropout；第 5 页\"正则化\"下只列出了\"L1 正则化\"和\"L2 正则化\"两种。",
+      "recommendation": "删除该节点，或明确标注为资料外补充内容。"
+    },
+    {
+      "target": "N014",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-029",
+        "EV-030"
+      ]
+    },
+    {
+      "finding_id": "F-006",
+      "target": "N015",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "high",
+      "evidence": [
+        "EV-035",
+        "EV-036",
+        "EV-037"
+      ],
+      "reason": "树中精确率的定义\"在所有真正为正的样本中，被预测为正的比例\"正是第 7 页表格中召回率的含义（\"真正为正的样本中，被预测为正的比例\"，TP / (TP+FN)），而表格把精确率和召回率列为不同指标（F1 是\"精确率与召回率的调和平均\"）；即把召回率的定义给了精确率。注意：第 7 页精确率一行的公式和含义被白色色块遮挡，资料中无法读出精确率的正确定义。",
+      "recommendation": "删去当前定义，按未遮挡的原始幻灯片第 7 页精确率一行的公式和含义重写；不要沿用召回率的定义。"
+    },
+    {
+      "target": "N016",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-036"
+      ]
+    },
+    {
+      "finding_id": "F-010",
+      "target": "N017",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "overgeneralization",
+      "risk": "medium",
+      "evidence": [
+        "EV-034",
+        "EV-039"
+      ],
+      "reason": "\"预测正确的样本占全部样本的比例\"有依据（(TP+TN) / 全部样本，预测正确的比例）；但\"是评价分类模型最可靠的指标\"没有依据，且第 8 页明确指出\"在类别不平衡的数据上，准确率可能具有误导性，应结合精确率和召回率一起判断\"。",
+      "recommendation": "删去\"是评价分类模型最可靠的指标\"，可改为\"预测正确的样本占全部样本的比例；在类别不平衡的数据上可能具有误导性，应结合精确率和召回率一起判断\"。"
+    },
+    {
+      "target": "N018",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-008",
+        "EV-032"
+      ]
+    },
+    {
+      "target": "N019",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-009",
+        "EV-010",
+        "EV-011",
+        "EV-012",
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E001",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-004"
+      ]
+    },
+    {
+      "target": "E002",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-009",
+        "EV-010",
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E003",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-009",
+        "EV-011",
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E004",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-009",
+        "EV-012",
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E005",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-009",
+        "EV-013"
+      ]
+    },
+    {
+      "target": "E006",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-008"
+      ]
+    },
+    {
+      "target": "E007",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-032",
+        "EV-035"
+      ]
+    },
+    {
+      "target": "E008",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-032",
+        "EV-036"
+      ]
+    },
+    {
+      "target": "E009",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-032",
+        "EV-034"
+      ]
+    },
+    {
+      "finding_id": "F-003",
+      "target": "E010",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "incorrect-relationship",
+      "risk": "high",
+      "evidence": [
+        "EV-020",
+        "EV-021"
+      ],
+      "reason": "第 4 页图示为\"过拟合 → 高方差（对训练数据过于敏感）\"和\"欠拟合 → 高偏差（模型过于简单）\"；树中\"过拟合 related-to 高偏差\"把两组对应关系弄反了。",
+      "recommendation": "替换为 source N006（过拟合）、relation related-to、target N009（高方差）。"
+    },
+    {
+      "finding_id": "F-004",
+      "target": "E011",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "incorrect-relationship",
+      "risk": "high",
+      "evidence": [
+        "EV-020",
+        "EV-021"
+      ],
+      "reason": "第 4 页图示为\"欠拟合 → 高偏差（模型过于简单）\"；树中\"欠拟合 related-to 高方差\"与图示对调。",
+      "recommendation": "替换为 source N007（欠拟合）、relation related-to、target N008（高偏差）。"
+    },
+    {
+      "target": "E012",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-024"
+      ]
+    },
+    {
+      "target": "E013",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-024",
+        "EV-025"
+      ]
+    },
+    {
+      "target": "E014",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-024",
+        "EV-026"
+      ]
+    },
+    {
+      "finding_id": "F-009",
+      "target": "E015",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "risk": "medium",
+      "evidence": [
+        "EV-024",
+        "EV-025",
+        "EV-026"
+      ],
+      "reason": "Dropout 在资料中没有出现；第 5 页正则化下只列出 L1 正则化和 L2 正则化。",
+      "recommendation": "删除该边（与 N013 一起处理）。"
+    },
+    {
+      "finding_id": "F-002",
+      "target": "E016",
+      "target_type": "edge",
+      "verdict": "finding",
+      "category": "incorrect-relationship",
+      "risk": "high",
+      "evidence": [
+        "EV-029",
+        "EV-012",
+        "EV-040"
+      ],
+      "reason": "第 6 页说 k 折交叉验证\"将训练数据分成 k 份，轮流用其中 1 份做验证\"，用的是训练数据而非测试集；而测试集\"仅在最后用于评估泛化性能，不可用于调参\"、\"只能在最终评估时使用一次\"，排除了在 k 轮验证中反复使用测试集。",
+      "recommendation": "删除该边；k 折交叉验证与训练集的关系已由 E017（k 折交叉验证 uses 训练集）表达。"
+    },
+    {
+      "target": "E017",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-029"
+      ]
+    },
+    {
+      "target": "E018",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-001",
+        "EV-007",
+        "EV-029"
+      ]
+    }
+  ],
+  "omissions": [
+    {
+      "finding_id": "F-012",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-005",
+        "EV-019",
+        "EV-022"
+      ],
+      "reason": "偏差-方差权衡是概览中的一个主题和第 4 页标题，第 4 页要点\"模型复杂度增加时，偏差降低、方差升高；需要在两者之间取得平衡\"。树中只有\"高偏差\"\"高方差\"两端，没有权衡本身。",
+      "recommendation": "新增节点\"偏差-方差权衡\"（kind: concept），定义\"模型复杂度增加时，偏差降低、方差升高；需要在两者之间取得平衡\"，并与高偏差、高方差相连。"
+    },
+    {
+      "finding_id": "F-013",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-037"
+      ],
+      "reason": "第 7 页表格中有\"F1 分数\"一行：公式 2PR / (P+R)，含义\"精确率与召回率的调和平均\"，树中没有该指标。",
+      "recommendation": "新增节点\"F1 分数\"（kind: concept），定义\"精确率与召回率的调和平均，2PR / (P+R)\"，并加边 分类评价指标 includes F1 分数。"
+    },
+    {
+      "finding_id": "F-014",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-026"
+      ],
+      "reason": "第 5 页说明 L2 正则化\"使权重整体变小\"，树中 L2 正则化的定义没有这一性质（树中关于稀疏解的错误另见对应发现）。",
+      "recommendation": "在 L2 正则化定义中加入\"使权重整体变小\"。"
+    },
+    {
+      "finding_id": "F-015",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-031"
+      ],
+      "reason": "第 6 页说明了交叉验证的适用场景：\"适用于数据量较少、单独划分验证集代价较高的情况\"，树中没有。",
+      "recommendation": "在 k 折交叉验证的定义后补充\"适用于数据量较少、单独划分验证集代价较高的情况\"。"
+    },
+    {
+      "finding_id": "F-016",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-033"
+      ],
+      "reason": "第 7 页给出了符号说明\"TP：真正例  FP：假正例  FN：假反例  TN：真反例\"，树中召回率的定义用到了 TP、FN，却没有说明其含义。",
+      "recommendation": "在\"分类评价指标\"或\"召回率\"的定义中补充 TP、FP、FN、TN 的含义。"
+    }
+  ]
+}

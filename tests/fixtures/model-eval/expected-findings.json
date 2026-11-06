@@ -149,6 +149,13 @@
       "page": 1,
       "source_snippet": "本讲内容：数据集划分 / 过拟合与欠拟合、偏差-方差权衡 / 正则化 / 交叉验证 / 分类评价指标",
       "reason": "Not planted on purpose, found by both baseline runs: the tree has 3 connected components. Overfitting, underfitting, bias/variance and regularization never link to the root 模型评估, although slide 1 lists them as topics of the lecture."
+    },
+    {
+      "category": "omission",
+      "page": 5,
+      "match": "使权重整体变小",
+      "source_snippet": "L2 正则化：惩罚权重平方和，使权重整体变小，但一般不产生稀疏解。",
+      "reason": "A supporting omission under the fourth rule revision (a finding covers only the content it is about): the N012 finding is about sparse solutions, not the shrinking weights. Runs may report it or leave it out. Accepted by the owner on 2026-11-06."
     }
   ],
   "should_not_report": [

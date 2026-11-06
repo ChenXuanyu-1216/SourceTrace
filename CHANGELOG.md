@@ -18,6 +18,11 @@
   - **Evidence:** a bullet is split when its parts can be cited separately.
   - **Recommendations:** when no relation value fits (e.g. "mitigates"), delete the edge and state the relationship in a definition. `is-a` from a method to a task reads as "is a method for".
   - **SKILL.md** notes `PYTHONIOENCODING=utf-8` for the agent's own Python commands on Windows.
+- **Image-quality test:** `tools/degrade_images.py` makes seeded scan, photo and occluded versions of a test set's slides (`tests/fixtures/model-eval-scan`, `-photo`, `-occluded`). Two fresh Claude runs on each, the first runs with the fourth rule revision:
+  - Scan and photo versions changed nothing: all findings and omissions found, all evidence read with high certainty, and full agreement.
+  - On the occluded version, both runs marked hidden evidence `low`, did not guess the hidden ratio (N005 "cannot verify"), and did not fill in the hidden definition. They kept N015 as a conceptual error from the readable recall row; the owner accepted that as well as "cannot verify" ([RESULTS.md](tests/fixtures/model-eval-occluded/RESULTS.md)).
+  - Three runs reported one new low-risk omission (L2 "使权重整体变小"), probably an effect of the fourth rule revision. The owner accepted it as an optional omission in all model-eval keys.
+  - `compare_runs.py` reports evidence certainty and skips the risk check when a run gives an accepted alternative category.
 - **`tools/make_fixture_slides.py`** builds decks from data files in `tools/decks/`, with bullets, tables, flow and tree diagrams, and stops if a slide overflows.
 - **`tools/compare_runs.py`** also checks `scope` (`detail` or `whole`) against the key, and counts omissions that match an acceptable extra in the key as accepted. Its item count is now labelled `expected items`.
 

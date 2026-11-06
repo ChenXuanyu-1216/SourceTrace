@@ -28,8 +28,10 @@ for d in run_dirs:
     audit = json.load(open(out / "audit.json", encoding="utf-8"))
     index = json.load(open(out / "evidence-index.json", encoding="utf-8"))
     content = {e["evidence_id"]: e["content"] for e in index["evidence"]}
+    certainty = Counter(e.get("certainty") for e in index["evidence"])
     runs[name] = {"valid": r.stdout.splitlines()[0], "audit": audit, "content": content,
-                  "items": {i["target"]: i for i in audit["items"]}}
+                  "items": {i["target"]: i for i in audit["items"]},
+                  "certainty": {c: certainty[c] for c in ("high", "medium", "low")}}
 
 print("== Validity")
 for name, run in runs.items():
@@ -41,6 +43,7 @@ for name, run in runs.items():
     total_ok = s.get("supported", 0) + s.get("item_findings", 0) == len(ids)
     print(f"{name}: {run['valid']} | verdicts {len(items)}/{len(ids)} | missing {[x for x in ids if x not in items]}"
           f" | unknown evidence {unknown} | items without evidence {no_ev} | summary adds up: {total_ok} {s}")
+    print(f"  evidence certainty: {run['certainty']}")
 
 print("\n== Agreement per item (verdict / category / risk)")
 agree = Counter()
@@ -70,7 +73,8 @@ for name, run in runs.items():
             print(f"  {name} MISS {f['target']}: expected {f['category']}, got {got.get('verdict')}/{got.get('category')}")
         elif f.get("scope") and got.get("scope", "whole") != f["scope"]:
             print(f"  {name} SCOPE {f['target']}: expected {f['scope']}, got {got.get('scope', 'whole')}")
-        elif got.get("risk") != f.get("risk", got.get("risk")) and not got.get("risk_reason"):
+        elif (got.get("category") == f["category"] and got.get("risk") != f.get("risk", got.get("risk"))
+              and not got.get("risk_reason")):
             print(f"  {name} RISK {f['target']}: expected {f['risk']}, got {got.get('risk')} without risk_reason")
     fp = [c for c in key["correct_items"] if items.get(c, {}).get("verdict") != "supported"]
 
