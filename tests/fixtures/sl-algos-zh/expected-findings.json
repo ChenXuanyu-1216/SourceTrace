@@ -1,5 +1,5 @@
 {
-  "description": "Answer key for the sl-algos-zh fixture (32 Chinese slides, 78 nodes and 91 edges): the scale test. Problems are spread over the whole deck, including the last two slides, and several need two slides to spot. Omissions are graded by `match`: a substring of the cited evidence or the reason. Never give this file to the skill under test.",
+  "description": "Answer key for the sl-algos-zh fixture (32 Chinese slides, 78 nodes and 91 edges): the scale test. Problems are spread over the whole deck, including the last two slides, and several need two slides to spot. Omissions are graded by `match`: a substring of the cited evidence or the reason. The key was revised once after the first two runs: see RESULTS.md. Never give this file to the skill under test.",
   "inputs": {
     "images": [
       "images/slide-01.png",
@@ -226,6 +226,16 @@
       "risk": "low"
     },
     {
+      "target": "N048",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "planted": false,
+      "page": 22,
+      "source_snippet": "多层感知机由输入层、一个或多个隐藏层和输出层组成，层与层之间全连接。",
+      "reason": "Not planted; owner's decision after the 2026-11-06 runs. Slide 22 is titled 神经网络 but its text describes only 多层感知机. The tree turns that description, including \"层与层之间全连接\", into a definition of neural networks in general: a class defined from a single member.",
+      "risk": "low"
+    },
+    {
       "target": "N019",
       "category": "overgeneralization",
       "page": 11,
@@ -266,14 +276,6 @@
       "page": 23,
       "source_snippet": "此外还有 GELU 等变体。",
       "reason": "GELU is only named on slide 23; the deck never defines it, so the definition cannot be checked.",
-      "risk": "low"
-    },
-    {
-      "target": "N078",
-      "category": "ambiguous",
-      "page": 29,
-      "source_snippet": "超参数较多时，也可以使用随机搜索代替网格搜索。",
-      "reason": "Random search is only named as an alternative to grid search; the deck never says how it works.",
       "risk": "low"
     },
     {
@@ -357,7 +359,36 @@
       "reason": "N006 has the closed-form solution but not its condition."
     }
   ],
-  "acceptable_extra_findings": [],
+  "acceptable_extra_findings": [
+    {
+      "category": "omission",
+      "page": 3,
+      "match": "分类与回归均可",
+      "source_snippet": "Diagram: 监督学习算法 → 分类与回归均可 → k 近邻 / 决策树 / 集成学习 / 神经网络",
+      "reason": "The grouping of algorithms by task; the tree has only E011 and E012. Not planted; accepted by the owner after the 2026-11-06 runs, which both reported it."
+    },
+    {
+      "category": "omission",
+      "page": 21,
+      "match": "样本权重",
+      "source_snippet": "样本权重 | 相同 | 根据上一轮结果调整",
+      "reason": "The sample-weight row of the Bagging/Boosting table. Not planted; accepted by the owner after the 2026-11-06 runs, which both reported it."
+    },
+    {
+      "category": "omission",
+      "page": 14,
+      "match": "决策树容易过拟合",
+      "source_snippet": "决策树容易过拟合。",
+      "reason": "Why decision trees need pruning; the tree has only 剪枝 related-to 过拟合. Not planted; accepted by the owner after the 2026-11-06 runs, which both reported it."
+    },
+    {
+      "category": "omission",
+      "page": 23,
+      "match": "两端饱和",
+      "source_snippet": "Sigmoid | 1 / (1 + e^(−x)) | (0, 1) | 两端饱和，容易导致梯度消失",
+      "reason": "Partly covered by E067 (Sigmoid causes 梯度消失); acceptable either way. Run 1 only. Not planted; accepted by the owner after the 2026-11-06 runs, which both reported it."
+    }
+  ],
   "should_not_report": [
     {
       "page": 1,
@@ -428,7 +459,8 @@
     "E059": "Boosting related-to 偏差 is correct although the N044 definition is wrong.",
     "E066": "激活函数 includes GELU is supported although the N054 definition cannot be checked.",
     "E091": "随机搜索 related-to 网格搜索: slide 29 names it as an alternative to grid search.",
-    "N021": "条件独立假设: \"朴素\" is explained on slide 11."
+    "N021": "条件独立假设: \"朴素\" is explained on slide 11.",
+    "N078": "随机搜索: the deck only names it, but the definition \"在超参数空间中随机采样若干组超参数进行评估\" only spells out the name; it could not be false while the name is true. Planted as ambiguous at first; changed to correct by the owner after the 2026-11-06 runs. Compare N054 GELU, which stays ambiguous."
   },
   "correct_items": [
     "N001",
@@ -466,7 +498,6 @@
     "N041",
     "N043",
     "N046",
-    "N048",
     "N049",
     "N050",
     "N051",
@@ -489,6 +520,7 @@
     "N074",
     "N075",
     "N076",
+    "N078",
     "E001",
     "E002",
     "E003",

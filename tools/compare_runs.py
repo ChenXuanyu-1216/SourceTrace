@@ -92,8 +92,12 @@ for name, run in runs.items():
         elif f["risk"] not in risks and not any(oms[i].get("risk_reason") for i in hits):
             print(f"  {name} RISK omission '{f['match']}': expected {f['risk']}, got {sorted(risks)} without risk_reason")
     noise = [s["match"] for s in key.get("should_not_report", []) if any(s["match"] in text for text in om_text)]
-    extra = [i for i in range(len(oms)) if i not in used]
-    print(f"  {name}: planted items {sum(found)}/{len(found)} | omissions {sum(om_found)}/{len(om_found)} "
-          f"| false positives {fp} | should-not-report hit {noise} | unmatched omissions {len(extra)}")
+    # Omissions the key accepts without requiring them (acceptable_extra_findings with a `match`).
+    ok_extra = [s["match"] for s in key.get("acceptable_extra_findings", []) if s.get("match")]
+    accepted = [i for i in range(len(oms)) if i not in used and any(m in om_text[i] for m in ok_extra)]
+    extra = [i for i in range(len(oms)) if i not in used and i not in accepted]
+    print(f"  {name}: expected items {sum(found)}/{len(found)} | omissions {sum(om_found)}/{len(om_found)} "
+          f"| false positives {fp} | should-not-report hit {noise} | accepted extra omissions {len(accepted)} "
+          f"| unmatched omissions {len(extra)}")
     for i in extra:
         print(f"      unmatched [{oms[i].get('risk')}] {om_text[i][:90]}")

@@ -7,11 +7,11 @@
   - It matched 15 of the 18 items the owner has judged, the same score as Claude run 2 but on different items.
   - It reported 44 omissions where the Claude runs reported 25, mostly by listing each named model in the article's model list separately. The rules don't settle that granularity yet.
 - **Scale test** (`tests/fixtures/sl-algos-zh`): a synthetic 32-slide Chinese lecture with a 169-item tree (78 nodes, 91 edges), 27 planted item problems and 8 planted omissions.
-  - Two fresh Claude runs each found 27 of 28 item findings and all 8 omissions, flagged one correct item, and agreed on every item. Each took about 170k tokens and 8 minutes, about the same as the 98-item wiki-ml-zh runs.
+  - Two fresh Claude runs each found 27 of 28 item findings and all 8 omissions, flagged one correct item, and agreed on every item. Each took about 170k tokens and 8 minutes, in the range of the 98-item wiki-ml-zh runs.
   - Both runs found a mistake in the deck: the kernel slide never names SVM, so an edge meant to be correct has no support. The key now lists it as an unplanted finding.
-  - Open for the owner: three judgment calls and four unplanned omissions ([RESULTS.md](tests/fixtures/sl-algos-zh/RESULTS.md)).
+  - The owner then revised the key: N078 is correct, N048 is a source note, Laplace smoothing stays a supporting omission, and four unplanned omissions are acceptable. Against the revised key, both runs match 28 of 28 item findings and flag no correct items ([RESULTS.md](tests/fixtures/sl-algos-zh/RESULTS.md#owners-decisions)).
 - **`tools/make_fixture_slides.py`** builds decks from data files in `tools/decks/`, with bullets, tables, flow and tree diagrams, and stops if a slide overflows.
-- **`tools/compare_runs.py`** also checks `scope` (`detail` or `whole`) against the key.
+- **`tools/compare_runs.py`** also checks `scope` (`detail` or `whole`) against the key, and counts omissions that match an acceptable extra in the key as accepted. Its item count is now labelled `expected items`.
 
 ## v0.2.0 (2026-11-05)
 
