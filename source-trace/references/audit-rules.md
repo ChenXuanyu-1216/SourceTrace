@@ -45,7 +45,9 @@ Then go through these questions in order and stop at the first "yes". Questions 
    - **Only the unsupported fragment is the finding.** A word that differs from the source's but does not contradict it (预测误差 where the source says 泛化误差) is not part of the finding. If the source's word is more precise, suggest it in `recommendation` as optional wording.
    - **A different word for a different property is a detail.** Ask whether the two words name the same thing. 预测误差 and 泛化误差 both name the model's error, so the difference is wording. 多路划分 (how many branches one split has) and the source's 多层分裂 (how many levels of splits) name different properties, so the tree's word is an unsupported detail. Contradiction is not needed: if the two cannot both be true, question 5 applies instead.
    - **A class defined from a single instance:** when the source never defines a general class and only explains one member of it, a general definition of the class is a `detail` finding. The generalization from that member is the added detail. Example: 集成学习 "组合多个模型的预测以改善整体表现的方法" when the source only says that random forest, one ensemble method, averages the predictions of many trees. In `reason`, name the instance that supports the core idea.
+   - **A slide title does not define the class.** A slide titled 神经网络 whose text describes only 多层感知机 explains one member. A definition of 神经网络 built from that text ("层与层之间全连接") is a `detail` finding by the rule above.
 7. **Is the term in the source, but nothing in its definition can be checked** after gathering all evidence, because the source only names the term (e.g. in a list, a sidebar or a table header) and never explains it, or because the only relevant evidence has `low` certainty? → **`ambiguous`** (shown in reports as 资料未定义 / 无法核验, "cannot verify").
+   - **First apply the label test from Verdicts.** A definition that only spells out the label or explains what the term means adds nothing to check, so it is `supported` even when the source only names the term. Ask whether the definition could be false while the term is true. Example: the source only says 随机搜索 can replace grid search. 随机搜索 "在超参数空间中随机采样若干组超参数进行评估" only spells out the name → `supported`. GELU "基于高斯分布累积分布函数的平滑激活函数" could be false of an activation function named GELU → `ambiguous`.
 
 When a definition is partly right and partly wrong, the wrong part decides the category. Say in `reason` which part is correct.
 
@@ -71,6 +73,10 @@ Go through the evidence index and sort each piece of uncovered content into one 
 
 Before reporting, check that the content is not already covered by a finding on an existing node or edge. For example, do not report "test set may only be used once" when the test-set node already has a finding that cites it, or "Supervised includes Regression" when the wrong edge for Regression already has a finding that recommends it.
 
+**A finding covers only the content it is about.** Cite in a finding only the evidence for that item's own claim. Content that is a separate point stays an omission, even if it is related. Example: a summary slide says "支持向量机在高维、小样本的数据上通常表现良好" and "没有一种算法在所有问题上都是最优的". The first is the evidence for an SVM overgeneralization finding. The second is a general lesson, not a claim about SVM, so it is checked as an omission whether or not the SVM finding mentions it.
+
+**A topic whose members are all in the tree is covered,** even without a node for the topic itself. Example: an agenda lists 评估指标, and the tree has MSE, 精确率 and 召回率. Do not report the missing grouping node.
+
 One omission per missing concept. Group its details into that one entry, and cite every evidence item it rests on.
 
 **A node with a compatible definition already covers the source's definition.** When the tree defines a concept in its own words and the definition is supported, the source's differently worded definition of it is not an omission. Report only the parts the tree really lacks, such as a symbol legend (what pᵢ stands for) or a "not to be confused with" note. Do not recommend adding a source explanation that the source itself leaves incomplete.
@@ -88,6 +94,8 @@ Read limitations sections (缺点, limitations, caveats) sentence by sentence. T
   3. the method's stated purpose is part of what X does.
 
   Two terms that only appear in the same section or paragraph support no relationship.
+- **Slide order:** the position of a slide supports no relationship. A slide that comes right after a method's slides, but never names the method, does not link its terms to that method. Example: a 核方法 slide follows the SVM slide, but neither slide mentions the other's term, so 支持向量机 uses 核函数 is `unsupported-expansion`. Only the agenda rule above lets structure state a relationship. In `recommendation`, say the link is probably intended and that the source never states it.
+- **`is-a` from a method to a task:** read 线性回归 is-a 回归 as "线性回归 is a method for 回归". It is `supported` when the source says so (e.g. "最基本的回归方法").
 - **Evidence only in a diagram or table:** equally valid as text. Cite the `graphic` or `table` item.
 - **Findings that hinge on an exact word or number** (通常 vs 总是, 7:2:1 vs 8:1:1, 不产生 vs 产生): look at the image again before reporting, and quote the exact text in `reason`.
 - **Structure warnings** from `validate_input.py` (disconnected parts, isolated nodes, duplicate edges) are not findings. `build_report.py` adds them to the report's Structure section; do not repeat them in `items` or `omissions`.

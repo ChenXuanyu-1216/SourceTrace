@@ -10,6 +10,14 @@
   - Two fresh Claude runs each found 27 of 28 item findings and all 8 omissions, flagged one correct item, and agreed on every item. Each took about 170k tokens and 8 minutes, in the range of the 98-item wiki-ml-zh runs.
   - Both runs found a mistake in the deck: the kernel slide never names SVM, so an edge meant to be correct has no support. The key now lists it as an unplanted finding.
   - The owner then revised the key: N078 is correct, N048 is a source note, Laplace smoothing stays a supporting omission, and four unplanned omissions are acceptable. Against the revised key, both runs match 28 of 28 item findings and flag no correct items ([RESULTS.md](tests/fixtures/sl-algos-zh/RESULTS.md#owners-decisions)).
+- **Audit rules, fourth revision,** from the scale test: the owner's decisions on N078 and N048, and the questions both agents raised in their feedback. No run has used it yet.
+  - **Question 7** applies the label test first: a definition that only spells out the name is supported, not `ambiguous`.
+  - **A slide title does not define a class** described only through one member.
+  - **Slide order supports no relationship;** only the agenda rule lets structure state one.
+  - **Omissions:** a finding covers only the content it is about, and a topic whose members are all in the tree is covered.
+  - **Evidence:** a bullet is split when its parts can be cited separately.
+  - **Recommendations:** when no relation value fits (e.g. "mitigates"), delete the edge and state the relationship in a definition. `is-a` from a method to a task reads as "is a method for".
+  - **SKILL.md** notes `PYTHONIOENCODING=utf-8` for the agent's own Python commands on Windows.
 - **`tools/make_fixture_slides.py`** builds decks from data files in `tools/decks/`, with bullets, tables, flow and tree diagrams, and stops if a slide overflows.
 - **`tools/compare_runs.py`** also checks `scope` (`detail` or `whole`) against the key, and counts omissions that match an acceptable extra in the key as accepted. Its item count is now labelled `expected items`.
 

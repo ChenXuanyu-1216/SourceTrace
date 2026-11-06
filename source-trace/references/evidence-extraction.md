@@ -11,11 +11,13 @@ Run `scripts/validate_input.py --json` first and copy its `summary.images` list 
 | Content | One item per | `type` | `content` | `location` |
 |---------|--------------|--------|-----------|------------|
 | Slide title | title | `text` | the title, verbatim | `Title` |
-| Bullet or sentence | bullet; split a bullet only if it states two unrelated facts | `text` | verbatim | `Bullet 2`, `Bullet 2, sub-bullet 1` |
+| Bullet or sentence | bullet; split a bullet when its parts can be cited separately (see below) | `text` | verbatim | `Bullet 2`, `Bullet 2, sub-bullet 1` |
 | Table | data row | `table` | `Header: value \| Header: value \| …` | `Table row 2 (Supervised)` |
 | Diagram | relationship it shows (box → box, arrow, grouping) | `graphic` | `Diagram: A → B`, plus any label on the arrow | `Diagram, top row` |
 
 Why this granularity: nodes are checked against single statements, and edges against the relationships a slide shows. A table row or diagram arrow is often the *only* evidence for an edge, so it needs its own ID.
+
+**Splitting a bullet:** split it into one item per clause when the clauses state facts about different concepts, or when different tree items would cite them. Examples: "kNN 不构建显式模型；朴素贝叶斯依赖条件独立假设" (two concepts); "高偏差通常对应欠拟合，高方差通常对应过拟合" (two edges). Each item keeps its clause verbatim, with its qualifiers, and the same `location` plus a part number (`Bullet 3, part 2`). Do not split a definition from its own explanation ("Sigmoid 函数 … 映射到 (0, 1) 区间，输出可解释为…的概率").
 
 ## Quote, don't paraphrase
 

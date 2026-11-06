@@ -141,6 +141,15 @@ The owner's review of the first run on a second article (`tests/fixtures/wiki-dt
 - **A node with a compatible definition covers the source's definition:** only the parts the tree lacks, such as a symbol legend, are omissions.
 - **Limitations sections are read sentence by sentence,** because their statements are easy to miss as omissions.
 
+The scale test (`tests/fixtures/sl-algos-zh/RESULTS.md`) added rules from the owner's decisions and from questions both agents raised:
+
+- **A spelled-out name is not `ambiguous`:** question 7 applies the label test first. A definition that could not be false while the term is true (随机搜索 "随机采样若干组超参数进行评估") is supported even when the source only names the term.
+- **A slide title does not define a class:** a 神经网络 definition built from a slide that only describes 多层感知机 is a `detail` finding.
+- **Slide order supports no relationship:** a 核方法 slide after the SVM slide, which never names SVM, does not support 支持向量机 uses 核函数. Only the agenda rule lets structure state a relationship.
+- **A finding covers only the content it is about,** so whether an omission is reported no longer depends on which evidence a finding cites. A topic whose members are all in the tree is not an omission.
+- **Bullets are split when their parts can be cited separately,** for different concepts or different tree items, instead of "only if unrelated".
+- **No matching relation:** when the correct relationship has no relation value (e.g. "mitigates"), recommend deleting the edge and stating it in a definition, not `related-to`. `is-a` from a method to a task reads as "is a method for".
+
 Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 
 | Default risk | Categories |
