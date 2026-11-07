@@ -32,7 +32,9 @@ Only the label, the definition and the relationship are audited. Node `kind` is 
 
 Then go through these questions in order and stop at the first "yes". Questions 2–3 apply only to edges and 4–7 only to nodes.
 
-1. **Is the node's term (or, for an edge, either end node's term) absent from the source?** → **`unsupported-expansion`** (scope `whole`). Cite the evidence that shows what the source says instead, if any (e.g. the slide that lists the actual members of a group).
+1. **Is the node's concept (or, for an edge, either end node's concept) absent from the source?** → **`unsupported-expansion`** (scope `whole`). Cite the evidence that shows what the source says instead, if any (e.g. the slide that lists the actual members of a group).
+   - **The concept counts, not the word.** A concept is in the source when the source names it or describes the thing the label names, in any words. A label taken from outside the source is not a finding by itself. Examples: 词袋表示 when the source says texts are represented by word sets "以词频为特征" and words do not depend on their "位置"; 概率平滑修正 when the source says the probability estimates are "修正" so that no probability is 0. Both concepts are present, so continue with the next questions; the edges using these nodes are not affected.
+   - **An outside name can still carry a claim.** If the name adds something the source does not state (a specific method, formula or property, e.g. a named smoothing formula when the source only says the estimate is corrected), that claim goes to question 6 as a `detail`.
 2. **Edges: does the evidence contradict the relationship** (wrong target, reversed, swapped, or a link the source rules out)? → **`incorrect-relationship`**. Judge the edge on its own, even if one of its nodes also has a finding.
 3. **Edges: is the relationship stated nowhere,** not even by combining pages, while nothing contradicts it either? → **`unsupported-expansion`** (scope `whole`). Every other edge is `supported`. A relationship can also be stated by the structure of the source: see the agenda and paragraph rules under Edge cases.
 4. **Qualifier test.** Delete the absolute or widening part of the claim: words like 总是, 一定, 所有, 每个, 只, 唯一, 最…, always, every, all, only, the best, the most. **If what remains is supported** → **`overgeneralization`**. This holds even when another page contradicts the absolute version, and even when the source never states a weaker version.
@@ -68,8 +70,12 @@ Go through the evidence index and sort each piece of uncovered content into one 
 | Tier | What | Report? | Risk |
 |------|------|---------|------|
 | **Core** | A topic in a slide title or an agenda/overview slide; a defined term; a stated rule ("X is …", "X should …"); a table row; a relationship shown in a diagram; a slide's main point that the tree only partly covers (e.g. both ends of a trade-off but not the trade-off itself) | always | `medium` |
-| **Supporting detail** | When or why to use a method; a notation or symbol legend (e.g. "TP：真正例 …"); a property or caveat of a concept that is in the tree, including a limitation and its remedies from a 缺点 / limitations section (e.g. "贪心算法…只能达到局部最优", or what to do about the 异或 problem) | always | `low` |
-| **Not knowledge** | Examples in parentheses when the concept they illustrate is in the tree; homework, reading lists, course logistics | never | — |
+| **Supporting detail** | When or why to use a method; a notation or symbol legend (e.g. "TP：真正例 …"); a property or caveat of a concept that is in the tree, including a limitation and its remedies from a 缺点 / limitations section (e.g. "贪心算法…只能达到局部最优", or what to do about the 异或 problem); background: history, applications, other names, and comparisons with other methods from a study or survey | always | `low` |
+| **Not knowledge** | Examples in parentheses when the concept they illustrate is in the tree; homework, reading lists, course logistics; site navigation, menus and banners on a web page | never | — |
+
+**When content fits both tiers,** the concept decides. A stated rule, property or caveat about a concept the tree already has a node for is a supporting detail, unless it is the main point of its slide or section. Core is for content with no node of its own: a method, a defined term or a slide's main point. Example: "为了估计特征的分布参数，我们要先假设训练集数据满足某种分布" is a stated rule, but 参数估计 has a node, so it is supporting. A second method for the same job (离散化 next to the tree's 高斯朴素贝叶斯) is core.
+
+**Background** omissions say so in `reason` (背景 / background), so the reader can tell them from gaps in the method.
 
 Before reporting, check that the content is not already covered by a finding on an existing node or edge. For example, do not report "test set may only be used once" when the test-set node already has a finding that cites it, or "Supervised includes Regression" when the wrong edge for Regression already has a finding that recommends it.
 
@@ -77,11 +83,11 @@ Before reporting, check that the content is not already covered by a finding on 
 
 **A topic whose members are all in the tree is covered,** even without a node for the topic itself. Example: an agenda lists 评估指标, and the tree has MSE, 精确率 and 召回率. Do not report the missing grouping node.
 
-One omission per missing concept. Group its details into that one entry, and cite every evidence item it rests on.
+One omission per missing concept. Group its details into that one entry, and cite every evidence item it rests on. **A missing claim appears in only one entry:** when a statement fits two omissions (e.g. "只需要少量的训练数据" under both training efficiency and the independence assumption), put it in the one it is most directly about and leave it out of the other.
 
 **A node with a compatible definition already covers the source's definition.** When the tree defines a concept in its own words and the definition is supported, the source's differently worded definition of it is not an omission. Report only the parts the tree really lacks, such as a symbol legend (what pᵢ stands for) or a "not to be confused with" note. Do not recommend adding a source explanation that the source itself leaves incomplete.
 
-Read limitations sections (缺点, limitations, caveats) sentence by sentence. Their statements are easy to read as already covered by a node that names the problem, when the node leaves out the limitation itself.
+Read limitations sections (缺点, limitations, caveats, 讨论) sentence by sentence. Their statements are easy to read as already covered by a node that names the problem, when the node leaves out the limitation itself. A supported node does not settle this: N026 "即使独立性假设不完全成立……分类结果仍然可以正确" is `supported`, and the source's "实际上独立假设常常是不准确的" is still an omission, because the node never says the assumption usually fails.
 
 ## Edge cases
 
@@ -97,5 +103,11 @@ Read limitations sections (缺点, limitations, caveats) sentence by sentence. T
 - **Slide order:** the position of a slide supports no relationship. A slide that comes right after a method's slides, but never names the method, does not link its terms to that method. Example: a 核方法 slide follows the SVM slide, but neither slide mentions the other's term, so 支持向量机 uses 核函数 is `unsupported-expansion`. Only the agenda rule above lets structure state a relationship. In `recommendation`, say the link is probably intended and that the source never states it.
 - **`is-a` from a method to a task:** read 线性回归 is-a 回归 as "线性回归 is a method for 回归". It is `supported` when the source says so (e.g. "最基本的回归方法").
 - **Evidence only in a diagram or table:** equally valid as text. Cite the `graphic` or `table` item.
+- **Navigation boxes and site menus** on a web page (e.g. a sidebar listing "监督学习（分类 · 回归）") are the site's general categories, not the article's statements. They can be cited together with the article's own text, but never support a node or edge on their own, and never create an omission.
+- **Problems in the source itself:** the source may contradict itself or contain an evident slip (S and ¬S called "相互独立" next to "要么是垃圾邮件，要么就不是"; "都用到离散化方法" right after a section on the Gaussian method; "估计各个变量的方法" where 方差 is meant). Then:
+  - Quote the evidence verbatim, and never correct it, in the index or in a finding.
+  - Judge the tree item against the more specific evidence: an explanation, a formula or a worked example outweighs a single word or a sweeping summary sentence. N033 "互斥且穷尽" is `supported` by "要么…要么就不是" and p(S|D)+p(¬S|D)=1.
+  - When the problem bears on an item's verdict or recommendation, say in that item's `reason` which statements conflict and which one you used.
+  - A problem in the source is not a finding about the tree. List the problems you noticed in your final message to the user.
 - **Findings that hinge on an exact word or number** (通常 vs 总是, 7:2:1 vs 8:1:1, 不产生 vs 产生): look at the image again before reporting, and quote the exact text in `reason`.
 - **Structure warnings** from `validate_input.py` (disconnected parts, isolated nodes, duplicate edges) are not findings. `build_report.py` adds them to the report's Structure section; do not repeat them in `items` or `omissions`.

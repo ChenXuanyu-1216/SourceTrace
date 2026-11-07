@@ -35,7 +35,7 @@ Put your own working files (drafts, helper scripts, enlarged crops of an image) 
 
 Run the six stages in order. Do not skip ahead to judging the tree before the evidence index exists: auditing against an index, instead of against your impression of the slides, is what makes the findings traceable.
 
-The scripts write UTF-8 themselves. If you run your own Python commands that print Chinese on Windows, set `PYTHONIOENCODING=utf-8` first, or the console may fail with `UnicodeEncodeError`.
+The scripts write UTF-8 themselves. If you run your own Python commands that print Chinese on Windows, run them as `python -X utf8 …`, or the console may fail with `UnicodeEncodeError`. Setting `PYTHONIOENCODING=utf-8` also works, but not together with `python -I` or `-E`, which ignore it.
 
 ### 1. Source ingestion
 
@@ -127,6 +127,7 @@ Write your judgments to `audit.json`, then let the script check them and produce
 - **`recommendation`:** a concrete revision that stays within the tree schema (allowed `kind` and `relation` values only). For a wrong edge: if the source shows the correct relationship, recommend replacing it and give the new `source`, `relation` and `target`; if not, or if another edge already says it, recommend deleting it. Do not invent a replacement the source does not state. If no allowed relation expresses the correct relationship (e.g. "ReLU 可缓解梯度消失": there is no "mitigates"), recommend deleting the edge and stating the relationship in a node's definition. Do not fall back on `related-to`, which loses the direction. This applies only when no relation value fits: when the edge's relation is right and only its `source` or `target` is wrong, keep the relation and correct the node (e.g. 过拟合 related-to 高偏差 → 过拟合 related-to 高方差).
   - **Keep the definition useful for learning.** For an `ambiguous` or a `detail` finding, do not shrink the definition to something like "资料列出的一种方法" just because that is easier to trace. Recommend keeping it, and marking the unverified part as an explanation from outside the source (资料外释义), or rewording only the detail.
   - **Add no claims of your own.** A suggested wording may use the tree's words and the source's words, nothing else. For example, do not turn "区分 A 与 B 来分析" into "把误差分为 A、B 两部分", which says the split is complete.
+  - **Check the recommendation against the evidence, as strictly as the finding.** Keep the source's conditions and scope ("通过适当的预处理", "2006 年的一篇比较研究"), so a result from one study does not read as a general rule. Do not copy a source sentence that other evidence in the source contradicts: for example, "概率比可以表达为似然比" next to a formula that keeps the prior ratio p(S)/p(¬S). Use the consistent evidence (the formula) instead.
 - **`scope`** (`unsupported-expansion` only): `detail` when one added detail is unsupported; leave it out otherwise.
 - **`tier`** (omissions only): `core` or `supporting`, as defined in `references/audit-rules.md`.
 - **`risk_reason`:** only when the risk differs from the default.
@@ -141,10 +142,12 @@ python scripts/build_report.py --tree <knowledge-tree.json> --index <output>/evi
 - **Errors:** nothing is written. Fix `audit.json` and run again until it succeeds. Do not work around the checks.
 - **Success:** the script rewrites `audit.json` with `summary`, `structure_warnings` and `finding_id`s (F-001, F-002, … in report order), and writes `report.md` next to it. Findings with scope `detail` are listed in a folded "来源提示" / "Source notes" section after the other findings, because they mark a source gap, not an error. The report language follows the slides; pass `--lang zh` or `--lang en` if the user asks for another.
 
-Finish by telling the user where the report is, the counts from the summary, and the top problems in a few lines. Do not paste the whole report.
+Finish by telling the user where the report is, the counts from the summary, and the top problems in a few lines. If you noticed problems in the source itself (it contradicts itself, or has an evident slip), list them briefly too, and say they are not findings about the tree. Do not paste the whole report.
 
 ## When the input is unusual
 
+- **Web page or document screenshots** instead of slides: follow the web-page section of `references/evidence-extraction.md` (overlapping screenshots, site menus and navigation boxes).
+- **The source contradicts itself or has a slip:** quote it as printed and follow "Problems in the source itself" in `references/audit-rules.md`. It is not a finding about the tree.
 - **Unreadable image:** extract what you can with `low` certainty, mention the page in the affected findings' `reason`, and tell the user; do not invent content.
 - **The tree covers material not in the images:** report those items as `unsupported-expansion`. Tell the user that missing pages may be the cause only if there is a sign of it: gaps in the slide numbers, an agenda topic with no slide of its own, or a whole topic in the tree that the deck never touches. Otherwise do not suggest it.
 - **Very large decks or trees:** work page by page in stage 2 and node by node in stage 4, writing results to the files as you go rather than holding everything in mind.

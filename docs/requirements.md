@@ -119,7 +119,7 @@ Each problem is classified into one category:
 | `ambiguous` | Cannot verify: the source only names the term and never explains it, or the evidence is unreadable. Shown as "资料未定义 / 无法核验". | "Feedback: the signal a model learns from" when Feedback is only a table header |
 | `omission` | Significant source content missing from the tree (from the source → tree direction). | Dimensionality reduction left out |
 
-The category is chosen with a fixed decision order (`source-trace/references/audit-rules.md`), so that two runs reach the same answer. The main boundary rule is the **qualifier test**: if deleting the absolute or widening part of a claim (总是, 最…, only, every …) leaves a supported claim, it is `overgeneralization`, even when another page contradicts the absolute version. A term the source mentions but never defines is `ambiguous`; a term the source does not mention is `unsupported-expansion`. Node `kind` is not audited in v0.1.
+The category is chosen with a fixed decision order (`source-trace/references/audit-rules.md`), so that two runs reach the same answer. The main boundary rule is the **qualifier test**: if deleting the absolute or widening part of a claim (总是, 最…, only, every …) leaves a supported claim, it is `overgeneralization`, even when another page contradicts the absolute version. A term the source mentions but never defines is `ambiguous`; a concept the source neither names nor describes is `unsupported-expansion`. Node `kind` is not audited in v0.1.
 
 Two more rules came from the first review on real content (`tests/fixtures/wiki-ml-zh/audit-run-1/REVIEW.md`):
 
@@ -155,6 +155,15 @@ The image-quality test (`tests/fixtures/model-eval-occluded/RESULTS.md`) added:
 - **Partly unreadable evidence** is split into a readable item and a `low` item with the placeholder ［无法辨认］. Hidden text is never filled in from the agent's own knowledge.
 - **Working files** (drafts, helper scripts, enlarged crops) go in a `work/` folder inside the output folder.
 
+The owner's decisions on a third article (`tests/fixtures/wiki-nb-zh/REVIEW.md`) added:
+
+- **The concept counts, not the word:** a label from outside the source (词袋表示, 概率平滑修正) is supported when the source describes what it names. Only a claim the name adds, such as a specific formula, is checked as a `detail`.
+- **Web pages and documents:** overlapping screenshots are extracted once; site menus and banners are skipped; a navigation box can back up the article's text but never supports an item or creates an omission on its own.
+- **Formulas** are written out as linear Unicode text, exactly as printed.
+- **Problems in the source itself** (contradictions, slips) are quoted as printed, judged by the more specific evidence, explained in the affected item's `reason`, and listed in the final message. They are not findings about the tree, and they need no new category.
+- **Omission tiers:** a rule or caveat about a concept that has a node is a supporting detail; history, applications, other names and comparisons are supporting background. A missing claim appears in only one omission.
+- **Recommendations are checked like findings:** they keep the source's conditions and never copy a source sentence that other evidence in the source contradicts.
+
 Each finding also gets a risk level: `high`, `medium` or `low`. Each category has a default; the agent may raise or lower it for a specific finding, but must give a `risk_reason` (e.g. an omission of the course's central concept is raised to high).
 
 | Default risk | Categories |
@@ -163,7 +172,7 @@ Each finding also gets a risk level: `high`, `medium` or `low`. Each category ha
 | `medium` | `unsupported-expansion` (whole), `overgeneralization`, core omissions |
 | `low` | `unsupported-expansion` (detail), `ambiguous`, supporting-detail omissions |
 
-Omissions come in two tiers, both always reported: **core** (topics in titles or the agenda, defined terms, stated rules, table rows, diagram relationships) and **supporting details** (when to use a method, notation legends, properties of a concept already in the tree). Examples in parentheses and administrative text such as homework are never reported.
+Omissions come in two tiers, both always reported: **core** (topics in titles or the agenda, defined terms, stated rules, table rows, diagram relationships) and **supporting details** (when to use a method, notation legends, properties of a concept already in the tree, and background such as history and applications). Examples in parentheses and administrative text such as homework are never reported.
 
 These rules were set after a consistency check (3 runs on model-eval, `tests/consistency/model-eval/summary.md`) showed the only disagreements were at exactly these two boundaries.
 

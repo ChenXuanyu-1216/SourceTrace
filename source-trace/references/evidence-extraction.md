@@ -19,9 +19,19 @@ Why this granularity: nodes are checked against single statements, and edges aga
 
 **Splitting a bullet:** split it into one item per clause when the clauses state facts about different concepts, or when different tree items would cite them. Examples: "kNN 不构建显式模型；朴素贝叶斯依赖条件独立假设" (two concepts); "高偏差通常对应欠拟合，高方差通常对应过拟合" (two edges). Each item keeps its clause verbatim, with its qualifiers, and the same `location` plus a part number (`Bullet 3, part 2`). Do not split a definition from its own explanation ("Sigmoid 函数 … 映射到 (0, 1) 区间，输出可解释为…的概率").
 
+**Formulas:** write a formula as linear Unicode text, exactly as printed, in a `text` item together with the sentence that introduces it. Keep subscripts and superscripts (`μ_c`, `σ_c²` or `σ_c^2`, `e^(−z)`), conditions (`p(F_i|C)`), index ranges (`∏_{i=1}^{n}`) and the source's symbols, even ones that look wrong: `=` and `∝` are different claims. A formula cut off by the edge of the image follows the rule for partly unreadable items below.
+
+## Web pages and documents
+
+When the images are screenshots of a web page or a document rather than slides:
+
+- **Units:** use section headings, paragraphs (split into sentences or clauses by the rule above), formulas, table rows and figures. `location` names them, e.g. `Section 参数估计, paragraph 2, sentence 3`.
+- **Overlapping screenshots:** consecutive images often repeat a few lines. Extract each statement once, on the page where it is first complete, and do not skip the lines that appear only at the bottom of one image. A sentence split across two images is one item on the page where it starts; say `continues on page N` in `location`.
+- **Site chrome:** skip menus, banners, edit links, revision notices and the footer. A navigation box (e.g. a sidebar listing related topics) may be extracted as `text`, with `location` saying `Navigation box`; the audit decides how much it counts.
+
 ## Quote, don't paraphrase
 
-Copy text in its original language and wording, including punctuation and qualifiers such as "通常" or "usually". Small wording changes are exactly what the audit has to catch; paraphrasing here would hide them. For tables and diagrams, transcribe in the fixed formats above instead of describing them in prose.
+Copy text in its original language and wording, including punctuation and qualifiers such as "通常" or "usually". Keep evident slips and typos as printed; the audit rules say how to handle them. Small wording changes are exactly what the audit has to catch; paraphrasing here would hide them. For tables and diagrams, transcribe in the fixed formats above instead of describing them in prose.
 
 ## What to extract
 

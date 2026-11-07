@@ -27,6 +27,19 @@
   - On the occluded version, both runs marked hidden evidence `low`, did not guess the hidden ratio (N005 "cannot verify"), and did not fill in the hidden definition. They kept N015 as a conceptual error from the readable recall row; the owner accepted that as well as "cannot verify" ([RESULTS.md](tests/fixtures/model-eval-occluded/RESULTS.md)).
   - Three runs reported one new low-risk omission (L2 "使权重整体变小"), probably an effect of the fourth rule revision. The owner accepted it as an optional omission in all model-eval keys.
   - `compare_runs.py` reports evidence certainty and skips the risk check when a run gives an accepted alternative category.
+- **Fresh-article test** (`tests/fixtures/wiki-nb-zh`): 10 screenshots of the Chinese Wikipedia article 朴素贝叶斯分类器 (CC BY-SA 4.0), with a 35-node, 52-edge tree from ChatGPT (GPT-6.1 Sol), the first real-content tree not made by Codex. Two fresh Claude runs with the fourth rule revision and the fixes after it ([RESULTS.md](tests/fixtures/wiki-nb-zh/RESULTS.md)):
+  - Neither run reported a conceptual or relationship error, and the review found none they missed. Both found the one core omission (the discretization method for continuous values).
+  - The runs agreed on 85 of 87 items. Run 2 reported two labels with terms not in the source (词袋, 平滑) as source notes; the review counts them as supported, as run 1 did. Run 2 also missed one low-risk omission.
+  - All omissions were real, but several recommended fixes need narrowing, e.g. not copying a source sentence that its own formula contradicts.
+  - The answer key is an AI-assisted review (ChatGPT, in the conversation that made the tree) that the owner accepted, so it is not independent of the tree's generator.
+- **Audit rules, fifth revision,** from the owner's decisions on wiki-nb-zh and the questions both agents raised. No run has used it yet. Some examples come from wiki-nb-zh, so a re-run on that article can only show that the rules are followed; a fresh article is needed to show they generalize.
+  - **Question 1 is about the concept, not the word:** a label from outside the source is supported when the source describes what it names (词袋表示, 概率平滑修正). Only a claim the name adds is checked, as a `detail`.
+  - **Web pages and documents** (evidence-extraction.md): overlapping screenshots, split paragraphs, site chrome, and navigation boxes, which can back up the article's text but never stand alone or create an omission.
+  - **Formulas** are transcribed as linear Unicode text, exactly as printed.
+  - **Problems in the source itself** are quoted as printed, judged by the more specific evidence, explained in the item's `reason` and listed in the final message, with no new category or schema change.
+  - **Omissions:** a rule or caveat about a concept that has a node is supporting; history, applications, other names and comparisons are supporting background; a missing claim appears in only one entry; a supported node does not cover a limitation it leaves out.
+  - **Recommendations** are checked like findings: they keep the source's conditions and do not copy a source sentence that other evidence contradicts.
+  - **SKILL.md** suggests `python -X utf8` on Windows, since `python -I` and `-E` ignore `PYTHONIOENCODING`.
 - **`tools/make_fixture_slides.py`** builds decks from data files in `tools/decks/`, with bullets, tables, flow and tree diagrams, and stops if a slide overflows.
 - **`tools/compare_runs.py`** also checks `scope` (`detail` or `whole`) against the key, and counts omissions that match an acceptable extra in the key as accepted. Its item count is now labelled `expected items`.
 

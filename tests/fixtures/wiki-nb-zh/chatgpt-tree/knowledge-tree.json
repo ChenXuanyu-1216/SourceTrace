@@ -1,0 +1,530 @@
+{
+  "schema_version": "0.1",
+  "title": "Naive Bayes Classifier",
+  "nodes": [
+    {
+      "id": "N001",
+      "label": "Naive Bayes Classifier",
+      "definition": "A probabilistic classifier that combines Bayes' theorem with the assumption that features are conditionally independent given the class.",
+      "kind": "method"
+    },
+    {
+      "id": "N002",
+      "label": "Supervised Classification",
+      "definition": "The task of learning from labeled examples to assign a class to a new instance.",
+      "kind": "task"
+    },
+    {
+      "id": "N003",
+      "label": "Classes and Features",
+      "definition": "An instance is represented by features F1 through Fn, and its predicted category is represented by the class variable C.",
+      "kind": "concept"
+    },
+    {
+      "id": "N004",
+      "label": "Conditional Independence Assumption",
+      "definition": "Given the class C, the joint distribution of the features factorizes into individual feature distributions, even if the features are dependent overall.",
+      "kind": "concept"
+    },
+    {
+      "id": "N005",
+      "label": "Naive Bayes Probability Model",
+      "definition": "The model expresses the class posterior as p(C|F1,...,Fn) = p(C) × ∏i p(Fi|C) / Z.",
+      "kind": "concept"
+    },
+    {
+      "id": "N006",
+      "label": "Bayes' Theorem",
+      "definition": "Bayes' theorem computes the posterior using p(C|F) = p(C) × p(F|C) / p(F).",
+      "kind": "method"
+    },
+    {
+      "id": "N007",
+      "label": "Class Prior",
+      "definition": "The prior p(C) expresses how probable a class is before observing an instance's features.",
+      "kind": "concept"
+    },
+    {
+      "id": "N008",
+      "label": "Likelihood",
+      "definition": "The likelihood p(F|C) describes how probable the observed features are under a particular class.",
+      "kind": "concept"
+    },
+    {
+      "id": "N009",
+      "label": "Class Posterior",
+      "definition": "The posterior p(C|F) expresses the probability of a class after observing the instance's features.",
+      "kind": "concept"
+    },
+    {
+      "id": "N010",
+      "label": "Evidence and Normalization",
+      "definition": "The evidence p(F), also denoted Z, normalizes the posterior and is shared by all candidate classes for a fixed instance.",
+      "kind": "concept"
+    },
+    {
+      "id": "N011",
+      "label": "Joint Distribution",
+      "definition": "The joint distribution p(C,F1,...,Fn) models the class and features together and equals the numerator in Bayes' theorem.",
+      "kind": "concept"
+    },
+    {
+      "id": "N012",
+      "label": "Probability Chain Rule",
+      "definition": "The chain rule expands the joint distribution as p(C) × ∏i p(Fi|C,F1,...,F(i−1)).",
+      "kind": "method"
+    },
+    {
+      "id": "N013",
+      "label": "Factorized Likelihood",
+      "definition": "Conditional independence simplifies the feature likelihood to p(F1,...,Fn|C) = ∏i p(Fi|C).",
+      "kind": "concept"
+    },
+    {
+      "id": "N014",
+      "label": "Maximum A Posteriori Decision",
+      "definition": "The MAP rule predicts the class maximizing p(C) × ∏i p(Fi|C), since the evidence is constant across classes.",
+      "kind": "method"
+    },
+    {
+      "id": "N015",
+      "label": "Parameter Estimation",
+      "definition": "Training estimates class priors and the parameters of each class-conditional feature distribution from labeled data.",
+      "kind": "method"
+    },
+    {
+      "id": "N016",
+      "label": "Maximum Likelihood Estimation",
+      "definition": "Maximum likelihood estimation selects model parameters that maximize the likelihood of the observed training data.",
+      "kind": "method"
+    },
+    {
+      "id": "N017",
+      "label": "Empirical Class Prior",
+      "definition": "A class prior can be estimated as the number of training examples in that class divided by the total number of examples.",
+      "kind": "method"
+    },
+    {
+      "id": "N018",
+      "label": "Uniform Class Prior",
+      "definition": "A uniform prior assigns probability 1/K to each of K classes when equal class probabilities are assumed.",
+      "kind": "concept"
+    },
+    {
+      "id": "N019",
+      "label": "Gaussian Naive Bayes",
+      "definition": "Gaussian naive Bayes handles continuous features by modeling each feature within each class with a Gaussian distribution.",
+      "kind": "method"
+    },
+    {
+      "id": "N020",
+      "label": "Class-Conditional Gaussian Density",
+      "definition": "For a continuous feature x in class c, its density is p(x|c) = exp(−(x−μc)²/(2σc²)) / √(2πσc²).",
+      "kind": "concept"
+    },
+    {
+      "id": "N021",
+      "label": "Class-Specific Means and Variances",
+      "definition": "Gaussian naive Bayes estimates a separate mean and variance for every feature within every class.",
+      "kind": "concept"
+    },
+    {
+      "id": "N022",
+      "label": "Probability Density Versus Probability",
+      "definition": "A continuous probability density may exceed one because probabilities are obtained by integrating density over intervals.",
+      "kind": "fact"
+    },
+    {
+      "id": "N023",
+      "label": "Zero-Frequency Problem",
+      "definition": "An unseen feature value within a class can receive a zero probability estimate that makes the entire class likelihood zero.",
+      "kind": "concept"
+    },
+    {
+      "id": "N024",
+      "label": "Probability Smoothing",
+      "definition": "Smoothing adjusts frequency-based probability estimates so that unseen feature values do not automatically receive zero probability.",
+      "kind": "method"
+    },
+    {
+      "id": "N025",
+      "label": "Parameter and Training Efficiency",
+      "definition": "With a fixed number of parameters per feature and class, factorization makes parameter growth linear in the feature count and avoids estimating a full covariance matrix.",
+      "kind": "fact"
+    },
+    {
+      "id": "N026",
+      "label": "Classification Accuracy Versus Probability Accuracy",
+      "definition": "Naive Bayes can classify correctly despite inaccurate probability estimates when the correct class still receives the highest posterior score.",
+      "kind": "fact"
+    },
+    {
+      "id": "N027",
+      "label": "Sex Classification Example",
+      "definition": "The resource illustrates Gaussian naive Bayes by predicting a male or female label from height, weight, and foot size.",
+      "kind": "example"
+    },
+    {
+      "id": "N028",
+      "label": "Training the Measurement Classifier",
+      "definition": "Eight labeled examples, four per class, provide class-specific feature means and variances and equal empirical priors of 0.5.",
+      "kind": "example"
+    },
+    {
+      "id": "N029",
+      "label": "Predicting the Measurement Sample",
+      "definition": "The sample with height 6 feet, weight 130 pounds, and foot size 8 inches is assigned female because its unnormalized score is approximately 5.3778×10⁻⁴ versus 6.1984×10⁻⁹ for male.",
+      "kind": "example"
+    },
+    {
+      "id": "N030",
+      "label": "Text Classification",
+      "definition": "Text classification assigns documents to categories using evidence from their words.",
+      "kind": "task"
+    },
+    {
+      "id": "N031",
+      "label": "Bag-of-Words Representation",
+      "definition": "A document is represented by its word occurrences while ignoring their order and positions.",
+      "kind": "concept"
+    },
+    {
+      "id": "N032",
+      "label": "Class-Conditional Word Model",
+      "definition": "The text example models document likelihood as p(D|C) = ∏i p(wi|C), multiplying class-conditional probabilities of observed word occurrences.",
+      "kind": "concept"
+    },
+    {
+      "id": "N033",
+      "label": "Spam Filtering",
+      "definition": "Spam filtering classifies an email into the mutually exclusive classes spam S and non-spam ¬S.",
+      "kind": "example"
+    },
+    {
+      "id": "N034",
+      "label": "Posterior Odds",
+      "definition": "For spam filtering, posterior odds satisfy p(S|D)/p(¬S|D) = [p(S)/p(¬S)] × ∏i [p(wi|S)/p(wi|¬S)].",
+      "kind": "concept"
+    },
+    {
+      "id": "N035",
+      "label": "Log-Odds Decision Rule",
+      "definition": "Taking logarithms gives log posterior odds = log prior odds + ∑i log[p(wi|S)/p(wi|¬S)], with a positive result favoring spam under the MAP rule.",
+      "kind": "method"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "source": "N001",
+      "target": "N002",
+      "relation": "uses"
+    },
+    {
+      "id": "E002",
+      "source": "N001",
+      "target": "N003",
+      "relation": "uses"
+    },
+    {
+      "id": "E003",
+      "source": "N001",
+      "target": "N005",
+      "relation": "uses"
+    },
+    {
+      "id": "E004",
+      "source": "N005",
+      "target": "N004",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E005",
+      "source": "N005",
+      "target": "N006",
+      "relation": "uses"
+    },
+    {
+      "id": "E006",
+      "source": "N006",
+      "target": "N007",
+      "relation": "uses"
+    },
+    {
+      "id": "E007",
+      "source": "N006",
+      "target": "N008",
+      "relation": "uses"
+    },
+    {
+      "id": "E008",
+      "source": "N006",
+      "target": "N009",
+      "relation": "related-to"
+    },
+    {
+      "id": "E009",
+      "source": "N006",
+      "target": "N010",
+      "relation": "uses"
+    },
+    {
+      "id": "E010",
+      "source": "N005",
+      "target": "N011",
+      "relation": "uses"
+    },
+    {
+      "id": "E011",
+      "source": "N011",
+      "target": "N012",
+      "relation": "related-to"
+    },
+    {
+      "id": "E012",
+      "source": "N013",
+      "target": "N004",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E013",
+      "source": "N013",
+      "target": "N012",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E014",
+      "source": "N013",
+      "target": "N008",
+      "relation": "is-a"
+    },
+    {
+      "id": "E015",
+      "source": "N005",
+      "target": "N013",
+      "relation": "uses"
+    },
+    {
+      "id": "E016",
+      "source": "N001",
+      "target": "N014",
+      "relation": "uses"
+    },
+    {
+      "id": "E017",
+      "source": "N014",
+      "target": "N009",
+      "relation": "uses"
+    },
+    {
+      "id": "E018",
+      "source": "N001",
+      "target": "N015",
+      "relation": "uses"
+    },
+    {
+      "id": "E019",
+      "source": "N015",
+      "target": "N016",
+      "relation": "uses"
+    },
+    {
+      "id": "E020",
+      "source": "N015",
+      "target": "N017",
+      "relation": "include"
+    },
+    {
+      "id": "E021",
+      "source": "N017",
+      "target": "N007",
+      "relation": "related-to"
+    },
+    {
+      "id": "E022",
+      "source": "N018",
+      "target": "N007",
+      "relation": "is-a"
+    },
+    {
+      "id": "E023",
+      "source": "N017",
+      "target": "N018",
+      "relation": "contrasts-with"
+    },
+    {
+      "id": "E024",
+      "source": "N019",
+      "target": "N001",
+      "relation": "is-a"
+    },
+    {
+      "id": "E025",
+      "source": "N019",
+      "target": "N020",
+      "relation": "uses"
+    },
+    {
+      "id": "E026",
+      "source": "N020",
+      "target": "N021",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E027",
+      "source": "N015",
+      "target": "N021",
+      "relation": "related-to"
+    },
+    {
+      "id": "E028",
+      "source": "N020",
+      "target": "N022",
+      "relation": "related-to"
+    },
+    {
+      "id": "E029",
+      "source": "N015",
+      "target": "N023",
+      "relation": "related-to"
+    },
+    {
+      "id": "E030",
+      "source": "N015",
+      "target": "N024",
+      "relation": "include"
+    },
+    {
+      "id": "E031",
+      "source": "N024",
+      "target": "N023",
+      "relation": "related-to"
+    },
+    {
+      "id": "E032",
+      "source": "N004",
+      "target": "N025",
+      "relation": "causes"
+    },
+    {
+      "id": "E033",
+      "source": "N001",
+      "target": "N026",
+      "relation": "related-to"
+    },
+    {
+      "id": "E034",
+      "source": "N026",
+      "target": "N014",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E035",
+      "source": "N027",
+      "target": "N002",
+      "relation": "example-of"
+    },
+    {
+      "id": "E036",
+      "source": "N027",
+      "target": "N019",
+      "relation": "uses"
+    },
+    {
+      "id": "E037",
+      "source": "N027",
+      "target": "N028",
+      "relation": "include"
+    },
+    {
+      "id": "E038",
+      "source": "N027",
+      "target": "N029",
+      "relation": "include"
+    },
+    {
+      "id": "E039",
+      "source": "N028",
+      "target": "N015",
+      "relation": "example-of"
+    },
+    {
+      "id": "E040",
+      "source": "N029",
+      "target": "N014",
+      "relation": "uses"
+    },
+    {
+      "id": "E041",
+      "source": "N030",
+      "target": "N002",
+      "relation": "is-a"
+    },
+    {
+      "id": "E042",
+      "source": "N030",
+      "target": "N001",
+      "relation": "uses"
+    },
+    {
+      "id": "E043",
+      "source": "N030",
+      "target": "N031",
+      "relation": "uses"
+    },
+    {
+      "id": "E044",
+      "source": "N030",
+      "target": "N032",
+      "relation": "uses"
+    },
+    {
+      "id": "E045",
+      "source": "N032",
+      "target": "N031",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E046",
+      "source": "N032",
+      "target": "N013",
+      "relation": "example-of"
+    },
+    {
+      "id": "E047",
+      "source": "N033",
+      "target": "N030",
+      "relation": "example-of"
+    },
+    {
+      "id": "E048",
+      "source": "N033",
+      "target": "N034",
+      "relation": "uses"
+    },
+    {
+      "id": "E049",
+      "source": "N034",
+      "target": "N032",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E050",
+      "source": "N033",
+      "target": "N035",
+      "relation": "uses"
+    },
+    {
+      "id": "E051",
+      "source": "N035",
+      "target": "N034",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E052",
+      "source": "N035",
+      "target": "N014",
+      "relation": "related-to"
+    }
+  ]
+}

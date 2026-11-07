@@ -1,0 +1,530 @@
+{
+  "schema_version": "0.1",
+  "title": "朴素贝叶斯分类器",
+  "nodes": [
+    {
+      "id": "N001",
+      "label": "朴素贝叶斯分类器",
+      "definition": "朴素贝叶斯分类器利用贝叶斯定理和给定类别时特征条件独立的假设，根据特征预测样本类别。",
+      "kind": "method"
+    },
+    {
+      "id": "N002",
+      "label": "监督分类",
+      "definition": "监督分类通过带有类别标签的训练样本学习规则，为新样本分配类别。",
+      "kind": "task"
+    },
+    {
+      "id": "N003",
+      "label": "类别与特征",
+      "definition": "类别变量 C 表示样本所属类别，特征变量 F1 至 Fn 表示用于分类的样本属性。",
+      "kind": "concept"
+    },
+    {
+      "id": "N004",
+      "label": "条件独立假设",
+      "definition": "条件独立假设认为在类别 C 已知时，各特征的联合条件分布可以分解为各自条件分布的乘积。",
+      "kind": "concept"
+    },
+    {
+      "id": "N005",
+      "label": "朴素贝叶斯概率模型",
+      "definition": "朴素贝叶斯概率模型将类别后验概率表示为 p(C|F1,…,Fn) = p(C) × ∏i p(Fi|C) / Z。",
+      "kind": "concept"
+    },
+    {
+      "id": "N006",
+      "label": "贝叶斯定理",
+      "definition": "贝叶斯定理通过 p(C|F) = p(C) × p(F|C) / p(F)，将先验概率与观测证据结合得到后验概率。",
+      "kind": "method"
+    },
+    {
+      "id": "N007",
+      "label": "类别先验概率",
+      "definition": "类别先验概率 p(C) 表示尚未观察样本特征时，对其属于某一类别的概率判断。",
+      "kind": "concept"
+    },
+    {
+      "id": "N008",
+      "label": "特征似然",
+      "definition": "特征似然 p(F|C) 描述在某个类别下观察到当前特征的可能性，连续特征时使用概率密度。",
+      "kind": "concept"
+    },
+    {
+      "id": "N009",
+      "label": "类别后验概率",
+      "definition": "类别后验概率 p(C|F) 表示观察到样本特征后，该样本属于某一类别的概率。",
+      "kind": "concept"
+    },
+    {
+      "id": "N010",
+      "label": "证据因子与归一化",
+      "definition": "证据因子 p(F)，也记为 Z，用于将后验概率归一化，且对同一样本的所有候选类别保持一致。",
+      "kind": "concept"
+    },
+    {
+      "id": "N011",
+      "label": "联合分布",
+      "definition": "联合分布 p(C,F1,…,Fn) 同时描述类别与特征，并构成贝叶斯公式中先验与似然乘积所对应的分子。",
+      "kind": "concept"
+    },
+    {
+      "id": "N012",
+      "label": "概率链式法则",
+      "definition": "概率链式法则将联合分布展开为 p(C) × ∏i p(Fi|C,F1,…,F(i−1))。",
+      "kind": "method"
+    },
+    {
+      "id": "N013",
+      "label": "似然的乘积分解",
+      "definition": "利用条件独立假设，可以把特征似然简化为 p(F1,…,Fn|C) = ∏i p(Fi|C)。",
+      "kind": "concept"
+    },
+    {
+      "id": "N014",
+      "label": "最大后验决策",
+      "definition": "最大后验决策选择使 p(C) × ∏i p(Fi|C) 最大的类别，因为比较类别时可以省略共同的证据因子。",
+      "kind": "method"
+    },
+    {
+      "id": "N015",
+      "label": "参数估计",
+      "definition": "参数估计利用带标签的训练数据，确定类别先验以及各类别下特征分布的参数。",
+      "kind": "method"
+    },
+    {
+      "id": "N016",
+      "label": "最大似然估计",
+      "definition": "最大似然估计选择使已观察训练数据的似然最大的模型参数。",
+      "kind": "method"
+    },
+    {
+      "id": "N017",
+      "label": "按频率估计类别先验",
+      "definition": "某类别的先验概率可以用训练集中该类别的样本数除以总样本数来估计。",
+      "kind": "method"
+    },
+    {
+      "id": "N018",
+      "label": "均匀类别先验",
+      "definition": "均匀类别先验假设 K 个类别具有相同的出现概率，即每类先验概率均为 1/K。",
+      "kind": "concept"
+    },
+    {
+      "id": "N019",
+      "label": "高斯朴素贝叶斯",
+      "definition": "高斯朴素贝叶斯假设每个类别下的各连续特征分别服从高斯分布。",
+      "kind": "method"
+    },
+    {
+      "id": "N020",
+      "label": "类条件高斯密度",
+      "definition": "连续特征 x 在类别 c 下的密度为 p(x|c) = exp(−(x−μc)²/(2σc²)) / √(2πσc²)。",
+      "kind": "concept"
+    },
+    {
+      "id": "N021",
+      "label": "分类别估计均值与方差",
+      "definition": "高斯朴素贝叶斯针对每个类别中的每个特征，分别估计其均值与方差。",
+      "kind": "method"
+    },
+    {
+      "id": "N022",
+      "label": "概率密度与概率的区别",
+      "definition": "连续变量的概率密度可以大于 1，而区间概率需要对该区间内的密度积分得到。",
+      "kind": "fact"
+    },
+    {
+      "id": "N023",
+      "label": "零频率问题",
+      "definition": "某特征取值若未在某类别的训练样本中出现，其频率估计可能为零，进而使该类别的整个似然乘积为零。",
+      "kind": "concept"
+    },
+    {
+      "id": "N024",
+      "label": "概率平滑修正",
+      "definition": "概率平滑修正调整基于频率的概率估计，避免未出现的特征取值直接获得零概率。",
+      "kind": "method"
+    },
+    {
+      "id": "N025",
+      "label": "参数与训练效率",
+      "definition": "在每个特征和类别所需参数数量固定时，条件独立分解使参数量随特征数线性增长，并避免估计完整协方差矩阵。",
+      "kind": "fact"
+    },
+    {
+      "id": "N026",
+      "label": "分类正确不要求概率估计精确",
+      "definition": "即使独立性假设不完全成立或概率估计不够精确，只要正确类别的后验得分最高，分类结果仍然可以正确。",
+      "kind": "fact"
+    },
+    {
+      "id": "N027",
+      "label": "性别分类示例",
+      "definition": "资料通过身高、体重和脚的尺寸三个特征，演示如何预测样本的男性或女性类别标签。",
+      "kind": "example"
+    },
+    {
+      "id": "N028",
+      "label": "性别分类的训练",
+      "definition": "示例使用男女各四个训练样本，分别估计各特征的均值和方差，并得到男女均为 0.5 的类别先验。",
+      "kind": "example"
+    },
+    {
+      "id": "N029",
+      "label": "性别分类的预测",
+      "definition": "对身高 6 英尺、体重 130 磅、脚尺寸 8 英寸的样本，女性未归一化得分约为 5.3778×10⁻⁴，高于男性的 6.1984×10⁻⁹，因此预测为女性。",
+      "kind": "example"
+    },
+    {
+      "id": "N030",
+      "label": "文本分类",
+      "definition": "文本分类利用文档中的词语信息，将文档分配到预先定义的类别。",
+      "kind": "task"
+    },
+    {
+      "id": "N031",
+      "label": "词袋表示",
+      "definition": "词袋表示以文档中的词语及其出现次数描述文本，忽略词语的顺序和位置。",
+      "kind": "concept"
+    },
+    {
+      "id": "N032",
+      "label": "类条件词概率模型",
+      "definition": "文本示例将文档似然表示为 p(D|C) = ∏i p(wi|C)，即各次词语出现的类条件概率之积。",
+      "kind": "concept"
+    },
+    {
+      "id": "N033",
+      "label": "垃圾邮件过滤",
+      "definition": "垃圾邮件过滤把邮件划分为垃圾邮件 S 与非垃圾邮件 ¬S 两个互斥且穷尽的类别。",
+      "kind": "example"
+    },
+    {
+      "id": "N034",
+      "label": "后验概率比",
+      "definition": "二分类的后验概率比满足 p(S|D)/p(¬S|D) = [p(S)/p(¬S)] × ∏i [p(wi|S)/p(wi|¬S)]，比较时共同的证据因子被消去。",
+      "kind": "concept"
+    },
+    {
+      "id": "N035",
+      "label": "对数概率比决策",
+      "definition": "对后验概率比取对数可将连乘变为求和，在最大后验规则下结果大于零时预测为垃圾邮件。",
+      "kind": "method"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "source": "N002",
+      "target": "N001",
+      "relation": "uses"
+    },
+    {
+      "id": "E002",
+      "source": "N001",
+      "target": "N003",
+      "relation": "uses"
+    },
+    {
+      "id": "E003",
+      "source": "N001",
+      "target": "N005",
+      "relation": "uses"
+    },
+    {
+      "id": "E004",
+      "source": "N005",
+      "target": "N004",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E005",
+      "source": "N005",
+      "target": "N006",
+      "relation": "uses"
+    },
+    {
+      "id": "E006",
+      "source": "N006",
+      "target": "N007",
+      "relation": "uses"
+    },
+    {
+      "id": "E007",
+      "source": "N006",
+      "target": "N008",
+      "relation": "uses"
+    },
+    {
+      "id": "E008",
+      "source": "N009",
+      "target": "N006",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E009",
+      "source": "N006",
+      "target": "N010",
+      "relation": "uses"
+    },
+    {
+      "id": "E010",
+      "source": "N005",
+      "target": "N011",
+      "relation": "uses"
+    },
+    {
+      "id": "E011",
+      "source": "N012",
+      "target": "N011",
+      "relation": "related-to"
+    },
+    {
+      "id": "E012",
+      "source": "N013",
+      "target": "N004",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E013",
+      "source": "N013",
+      "target": "N012",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E014",
+      "source": "N013",
+      "target": "N008",
+      "relation": "related-to"
+    },
+    {
+      "id": "E015",
+      "source": "N005",
+      "target": "N013",
+      "relation": "uses"
+    },
+    {
+      "id": "E016",
+      "source": "N001",
+      "target": "N014",
+      "relation": "uses"
+    },
+    {
+      "id": "E017",
+      "source": "N014",
+      "target": "N009",
+      "relation": "uses"
+    },
+    {
+      "id": "E018",
+      "source": "N001",
+      "target": "N015",
+      "relation": "uses"
+    },
+    {
+      "id": "E019",
+      "source": "N015",
+      "target": "N016",
+      "relation": "uses"
+    },
+    {
+      "id": "E020",
+      "source": "N015",
+      "target": "N017",
+      "relation": "includes"
+    },
+    {
+      "id": "E021",
+      "source": "N017",
+      "target": "N007",
+      "relation": "related-to"
+    },
+    {
+      "id": "E022",
+      "source": "N018",
+      "target": "N007",
+      "relation": "is-a"
+    },
+    {
+      "id": "E023",
+      "source": "N017",
+      "target": "N018",
+      "relation": "contrasts-with"
+    },
+    {
+      "id": "E024",
+      "source": "N019",
+      "target": "N001",
+      "relation": "is-a"
+    },
+    {
+      "id": "E025",
+      "source": "N019",
+      "target": "N020",
+      "relation": "uses"
+    },
+    {
+      "id": "E026",
+      "source": "N020",
+      "target": "N021",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E027",
+      "source": "N021",
+      "target": "N015",
+      "relation": "is-a"
+    },
+    {
+      "id": "E028",
+      "source": "N020",
+      "target": "N022",
+      "relation": "related-to"
+    },
+    {
+      "id": "E029",
+      "source": "N015",
+      "target": "N023",
+      "relation": "related-to"
+    },
+    {
+      "id": "E030",
+      "source": "N015",
+      "target": "N024",
+      "relation": "includes"
+    },
+    {
+      "id": "E031",
+      "source": "N024",
+      "target": "N023",
+      "relation": "related-to"
+    },
+    {
+      "id": "E032",
+      "source": "N004",
+      "target": "N025",
+      "relation": "causes"
+    },
+    {
+      "id": "E033",
+      "source": "N001",
+      "target": "N026",
+      "relation": "related-to"
+    },
+    {
+      "id": "E034",
+      "source": "N026",
+      "target": "N014",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E035",
+      "source": "N027",
+      "target": "N002",
+      "relation": "example-of"
+    },
+    {
+      "id": "E036",
+      "source": "N027",
+      "target": "N019",
+      "relation": "uses"
+    },
+    {
+      "id": "E037",
+      "source": "N027",
+      "target": "N028",
+      "relation": "includes"
+    },
+    {
+      "id": "E038",
+      "source": "N027",
+      "target": "N029",
+      "relation": "includes"
+    },
+    {
+      "id": "E039",
+      "source": "N028",
+      "target": "N021",
+      "relation": "uses"
+    },
+    {
+      "id": "E040",
+      "source": "N029",
+      "target": "N014",
+      "relation": "uses"
+    },
+    {
+      "id": "E041",
+      "source": "N030",
+      "target": "N002",
+      "relation": "is-a"
+    },
+    {
+      "id": "E042",
+      "source": "N030",
+      "target": "N001",
+      "relation": "uses"
+    },
+    {
+      "id": "E043",
+      "source": "N030",
+      "target": "N031",
+      "relation": "uses"
+    },
+    {
+      "id": "E044",
+      "source": "N030",
+      "target": "N032",
+      "relation": "uses"
+    },
+    {
+      "id": "E045",
+      "source": "N032",
+      "target": "N031",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E046",
+      "source": "N032",
+      "target": "N013",
+      "relation": "uses"
+    },
+    {
+      "id": "E047",
+      "source": "N033",
+      "target": "N030",
+      "relation": "example-of"
+    },
+    {
+      "id": "E048",
+      "source": "N033",
+      "target": "N034",
+      "relation": "uses"
+    },
+    {
+      "id": "E049",
+      "source": "N034",
+      "target": "N032",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E050",
+      "source": "N033",
+      "target": "N035",
+      "relation": "uses"
+    },
+    {
+      "id": "E051",
+      "source": "N035",
+      "target": "N034",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E052",
+      "source": "N035",
+      "target": "N014",
+      "relation": "related-to"
+    }
+  ]
+}

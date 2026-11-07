@@ -1,0 +1,28 @@
+# Skill feedback: SourceTrace on the 朴素贝叶斯分类器 screenshots
+
+## 1. Script runs
+
+| Script | Runs | Result |
+|--------|------|--------|
+| `validate_input.py --json` | 1 | Valid, no errors or warnings (35 nodes, 52 edges, 10 images). |
+| `validate_evidence.py` | 1 | Valid: 10 sources, 135 items (11 table, 124 text). One warning, `LOW_CERTAINTY` for EV-102 (expected: the cut-off formula on page 7). |
+| `build_report.py` | 1 | Succeeded on the first run: 86 supported, 1 finding (source note), 11 omissions. |
+
+No skill script failed. One of my own helper scripts (`work/make_evidence.py`) failed once with `UnicodeEncodeError: 'gbk' codec ...` when it printed Chinese. I had set `PYTHONIOENCODING=utf-8` as SKILL.md says, but I had also run Python with `-I`, which ignores environment variables. The JSON file had already been written. I ran it again without `-I` and it worked. SKILL.md's tip is right, but it could add that `-I`/`-E` turn it off (or suggest `-X utf8`).
+
+## 2. Unclear or missing instructions
+
+1. **Labels that are not literally in the source.** Question 1 says: "Is the node's term (or, for an edge, either end node's term) absent from the source? → unsupported-expansion (scope whole)". Several labels are not quoted word for word, but the content they name is described: 词袋表示 (the source says "以词频为特征" and that words do not depend on "与其他词出现在文中的位置"), 零频率问题 (the source says the frequency estimate "将为0。这是一个问题"), 概率平滑修正 (the source says "修正"), 监督分类, 均匀类别先验 ("各类等概率"). Read literally, 词袋表示 would be a medium finding, and it would pull the edges E043 and E045 along with it, although every part of its definition is in the source. I treated a label that names described content as a paraphrase ("Paraphrase is fine if the meaning … unchanged"), so all of these are `supported`. The rules should say whether Q1 is about the term's wording or about the concept, and what to do with an outside technical name for content the source describes.
+2. **Web-page screenshots instead of slides.** The extraction rules talk about slides, titles, bullets and diagrams ("One item per slide title, bullet, table row and diagram relationship"). This source is a scrolled web page (Wikipedia), so consecutive screenshots overlap by several lines, and some paragraphs start on one image and end on the next. Nothing says what to do with repeated content or split paragraphs. I extracted each statement once, on the first page where it is complete, and wrote "repeated at top of page N" / "continues on page N" in `location`. Paragraph sentences became items ("Section 讨论, sentence 3") in place of bullets.
+3. **Site chrome and navigation boxes.** "Skip page numbers, logos and decoration" does not mention web UI (menus, the revision banner, edit links) or a navigation sidebar. I skipped the UI and the revision banner. I extracted the sidebar "机器学习与数据挖掘" (EV-011 to EV-013), because "监督学习（分类 · 回归）" is the only source text that puts classification under supervised learning. I used it as part of the support for E041 文本分类 is-a 监督分类 and E035. The rules don't say whether a navigation box counts as evidence for a relationship. A stricter reading would make E041 an `unsupported-expansion`.
+4. **Formulas.** There is no transcription format for math. I wrote formulas as linear Unicode text inside `text` items (e.g. `∏_{i=1}^{n} p(Fi|C)`), and kept the source's symbols even where they look wrong (the chain-rule block uses ∝ on every line).
+5. **A source that is inconsistent or wrong.** The rules say the images are "the single source of truth" but don't say what to do when the source contradicts itself or uses a word loosely. Examples: it calls S and ¬S "两个相互独立的类别" while explaining "要么是垃圾邮件，要么就不是"; it says "朴素贝叶斯方法都用到离散化方法，而不是概率分布估计的方法" right after presenting Gaussian NB; and it calls the Gaussian value P(x=v|c) a "概率" while page 8 says it is a "概率密度而不是概率". I quoted everything verbatim. I judged N033 ("互斥且穷尽") `supported` from the explanatory clause, not `conceptual-error` against "相互独立". I didn't comment on the source's other inconsistencies, since the rules give no category for them.
+6. **Omission tiers overlap.** Core includes "a stated rule ('X is …', 'X should …')", and supporting includes "a property or caveat of a concept that is in the tree". EV-054 ("为了估计特征的分布参数，我们要先假设训练集数据满足某种分布或者非参数模型") is both. I chose supporting, because the concept (参数估计) is in the tree. History and applications (1950s research, 医疗诊断) and performance comparisons (2006 study, SVM) fit no tier. I put them under supporting.
+7. **Grouping omissions.** "One omission per missing concept. Group its details into that one entry." This did not settle whether the parameter-count formula and the linear-time training for N025 are one concept or two. I grouped them as one, because both are what the node's label "参数与训练效率" promises.
+
+## 3. Image difficulties
+
+- **Cut-off formula:** on page 7 the `evidence = …` formula runs past the right edge after `p(weight|f`. I split it into a readable item (EV-101, high) and `［无法辨认］` (EV-102, low), and did not fill in the rest. No verdict depends on it: N010 rests on EV-033, EV-041 and EV-100.
+- **Overlapping screenshots:** about a third of each image repeats the previous one (see 2.2). I compared the overlaps so that nothing was extracted twice and nothing was skipped.
+- **Small math:** the images are only 800×600, and the exponents in page 8 (e.g. `6.1984e^-09`, `5.3778e^-04`) and the parameter formula on page 4 (`(k−1) + n r k`, `2n+1`) are small. I enlarged crops of pages 1, 4, 5, 7 and 8 (in `work/`) and checked every number used in a verdict, especially N029's scores. They match.
+- Apart from that, the text is clean and legible, so every other item has `high` certainty.
