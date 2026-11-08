@@ -26,8 +26,10 @@ Why this granularity: nodes are checked against single statements, and edges aga
 When the images are screenshots of a web page or a document rather than slides:
 
 - **Units:** use section headings, paragraphs (split into sentences or clauses by the rule above), formulas, table rows and figures. `location` names them, e.g. `Section 参数估计, paragraph 2, sentence 3`.
-- **Overlapping screenshots:** consecutive images often repeat a few lines. Extract each statement once, on the page where it is first complete, and do not skip the lines that appear only at the bottom of one image. A sentence split across two images is one item on the page where it starts; say `continues on page N` in `location`.
-- **Site chrome:** skip menus, banners, edit links, revision notices and the footer. A navigation box (e.g. a sidebar listing related topics) may be extracted as `text`, with `location` saying `Navigation box`; the audit decides how much it counts.
+- **Overlapping screenshots:** consecutive images often repeat a few lines. Extract each statement once, on the first page that shows all of it, and do not skip the lines that appear only at the bottom of one image. Only when no single image shows all of it is it one item on the page where it starts, with `continues on page N` in `location`. If you split such a sentence into parts anyway (see "Splitting a bullet"), each part goes on the first page that shows that part.
+- **A formula on a different page from the sentence that introduces it:** one item on the page with the formula, quoting the sentence too; if the sentence is not repeated there, `location` says where it is.
+- **Citation markers** such as [1] or [注 2] are not part of the statement: leave them out of `content`.
+- **Site chrome:** skip menus, banners, edit links, revision notices, disambiguation notes at the top ("关于与…标题相近…"), the reference list and the footer. A navigation box (e.g. a sidebar listing related topics) may be extracted as `text`, with `location` saying `Navigation box`; the audit decides how much it counts.
 
 ## Quote, don't paraphrase
 

@@ -45,6 +45,15 @@
   - **Omissions:** a rule or caveat about a concept that has a node is supporting; history, applications, other names and comparisons are supporting background; a missing claim appears in only one entry; a supported node does not cover a limitation it leaves out.
   - **Recommendations** are checked like findings: they keep the source's conditions and do not copy a source sentence that other evidence contradicts.
   - **SKILL.md** suggests `python -X utf8` on Windows, since `python -I` and `-E` ignore `PYTHONIOENCODING`.
+- **Audit rules, sixth revision,** from the open questions of the wiki-pc-zh runs and the wiki-nb-zh re-runs. Small changes, with no new category or schema field. No run has used it yet.
+  - **Check a source claim before relying on it:** before a recommendation quotes a general claim of the source, test it against the source's own formulas at the boundary cases and other conventions (e.g. "E(w)是一组正数的和" fails because f(0)=+1). A claim that fails is a source problem, handled as before in `reason` and the final message.
+  - **A slip only outside knowledge reveals** (N029 "最大平均值") is judged against the printed text; the recommendation marks the tree's version as an outside explanation to check, and the final message calls it a possible slip.
+  - **Overlapping screenshots:** a statement goes on the first page that shows all of it; "the page where it starts" applies only when no single image does.
+  - **Omissions:** one entry per node or topic. A node's missing details form one entry; background is one entry per kind in each section, so a long history section is one entry and the other names of several concepts are one. A convention a formula relies on (b = 0) is a supporting detail.
+  - **A wrong end point of a range** that the tree gives as the source's condition (0<α<1 vs 0 < α ≤ 1) is a `conceptual-error`, not a narrower claim, at risk `medium` when the rest of the definition is right. A claim attributed to the source ("资料给出的") must match the source.
+  - **`contrasts-with`** is supported by two formulas or conventions for the same thing, even if the source never compares them (E017).
+  - **The label test comes before the single-instance rule:** a class definition that only says what the name means is supported (N003 线性分类器).
+  - **Smaller points:** `=`/展开为 vs `∝`; web-page heading levels neither state nor rule out a relationship; a formula on a different page from its intro sentence; citation markers [n] are left out of quotes; disambiguation notes and reference lists are site chrome.
 - **`tools/make_fixture_slides.py`** builds decks from data files in `tools/decks/`, with bullets, tables, flow and tree diagrams, and stops if a slide overflows.
 - **`tools/compare_runs.py`** also checks `scope` (`detail` or `whole`) against the key, and counts omissions that match an acceptable extra in the key as accepted. Its item count is now labelled `expected items`.
 
