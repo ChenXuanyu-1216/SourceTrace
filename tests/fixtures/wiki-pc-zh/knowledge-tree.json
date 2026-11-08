@@ -1,0 +1,506 @@
+{
+  "schema_version": "0.1",
+  "title": "感知器",
+  "nodes": [
+    {
+      "id": "N001",
+      "label": "感知器",
+      "definition": "感知器通过对输入特征加权求和并进行阈值判断，实现二分类。",
+      "kind": "method"
+    },
+    {
+      "id": "N002",
+      "label": "二分类",
+      "definition": "二分类是将输入样本判定为两个类别之一的任务。",
+      "kind": "task"
+    },
+    {
+      "id": "N003",
+      "label": "线性分类器",
+      "definition": "线性分类器利用特征的线性组合形成决策边界，感知器属于这一类模型。",
+      "kind": "concept"
+    },
+    {
+      "id": "N004",
+      "label": "单层前馈神经网络",
+      "definition": "单层感知器的输入直接经过权重变换得到输出，是最简单的前馈神经网络形式。",
+      "kind": "concept"
+    },
+    {
+      "id": "N005",
+      "label": "生物神经元的抽象",
+      "definition": "感知器借鉴神经元接收信号并在达到阈值时激活的行为，建立数学模型。",
+      "kind": "concept"
+    },
+    {
+      "id": "N006",
+      "label": "神经元结构与模型对应",
+      "definition": "资料将神经元的突触、阈值和细胞体行为分别联系到模型的权重、偏置及激活函数。",
+      "kind": "concept"
+    },
+    {
+      "id": "N007",
+      "label": "感知器的计算结构",
+      "definition": "感知器由输入、权重、偏置、求和与激活环节组成，输出可写为 t=f(Σi wi xi+b)。",
+      "kind": "concept"
+    },
+    {
+      "id": "N008",
+      "label": "输入向量",
+      "definition": "输入向量 x 由样本的各个实数特征组成，作为感知器的输入。",
+      "kind": "concept"
+    },
+    {
+      "id": "N009",
+      "label": "权重向量",
+      "definition": "权重向量 w 为各输入特征分配系数，决定它们对加权和的贡献。",
+      "kind": "concept"
+    },
+    {
+      "id": "N010",
+      "label": "加权求和",
+      "definition": "加权求和计算 w·x+b，即各特征与对应权重乘积之和再加偏置。",
+      "kind": "method"
+    },
+    {
+      "id": "N011",
+      "label": "偏置",
+      "definition": "偏置 b 是不依赖输入值的常数，用于调整激活阈值及决策边界的位置。",
+      "kind": "concept"
+    },
+    {
+      "id": "N012",
+      "label": "激活函数",
+      "definition": "激活函数将加权求和的结果转换为感知器的类别输出。",
+      "kind": "concept"
+    },
+    {
+      "id": "N013",
+      "label": "0与1的输出约定",
+      "definition": "资料定义部分规定 w·x+b>0 时输出1，否则输出0。",
+      "kind": "concept"
+    },
+    {
+      "id": "N014",
+      "label": "反对称符号函数",
+      "definition": "资料结构部分采用 f(z)=+1（z≥0）和 f(z)=−1（z<0）的输出约定。",
+      "kind": "method"
+    },
+    {
+      "id": "N015",
+      "label": "偏置的增广表示",
+      "definition": "给输入增加恒为1的分量，并把偏置作为对应权重，可将计算统一写为增广向量的内积。",
+      "kind": "method"
+    },
+    {
+      "id": "N016",
+      "label": "决策边界",
+      "definition": "决策边界是划分感知器输出类别的分界面，可表示为 w·x+b=0。",
+      "kind": "concept"
+    },
+    {
+      "id": "N017",
+      "label": "超平面的几何解释",
+      "definition": "在增广空间中，wᵀx=0 表示法向量为w且经过原点的超平面，两侧对应不同输出。",
+      "kind": "concept"
+    },
+    {
+      "id": "N018",
+      "label": "带标签训练集",
+      "definition": "训练集由输入样本及其期望输出组成，可记为 D={(p1,t1),…,(pm,tm)}。",
+      "kind": "concept"
+    },
+    {
+      "id": "N019",
+      "label": "符号输出的梯度学习限制",
+      "definition": "符号函数不连续，直接基于其输出构造均方误差会使通常的梯度学习方法难以直接适用。",
+      "kind": "fact"
+    },
+    {
+      "id": "N020",
+      "label": "感知机准则函数",
+      "definition": "感知机准则函数写为 E(w)=−Σpi∈M (wᵀpi)ti，对误分类样本的带标签内积取负后求和。",
+      "kind": "method"
+    },
+    {
+      "id": "N021",
+      "label": "误分类样本集合",
+      "definition": "误分类样本集合 M 包含当前权重下预测输出与目标标签不一致的输入样本。",
+      "kind": "concept"
+    },
+    {
+      "id": "N022",
+      "label": "感知机学习算法",
+      "definition": "感知机学习算法反复遍历训练实例，并依据预测输出与期望输出的差异更新权重。",
+      "kind": "method"
+    },
+    {
+      "id": "N023",
+      "label": "学习率",
+      "definition": "学习率 α 控制每次权重更新的幅度，资料将其设为满足0<α<1的常数。",
+      "kind": "concept"
+    },
+    {
+      "id": "N024",
+      "label": "权重更新规则",
+      "definition": "对训练样本(x,y)，各分量按 w(j)←w(j)+α(y−f(x))x(j) 更新。",
+      "kind": "method"
+    },
+    {
+      "id": "N025",
+      "label": "错误驱动更新",
+      "definition": "当预测输出等于目标输出时更新量为零，因此权重只在预测错误时发生改变。",
+      "kind": "fact"
+    },
+    {
+      "id": "N026",
+      "label": "线性可分性",
+      "definition": "线性可分性表示存在一个线性决策边界，能够把训练集中的两类样本正确分开。",
+      "kind": "concept"
+    },
+    {
+      "id": "N027",
+      "label": "正间隔分离条件",
+      "definition": "资料用存在γ>0及权重，使所有样本满足 yi(w·xi+b)>γ，描述带正间隔的线性分离。",
+      "kind": "concept"
+    },
+    {
+      "id": "N028",
+      "label": "感知机收敛定理",
+      "definition": "对于线性可分的训练集，感知机学习算法可以在有限次迭代后收敛。",
+      "kind": "fact"
+    },
+    {
+      "id": "N029",
+      "label": "错误次数上界",
+      "definition": "资料给出的错误次数界为(2R/γ)²，其中R是输入向量的最大范数，γ来自前述正间隔条件。",
+      "kind": "fact"
+    },
+    {
+      "id": "N030",
+      "label": "非线性可分时不保证收敛",
+      "definition": "当训练集不是线性可分时，感知机学习算法不能保证收敛。",
+      "kind": "fact"
+    },
+    {
+      "id": "N031",
+      "label": "异或问题",
+      "definition": "异或是资料列举的线性不可分问题，单层感知器无法解决。",
+      "kind": "example"
+    },
+    {
+      "id": "N032",
+      "label": "多层感知机",
+      "definition": "多层感知机区别于单层感知器，资料指出多层网络能够解决线性不可分问题。",
+      "kind": "concept"
+    },
+    {
+      "id": "N033",
+      "label": "感知器的发展历史",
+      "definition": "罗森布拉特于1957年提出感知器，后来单层模型的能力限制成为神经网络研究历史中的重要议题。",
+      "kind": "fact"
+    },
+    {
+      "id": "N034",
+      "label": "损失最小化的学习目标",
+      "definition": "模型学习通过减小损失寻找能够按特征划分训练数据的超平面。",
+      "kind": "task"
+    },
+    {
+      "id": "N035",
+      "label": "感知机的扩展应用",
+      "definition": "资料指出感知机除二分类外，还可用于复杂模式的结构化预测以及分布式环境中的大规模学习。",
+      "kind": "fact"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "source": "N001",
+      "target": "N002",
+      "relation": "is-a"
+    },
+    {
+      "id": "E002",
+      "source": "N001",
+      "target": "N003",
+      "relation": "is-a"
+    },
+    {
+      "id": "E003",
+      "source": "N001",
+      "target": "N004",
+      "relation": "is-a"
+    },
+    {
+      "id": "E004",
+      "source": "N001",
+      "target": "N005",
+      "relation": "related-to"
+    },
+    {
+      "id": "E005",
+      "source": "N005",
+      "target": "N006",
+      "relation": "includes"
+    },
+    {
+      "id": "E006",
+      "source": "N001",
+      "target": "N007",
+      "relation": "includes"
+    },
+    {
+      "id": "E007",
+      "source": "N007",
+      "target": "N008",
+      "relation": "includes"
+    },
+    {
+      "id": "E008",
+      "source": "N007",
+      "target": "N009",
+      "relation": "includes"
+    },
+    {
+      "id": "E009",
+      "source": "N007",
+      "target": "N010",
+      "relation": "uses"
+    },
+    {
+      "id": "E010",
+      "source": "N007",
+      "target": "N011",
+      "relation": "includes"
+    },
+    {
+      "id": "E011",
+      "source": "N007",
+      "target": "N012",
+      "relation": "uses"
+    },
+    {
+      "id": "E012",
+      "source": "N010",
+      "target": "N008",
+      "relation": "uses"
+    },
+    {
+      "id": "E013",
+      "source": "N010",
+      "target": "N009",
+      "relation": "uses"
+    },
+    {
+      "id": "E014",
+      "source": "N010",
+      "target": "N011",
+      "relation": "uses"
+    },
+    {
+      "id": "E015",
+      "source": "N012",
+      "target": "N013",
+      "relation": "related-to"
+    },
+    {
+      "id": "E016",
+      "source": "N014",
+      "target": "N012",
+      "relation": "is-a"
+    },
+    {
+      "id": "E017",
+      "source": "N013",
+      "target": "N014",
+      "relation": "contrasts-with"
+    },
+    {
+      "id": "E018",
+      "source": "N015",
+      "target": "N011",
+      "relation": "related-to"
+    },
+    {
+      "id": "E019",
+      "source": "N015",
+      "target": "N008",
+      "relation": "uses"
+    },
+    {
+      "id": "E020",
+      "source": "N015",
+      "target": "N009",
+      "relation": "uses"
+    },
+    {
+      "id": "E021",
+      "source": "N001",
+      "target": "N016",
+      "relation": "uses"
+    },
+    {
+      "id": "E022",
+      "source": "N016",
+      "target": "N009",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E023",
+      "source": "N016",
+      "target": "N011",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E024",
+      "source": "N016",
+      "target": "N017",
+      "relation": "related-to"
+    },
+    {
+      "id": "E025",
+      "source": "N017",
+      "target": "N015",
+      "relation": "uses"
+    },
+    {
+      "id": "E026",
+      "source": "N001",
+      "target": "N022",
+      "relation": "uses"
+    },
+    {
+      "id": "E027",
+      "source": "N022",
+      "target": "N018",
+      "relation": "uses"
+    },
+    {
+      "id": "E028",
+      "source": "N022",
+      "target": "N034",
+      "relation": "related-to"
+    },
+    {
+      "id": "E029",
+      "source": "N019",
+      "target": "N014",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E030",
+      "source": "N020",
+      "target": "N019",
+      "relation": "related-to"
+    },
+    {
+      "id": "E031",
+      "source": "N020",
+      "target": "N021",
+      "relation": "uses"
+    },
+    {
+      "id": "E032",
+      "source": "N021",
+      "target": "N018",
+      "relation": "part-of"
+    },
+    {
+      "id": "E033",
+      "source": "N022",
+      "target": "N024",
+      "relation": "uses"
+    },
+    {
+      "id": "E034",
+      "source": "N024",
+      "target": "N023",
+      "relation": "uses"
+    },
+    {
+      "id": "E035",
+      "source": "N024",
+      "target": "N008",
+      "relation": "uses"
+    },
+    {
+      "id": "E036",
+      "source": "N025",
+      "target": "N024",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E037",
+      "source": "N028",
+      "target": "N022",
+      "relation": "related-to"
+    },
+    {
+      "id": "E038",
+      "source": "N028",
+      "target": "N026",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E039",
+      "source": "N027",
+      "target": "N026",
+      "relation": "related-to"
+    },
+    {
+      "id": "E040",
+      "source": "N029",
+      "target": "N028",
+      "relation": "related-to"
+    },
+    {
+      "id": "E041",
+      "source": "N029",
+      "target": "N027",
+      "relation": "depends-on"
+    },
+    {
+      "id": "E042",
+      "source": "N030",
+      "target": "N022",
+      "relation": "related-to"
+    },
+    {
+      "id": "E043",
+      "source": "N030",
+      "target": "N028",
+      "relation": "contrasts-with"
+    },
+    {
+      "id": "E044",
+      "source": "N031",
+      "target": "N030",
+      "relation": "related-to"
+    },
+    {
+      "id": "E045",
+      "source": "N032",
+      "target": "N004",
+      "relation": "contrasts-with"
+    },
+    {
+      "id": "E046",
+      "source": "N032",
+      "target": "N031",
+      "relation": "related-to"
+    },
+    {
+      "id": "E047",
+      "source": "N001",
+      "target": "N033",
+      "relation": "related-to"
+    },
+    {
+      "id": "E048",
+      "source": "N001",
+      "target": "N035",
+      "relation": "related-to"
+    }
+  ]
+}
