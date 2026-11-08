@@ -107,7 +107,7 @@ Read limitations sections (缺点, limitations, caveats, 讨论) sentence by sen
 - **Problems in the source itself:** the source may contradict itself or contain an evident slip (S and ¬S called "相互独立" next to "要么是垃圾邮件，要么就不是"; "都用到离散化方法" right after a section on the Gaussian method; "估计各个变量的方法" where 方差 is meant). Then:
   - Quote the evidence verbatim, and never correct it, in the index or in a finding.
   - Judge the tree item against the more specific evidence: an explanation, a formula or a worked example outweighs a single word or a sweeping summary sentence. N033 "互斥且穷尽" is `supported` by "要么…要么就不是" and p(S|D)+p(¬S|D)=1.
-  - When the problem bears on an item's verdict or recommendation, say in that item's `reason` which statements conflict and which one you used.
+  - When the problem bears on an item's verdict or recommendation, say in that item's `reason` which statements conflict and which one you used. This applies to `supported` items too: their `reason` is optional, holds only such a note, and is shown next to the item in the report's confirmed list. Keep it to one or two sentences, and do not add notes to supported items for anything else.
   - A problem in the source is not a finding about the tree. List the problems you noticed in your final message to the user.
 - **Findings that hinge on an exact word or number** (通常 vs 总是, 7:2:1 vs 8:1:1, 不产生 vs 产生): look at the image again before reporting, and quote the exact text in `reason`.
 - **Structure warnings** from `validate_input.py` (disconnected parts, isolated nodes, duplicate edges) are not findings. `build_report.py` adds them to the report's Structure section; do not repeat them in `items` or `omissions`.

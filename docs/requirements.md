@@ -180,7 +180,7 @@ These rules were set after a consistency check (3 runs on model-eval, `tests/con
 
 | File | Audience | Content |
 |------|----------|---------|
-| `report.md` | People | Summary, findings, source notes and omissions (each with ID, category, risk, reason, evidence with page and quote, and a recommended revision), structure warnings, and the confirmed items. Source notes are the `detail` findings, in a folded section after the other findings, because they mark a gap in the source rather than an error. |
+| `report.md` | People | Summary, findings, source notes and omissions (each with ID, category, risk, reason, evidence with page and quote, and a recommended revision), structure warnings, and the confirmed items, with a short note where the verdict had to resolve a problem in the source. Source notes are the `detail` findings, in a folded section after the other findings, because they mark a gap in the source rather than an error. |
 | `audit.json` | Tools and tests | A verdict for every node and edge, the omissions, the summary and structure warnings (`source-trace/schemas/audit.schema.json`). |
 
 The agent writes only its judgments (`items` and `omissions`). `source-trace/scripts/build_report.py` does everything that can be computed:

@@ -58,6 +58,7 @@ LABELS = {
         "top_omission": "omission ({tier})",
         "page": "p.",
         "sep": ": ",
+        "note": "Note",
         "parts": "The tree falls apart into {n} parts that are not linked to each other:",
         "part": "Part {n}",
     },
@@ -84,6 +85,7 @@ LABELS = {
         "top_omission": "遗漏（{tier}）",
         "page": "第 {} 页",
         "sep": "：",
+        "note": "说明",
         "parts": "知识树分成 {n} 个互不相连的部分：",
         "part": "部分 {n}",
     },
@@ -312,7 +314,10 @@ def render(audit, findings, notes, omissions, tree, evidence, lang):
 
     confirmed = [i for i in audit["items"] if i["verdict"] == "supported"]
     lines += ["", f"## {L['confirmed']}", ""]
-    lines += [f"- {target(i)} ({', '.join(i['evidence'])})" for i in confirmed] or [L["none"]]
+    # A supported item may carry a note in `reason`, e.g. a problem in the source that the verdict had to resolve.
+    lines += [f"- {target(i)} ({', '.join(i['evidence'])})"
+              + (f" {L['note']}{L['sep']}{cell(i['reason'])}" if "reason" in i else "")
+              for i in confirmed] or [L["none"]]
     return "\n".join(lines) + "\n"
 
 

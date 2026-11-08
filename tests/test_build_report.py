@@ -227,6 +227,30 @@ def test_detail_findings_are_folded_into_source_notes(run, tmp_path):
     assert "## Source notes" in text(tmp_path / "report.md")
 
 
+def test_note_on_supported_item_is_shown_in_confirmed_list(run, tmp_path):
+    note = "资料称两类“相互独立”，但又说“要么…要么”；按后者判断 | 有依据"
+    holder = {}
+
+    def change(audit):
+        as_draft(audit)
+        supported = next(i for i in audit["items"] if i["verdict"] == "supported")
+        supported["reason"] = note
+        holder["target"] = supported["target"]
+    build = run(E2E, "model-eval", change_audit=change)
+    code, errors, _ = build()
+    assert code == 0 and errors == []
+    audit = read_json(tmp_path / "audit.json")
+    assert item(audit, holder["target"])["reason"] == note
+    assert audit["summary"]["supported"] == read_json(E2E / "audit.json")["summary"]["supported"]
+    confirmed = text(tmp_path / "report.md").split("## 已确认内容", 1)[1]
+    line = next(l for l in confirmed.splitlines() if l.startswith(f"- {holder['target']} "))
+    assert line.endswith(") 说明：资料称两类“相互独立”，但又说“要么…要么”；按后者判断 \\| 有依据")
+    # Items without a note are listed as before.
+    assert all("说明" not in l for l in confirmed.splitlines() if l.startswith("- ") and l != line)
+    build("--lang", "en")
+    assert ") Note: " in text(tmp_path / "report.md")
+
+
 def test_no_source_notes_section_without_detail_findings(run, tmp_path):
     run(E2E, "model-eval")()
     report = text(tmp_path / "report.md")

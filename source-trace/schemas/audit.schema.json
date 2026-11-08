@@ -47,7 +47,10 @@
         },
         "risk": { "$ref": "#/$defs/risk" },
         "risk_reason": { "$ref": "#/$defs/text" },
-        "reason": { "$ref": "#/$defs/text" },
+        "reason": {
+          "$ref": "#/$defs/text",
+          "description": "For a finding: why it is a problem. For a supported item (optional): a short note shown next to it in the confirmed list, e.g. a problem in the source that the verdict had to resolve."
+        },
         "recommendation": { "$ref": "#/$defs/text" }
       },
       "if": { "properties": { "verdict": { "const": "finding" } } },

@@ -1,0 +1,1012 @@
+{
+  "schema_version": "0.1",
+  "summary": {
+    "nodes": 35,
+    "edges": 52,
+    "supported": 86,
+    "item_findings": 1,
+    "omissions": 13,
+    "by_risk": {
+      "high": 0,
+      "medium": 1,
+      "low": 13
+    },
+    "by_category": {
+      "unsupported-expansion": 1,
+      "omission": 13
+    }
+  },
+  "structure_warnings": [],
+  "items": [
+    {
+      "target": "N001",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-002",
+        "EV-016",
+        "EV-036"
+      ]
+    },
+    {
+      "target": "N002",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-020",
+        "EV-016",
+        "EV-079",
+        "EV-080",
+        "EV-012"
+      ]
+    },
+    {
+      "target": "N003",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-029",
+        "EV-016",
+        "EV-077"
+      ]
+    },
+    {
+      "target": "N004",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-036",
+        "EV-037",
+        "EV-069"
+      ]
+    },
+    {
+      "target": "N005",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-038",
+        "EV-044"
+      ]
+    },
+    {
+      "target": "N006",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-032"
+      ]
+    },
+    {
+      "target": "N007",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-032",
+        "EV-040",
+        "EV-051",
+        "EV-052"
+      ]
+    },
+    {
+      "target": "N008",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-032",
+        "EV-105",
+        "EV-058"
+      ]
+    },
+    {
+      "target": "N009",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-028",
+        "EV-032",
+        "EV-121"
+      ]
+    },
+    {
+      "target": "N010",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-033",
+        "EV-038",
+        "EV-039",
+        "EV-099"
+      ]
+    },
+    {
+      "target": "N011",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-034"
+      ]
+    },
+    {
+      "target": "N012",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-035"
+      ]
+    },
+    {
+      "target": "N013",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-035",
+        "EV-036",
+        "EV-037"
+      ]
+    },
+    {
+      "target": "N014",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-046",
+        "EV-047",
+        "EV-033",
+        "EV-102"
+      ]
+    },
+    {
+      "target": "N015",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-049",
+        "EV-051",
+        "EV-052",
+        "EV-053"
+      ]
+    },
+    {
+      "target": "N016",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-009",
+        "EV-021"
+      ]
+    },
+    {
+      "target": "N017",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052"
+      ]
+    },
+    {
+      "target": "N018",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-091"
+      ]
+    },
+    {
+      "target": "N019",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-055",
+        "EV-056",
+        "EV-088"
+      ]
+    },
+    {
+      "target": "N020",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-057",
+        "EV-058"
+      ]
+    },
+    {
+      "target": "N021",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-056",
+        "EV-057",
+        "EV-089",
+        "EV-090"
+      ]
+    },
+    {
+      "finding_id": "F-001",
+      "target": "N022",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "unsupported-expansion",
+      "scope": "detail",
+      "risk": "low",
+      "evidence": [
+        "EV-105"
+      ],
+      "reason": "前半句“连续变量的概率密度可以大于 1”有依据：第 7 页写“这里的值大于1也是允许的 – 这里是概率密度而不是概率，因为身高是一个连续的变量”。但后半句“区间概率需要对该区间内的密度积分得到”在资料中找不到，资料没有提到积分或区间概率。",
+      "recommendation": "保留该定义；把“区间概率需要对该区间内的密度积分得到”标注为资料外释义，或删去这半句，只保留资料所说的“这里是概率密度而不是概率”。"
+    },
+    {
+      "target": "N023",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-065"
+      ]
+    },
+    {
+      "target": "N024",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-066",
+        "EV-064"
+      ]
+    },
+    {
+      "target": "N025",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-041",
+        "EV-008",
+        "EV-026",
+        "EV-040"
+      ]
+    },
+    {
+      "target": "N026",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-068",
+        "EV-071",
+        "EV-072",
+        "EV-073"
+      ]
+    },
+    {
+      "target": "N027",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-076",
+        "EV-077"
+      ]
+    },
+    {
+      "target": "N028",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080",
+        "EV-081",
+        "EV-082",
+        "EV-083",
+        "EV-084",
+        "EV-085",
+        "EV-086",
+        "EV-087",
+        "EV-088",
+        "EV-089",
+        "EV-090",
+        "EV-091"
+      ]
+    },
+    {
+      "target": "N029",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-096",
+        "EV-108",
+        "EV-113",
+        "EV-114"
+      ]
+    },
+    {
+      "target": "N030",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005",
+        "EV-118"
+      ]
+    },
+    {
+      "target": "N031",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005",
+        "EV-118",
+        "EV-119"
+      ]
+    },
+    {
+      "target": "N032",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-120"
+      ]
+    },
+    {
+      "target": "N033",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-124",
+        "EV-125",
+        "EV-131"
+      ]
+    },
+    {
+      "target": "N034",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-127",
+        "EV-128",
+        "EV-129"
+      ]
+    },
+    {
+      "target": "N035",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-132",
+        "EV-135",
+        "EV-046"
+      ]
+    },
+    {
+      "target": "E001",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-020",
+        "EV-002"
+      ]
+    },
+    {
+      "target": "E002",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-016",
+        "EV-029"
+      ]
+    },
+    {
+      "target": "E003",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-045",
+        "EV-044"
+      ]
+    },
+    {
+      "target": "E004",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-038",
+        "EV-044"
+      ]
+    },
+    {
+      "target": "E005",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-002"
+      ]
+    },
+    {
+      "target": "E006",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-032"
+      ]
+    },
+    {
+      "target": "E007",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-032"
+      ]
+    },
+    {
+      "target": "E008",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-031",
+        "EV-123"
+      ]
+    },
+    {
+      "target": "E009",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-032",
+        "EV-031"
+      ]
+    },
+    {
+      "target": "E010",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-034",
+        "EV-037"
+      ]
+    },
+    {
+      "target": "E011",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-035"
+      ]
+    },
+    {
+      "target": "E012",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-036",
+        "EV-037"
+      ]
+    },
+    {
+      "target": "E013",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-035",
+        "EV-036",
+        "EV-037"
+      ]
+    },
+    {
+      "target": "E014",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-035",
+        "EV-037"
+      ]
+    },
+    {
+      "target": "E015",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-038"
+      ]
+    },
+    {
+      "target": "E016",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-045",
+        "EV-046"
+      ]
+    },
+    {
+      "target": "E017",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-046",
+        "EV-072"
+      ]
+    },
+    {
+      "target": "E018",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-049",
+        "EV-021"
+      ]
+    },
+    {
+      "target": "E019",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050"
+      ]
+    },
+    {
+      "target": "E020",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052"
+      ]
+    },
+    {
+      "target": "E021",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052"
+      ]
+    },
+    {
+      "target": "E022",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051"
+      ]
+    },
+    {
+      "target": "E023",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-052",
+        "EV-093"
+      ]
+    },
+    {
+      "target": "E024",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E025",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-058"
+      ]
+    },
+    {
+      "target": "E026",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-056",
+        "EV-057",
+        "EV-058"
+      ]
+    },
+    {
+      "target": "E027",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-053",
+        "EV-056",
+        "EV-025"
+      ]
+    },
+    {
+      "target": "E028",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-105"
+      ]
+    },
+    {
+      "target": "E029",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-049",
+        "EV-064"
+      ]
+    },
+    {
+      "target": "E030",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-049",
+        "EV-066"
+      ]
+    },
+    {
+      "target": "E031",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-065",
+        "EV-066"
+      ]
+    },
+    {
+      "target": "E032",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-026",
+        "EV-040",
+        "EV-069"
+      ]
+    },
+    {
+      "target": "E033",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-072",
+        "EV-073"
+      ]
+    },
+    {
+      "target": "E034",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-072"
+      ]
+    },
+    {
+      "target": "E035",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-077",
+        "EV-079",
+        "EV-080"
+      ]
+    },
+    {
+      "target": "E036",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-088"
+      ]
+    },
+    {
+      "target": "E037",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-078",
+        "EV-079"
+      ]
+    },
+    {
+      "target": "E038",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-094",
+        "EV-095"
+      ]
+    },
+    {
+      "target": "E039",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-088",
+        "EV-089",
+        "EV-090"
+      ]
+    },
+    {
+      "target": "E040",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-097",
+        "EV-114"
+      ]
+    },
+    {
+      "target": "E041",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005",
+        "EV-116",
+        "EV-118",
+        "EV-020"
+      ]
+    },
+    {
+      "target": "E042",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-004",
+        "EV-116"
+      ]
+    },
+    {
+      "target": "E043",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005",
+        "EV-119"
+      ]
+    },
+    {
+      "target": "E044",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-120"
+      ]
+    },
+    {
+      "target": "E045",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-118",
+        "EV-119",
+        "EV-120"
+      ]
+    },
+    {
+      "target": "E046",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-118",
+        "EV-120"
+      ]
+    },
+    {
+      "target": "E047",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005",
+        "EV-117"
+      ]
+    },
+    {
+      "target": "E048",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-128",
+        "EV-129"
+      ]
+    },
+    {
+      "target": "E049",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-126",
+        "EV-127"
+      ]
+    },
+    {
+      "target": "E050",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-135"
+      ]
+    },
+    {
+      "target": "E051",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-132"
+      ]
+    },
+    {
+      "target": "E052",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-135",
+        "EV-046"
+      ]
+    }
+  ],
+  "omissions": [
+    {
+      "finding_id": "F-002",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-059",
+        "EV-060",
+        "EV-061",
+        "EV-062"
+      ],
+      "reason": "资料把“离散化连续数值的方法”作为处理连续特征的另一种常用技术，并比较了它与概率分布（高斯）方法的适用场景：“当训练样本数量较少或者是精确的分布已知时，通过概率分布的方法是一种更好的选择”“在大量样本的情形下离散化的方法表现更优”。树中只有高斯朴素贝叶斯，没有离散化。注：第 5 页随后一句“所以朴素贝叶斯方法都用到离散化方法，而不是概率分布估计的方法”与本节的高斯方法和第 6–8 页的高斯示例相矛盾，属于资料自身的问题，此处只采用前面两句的比较。",
+      "recommendation": "新增节点“离散化连续数值”（kind: method），定义为“处理连续数值问题的另一种常用技术；训练样本较少或精确分布已知时概率分布方法更好，大量样本时离散化方法表现更优”；并新增边 离散化连续数值 contrasts-with 高斯朴素贝叶斯。不要写入“朴素贝叶斯方法都用到离散化方法”。"
+    },
+    {
+      "finding_id": "F-003",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-011",
+        "EV-021"
+      ],
+      "reason": "资料指出“朴素贝叶斯不（一定）用到贝叶斯方法”，并说参数估计常用最大似然估计，“在不用到贝叶斯概率或者任何贝叶斯模型的情况下，朴素贝叶斯模型也能奏效”。树中没有这一说明，读者容易误以为它属于贝叶斯统计方法。",
+      "recommendation": "在 N001 或 N016 的定义中补充“朴素贝叶斯不一定用到贝叶斯方法：参数常用最大似然估计，不用贝叶斯概率也能奏效”。"
+    },
+    {
+      "finding_id": "F-004",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-009",
+        "EV-025"
+      ],
+      "reason": "训练效率的说明缺失：资料说“最大似然训练可以通过评估一个封闭形式的表达式来完成，只需花费线性时间，而不需要……费时的迭代逼近”，以及“只需要根据少量的训练数据估计出必要的参数”。N025 虽名为“参数与训练效率”，定义只讲参数量和协方差矩阵。",
+      "recommendation": "在 N025 定义中补充“最大似然训练可通过封闭形式的表达式在线性时间内完成，不需要迭代逼近；只需少量训练数据即可估计必要的参数”。"
+    },
+    {
+      "finding_id": "F-005",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-010",
+        "EV-013"
+      ],
+      "reason": "背景：资料列出朴素贝叶斯的其他名称“简单贝叶斯和独立贝叶斯”，并提到它有时被称为“贝叶斯分类器”、被批评者称为“傻瓜贝叶斯模型”。树中没有这些名称。",
+      "recommendation": "可在 N001 定义后补充别名：简单贝叶斯、独立贝叶斯（有时也被称为贝叶斯分类器）。"
+    },
+    {
+      "finding_id": "F-006",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-003",
+        "EV-004",
+        "EV-007"
+      ],
+      "reason": "背景：资料介绍了历史与应用——“自1950年代已广泛研究，在1960年代初就以另外一个名称引入到文本信息检索界中”，是文本分类的“热门（基准）方法”，并“在自动医疗诊断中也有应用”。树中没有历史和医疗诊断应用。",
+      "recommendation": "可在 N001 中补充一句背景：1950 年代起被广泛研究，是文本分类的热门（基准）方法，也用于自动医疗诊断。"
+    },
+    {
+      "finding_id": "F-007",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-006",
+        "EV-023",
+        "EV-024"
+      ],
+      "reason": "背景：资料给出与其他方法的比较——“通过适当的预处理”可与支持向量机等更先进的方法相竞争；2004 年的一篇文章揭示了其分类效果的若干理论原因；“2006年有一篇文章”发现决策树和随机森林等更新方法的性能超过了贝叶斯分类器。树中没有这些比较。",
+      "recommendation": "可在 N001 或 N026 中补充：通过适当的预处理可与支持向量机相竞争；但 2006 年的一篇比较研究发现决策树和随机森林等更新的方法性能更好。保留“适当的预处理”和“2006 年的一篇文章”这些限定。"
+    },
+    {
+      "finding_id": "F-008",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-068",
+        "EV-022",
+        "EV-019"
+      ],
+      "reason": "资料指出“实际上独立假设常常是不准确的”，并说朴素贝叶斯带着“过于简单化的假设”仍在很多复杂的现实情形中取得相当好的效果（水果例子中特征其实“相互依赖”）。N026 只说“即使独立性假设不完全成立”，没有说明这一假设在实际中常常不成立。",
+      "recommendation": "在 N004 条件独立假设的定义中补充“实际上该假设常常是不准确的”，或在 N026 中写明“尽管实际上独立假设常常是不准确的”。"
+    },
+    {
+      "finding_id": "F-009",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-017"
+      ],
+      "reason": "资料说朴素贝叶斯“不是训练这种分类器的单一算法，而是一系列基于相同原理的算法”，树中 N001 把它作为单一方法定义，未提到它是一类算法。",
+      "recommendation": "在 N001 定义中补充“它不是单一算法，而是一系列基于相同原理的算法”。"
+    },
+    {
+      "finding_id": "F-010",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-030",
+        "EV-069",
+        "EV-070"
+      ],
+      "reason": "资料说明了引入独立假设的原因：特征数量大或取值多时“基于概率模型列出概率表变得不现实”；解耦后每个特征可“当做一维分布来估计”，“减轻了由于维数灾带来的阻碍，当样本的特征个数增加时就不需要使样本规模呈指数增长”。树中没有维数灾或概率表不可行这一点。",
+      "recommendation": "在 N025 或 N004 中补充“各特征可独立地当做一维分布来估计，减轻维数灾：特征个数增加时不需要样本规模呈指数增长”。"
+    },
+    {
+      "finding_id": "F-011",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-041",
+        "EV-042"
+      ],
+      "reason": "资料给出了参数个数的具体公式：k 分类、每个 p(F_i|C=c) 有 r 个参数时为“(k − 1) + n r k个参数”，常见取 k=2、r=1（伯努利分布作为特征）时为“2n+1”。N025 只说参数量随特征数线性增长。",
+      "recommendation": "在 N025 定义中补充参数个数公式 (k − 1) + n r k，以及二分类、伯努利特征时为 2n+1。"
+    },
+    {
+      "finding_id": "F-012",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-053"
+      ],
+      "reason": "资料说“为了估计特征的分布参数，我们要先假设训练集数据满足某种分布或者非参数模型”，N015 参数估计未提到这一前提。",
+      "recommendation": "在 N015 定义中补充“估计特征的分布参数前，需要先假设训练集数据满足某种分布或者非参数模型”。"
+    },
+    {
+      "finding_id": "F-013",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-092",
+        "EV-093"
+      ],
+      "reason": "示例对等概率先验加了提醒：“在没有做辨识的情况下就做这样的假设并不是一个好的点子”，只是本例用频率估计“得到的结果也是一样的”。N018 和 N028 都没有这一提醒，N028 只写“得到男女均为 0.5 的类别先验”。",
+      "recommendation": "在 N018 或 N028 中补充“未经辨识就假设各类等概率并不好；本例中按频率估计结果相同”。"
+    },
+    {
+      "finding_id": "F-014",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-131",
+        "EV-133",
+        "EV-134"
+      ],
+      "reason": "资料说明了对数概率比的后续用途：基于 p(S|D) + p(¬S|D) = 1，可由对数概率比“很容易”算出实际概率 p(S|D)；这种对数似然比技术在统计中常用，可“把对数似然比转化为S曲线的形式”。N035 只讲取对数和判定规则。",
+      "recommendation": "在 N035 定义中补充“基于 p(S|D)+p(¬S|D)=1，可由概率比的对数算出实际概率 p(S|D)；这种对数似然比技术在统计中常用，可把对数似然比转化为 S 曲线的形式”。"
+    }
+  ]
+}

@@ -43,3 +43,34 @@ From the two `skill-feedback.md` files:
 6. Windows: `python -I` ignores `PYTHONIOENCODING` (run 1).
 
 These, and the review's own suggestions (REVIEW.md, section 6), are the input for the fifth rule revision.
+
+## Re-run with the fifth revision (2026-11-07)
+
+Two more fresh Claude runs, [audit-run-3](audit-run-3/) and [audit-run-4](audit-run-4/), set up the same way, with the skill at commit `80616a0`. Some examples in the fifth revision come from this article, so these runs show that the new rules are followed, not that they generalize.
+
+| | audit-run-3 | audit-run-4 | Answer key |
+|---|---|---|---|
+| Supported / item findings / omissions | 86 / 1 / 13 | 86 / 1 / 12 | 86 / 1 (N022) / 11 groups |
+| Item verdicts matching the key | 87/87 | 87/87 | |
+| Key omission groups found | 11/11 | 11/11 | |
+| Omissions outside the key | 0 | 1 (F-012, not judged) | |
+| Source problems listed in the final message | 5, plus the cut-off formula | 6 | |
+| Script runs | `build_report.py` twice, the others once; all passed | `validate_evidence.py` and `build_report.py` twice; all passed | |
+| Cost | about 145k tokens, 11 minutes | about 166k tokens, 13 minutes | |
+
+- **Both runs match the key on every item,** and agree with each other on all 87. N024 and N031 are now supported in both, and N022 is the only source note.
+- **Every omission group in the key is found by both runs,** including the 讨论 limitations that run 2 missed. The counts differ (13 vs 12) only because the runs split the key's groups differently: run 3 lists training time, the curse of dimensionality and the parameter count as three entries, and the aliases apart from the 不一定用到贝叶斯方法 point.
+- **One new omission, not yet judged:** run 4's F-012, the derivation of Bayes' theorem from the definition of conditional probability in the text-classification section (p(D|C) = p(D∩C)/p(C)). Run 4's F-007 also adds "类标签取自有限集合" to the key's "a family of algorithms" group.
+- **Background omissions are labelled** 背景 in both runs (history, applications, other names, comparisons).
+- **Recommendations no longer copy** "概率比可以表达为似然比". Run 3 rebuilt the report once to fix a recommendation that had merged two separate source points into one claim.
+- **The navigation box is never cited on its own:** run 3 cites it for N002 and run 4 for E041, each together with the article's text.
+- **Both runs listed the source's own problems** in the final message: the "相互独立" classes, "都用到离散化方法", "估计各个变量的方法", the 似然比 sentence, and "概率" vs "概率密度". Run 4 also noted the `e^{−09}` notation and the `∝` in the chain-rule expansion.
+
+### Gaps the re-run found
+
+1. **A source problem on a supported item has nowhere to go.** The rule says to explain it in the item's `reason`. Run 4 wrote a `reason` on seven supported items (N019, N025, N029, N033, N034, E030, E041); the schema allows it, but the report never shows it. Run 3 thought supported items cannot have a `reason` and used only the final message. The fifth revision introduced this gap. **Fixed after the re-run:** `build_report.py` now shows a supported item's `reason` as a note (说明) in the confirmed list, and the rules say a supported item's `reason` holds only such a note. The saved reports of these runs predate the fix.
+2. **Overlapping screenshots:** "the page where it is first complete" and "the page where it starts" conflict when a sentence starts at the very bottom of one image and is repeated in full on the next.
+3. **Several missing properties of one existing node:** one entry or one per property? This is why the omission counts differ.
+4. **`∝` in the source where the tree says "展开为":** both runs judged N012 supported from the source's wording ("写成"), without a rule.
+5. **Section nesting on a web page** (E030, 样本修正 next to 参数估计): both runs judged it from the content, not the position.
+6. **Cost:** both runs took longer than the first two (11 and 13 minutes, against 8 and 9).

@@ -1,0 +1,1272 @@
+{
+  "schema_version": "0.1",
+  "sources": [
+    {
+      "source_id": "page-01",
+      "page": 1,
+      "path": "../images/page-01.jpg"
+    },
+    {
+      "source_id": "page-02",
+      "page": 2,
+      "path": "../images/page-02.jpg"
+    },
+    {
+      "source_id": "page-03",
+      "page": 3,
+      "path": "../images/page-03.jpg"
+    },
+    {
+      "source_id": "page-04",
+      "page": 4,
+      "path": "../images/page-04.jpg"
+    },
+    {
+      "source_id": "page-05",
+      "page": 5,
+      "path": "../images/page-05.jpg"
+    },
+    {
+      "source_id": "page-06",
+      "page": 6,
+      "path": "../images/page-06.jpg"
+    },
+    {
+      "source_id": "page-07",
+      "page": 7,
+      "path": "../images/page-07.jpg"
+    },
+    {
+      "source_id": "page-08",
+      "page": 8,
+      "path": "../images/page-08.jpg"
+    },
+    {
+      "source_id": "page-09",
+      "page": 9,
+      "path": "../images/page-09.jpg"
+    },
+    {
+      "source_id": "page-10",
+      "page": 10,
+      "path": "../images/page-10.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EV-001",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "朴素贝叶斯分类器",
+      "location": "Page title",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-002",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "朴素贝叶斯分类器（英语：Naive Bayes classifier，台湾称为单纯贝氏分类器），在机器学习中是一系列以假设特征之间强（朴素）独立下运用贝叶斯定理为基础的简单概率分类器。",
+      "location": "Lead, paragraph 1, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-003",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "朴素贝叶斯自1950年代已广泛研究，在1960年代初就以另外一个名称引入到文本信息检索界中，",
+      "location": "Lead, paragraph 2, sentence 1, part 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-004",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "并仍然是文本分类的一种热门（基准）方法，",
+      "location": "Lead, paragraph 2, sentence 1, part 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-005",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "文本分类是以词频为特征判断文件所属类别或其他（如垃圾邮件、合法性、体育或政治等等）的问题。",
+      "location": "Lead, paragraph 2, sentence 1, part 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-006",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "通过适当的预处理，它可以与这个领域更先进的方法（包括支持向量机）相竞争。",
+      "location": "Lead, paragraph 2, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-007",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "它在自动医疗诊断中也有应用。",
+      "location": "Lead, paragraph 2, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-008",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "朴素贝叶斯分类器是高度可扩展的，因此需要数量与学习问题中的变量（特征/预测器）成线性关系的参数。",
+      "location": "Lead, paragraph 3, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-009",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "最大似然训练可以通过评估一个封闭形式的表达式来完成，只需花费线性时间，而不需要其他很多类型的分类器所使用的费时的迭代逼近。",
+      "location": "Lead, paragraph 3, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-010",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "在统计学和计算机科学文献中，朴素贝叶斯模型有各种名称，包括简单贝叶斯和独立贝叶斯。",
+      "location": "Lead, paragraph 4, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-011",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "所有这些名称都参考了贝叶斯定理在该分类器的决策规则中的使用，但朴素贝叶斯不（一定）用到贝叶斯方法；",
+      "location": "Lead, paragraph 4, sentence 2, part 1 (continues on page 2)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-012",
+      "source_id": "page-01",
+      "page": 1,
+      "type": "text",
+      "content": "机器学习与数据挖掘：范式 · 问题 · 监督学习（分类 · 回归） · 聚类分析 · 降维 · 结构预测 · 异常检测 · 人工神经网络 · 强化学习 · 与人类学习 · 模型诊断与优化 · 数学基础 · 大会与出版物 · 相关条目",
+      "location": "Navigation box (right sidebar, continues on page 2)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-013",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "《Russell和Norvig》提到“‘朴素贝叶斯’有时被称为贝叶斯分类器，这个马虎的使用促使真正的贝叶斯论者称之为傻瓜贝叶斯模型。”",
+      "location": "Lead, paragraph 4, sentence 2, part 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-014",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "简介",
+      "location": "Section heading 简介",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-015",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "朴素贝叶斯是一种建分类器的简单方法。",
+      "location": "Section 简介, paragraph 1, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-016",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "该分类器模型会给问题实例分配用特征值表示的类标签，类标签取自有限集合。",
+      "location": "Section 简介, paragraph 1, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-017",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "它不是训练这种分类器的单一算法，而是一系列基于相同原理的算法：所有朴素贝叶斯分类器都假定样本每个特征与其他特征都不相关。",
+      "location": "Section 简介, paragraph 1, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-018",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "举个例子，如果一种水果其具有红，圆，直径大概3英寸等特征，该水果可以被判定为是苹果。",
+      "location": "Section 简介, paragraph 1, sentence 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-019",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "尽管这些特征相互依赖或者有些特征由其他特征决定，然而朴素贝叶斯分类器认为这些属性在判定该水果是否为苹果的概率分布上独立的。",
+      "location": "Section 简介, paragraph 1, sentence 5",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-020",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "对于某些类型的概率模型，在监督式学习的样本集中能获取得非常好的分类效果。",
+      "location": "Section 简介, paragraph 2, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-021",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "在许多实际应用中，朴素贝叶斯模型参数估计使用最大似然估计方法；换而言之，在不用到贝叶斯概率或者任何贝叶斯模型的情况下，朴素贝叶斯模型也能奏效。",
+      "location": "Section 简介, paragraph 2, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-022",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "尽管是带着这些朴素思想和过于简单化的假设，但朴素贝叶斯分类器在很多复杂的现实情形中仍能够取得相当好的效果。",
+      "location": "Section 简介, paragraph 3, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-023",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "2004年，一篇分析贝叶斯分类器问题的文章揭示了朴素贝叶斯分类器获取看上去不可思议的分类效果的若干理论上的原因。",
+      "location": "Section 简介, paragraph 3, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-024",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "尽管如此，2006年有一篇文章详细比较了各种分类方法，发现更新的方法（如决策树和随机森林）的性能超过了贝叶斯分类器。",
+      "location": "Section 简介, paragraph 3, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-025",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "朴素贝叶斯分类器的一个优势在于只需要根据少量的训练数据估计出必要的参数（变量的均值和方差）。",
+      "location": "Section 简介, paragraph 4, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-026",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "由于变量独立假设，只需要估计各个变量的方法，而不需要确定整个协方差矩阵。",
+      "location": "Section 简介, paragraph 4, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-027",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "朴素贝叶斯概率模型",
+      "location": "Section heading 朴素贝叶斯概率模型",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-028",
+      "source_id": "page-02",
+      "page": 2,
+      "type": "text",
+      "content": "理论上，概率模型分类器是一个条件概率模型。 p(C|F_1,…,F_n)",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 1 with formula (formula also fully visible on page 3)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-029",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "独立的类别变量C有若干类别，条件依赖于若干特征变量 F_1,F_2,...,F_n。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 2, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-030",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "但问题在于如果特征数量n较大或者每个特征能取大量值时，基于概率模型列出概率表变得不现实。所以我们修改这个模型使之变得可行。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 2, sentences 2-3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-031",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "贝叶斯定理有以下式子： p(C|F_1,…,F_n) = p(C) p(F_1,…,F_n|C) / p(F_1,…,F_n).",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 2, sentence 4 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-032",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "用朴素的语言可以表达为： posterior = (prior × likelihood) / evidence.",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 3 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-033",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "实际中，我们只关心分式中的分子部分，因为分母不依赖于C而且特征F_i的值是给定的，于是分母可以认为是一个常数。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 4, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-034",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "这样分子就等价于联合分布模型。 p(C,F_1,…,F_n)",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 4, sentence 2 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-035",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "重复使用链式法则，可将该式写成条件概率的形式，如下所示： p(C,F_1,…,F_n) ∝ p(C) p(F_1,…,F_n|C) ∝ p(C) p(F_1|C) p(F_2,…,F_n|C,F_1) ∝ p(C) p(F_1|C) p(F_2|C,F_1) p(F_3,…,F_n|C,F_1,F_2) ∝ p(C) p(F_1|C) p(F_2|C,F_1) p(F_3|C,F_1,F_2) p(F_4,…,F_n|C,F_1,F_2,F_3) ∝ p(C) p(F_1|C) p(F_2|C,F_1) p(F_3|C,F_1,F_2) … p(F_n|C,F_1,F_2,F_3,…,F_{n−1}).",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 5 with derivation (printed with ∝ on every line)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-036",
+      "source_id": "page-03",
+      "page": 3,
+      "type": "text",
+      "content": "现在“朴素”的条件独立假设开始发挥作用：假设每个特征F_i对于其他特征F_j, j≠i在给定类别C下是条件独立的。这就意味着 p(F_i|C,F_j) = p(F_i|C)",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 6 with formula (repeated at top of page 4)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-037",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "对于i≠j，所以联合分布模型可以表达为 p(C|F_1,…,F_n) ∝ p(C,F_1,…,F_n) ∝ p(C) p(F_1|C) p(F_2|C) p(F_3|C) ⋯ ∝ p(C) ∏_{i=1}^{n} p(F_i|C).",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 7 with formula (starts at bottom of page 3, first complete here)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-038",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "这意味着上述假设下，类变量C的条件分布可以表达为： p(C|F_1,…,F_n) = (1/Z) p(C) ∏_{i=1}^{n} p(F_i|C)",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 8 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-039",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "其中Z（证据因子）是一个只依赖与F_1,…,F_n等的缩放因子，当特征变量的值已知时是一个常数。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 9, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-040",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "由于分解成所谓的类先验概率p(C)和独立概率分布p(F_i|C)，上述概率模型的可掌控性得到很大的提高。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 9, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-041",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "如果这是一个k分类问题，且每个p(F_i|C=c)可以表达为r个参数，于是相应的朴素贝叶斯模型有(k − 1) + n r k个参数。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 9, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-042",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "实际应用中，通常取k=2（二分类问题），r=1（伯努利分布作为特征），因此模型的参数个数为2n+1，其中n是二值分类特征的个数。",
+      "location": "Section 朴素贝叶斯概率模型, paragraph 9, sentence 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-043",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "从概率模型中构造分类器",
+      "location": "Subsection heading 从概率模型中构造分类器",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-044",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "讨论至此为止我们导出了独立分布特征模型，也就是朴素贝叶斯概率模型。",
+      "location": "Subsection 从概率模型中构造分类器, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-045",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "朴素贝叶斯分类器包括了这种模型和相应的决策规则。",
+      "location": "Subsection 从概率模型中构造分类器, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-046",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "一个普通的规则就是选出最有可能的那个：这就是大家熟知的最大后验概率（MAP）决策准则。",
+      "location": "Subsection 从概率模型中构造分类器, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-047",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "相应的分类器便是如下定义的classify公式： classify(f_1,…,f_n) = argmax_c p(C=c) ∏_{i=1}^{n} p(F_i=f_i|C=c).",
+      "location": "Subsection 从概率模型中构造分类器, sentence 4 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-048",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "参数估计",
+      "location": "Section heading 参数估计 (repeated at top of page 5)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-049",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "所有的模型参数都可以通过训练集的相关频率来估计。",
+      "location": "Section 参数估计, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-050",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "常用方法是概率的最大似然估计。",
+      "location": "Section 参数估计, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-051",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "类的先验概率可以通过假设各类等概率来计算（先验概率 = 1 / (类的数量)），",
+      "location": "Section 参数估计, sentence 3, part 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-052",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "或者通过训练集的各类样本出现的次数来估计（A类先验概率=（A类样本的数量）/(样本总数)）。",
+      "location": "Section 参数估计, sentence 3, part 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-053",
+      "source_id": "page-04",
+      "page": 4,
+      "type": "text",
+      "content": "为了估计特征的分布参数，我们要先假设训练集数据满足某种分布或者非参数模型。",
+      "location": "Section 参数估计, sentence 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-054",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "高斯朴素贝叶斯",
+      "location": "Subsection heading 高斯朴素贝叶斯",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-055",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "如果要处理的是连续数据一种通常的假设是这些连续数值为高斯分布。",
+      "location": "Subsection 高斯朴素贝叶斯, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-056",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "例如，假设训练集中有一个连续属性，x。我们首先对数据根据类别分类，然后计算每个类别中x的均值和方差。",
+      "location": "Subsection 高斯朴素贝叶斯, sentences 2-3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-057",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "令μ_c 表示为x在c类上的均值，令σ_c^2为 x在c类上的方差。",
+      "location": "Subsection 高斯朴素贝叶斯, sentence 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-058",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "在给定类中某个值的概率，P(x=v|c)，可以通过将v表示为均值为μ_c方差为σ_c^2正态分布计算出来。如下，P(x=v|c) = (1/√(2πσ_c^2)) e^(−(v−μ_c)^2/(2σ_c^2))",
+      "location": "Subsection 高斯朴素贝叶斯, sentences 5-6 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-059",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "处理连续数值问题的另一种常用的技术是通过离散化连续数值的方法。",
+      "location": "Subsection 高斯朴素贝叶斯, sentence 7",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-060",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "通常，当训练样本数量较少或者是精确的分布已知时，通过概率分布的方法是一种更好的选择。",
+      "location": "Subsection 高斯朴素贝叶斯, sentence 8",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-061",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "在大量样本的情形下离散化的方法表现更优，因为大量的样本可以学习到数据的分布。",
+      "location": "Subsection 高斯朴素贝叶斯, sentence 9",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-062",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "由于朴素贝叶斯是一种典型的用到大量样本的方法（越大计算量的模型可以产生越高的分类精确度），所以朴素贝叶斯方法都用到离散化方法，而不是概率分布估计的方法。",
+      "location": "Subsection 高斯朴素贝叶斯, sentence 10",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-063",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "样本修正",
+      "location": "Section heading 样本修正",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-064",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "如果一个给定的类和特征值在训练集中没有一起出现过，那么基于频率的估计下该概率将为0。",
+      "location": "Section 样本修正, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-065",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "这是一个问题。因为与其他概率相乘时将会把其他概率的信息统统去除。",
+      "location": "Section 样本修正, sentences 2-3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-066",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "所以常常要求要对每个小类样本的概率估计进行修正，以保证不会出现有为0的概率出现。",
+      "location": "Section 样本修正, sentence 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-067",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "讨论",
+      "location": "Section heading 讨论",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-068",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "尽管实际上独立假设常常是不准确的，但朴素贝叶斯分类器的若干特性让其在实践中能够获取令人惊奇的效果。",
+      "location": "Section 讨论, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-069",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "特别地，各类条件特征之间的解耦意味着每个特征的分布都可以独立地被当做一维分布来估计。",
+      "location": "Section 讨论, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-070",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "这样减轻了由于维数灾带来的阻碍，当样本的特征个数增加时就不需要使样本规模呈指数增长。",
+      "location": "Section 讨论, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-071",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "然而朴素贝叶斯在大多数情况下不能对类概率做出非常准确的估计，但在许多应用中这一点并不要求。",
+      "location": "Section 讨论, sentence 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-072",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "例如，朴素贝叶斯分类器中，依据最大后验概率决策规则只要正确类的后验概率比其他类要高就可以得到正确的分类。",
+      "location": "Section 讨论, sentence 5 (repeated at top of page 6)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-073",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "所以不管概率估计轻度的甚至是严重的不精确都不影响正确的分类结果。",
+      "location": "Section 讨论, sentence 6 (repeated at top of page 6)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-074",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "在这种方式下，分类器可以有足够的鲁棒性去忽略朴素贝叶斯概率模型上存在的缺陷。",
+      "location": "Section 讨论, sentence 7 (repeated at top of page 6)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-075",
+      "source_id": "page-05",
+      "page": 5,
+      "type": "text",
+      "content": "实例",
+      "location": "Section heading 实例 (repeated on page 6)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-076",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "text",
+      "content": "性别分类",
+      "location": "Subsection heading 性别分类",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-077",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "text",
+      "content": "问题描述：通过一些测量的特征，包括身高、体重、脚的尺寸，判定一个人是男性还是女性。",
+      "location": "Subsection 性别分类, problem statement",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-078",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "text",
+      "content": "训练",
+      "location": "Sub-subsection heading 训练",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-079",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "text",
+      "content": "训练数据如下：",
+      "location": "Sub-subsection 训练, sentence introducing the training table",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-080",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 男 | 身高(英尺): 6 | 体重(磅): 180 | 脚的尺寸(英寸): 12",
+      "location": "Training data table, row 1 (男)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-081",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 男 | 身高(英尺): 5.92 (5'11\") | 体重(磅): 190 | 脚的尺寸(英寸): 11",
+      "location": "Training data table, row 2 (男)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-082",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 男 | 身高(英尺): 5.58 (5'7\") | 体重(磅): 170 | 脚的尺寸(英寸): 12",
+      "location": "Training data table, row 3 (男)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-083",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 男 | 身高(英尺): 5.92 (5'11\") | 体重(磅): 165 | 脚的尺寸(英寸): 10",
+      "location": "Training data table, row 4 (男)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-084",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 女 | 身高(英尺): 5 | 体重(磅): 100 | 脚的尺寸(英寸): 6",
+      "location": "Training data table, row 5 (女)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-085",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 女 | 身高(英尺): 5.5 (5'6\") | 体重(磅): 150 | 脚的尺寸(英寸): 8",
+      "location": "Training data table, row 6 (女)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-086",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 女 | 身高(英尺): 5.42 (5'5\") | 体重(磅): 130 | 脚的尺寸(英寸): 7",
+      "location": "Training data table, row 7 (女)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-087",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 女 | 身高(英尺): 5.75 (5'9\") | 体重(磅): 150 | 脚的尺寸(英寸): 9",
+      "location": "Training data table, row 8 (女)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-088",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "text",
+      "content": "假设训练集样本的特征满足高斯分布，得到下表：",
+      "location": "Sub-subsection 训练, sentence introducing the parameter table",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-089",
+      "source_id": "page-06",
+      "page": 6,
+      "type": "table",
+      "content": "性别: 男性 | 均值(身高): 5.855 | 方差(身高): 3.5033e-02 | 均值(体重): 176.25 | 方差(体重): 1.2292e+02 | 均值(脚的尺寸): 11.25 | 方差(脚的尺寸): 9.1667e-01",
+      "location": "Parameter table, row 1 (男性; repeated at top of page 7)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-090",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "table",
+      "content": "性别: 女性 | 均值(身高): 5.4175 | 方差(身高): 9.7225e-02 | 均值(体重): 132.5 | 方差(体重): 5.5833e+02 | 均值(脚的尺寸): 7.5 | 方差(脚的尺寸): 1.6667e+00",
+      "location": "Parameter table, row 2 (女性; cut off at bottom of page 6, complete here)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-091",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "我们认为两种类别是等概率的，也就是P(male)= P(female) = 0.5。",
+      "location": "Sub-subsection 训练, paragraph after the table, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-092",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "在没有做辨识的情况下就做这样的假设并不是一个好的点子。",
+      "location": "Sub-subsection 训练, paragraph after the table, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-093",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "但我们通过数据集中两类样本出现的频率来确定P(C)，我们得到的结果也是一样的。",
+      "location": "Sub-subsection 训练, paragraph after the table, sentence 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-094",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "测试",
+      "location": "Sub-subsection heading 测试",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-095",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "以下给出一个待分类是男性还是女性的样本。",
+      "location": "Sub-subsection 测试, sentence introducing the test table",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-096",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "table",
+      "content": "性别: 未知性别的样本 | 身高(英尺): 6 | 体重(磅): 130 | 脚的尺寸（英寸）: 8",
+      "location": "Test sample table, row 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-097",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "我们希望得到的是男性还是女性哪类的后验概率大。男性的后验概率通过下面式子来求取 posterior(male) = P(male) p(height|male) p(weight|male) p(footsize|male) / evidence",
+      "location": "Sub-subsection 测试, paragraph 1 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-098",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "女性的后验概率通过下面式子来求取 posterior(female) = P(female) p(height|female) p(weight|female) p(footsize|female) / evidence",
+      "location": "Sub-subsection 测试, paragraph 2 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-099",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "证据因子（通常是常数）用来对各类的后验概率之和进行归一化．",
+      "location": "Sub-subsection 测试, paragraph 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-100",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "evidence = P(male) p(height|male) p(weight|male) p(footsize|male) + P(female) p(height|female) p(weight|f",
+      "location": "Sub-subsection 测试, evidence formula, part 1 (readable part)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-101",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "［无法辨认］",
+      "location": "Sub-subsection 测试, evidence formula, part 2: the end of the formula is cut off by the right edge of the screenshot and does not appear on page 8",
+      "certainty": "low"
+    },
+    {
+      "evidence_id": "EV-102",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "证据因子是一个常数（在正态分布中通常是正数），所以可以忽略。接下来我们来判定这样样本的性别。",
+      "location": "Sub-subsection 测试, paragraph 4 (repeated at top of page 8)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-103",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "P(male) = 0.5",
+      "location": "Sub-subsection 测试, calculation line 1 (repeated on page 8)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-104",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "p(height|male) = (1/√(2πσ^2)) exp(−(6−μ)^2/(2σ^2)) ≈ 1.5789,其中μ = 5.855，σ^2 = 3.5033e^−02是训练集样本的正态分布参数.",
+      "location": "Sub-subsection 测试, calculation line 2 with formula (repeated on page 8)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-105",
+      "source_id": "page-07",
+      "page": 7,
+      "type": "text",
+      "content": "注意，这里的值大于1也是允许的 – 这里是概率密度而不是概率，因为身高是一个连续的变量.",
+      "location": "Sub-subsection 测试, note after calculation line 2 (continues on page 8)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-106",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "p(weight|male) = 5.9881e^−06",
+      "location": "Sub-subsection 测试, calculation line 3",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-107",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "p(footsize|male) = 1.3112e^−3",
+      "location": "Sub-subsection 测试, calculation line 4",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-108",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "posteriornumerator(male) = 6.1984e^−09",
+      "location": "Sub-subsection 测试, calculation line 5",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-109",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "P(female) = 0.5",
+      "location": "Sub-subsection 测试, calculation line 6",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-110",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "p(height|female) = 2.2346e^−1",
+      "location": "Sub-subsection 测试, calculation line 7",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-111",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "p(weight|female) = 1.6789e^−2",
+      "location": "Sub-subsection 测试, calculation line 8",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-112",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "p(footsize|female) = 2.8669e^−1",
+      "location": "Sub-subsection 测试, calculation line 9",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-113",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "posteriornumerator(female) = 5.3778e^−04",
+      "location": "Sub-subsection 测试, calculation line 10",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-114",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "由于女性后验概率的分子比较大，所以我们预计这个样本是女性。",
+      "location": "Sub-subsection 测试, conclusion",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-115",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "文本分类",
+      "location": "Subsection heading 文本分类",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-116",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "这是一个用朴素贝叶斯分类做的一个文本分类问题的例子。",
+      "location": "Subsection 文本分类, paragraph 1, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-117",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "考虑一个基于内容的文本分类问题，例如判断邮件是否为垃圾邮件。",
+      "location": "Subsection 文本分类, paragraph 1, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-118",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "想像文本可以分成若干的类别，首先文本可以被一些单词标注，而这个单词集是独立分布的，在给定的C类文本中第i个单词出现的概率可以表示为： p(w_i|C)",
+      "location": "Subsection 文本分类, paragraph 1, sentence 3 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-119",
+      "source_id": "page-08",
+      "page": 8,
+      "type": "text",
+      "content": "（通过这种处理，我们进一步简化了工作，假设每个单词是在文中是随机分布的-也就是单词不依赖于文本的长度，与其他词出现在文中的位置，或者其他文本内容。）",
+      "location": "Subsection 文本分类, paragraph 2 (repeated at top of page 9)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-120",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "所以，对于一个给定类别C，文本D包含所有单词w_i的概率是： p(D|C) = ∏_i p(w_i|C)",
+      "location": "Subsection 文本分类, paragraph 3 with formula (starts at bottom of page 8, formula first complete here)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-121",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "我们要回答的问题是“文档D属于类C的概率是多少？”换而言之p(C|D)是多少？",
+      "location": "Subsection 文本分类, paragraph 4, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-122",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "现在定义 p(D|C) = p(D∩C)/p(C)  p(C|D) = p(D∩C)/p(D)",
+      "location": "Subsection 文本分类, paragraph 4, sentence 2 with formulas",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-123",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "通过贝叶斯定理将上述概率处理成似然度的形式 p(C|D) = (p(C)/p(D)) p(D|C)",
+      "location": "Subsection 文本分类, paragraph 5 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-124",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "假设现在只有两个相互独立的类别，S和¬S（垃圾邮件和非垃圾邮件），",
+      "location": "Subsection 文本分类, paragraph 6 (bold), part 1 (repeated at top of page 10)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-125",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "这里每个元素（邮件）要么是垃圾邮件，要么就不是。",
+      "location": "Subsection 文本分类, paragraph 6 (bold), part 2 (repeated at top of page 10)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-126",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "p(D|S) = ∏_i p(w_i|S)  p(D|¬S) = ∏_i p(w_i|¬S)",
+      "location": "Subsection 文本分类, formulas after paragraph 6 (repeated on page 10)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-127",
+      "source_id": "page-09",
+      "page": 9,
+      "type": "text",
+      "content": "用上述贝叶斯的结果，可以写成 p(S|D) = (p(S)/p(D)) ∏_i p(w_i|S)  p(¬S|D) = (p(¬S)/p(D)) ∏_i p(w_i|¬S)",
+      "location": "Subsection 文本分类, paragraph 7 with formulas (repeated on page 10)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-128",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "两者相除： p(S|D)/p(¬S|D) = p(S) ∏_i p(w_i|S) / (p(¬S) ∏_i p(w_i|¬S))",
+      "location": "Subsection 文本分类, paragraph 8 with formula (cut off at bottom of page 9, first complete here)",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-129",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "整理得： p(S|D)/p(¬S|D) = (p(S)/p(¬S)) ∏_i (p(w_i|S)/p(w_i|¬S))",
+      "location": "Subsection 文本分类, paragraph 9 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-130",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "这样概率比p(S| D) / p(¬S| D)可以表达为似然比。",
+      "location": "Subsection 文本分类, paragraph 10, sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-131",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "实际的概率p(S| D)可以很容易通过log (p(S| D) / p(¬S| D))计算出来，基于p(S| D) + p(¬S| D) = 1。",
+      "location": "Subsection 文本分类, paragraph 10, sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-132",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "结合上面所讨论的概率比，可以得到： ln(p(S|D)/p(¬S|D)) = ln(p(S)/p(¬S)) + ∑_i ln(p(w_i|S)/p(w_i|¬S))",
+      "location": "Subsection 文本分类, paragraph 11 with formula",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-133",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "(这种对数似然比的技术在统计中是一种常用的技术。",
+      "location": "Subsection 文本分类, paragraph 12 (in parentheses), sentence 1",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-134",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "在这种两个独立的分类情况下（如这个垃圾邮件的例子），把对数似然比转化为S曲线的形式)。",
+      "location": "Subsection 文本分类, paragraph 12 (in parentheses), sentence 2",
+      "certainty": "high"
+    },
+    {
+      "evidence_id": "EV-135",
+      "source_id": "page-10",
+      "page": 10,
+      "type": "text",
+      "content": "最后文本可以分类，当p(S|D) > p(¬S|D)或者ln(p(S|D)/p(¬S|D)) > 0时判定为垃圾邮件，否则为正常邮件。",
+      "location": "Subsection 文本分类, paragraph 13 with formula",
+      "certainty": "high"
+    }
+  ]
+}
