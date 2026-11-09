@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- **README in five more languages:** 简体中文, 日本語, 한국어, Italiano and العربية (right to left), translated by AI from the English README, which stays the reference. The English README's outdated facts (test count, status, next steps, the tests since v0.2.0) were fixed first.
 - **First run by OpenAI Codex** (`tests/fixtures/wiki-ml-zh/codex-run-1`), with the v0.2.0 skill on the wiki-ml-zh inputs:
   - Codex followed the skill without help: all three scripts passed, and it read the images with its own image tool.
   - It matched 15 of the 18 items the owner has judged, the same score as Claude run 2 but on different items.
