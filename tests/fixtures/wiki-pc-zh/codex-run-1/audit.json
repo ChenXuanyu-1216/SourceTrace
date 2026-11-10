@@ -1,0 +1,1000 @@
+{
+  "schema_version": "0.1",
+  "summary": {
+    "nodes": 35,
+    "edges": 48,
+    "supported": 81,
+    "item_findings": 2,
+    "omissions": 14,
+    "by_risk": {
+      "high": 0,
+      "medium": 6,
+      "low": 10
+    },
+    "by_category": {
+      "conceptual-error": 2,
+      "omission": 14
+    }
+  },
+  "structure_warnings": [],
+  "items": [
+    {
+      "target": "N001",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-042",
+        "EV-050",
+        "EV-060"
+      ]
+    },
+    {
+      "target": "N002",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-042",
+        "EV-045"
+      ]
+    },
+    {
+      "target": "N003",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-003",
+        "EV-050",
+        "EV-061",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "N004",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-015",
+        "EV-016",
+        "EV-048"
+      ]
+    },
+    {
+      "target": "N005",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-006",
+        "EV-008",
+        "EV-009",
+        "EV-010"
+      ]
+    },
+    {
+      "target": "N006",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-014"
+      ]
+    },
+    {
+      "target": "N007",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-053",
+        "EV-054",
+        "EV-055",
+        "EV-056",
+        "EV-057",
+        "EV-058"
+      ]
+    },
+    {
+      "target": "N008",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-042",
+        "EV-050",
+        "EV-071"
+      ]
+    },
+    {
+      "target": "N009",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-043",
+        "EV-050",
+        "EV-072"
+      ]
+    },
+    {
+      "target": "N010",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-043",
+        "EV-050",
+        "EV-056"
+      ]
+    },
+    {
+      "target": "N011",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-044",
+        "EV-047"
+      ]
+    },
+    {
+      "target": "N012",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-052",
+        "EV-060"
+      ]
+    },
+    {
+      "target": "N013",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-042",
+        "EV-045"
+      ]
+    },
+    {
+      "target": "N014",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052"
+      ],
+      "reason": "按结构节分段公式确认定义；原文及节点标签使用的‘反对称’在零点不成立，因为公式给出f(0)=+1，不能满足f(0)=−f(0)。这是来源自身的问题，不计作知识树发现。"
+    },
+    {
+      "target": "N015",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-059",
+        "EV-075"
+      ]
+    },
+    {
+      "target": "N016",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-061",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "N017",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-061",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "N018",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-077"
+      ]
+    },
+    {
+      "target": "N019",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-065"
+      ]
+    },
+    {
+      "target": "N020",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-066",
+        "EV-067",
+        "EV-052",
+        "EV-068"
+      ],
+      "reason": "按式(3)确认准则函数；原文‘一组正数的和’不严谨：按其f(0)=+1约定，wᵀpᵢ=0、tᵢ=−1的误分类项贡献为0。此处采用公式而非严格正数的概括，这是来源自身的问题。"
+    },
+    {
+      "target": "N021",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-067",
+        "EV-079"
+      ]
+    },
+    {
+      "target": "N022",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-076",
+        "EV-077",
+        "EV-078",
+        "EV-079"
+      ]
+    },
+    {
+      "finding_id": "F-001",
+      "target": "N023",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "medium",
+      "risk_reason": "更新幅度的作用有公式支持，差异仅为资料所给区间的一个端点，按规则将风险降为中。",
+      "evidence": [
+        "EV-074",
+        "EV-078"
+      ],
+      "reason": "‘控制每次权重更新的幅度’有更新式支持；但节点称‘资料将其设为满足0<α<1’，第5页实际为‘0 < α ≤ 1’，允许α=1。此发现指节点转述与来源不一致。",
+      "recommendation": "将N023定义改为‘学习率α控制每次权重更新的幅度，资料将其设为满足0<α≤1的常数’。"
+    },
+    {
+      "target": "N024",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-078"
+      ]
+    },
+    {
+      "target": "N025",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-078",
+        "EV-079"
+      ]
+    },
+    {
+      "target": "N026",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-061",
+        "EV-062",
+        "EV-080"
+      ]
+    },
+    {
+      "target": "N027",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080"
+      ]
+    },
+    {
+      "target": "N028",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-081"
+      ]
+    },
+    {
+      "finding_id": "F-002",
+      "target": "N029",
+      "target_type": "node",
+      "verdict": "finding",
+      "category": "conceptual-error",
+      "risk": "medium",
+      "risk_reason": "界式(2R/γ)²及γ的来源均有支持，差异限于符号R的文字释义；且原文释义本身疑似笔误，不能据此断言树的数学释义错误。",
+      "evidence": [
+        "EV-080",
+        "EV-081",
+        "EV-082"
+      ],
+      "reason": "错误次数界‘(2R/γ)²’及正间隔条件有支持；节点接在‘资料给出的’之后将R解释为‘输入向量的最大范数’，但第6页原文是‘输入向量的最大平均值’。这里只判定转述与来源不一致，不断言‘最大范数’在数学上错误。",
+      "recommendation": "保留线性可分条件、界式(2R/γ)²及γ的说明；R处注明‘原文作“输入向量的最大平均值”（疑似笔误）；“最大范数”为资料外释义，待核实’，不要将未核实的释义直接归给资料。"
+    },
+    {
+      "target": "N030",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-083"
+      ]
+    },
+    {
+      "target": "N031",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-034"
+      ]
+    },
+    {
+      "target": "N032",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-015",
+        "EV-035",
+        "EV-036"
+      ]
+    },
+    {
+      "target": "N033",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-002",
+        "EV-024",
+        "EV-034",
+        "EV-036"
+      ]
+    },
+    {
+      "target": "N034",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005"
+      ]
+    },
+    {
+      "target": "N035",
+      "target_type": "node",
+      "verdict": "supported",
+      "evidence": [
+        "EV-039",
+        "EV-040"
+      ]
+    },
+    {
+      "target": "E001",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-003",
+        "EV-042",
+        "EV-045"
+      ]
+    },
+    {
+      "target": "E002",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-003",
+        "EV-016"
+      ]
+    },
+    {
+      "target": "E003",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-015",
+        "EV-016",
+        "EV-048"
+      ]
+    },
+    {
+      "target": "E004",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-006",
+        "EV-014"
+      ]
+    },
+    {
+      "target": "E005",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-006",
+        "EV-014"
+      ]
+    },
+    {
+      "target": "E006",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-060"
+      ]
+    },
+    {
+      "target": "E007",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-053",
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E008",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-053",
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E009",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-057",
+        "EV-060"
+      ]
+    },
+    {
+      "target": "E010",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-056"
+      ]
+    },
+    {
+      "target": "E011",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-057",
+        "EV-058",
+        "EV-060"
+      ]
+    },
+    {
+      "target": "E012",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-053",
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E013",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-043",
+        "EV-050",
+        "EV-053",
+        "EV-054",
+        "EV-055"
+      ]
+    },
+    {
+      "target": "E014",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-056"
+      ]
+    },
+    {
+      "target": "E015",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-042",
+        "EV-044",
+        "EV-045"
+      ]
+    },
+    {
+      "target": "E016",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-052"
+      ]
+    },
+    {
+      "target": "E017",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-042",
+        "EV-052"
+      ]
+    },
+    {
+      "target": "E018",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-059",
+        "EV-075"
+      ]
+    },
+    {
+      "target": "E019",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-075"
+      ]
+    },
+    {
+      "target": "E020",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-059",
+        "EV-075"
+      ]
+    },
+    {
+      "target": "E021",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-005",
+        "EV-050",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "E022",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-050",
+        "EV-061",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "E023",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-044",
+        "EV-047",
+        "EV-050"
+      ]
+    },
+    {
+      "target": "E024",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-061",
+        "EV-062"
+      ]
+    },
+    {
+      "target": "E025",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-051",
+        "EV-059",
+        "EV-061"
+      ]
+    },
+    {
+      "target": "E026",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-004",
+        "EV-076",
+        "EV-078"
+      ]
+    },
+    {
+      "target": "E027",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-076",
+        "EV-077",
+        "EV-078"
+      ]
+    },
+    {
+      "target": "E028",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-004",
+        "EV-005"
+      ]
+    },
+    {
+      "target": "E029",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-052",
+        "EV-065"
+      ]
+    },
+    {
+      "target": "E030",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-065",
+        "EV-066"
+      ]
+    },
+    {
+      "target": "E031",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-066",
+        "EV-067"
+      ]
+    },
+    {
+      "target": "E032",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-064",
+        "EV-066",
+        "EV-067"
+      ]
+    },
+    {
+      "target": "E033",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-076",
+        "EV-078"
+      ]
+    },
+    {
+      "target": "E034",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-074",
+        "EV-078"
+      ]
+    },
+    {
+      "target": "E035",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-071",
+        "EV-078"
+      ]
+    },
+    {
+      "target": "E036",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-078",
+        "EV-079"
+      ]
+    },
+    {
+      "target": "E037",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-081"
+      ]
+    },
+    {
+      "target": "E038",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080",
+        "EV-081"
+      ]
+    },
+    {
+      "target": "E039",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080"
+      ]
+    },
+    {
+      "target": "E040",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-081"
+      ]
+    },
+    {
+      "target": "E041",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-080",
+        "EV-081"
+      ]
+    },
+    {
+      "target": "E042",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-083"
+      ]
+    },
+    {
+      "target": "E043",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-081",
+        "EV-083"
+      ]
+    },
+    {
+      "target": "E044",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-034",
+        "EV-083"
+      ]
+    },
+    {
+      "target": "E045",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-015",
+        "EV-018",
+        "EV-035"
+      ]
+    },
+    {
+      "target": "E046",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-034",
+        "EV-035"
+      ]
+    },
+    {
+      "target": "E047",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-002",
+        "EV-024",
+        "EV-034",
+        "EV-036"
+      ]
+    },
+    {
+      "target": "E048",
+      "target_type": "edge",
+      "verdict": "supported",
+      "evidence": [
+        "EV-039",
+        "EV-040"
+      ]
+    }
+  ],
+  "omissions": [
+    {
+      "finding_id": "F-003",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-004"
+      ],
+      "reason": "导言将‘最小二乘法’列为常用学习算法，树中没有该方法。N022描述迭代更新，N034描述损失目标，均未列出这一方法。",
+      "recommendation": "新增label为‘最小二乘法’、kind为method的节点，定义可写‘资料列为常用的感知机学习算法之一’，并新增N001 uses该节点；资料未解释其具体步骤，不补写步骤。"
+    },
+    {
+      "finding_id": "F-004",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-004",
+        "EV-005"
+      ],
+      "reason": "导言明确列出并说明‘梯度下降法’用于极小化损失函数；N034保留了损失最小化目标，未保留所用方法。",
+      "recommendation": "新增‘梯度下降法’method节点，定义为‘资料举例用梯度下降法对损失函数进行极小化，求出可将训练数据进行线性划分的分离超平面’，新增N001 uses该节点。保留‘资料举例’的范围，不扩展为所有损失均可直接用梯度法。"
+    },
+    {
+      "finding_id": "F-005",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-018",
+        "EV-034"
+      ],
+      "reason": "来源将‘不能处理线性不可分问题’列为单层感知机的主要本质缺陷。树有N031的异或实例和N030的不保证收敛结论，但未明确概括这一普遍的模型能力限制。",
+      "recommendation": "在N004定义中补充‘其主要本质缺陷是不能处理线性不可分问题’，保留N031作为来源给出的异或实例。"
+    },
+    {
+      "finding_id": "F-006",
+      "category": "omission",
+      "tier": "core",
+      "risk": "medium",
+      "evidence": [
+        "EV-038"
+      ],
+      "reason": "历史节明确说明Freund及Schapire（1998）‘使用核方法改进感知机学习算法’，树中的学习算法与扩展应用节点均未包含核方法这一方法及其改进联系。",
+      "recommendation": "新增‘核方法’method节点，定义为‘资料记载Freund及Schapire（1998）使用核方法改进感知机学习算法’，新增N022 uses该节点；不补写来源未展示的核公式。"
+    },
+    {
+      "finding_id": "F-007",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-007",
+        "EV-009",
+        "EV-011"
+      ],
+      "reason": "N005说明了神经元接收信号及阈值激活，未保留神经细胞的树突、突触、细胞体及轴突结构、突触强度的抑制或加强作用，以及电脉冲的传递路径。",
+      "recommendation": "在N005定义中补充‘神经细胞结构大致包括树突、突触、细胞体及轴突；其状态还取决于突触的强度（抑制或加强），电脉冲沿轴突并通过突触传递到其它神经元’。"
+    },
+    {
+      "finding_id": "F-008",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-002",
+        "EV-015"
+      ],
+      "reason": "背景／外文名称遗漏：导言给出‘Perceptron’及‘Multilayer Perceptron’，相应中文节点N001和N032未保留这些名称。",
+      "recommendation": "在N001定义中补充英语名Perceptron，在N032定义中补充英语名Multilayer Perceptron。"
+    },
+    {
+      "finding_id": "F-009",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-020",
+        "EV-021",
+        "EV-024",
+        "EV-025",
+        "EV-026",
+        "EV-031",
+        "EV-032",
+        "EV-034",
+        "EV-036",
+        "EV-037"
+      ],
+      "reason": "背景／历史遗漏：N033概括1957年提出及单层模型局限，未保留1943年神经网络与神经元模型、1949年赫布学习、1957年IBM 704仿真、Mark I及1960年展示、1958／1962年著述、1969年相关著述、研究低潮与恢复及1987年再版等时间线。",
+      "recommendation": "在N033定义中补入简要时间线，按来源记载这些事件；将‘感知机学习建立在赫布理论基础上’和低潮、恢复的背景放在同一历史节点。1969年书中的XOR结论已有N031，此处仅补背景人物、书名与年代，不重复新增该结论。"
+    },
+    {
+      "finding_id": "F-010",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-027",
+        "EV-028"
+      ],
+      "reason": "背景／历史应用及其限制遗漏：树未保留对不同书写方式字母图像的概括、归纳，以及训练集外受干扰字母图像‘不能…进行可靠的识别’的限定。该历史实例的识别限制不同于收敛结论。",
+      "recommendation": "在N001定义中补充来源的历史识别实例，注明它能对不同书写方式的字母图像进行概括和归纳，但对训练集外受干扰（半遮蔽、不同大小、平移、旋转）的字母图像不能可靠识别；限定为资料所述实例。"
+    },
+    {
+      "finding_id": "F-011",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-047",
+        "EV-050",
+        "EV-061"
+      ],
+      "reason": "N011保留了偏置调整决策边界位置的作用，未保留来源括注‘虽然不是定向的’所说明的方向限制；结构节用w作为法向量，与这一限定一致。",
+      "recommendation": "在N011定义中补充‘偏置改变决策边界的位置；固定权重向量w时不改变其方向’，与结构节的法向量说明对照。"
+    },
+    {
+      "finding_id": "F-012",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-050"
+      ],
+      "reason": "背景／结构节别名遗漏：来源写‘权量（或称权值）’以及‘激活函数（又曰激励函数或传递函数）’，N009和N012未保留这些称呼。",
+      "recommendation": "在N009定义中补充来源的‘权量／权值’称呼，在N012定义中补充‘又称激励函数或传递函数’。"
+    },
+    {
+      "finding_id": "F-013",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-052",
+        "EV-066",
+        "EV-067",
+        "EV-068"
+      ],
+      "reason": "N020给出准则函数公式，未给出其取值性质与所有样本正确分类时取零的说明。原文‘一组正数的和’在wᵀpᵢ=0、tᵢ=−1的误分类边界情形下不成立，所求项为0；这是来源自身问题，不作为树的错误。",
+      "recommendation": "在N020定义中补充由原文公式可核对的表述‘各误分类项非负，所有输入都正确分类时E(w)=0；边界上的误分类项也可能为0’，保留来源问题说明。"
+    },
+    {
+      "finding_id": "F-014",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-070"
+      ],
+      "reason": "N022描述了迭代与按误差更新，未保留学习算法节所说的‘对于所有的神经元都是一样的’以及‘独立的应用于每个神经元’的应用约定。",
+      "recommendation": "在N022定义中补充‘资料说明下面的学习算法独立应用于每个神经元’。"
+    },
+    {
+      "finding_id": "F-015",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-075"
+      ],
+      "reason": "N015已覆盖增广偏置表示，但N024未标明学习算法节为简便‘假定偏置量b等于0’的公式约定。该约定及同段给出的增广表示应一起阅读。",
+      "recommendation": "在N024定义中补注‘该节为简便假定显式偏置量b等于0；同段说明可增加x(n+1)=1，以w(n+1)代替偏置量’，并沿用已有N015。"
+    },
+    {
+      "finding_id": "F-016",
+      "category": "omission",
+      "tier": "supporting",
+      "risk": "low",
+      "evidence": [
+        "EV-081"
+      ],
+      "reason": "背景／学习算法节证明归属遗漏：N028保留有限次迭代收敛的结论，未保留来源所述‘Novikoff（1962）证明’。",
+      "recommendation": "在N028定义中将该来源归属补为‘资料记载Novikoff（1962）证明：对于线性可分的训练集，感知机学习算法可以在有限次迭代后收敛’。"
+    }
+  ]
+}

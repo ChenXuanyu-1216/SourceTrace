@@ -7,6 +7,7 @@ It checks the fifth rule revision and the report notes on supported items (commi
 1. **Knowledge tree:** generated from `images/` by OpenAI Codex (GPT-6.1 Sol) in a new conversation, with [PROMPT.md](PROMPT.md). The output is saved here as `knowledge-tree.json`, unedited, so its mistakes are real and not planted. See [TREE-SOURCE.md](TREE-SOURCE.md).
 2. **Audit:** two fresh Claude agents ran SourceTrace on `images/` and `knowledge-tree.json`: [audit-run-1](audit-run-1/) and [audit-run-2](audit-run-2/).
 3. **Answer key:** [REVIEW.md](REVIEW.md), a review by Codex in a separate session, accepted by the project owner. Results: [RESULTS.md](RESULTS.md).
+4. **Sixth revision:** OpenAI Codex ran the sixth rule revision on the same inputs: [codex-run-1](codex-run-1/), compared in [COMPARISON.md](codex-run-1/COMPARISON.md).
 
 ## What this set adds
 

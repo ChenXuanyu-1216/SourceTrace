@@ -49,3 +49,23 @@ From the two `skill-feedback.md` files, and REVIEW.md section 5:
 7. A formula on a different page from the sentence that introduces it; Wikipedia citation markers and disambiguation notes.
 
 These, the reasoning-only source problems, and the open points from wiki-nb-zh are the input for the small rule fixes (step 2 of the delivery plan).
+
+## Codex run of the sixth revision (2026-11-10)
+
+[codex-run-1](codex-run-1/) is the first run of the sixth rule revision (commit `ae1084e`), by OpenAI Codex (GPT-6.1 Sol, high) in a clean folder, with the prompt in [RUN-PROMPT.md](codex-run-1/RUN-PROMPT.md). Several of the revision's examples come from this article, so the run shows that the new rules are followed, not that they generalize; and the agent changed along with the rules. The same model, at the same effort, also made the tree and wrote the answer key. Details: [COMPARISON.md](codex-run-1/COMPARISON.md).
+
+| | Claude runs (fifth revision) | codex-run-1 (sixth revision) |
+|---|---|---|
+| Items matching the key | 83/83 | 83/83 (same verdict, category and risk as both Claude runs) |
+| N029 recommendation | puts "最大平均值" back | marks "最大范数" as 资料外释义，待核实 and the source word as a possible slip |
+| Source problems found (4 in the review) | 0 | 2: "正数之和" and "反对称" at f(0)=+1 |
+| Copies "E(w)是一组正数的和" into a recommendation | yes | no ("各误分类项非负") |
+| b = 0 omission | missed | found (F-015) |
+| Omissions | 14 / 9 (1 core) | 14 (4 core) |
+| Script runs | each once, all passed | each once, all passed |
+| Time | 9 minutes each | 16 minutes 35 seconds |
+
+- **What the sixth revision fixed here:** the zero-boundary check, the recommendation for a possible slip, the b = 0 convention, and grouping (one history entry, one entry for the aliases of two concepts).
+- **Still missed:** the two source problems that need combining sections (0/1 labels vs the margin condition) or a scaling argument (the bound), and the symbol legend for x(j), w(j), f(x).
+- **New tier differences:** the general single-layer limitation (F-005) and the 1998 kernel method (F-006) are core here, supporting in the review. Not judged yet.
+
