@@ -61,7 +61,9 @@ Compared with the review's 10 groups and the one omission both Claude runs misse
 | **b = 0 in the learning section** (both Claude runs missed it) | F-015 | **Found**, with the augmented-weight context the review asks for |
 | Not in the review | F-008 | English names (Perceptron, Multilayer Perceptron), a separate background entry because they are in another section; not judged |
 
-**Two tier questions for the owner:** F-005 (the general limitation of the single-layer perceptron) and F-006 (the kernel method from the history section) are core here and supporting in the review. Both hinge on rules that point two ways: a limitation of a concept with a node is supporting "unless it is the main point of its section", and a method with no node of its own is core, but history is background.
+**Two tier differences:** F-005 (the general limitation of the single-layer perceptron) and F-006 (the kernel method from the history section) are core here and supporting in the review. Both hinge on rules that point two ways: a limitation of a concept with a node is supporting "unless it is the main point of its section", and a method with no node of its own is core, but history is background.
+
+**The owner's decision (2026-11-10):** both are supporting, as in the review. F-005 is a limitation of a concept the tree has, and F-006's method is named only in the history section. Both count as correct omissions with the wrong tier. After this run, a rule line was added: a method named only in a history passage is background.
 
 ## What Codex raised in its feedback
 

@@ -67,5 +67,5 @@ These, the reasoning-only source problems, and the open points from wiki-nb-zh a
 
 - **What the sixth revision fixed here:** the zero-boundary check, the recommendation for a possible slip, the b = 0 convention, and grouping (one history entry, one entry for the aliases of two concepts).
 - **Still missed:** the two source problems that need combining sections (0/1 labels vs the margin condition) or a scaling argument (the bound), and the symbol legend for x(j), w(j), f(x).
-- **New tier differences:** the general single-layer limitation (F-005) and the 1998 kernel method (F-006) are core here, supporting in the review. Not judged yet.
+- **New tier differences:** the general single-layer limitation (F-005) and the 1998 kernel method (F-006) are core here, supporting in the review. The owner decided on 2026-11-10 that both are supporting, and a rule line now says that a method named only in a history passage is background.
 

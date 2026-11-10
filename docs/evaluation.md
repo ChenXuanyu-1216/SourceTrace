@@ -1,13 +1,14 @@
 # SourceTrace evaluation
 
-Two parts:
+Three parts:
 
 - **[Synthetic slides (v0.1)](#setup):** a plain AI assistant compared with the SourceTrace skill on two test sets with planted errors. Runs made between 2026-11-01 and 2026-11-03.
 - **[Real content (v0.2)](#real-content-v02):** SourceTrace on two Wikipedia articles, with knowledge trees from another AI tool, graded by the project owner. Runs made on 2026-11-04 and 2026-11-05.
+- **[Since v0.2.0](#since-v020):** a scale test, degraded images, two more Wikipedia articles, and the first runs by OpenAI Codex. Runs made between 2026-11-05 and 2026-11-10.
 
-All runs used Claude (Opus 5.5).
+Up to v0.2.0, all runs used Claude (Opus 5.5). Since then, two runs used OpenAI Codex and the rest Claude.
 
-**In short:** on synthetic slides, both the plain model and SourceTrace find the planted problems. SourceTrace adds what a plain model does not give: an evidence ID, page and quote behind every verdict, a verdict for every node and edge, fixed categories and risk levels, a machine-readable `audit.json`, and the same result on every run. On real content, the first run had too many false or mislabelled findings. After two rule revisions based on the owner's reviews, 85 of 88 judged items on a new article were right, 1 was partly right and 2 were wrong.
+**In short:** on synthetic slides, both the plain model and SourceTrace find the planted problems. SourceTrace adds what a plain model does not give: an evidence ID, page and quote behind every verdict, a verdict for every node and edge, fixed categories and risk levels, a machine-readable `audit.json`, and the same result on every run. On real content, the first run had too many false or mislabelled findings. After two rule revisions based on the owner's reviews, 85 of 88 judged items on a new article were right, 1 was partly right and 2 were wrong. Since v0.2.0, a 169-item tree and degraded images caused no loss, and on two more articles the item verdicts matched the answer keys. The main remaining gap is problems in the source that take a short derivation to see.
 
 ## Setup
 
@@ -125,6 +126,46 @@ The two wrong findings on wiki-dt-zh are both low-risk source notes, and the thi
 - The summary counts problems, source notes and omissions separately.
 - Evidence quotes are shown in full.
 
+## Since v0.2.0
+
+Three more rule revisions (the fourth to the sixth) and two sets of rule fixes followed v0.2.0, each driven by the test before it. Every test below has a `RESULTS.md` (or `COMPARISON.md`) with the details.
+
+### Setup
+
+| Test set | Tests | Source | Pages | Tree | Answer key |
+|----------|-------|--------|-------|------|------------|
+| [sl-algos-zh](../tests/fixtures/sl-algos-zh/) | scale | synthetic lecture | 32 | 78 nodes, 91 edges, from the developer; 27 planted item problems, 8 planted omissions | planted, revised by the owner after the runs |
+| [model-eval-scan](../tests/fixtures/model-eval-scan/), [-photo](../tests/fixtures/model-eval-photo/), [-occluded](../tests/fixtures/model-eval-occluded/) | image quality | the model-eval slides, degraded by `tools/degrade_images.py` | 8 | 19 nodes, 18 edges (model-eval) | the model-eval key, revised by the owner after the runs |
+| [wiki-nb-zh](../tests/fixtures/wiki-nb-zh/) | a fresh article | Chinese Wikipedia, 朴素贝叶斯分类器 (CC BY-SA 4.0) | 10 | 35 nodes, 52 edges, from ChatGPT (GPT-6.1 Sol) | a ChatGPT review in the conversation that made the tree, accepted by the owner |
+| [wiki-pc-zh](../tests/fixtures/wiki-pc-zh/) | a fresh article with figures as evidence | Chinese Wikipedia, 感知器 (CC BY-SA 4.0) | 6 | 35 nodes, 48 edges, from Codex (GPT-6.1 Sol) | a Codex (GPT-6.1 Sol, high) review in a separate session, accepted by the owner |
+
+Runs were set up as before: a fresh agent with its own copy of the skill and the inputs, and no web access. The two Codex runs were started by the owner in a clean folder outside the repository.
+
+### Results
+
+| Test | Rules | Agent, runs | Result | Cost per run |
+|------|-------|-------------|--------|--------------|
+| [sl-algos-zh](../tests/fixtures/sl-algos-zh/RESULTS.md) | third revision (v0.2.0) | Claude, 2 | Against the revised key: 28/28 item findings, 8/8 omissions, no correct item flagged. Same verdict, category and risk on all 169 items. | ~162–174k tokens, 7–8 min |
+| [model-eval-scan, -photo](../tests/fixtures/model-eval-occluded/RESULTS.md) | fourth revision | Claude, 2 each | 11/11 item findings, 4/4 omissions, all evidence read with `high` certainty | ~92–93k tokens, 3 min |
+| [model-eval-occluded](../tests/fixtures/model-eval-occluded/RESULTS.md) | fourth revision | Claude, 2 | 11/11 and 4/4 against the revised key. Hidden text was marked `low` and never filled in. | ~96–98k tokens, 4 min |
+| [wiki-ml-zh, Codex](../tests/fixtures/wiki-ml-zh/codex-run-1/COMPARISON.md) | third revision (v0.2.0) | Codex (model not recorded), 1 | 15 of the 18 items the owner judged, the same score as Claude run 2 on different items. 44 omissions where Claude reported 25, mostly one per name in a list; not judged. | ~15 min |
+| [wiki-nb-zh, runs 1–2](../tests/fixtures/wiki-nb-zh/RESULTS.md) | fourth revision and fixes | Claude, 2 | No conceptual or relationship error, and none missed. The runs agree on 85 of 87 items; run 2 has two wrong source notes and misses one low omission. | ~132–145k tokens, 8–9 min |
+| [wiki-nb-zh, runs 3–4](../tests/fixtures/wiki-nb-zh/RESULTS.md#re-run-with-the-fifth-revision-2026-11-07) | fifth revision | Claude, 2 | 87/87 items and 11/11 omission groups. Some of the revision's examples come from this article. | ~145–166k tokens, 11–13 min |
+| [wiki-pc-zh, runs 1–2](../tests/fixtures/wiki-pc-zh/RESULTS.md) | fifth revision | Claude, 2 | Both real tree errors found (N029's fix only partly right), none of the 81 supported items overturned, same verdicts on all 83 items. 9 and 10 of 10 omission groups. Missed all 4 source problems that take a derivation, and the b = 0 omission. | ~143–145k tokens, 9 min |
+| [wiki-pc-zh, Codex](../tests/fixtures/wiki-pc-zh/codex-run-1/COMPARISON.md) | sixth revision | Codex (GPT-6.1 Sol, high), 1 | Same verdicts as the Claude runs on all 83 items, with N029's fix now as the review asks. 2 of 4 source problems found, and the b = 0 omission. Two omissions in the wrong tier (core instead of supporting). | ~16.5 min |
+
+Every script run in these tests passed. Where an agent ran a script twice, it was to apply its own edits, not to fix an error. The Codex run on wiki-pc-zh was graded by Claude against the review; of its omissions, the owner judged only the two tier differences.
+
+### What the revisions changed
+
+| Revision | Prompted by | Main changes |
+|----------|-------------|--------------|
+| Fourth (`fb2bbc2`) | sl-algos-zh | The label test comes before `ambiguous`; a slide title does not define a class; slide order supports no relationship; a finding covers only its own content |
+| Fixes (`9b74d78`) | image test | `related-to` rule narrowed; partly unreadable evidence split into a readable and a `low` item; working files in `work/` |
+| Fifth (`80616a0`, `1dbd02b`) | wiki-nb-zh | Judge the concept, not the label's word; web pages and screenshots; formulas; problems in the source itself; background omissions; recommendations checked like findings; notes on supported items shown in the report |
+| Sixth (`ae1084e`) | wiki-pc-zh, wiki-nb-zh re-runs | Check a source claim against the source's own formulas; possible slips; one tie-break for overlapping screenshots; one omission entry per node or topic; wrong range end points; `contrasts-with` from two conventions |
+| Rule line after the Codex run | wiki-pc-zh Codex run | A method named only in a history passage is background |
+
 ## What this shows, and what it doesn't
 
 **Shows:**
@@ -133,28 +174,31 @@ The two wrong findings on wiki-dt-zh are both low-risk source notes, and the thi
 - It also keeps reports focused. The rules for what counts as an omission removed all the noise the baseline produced.
 
 - On real content, the owner's reviews found real rule problems. The first revision, re-run on the same article, fixed most of the cases it targeted: 12 of the 13 reviewed findings then matched the review. The second article, which played no part in the first two revisions, had no high-risk false finding and no supported item that the owner rejected.
+- Since v0.2.0: a 169-item tree and moderately degraded images did not reduce accuracy or agreement, and hidden text was never guessed. On two fresh articles the runs agreed on almost every item and matched the keys. Codex followed the skill without help, twice.
 
 **Does not show:**
-- **The latest rules in action.** Only the first revision was re-run on the article that prompted it. The second was used once, on wiki-dt-zh; the third has not been run.
-- **Independent grading at scale.** One reviewer, and one tree generator (Codex). The omissions of the wiki-ml-zh runs (25 per run) were not judged. On the synthetic sets, the developer wrote both the rules and the answer keys, and the agents that ran the skill use the same model family that helped write it. Agreement *between runs* does not depend on the keys, and is the stronger synthetic result.
-- **Scale.** At most 12 pages and 98 tree items. Detection may differ on 30+ slides or trees with hundreds of nodes.
-- **Image quality.** All inputs are clean renders or screenshots. Scans and photos are untested.
-- **Other agents.** Only Claude was tested. Codex and other Agent Skills tools are untested.
-- **Sample size.** 2 baseline runs and 1–4 skill runs per synthetic test set; 1–2 runs per real-content test set. No baseline was run on real content.
+- **The latest rules on new material.** The sixth revision ran once, by Codex, on wiki-pc-zh, the article several of its examples come from. The rule line after that run has not been run. No article that played no part in the sixth revision has been tested.
+- **Independent grading.** One owner judged or accepted every key. The keys of wiki-nb-zh and wiki-pc-zh are AI reviews: the first from the conversation that made the tree, the second from the same model that made the tree and ran the Codex audit. The omissions of the wiki-ml-zh runs were not judged. On the synthetic sets, the developer wrote both the rules and the answer keys, and the agents that ran the skill use the same model family that helped write it. Agreement *between runs* does not depend on the keys, and is the stronger result.
+- **Problems in the source that need reasoning.** With the sixth revision, zero-boundary checks are found. A problem that needs combining sections (0/1 labels against a margin condition) or a scaling argument was still missed.
+- **Scale on real decks.** The large test is one synthetic 32-slide deck with 169 items. Real content goes up to 12 pages and 98 items.
+- **Real image quality.** The degraded images are scripted versions of one clean 8-slide deck with typed text. Real photos, handwriting and heavy blur are untested.
+- **Other agents and languages.** Codex ran twice, on two different rule versions, so its results can't be separated from the rule changes. No other Agent Skills tool was tested. All real content is Chinese; English was tested only on the 4-slide synthetic set.
+- **Sample size.** 2 baseline runs and 1–4 skill runs per synthetic test set; 1–2 runs per real-content test set and rule version. No baseline was run on real content.
 
 ## Next steps
 
 Test data must be openly licensed, written by the project owner, or synthetic. No third-party course material is used.
 
-1. **Codex** and other Agent Skills tools: run SourceTrace in Codex on the `wiki-ml-zh` inputs.
-2. **Scale:** a synthetic deck of 30+ slides and a tree with 100+ nodes, to test both detection and the page-by-page workflow.
-3. **Image quality:** scan- and photo-like versions of the test slides (blur, noise, rotation, compression) generated by a script, to test `certainty` and the low-certainty rules.
-4. **A new real-content test set** to check the third rule revision, ideally with a tree from a tool other than Codex.
+1. **Release v0.3.0.**
+2. **A fresh article for the sixth revision:** one that played no part in any rule, ideally in English or another field, with an answer key from a model other than the tree's.
+3. **Independent grading:** a reviewer other than the owner, or keys from a different model than the agent's.
+4. **Real images:** photos or scans of openly licensed or owner-written slides.
+5. **Task modes:** a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
 
 ## Reproducing
 
 ```bash
 pip install -r requirements.txt
-python -m pytest                      # 91 tests, including the saved-run checks
+python -m pytest                      # 120 tests, including the saved-run checks
 python -I tools/compare_runs.py . model-eval tests/consistency/model-eval/day6/run-1 tests/consistency/model-eval/day6/run-2 tests/consistency/model-eval/day6/run-3 tests/smoke/model-eval-e2e
 ```
