@@ -80,12 +80,12 @@ It costs about 30% more tokens and 3× the time.
 | 机器学习, run 2 (first revision) | 18 | 14 | 1 | 3 |
 | 决策树学习, run 1 (second revision) | 11 findings + 77 supported items | 85 | 1 | 2 |
 
-Since v0.2.0 (details in [CHANGELOG.md](CHANGELOG.md)):
+In v0.3.0 (details in [CHANGELOG.md](CHANGELOG.md)):
 
 - **Two more articles** with the fifth rule revision. 朴素贝叶斯分类器 (tree from ChatGPT): two re-runs matched the answer key on all 87 items. 感知器 (tree from Codex): both runs found the two real errors in the tree and flagged no correct item, but missed four problems in the source that take a short derivation to see. The answer keys for these two are AI reviews accepted by the owner; the one for 朴素贝叶斯分类器 came from the conversation that made the tree.
-- **A scale test** (32 synthetic slides, a 169-item tree), **degraded images** (scan, photo and partly covered versions) and **a first run by Codex**.
+- **A scale test** (32 synthetic slides, a 169-item tree), **degraded images** (scan, photo and partly covered versions) and **two runs by Codex**.
 
-The sixth rule revision has not been run yet, and all reviews were done or accepted by one person. Details and caveats: [docs/evaluation.md](docs/evaluation.md) (covers v0.2.0) and the `RESULTS.md` of each test set.
+The sixth rule revision has run once, by Codex on 感知器: the same item verdicts, and 2 of the 4 source problems found. It has not been tested on an article that played no part in it, and all reviews were done or accepted by one person. Details and caveats: [docs/evaluation.md](docs/evaluation.md) and the `RESULTS.md` of each test set.
 
 ## How it works
 
@@ -135,16 +135,16 @@ tools/                 make_fixture_slides.py, compare_runs.py, degrade_images.p
 
 ## Status and next steps
 
-v0.2.0, with unreleased changes since then. See [CHANGELOG.md](CHANGELOG.md).
+v0.3.0. See [CHANGELOG.md](CHANGELOG.md).
 
 Test data policy: SourceTrace is tested only on material that is openly licensed, written by the project owner, or synthetic. No third-party course material and no private data are used.
 
 Next:
 
-1. **Codex again:** run the sixth rule revision in Codex.
-2. **Evaluation:** bring [docs/evaluation.md](docs/evaluation.md) up to date with the tests since v0.2.0.
-3. **Release v0.3.0.**
-4. **Task modes** (later): a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
+1. **A fresh article for the sixth revision:** one that played no part in any rule, ideally in English or another field, with an answer key from a model other than the tree's.
+2. **Independent grading:** a reviewer other than the project owner, or keys from a different model than the agent's.
+3. **Real images:** photos or scans of openly licensed or owner-written slides.
+4. **Task modes:** a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
 
 ## License
 

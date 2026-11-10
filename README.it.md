@@ -82,12 +82,12 @@ Costa circa il 30% di token in più e richiede circa il triplo del tempo.
 | 机器学习 (apprendimento automatico), esecuzione 2 (prima revisione) | 18 | 14 | 1 | 3 |
 | 决策树学习 (apprendimento con alberi di decisione), esecuzione 1 (seconda revisione) | 11 problemi + 77 elementi confermati | 85 | 1 | 2 |
 
-Dopo la v0.2.0 (dettagli in [CHANGELOG.md](CHANGELOG.md)):
+Nella v0.3.0 (dettagli in [CHANGELOG.md](CHANGELOG.md)):
 
 - **Altre due voci** con la quinta revisione delle regole. 朴素贝叶斯分类器 (classificatore bayesiano ingenuo, albero di ChatGPT): due nuove esecuzioni hanno concordato con la soluzione su tutti gli 87 elementi. 感知器 (percettrone, albero di Codex): entrambe le esecuzioni hanno trovato i due errori reali dell'albero e non hanno segnalato nessun elemento corretto, ma non hanno visto quattro problemi della fonte stessa che richiedono una breve derivazione. Le soluzioni di queste due voci sono revisioni fatte dall'IA e accettate dal responsabile; quella di 朴素贝叶斯分类器 viene dalla stessa conversazione che ha generato l'albero.
-- **Un test di scala** (32 slide sintetiche, un albero di 169 elementi), **immagini degradate** (versioni simili a scansioni, a foto e parzialmente coperte) e **una prima esecuzione con Codex**.
+- **Un test di scala** (32 slide sintetiche, un albero di 169 elementi), **immagini degradate** (versioni simili a scansioni, a foto e parzialmente coperte) e **due esecuzioni con Codex**.
 
-La sesta revisione delle regole non è ancora stata eseguita, e tutte le revisioni sono state fatte o accettate da una sola persona. Dettagli e limiti: [docs/evaluation.md](docs/evaluation.md) (fino alla v0.2.0) e il file `RESULTS.md` di ogni insieme di test.
+La sesta revisione delle regole è stata eseguita una volta, da Codex su 感知器: stessi verdetti sugli elementi, e trovati 2 dei 4 problemi della fonte che richiedono una breve derivazione. Non è ancora stata provata su una voce estranea alla revisione, e tutte le revisioni sono state fatte o accettate da una sola persona. Dettagli e limiti: [docs/evaluation.md](docs/evaluation.md) e il file `RESULTS.md` di ogni insieme di test.
 
 ## Come funziona
 
@@ -137,16 +137,16 @@ tools/                 make_fixture_slides.py, compare_runs.py, degrade_images.p
 
 ## Stato e prossimi passi
 
-v0.2.0, con modifiche successive non ancora rilasciate. Vedere [CHANGELOG.md](CHANGELOG.md).
+v0.3.0. Vedere [CHANGELOG.md](CHANGELOG.md).
 
 Politica sui dati di test: SourceTrace viene testato solo su materiale con licenza aperta, scritto dal responsabile del progetto o sintetico. Non si usano materiali di corsi di terzi né dati privati.
 
 Prossimi passi:
 
-1. **Di nuovo Codex:** eseguire la sesta revisione delle regole in Codex.
-2. **Valutazione:** aggiornare [docs/evaluation.md](docs/evaluation.md) con i test successivi alla v0.2.0.
-3. **Rilasciare la v0.3.0.**
-4. **Modalità di lavoro** (più avanti): una modalità rigorosa di tracciamento delle fonti e una modalità di revisione che ammette brevi spiegazioni esterne alla fonte, segnalate come tali.
+1. **Una nuova voce per la sesta revisione:** una voce estranea a tutte le regole, possibilmente in inglese o in un altro campo, con una soluzione scritta da un modello diverso da quello che ha generato l'albero.
+2. **Valutazione indipendente:** un revisore diverso dal responsabile, o soluzioni scritte da un modello diverso da quello dell'agente.
+3. **Immagini reali:** foto o scansioni di slide con licenza aperta o scritte dal responsabile.
+4. **Modalità di lavoro:** una modalità rigorosa di tracciamento delle fonti e una modalità di revisione che ammette brevi spiegazioni esterne alla fonte, segnalate come tali.
 
 ## Licenza
 

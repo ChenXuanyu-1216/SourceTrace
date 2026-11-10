@@ -189,11 +189,10 @@ Every script run in these tests passed. Where an agent ran a script twice, it wa
 
 Test data must be openly licensed, written by the project owner, or synthetic. No third-party course material is used.
 
-1. **Release v0.3.0.**
-2. **A fresh article for the sixth revision:** one that played no part in any rule, ideally in English or another field, with an answer key from a model other than the tree's.
-3. **Independent grading:** a reviewer other than the owner, or keys from a different model than the agent's.
-4. **Real images:** photos or scans of openly licensed or owner-written slides.
-5. **Task modes:** a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
+1. **A fresh article for the sixth revision:** one that played no part in any rule, ideally in English or another field, with an answer key from a model other than the tree's.
+2. **Independent grading:** a reviewer other than the owner, or keys from a different model than the agent's.
+3. **Real images:** photos or scans of openly licensed or owner-written slides.
+4. **Task modes:** a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
 
 ## Reproducing
 
