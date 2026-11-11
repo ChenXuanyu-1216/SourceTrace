@@ -1,5 +1,7 @@
 # SourceTrace
 
+[![tests](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml)
+
 [English](README.md) | **简体中文** | [日本語](README.ja.md) | [한국어](README.ko.md) | [Italiano](README.it.md) | [العربية](README.ar.md)
 
 > 本文由 AI 译自 [README.md](README.md)。两者不一致时，以英文版为准。
@@ -148,6 +150,10 @@ v0.3.0。见 [CHANGELOG.md](CHANGELOG.md)。
 3. **真实图片：** 开放许可或项目负责人自己编写的课件的照片或扫描件。
 4. **任务模式：** 一种严格溯源模式，以及一种允许简短、加标注的资料外解释的审阅模式。
 
+## 参与贡献
+
+欢迎报告错误、指出错误的结论或贡献新的测试集。请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)（英文），尤其是隐私部分：不要附上你无权分享的课件或审核结果。
+
 ## 许可证
 
-[MIT](LICENSE)
+代码和文档采用 [MIT 许可证](LICENSE)。`tests/fixtures/wiki-*/` 中的维基百科测试集按其来源的要求采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)；每个这样的文件夹都有自己的 `LICENSE.md` 和 `ATTRIBUTION.md`。

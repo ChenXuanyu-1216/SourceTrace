@@ -1,5 +1,7 @@
 # SourceTrace
 
+[![tests](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml)
+
 [English](README.md) | [简体中文](README.zh-CN.md) | **日本語** | [한국어](README.ko.md) | [Italiano](README.it.md) | [العربية](README.ar.md)
 
 > この文書は [README.md](README.md) を AI が翻訳したものです。内容が異なる場合は英語版が正です。
@@ -148,6 +150,10 @@ v0.3.0。[CHANGELOG.md](CHANGELOG.md) を参照してください。
 3. **実際の画像：** オープンライセンスまたはオーナー自作のスライドの写真やスキャン。
 4. **タスクモード：** 厳密な出典追跡モードと、資料外の短い説明を明示したうえで認めるレビューモード。
 
+## コントリビュート
+
+バグ報告、誤った判定の指摘、新しいテストセットを歓迎します。[CONTRIBUTING.md](CONTRIBUTING.md)（英語）を、特にプライバシーの部分を読んでください：共有してよいと言えないスライドや監査結果は添付しないでください。
+
 ## ライセンス
 
-[MIT](LICENSE)
+コードとドキュメントは [MIT ライセンス](LICENSE) です。`tests/fixtures/wiki-*/` にあるウィキペディアのテストセットは、出典の求めに従い [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) です。これらのフォルダにはそれぞれ専用の `LICENSE.md` と `ATTRIBUTION.md` があります。

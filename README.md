@@ -1,5 +1,7 @@
 # SourceTrace
 
+[![tests](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml)
+
 **English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Italiano](README.it.md) | [العربية](README.ar.md)
 
 An Agent Skill that audits an AI-generated knowledge tree against the slides it was built from.
@@ -146,6 +148,10 @@ Next:
 3. **Real images:** photos or scans of openly licensed or owner-written slides.
 4. **Task modes:** a strict source-tracing mode and a review mode that allows short, marked explanations from outside the source.
 
+## Contributing
+
+Bug reports, wrong verdicts and new test sets are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md), especially the part on privacy: never attach slides or audit outputs you may not share.
+
 ## License
 
-[MIT](LICENSE)
+The code and documentation are under the [MIT License](LICENSE). The Wikipedia test sets in `tests/fixtures/wiki-*/` are under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), as their source requires; each of these folders has its own `LICENSE.md` and `ATTRIBUTION.md`.

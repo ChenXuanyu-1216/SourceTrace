@@ -1,5 +1,7 @@
 # SourceTrace
 
+[![tests](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml)
+
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | **한국어** | [Italiano](README.it.md) | [العربية](README.ar.md)
 
 > 이 문서는 [README.md](README.md)를 AI가 번역한 것입니다. 내용이 다르면 영어판을 기준으로 합니다.
@@ -148,6 +150,10 @@ v0.3.0입니다. [CHANGELOG.md](CHANGELOG.md)를 보세요.
 3. **실제 이미지:** 공개 라이선스이거나 소유자가 직접 만든 슬라이드의 사진 또는 스캔.
 4. **작업 모드:** 엄격한 출처 추적 모드와, 자료 밖의 짧은 설명을 표시해서 허용하는 검토 모드.
 
+## 기여하기
+
+버그 보고, 잘못된 판정 지적, 새 테스트 세트를 환영합니다. [CONTRIBUTING.md](CONTRIBUTING.md)(영어)를, 특히 개인정보 부분을 읽어 주세요: 공유할 권리가 없는 슬라이드나 감사 결과는 첨부하지 마세요.
+
 ## 라이선스
 
-[MIT](LICENSE)
+코드와 문서는 [MIT 라이선스](LICENSE)를 따릅니다. `tests/fixtures/wiki-*/`의 위키백과 테스트 세트는 출처의 요구에 따라 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)을 따르며, 이 폴더마다 자체 `LICENSE.md`와 `ATTRIBUTION.md`가 있습니다.

@@ -1,5 +1,7 @@
 # SourceTrace
 
+[![tests](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml)
+
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | **Italiano** | [العربية](README.ar.md)
 
 > Questo testo è una traduzione di [README.md](README.md) fatta con l'IA. In caso di differenze, vale la versione inglese.
@@ -148,6 +150,10 @@ Prossimi passi:
 3. **Immagini reali:** foto o scansioni di slide con licenza aperta o scritte dal responsabile.
 4. **Modalità di lavoro:** una modalità rigorosa di tracciamento delle fonti e una modalità di revisione che ammette brevi spiegazioni esterne alla fonte, segnalate come tali.
 
+## Contribuire
+
+Segnalazioni di bug, verdetti sbagliati e nuovi insiemi di test sono benvenuti. Leggere [CONTRIBUTING.md](CONTRIBUTING.md) (in inglese), soprattutto la parte sulla privacy: non allegare mai slide o risultati di verifica che non si ha il diritto di condividere.
+
 ## Licenza
 
-[MIT](LICENSE)
+Il codice e la documentazione sono sotto [licenza MIT](LICENSE). Gli insiemi di test da Wikipedia in `tests/fixtures/wiki-*/` sono sotto [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), come richiede la loro fonte; ognuna di queste cartelle ha i propri `LICENSE.md` e `ATTRIBUTION.md`.

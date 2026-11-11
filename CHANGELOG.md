@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- **Open-source housekeeping:**
+  - **CI:** `.github/workflows/tests.yml` runs `python -m pytest` on every push to `main` and every pull request, on Ubuntu (Python 3.10 and 3.13) and Windows (Python 3.13). The README shows its badge.
+  - **[CONTRIBUTING.md](CONTRIBUTING.md):** what helps most, a privacy section (never attach slides or audit outputs you may not share), how to report a script bug or a wrong verdict, development rules, and how to add a test set.
+  - **Issue templates** for script bugs and for wrong verdicts or rule problems, each starting with a privacy checkbox.
+  - **License note in the README,** in all six languages: the code and docs are MIT, and the Wikipedia test sets in `tests/fixtures/wiki-*/` are CC BY-SA 4.0.
+
 ## v0.3.0 (2026-11-10)
 
 Three more rule revisions, each driven by a new test: a 169-item scale test, degraded images, and two more Chinese Wikipedia articles with trees from ChatGPT and Codex. OpenAI Codex ran the skill for the first time, twice. Every script run in the saved runs passed.

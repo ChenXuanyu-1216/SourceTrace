@@ -1,5 +1,7 @@
 # SourceTrace
 
+[![tests](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml/badge.svg)](https://github.com/ChenXuanyu-1216/SourceTrace/actions/workflows/tests.yml)
+
 [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Italiano](README.it.md) | **العربية**
 
 <div dir="rtl">
@@ -174,8 +176,12 @@ tools/                 make_fixture_slides.py، compare_runs.py، degrade_images
 3. **صور حقيقية:** صور فوتوغرافية أو ممسوحة ضوئيًا لشرائح ذات ترخيص مفتوح أو كتبها مالك المشروع.
 4. **أوضاع المهام:** وضع صارم لتتبع المصدر، ووضع مراجعة يسمح بشروح قصيرة من خارج المصدر مع تمييزها بوضوح.
 
+## المساهمة
+
+نرحّب بالإبلاغ عن الأخطاء، وعن الأحكام الخاطئة، وبمجموعات الاختبار الجديدة. اقرأ [CONTRIBUTING.md](CONTRIBUTING.md) (بالإنجليزية)، ولا سيما قسم الخصوصية: لا ترفق أبدًا شرائح أو نتائج تدقيق لا يحق لك مشاركتها.
+
 ## الترخيص
 
-[MIT](LICENSE)
+الشيفرة والوثائق مرخّصة بموجب [ترخيص MIT](LICENSE). أما مجموعات الاختبار المأخوذة من ويكيبيديا في `tests/fixtures/wiki-*/` فمرخّصة بموجب [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) كما يشترط مصدرها، ولكل مجلد منها ملفا `LICENSE.md` و`ATTRIBUTION.md` الخاصان به.
 
 </div>
